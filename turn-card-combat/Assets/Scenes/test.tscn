@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Scenes/test.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cards/Cards.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scripts/Resources.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Scripts/Interaction.gd" type="Script" id=4]
+
+[node name="Combat" type="Node2D"]
+script = ExtResource( 1 )
+card_scene = ExtResource( 2 )
+
+[node name="Cards" type="HBoxContainer" parent="."]
+margin_left = 192.0
+margin_top = 448.0
+margin_right = 832.0
+margin_bottom = 600.0
+custom_constants/separation = 32
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resources" type="Control" parent="."]
+margin_right = 192.0
+margin_bottom = 592.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Energy" type="ProgressBar" parent="Resources"]
+margin_left = 8.0
+margin_top = 512.0
+margin_right = 328.0
+margin_bottom = 544.0
+rect_rotation = -90.0
+step = 1.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Interaction" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Card_Effect" type="Node2D" parent="."]
+
+[node name="Particles2D" type="CPUParticles2D" parent="Card_Effect"]
+emitting = false
+amount = 64
+lifetime = 0.5
+local_coords = false
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 32.0
+scale_amount = 4.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="check_cards" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="check_cards" to="." method="_on_check_cards_timeout"]
