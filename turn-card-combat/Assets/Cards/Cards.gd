@@ -15,6 +15,8 @@ var selected = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
+	toggle_foil(rand_range(0.0,1.0)>0.9)
 	$Card_Image.modulate = Color(int(card_type==0),int(card_type==1),int(card_type==2),1.0)
 
 func _on_Card_mouse_entered():
@@ -33,9 +35,12 @@ func _on_Card_mouse_exited():
 	self.show_on_top = false
 
 
+# warning-ignore:unused_argument
 func _on_Card_gui_input(event):
 	if selected:return
 	if Input.is_action_just_pressed("Lm"):
+		get_parent().get_parent().active_card = true
+		get_parent().get_parent().active_card_type = card_type
 		select_card()
 	if Input.is_action_just_pressed("Rm"):
 		show_details()
@@ -53,3 +58,9 @@ func select_card():
 	$Tween.start()
 func show_details():
 	pass
+
+func toggle_foil(toggled):
+	if toggled:
+		$Card_Image.material = load("res://Assets/Cards/shiny_foil.tres")
+	else:
+		$Card_Image.material = null
