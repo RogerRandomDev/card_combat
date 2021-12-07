@@ -3,7 +3,7 @@ extends Control
 
 
 var in_attack = false
-const floaty_text = preload("res://Assets/Scenes/floaty_text.tscn")
+const floaty_text = preload("res://Assets/Scenes/Combat/floaty_text.tscn")
 
 
 func get_hp():

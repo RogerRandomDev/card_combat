@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="turn-card-combat"
-run/main_scene="res://Assets/Scenes/test.tscn"
+run/main_scene="res://Assets/Scenes/Combat/combat_scene.tscn"
 config/icon="res://icon.png"
 
 [autoload]

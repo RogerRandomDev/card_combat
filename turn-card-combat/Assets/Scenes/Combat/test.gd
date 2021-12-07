@@ -18,8 +18,12 @@ var active_card = false
 var active_card_type = 0
 var selected_card = null
 var in_attack = false
+
+export var round_count = 0
+var cur_round = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Resources/Round.text = str(cur_round+1)+"/"+str(round_count+1)
 	$Resources/Energy.max_value = ally_count
 	$Resources/Energy.value = ally_count
 	randomize()
@@ -78,6 +82,8 @@ func disable_cards(energy = true):
 	if !can_do_again:
 		cur_enemy = 0
 		$Cards.hide()
+		for ally in $Interaction/Allies.get_children():
+			ally.get_node("Sprite/CPUParticles2D").emitting = false
 		$Resources/cur_turn.text = "ENEMY'S TURN"
 		$Resources.set_energy(enemy_count)
 		$attack_timer.start()
@@ -91,13 +97,13 @@ func enemy_turns():
 	
 	var target_ally = round(rand_range(0,ally_count-1))
 	var target_enemy = null
+	if enemy_count == 0:
+		new_round()
+		return
 	for enemy in $Interaction/Enemies.get_children():
 		if enemy.get_hp() < enemy.get_max_hp()/rand_range(2.5,5.0):
 			target_enemy = enemy;break
 	$Tween.start()
-	if enemy_count == 0:
-		new_round()
-		return
 	if $Interaction/Enemies.get_child(cur_enemy).get_hp() < $Interaction/Enemies.get_child(cur_enemy).get_max_hp()/rand_range(1.0,2.0) && rand_range(0.0,5.0) > 4.0:
 		target_enemy = $Interaction/Enemies.get_child(cur_enemy)
 	
@@ -161,6 +167,12 @@ func hide_cards(timer):
 func new_round():
 	$Resources/cur_turn.text = "YOUR TURN"
 	$Resources.set_energy(ally_count)
+	cur_round+=1
+	$Resources/Round.text = str(cur_round+1)+"/"+str(round_count+1)
+	if cur_round <= round_count:
+		load_enemies_for_round()
+	else:
+		$Resources/cur_turn.text = "VICTORY"
 	redo_foil()
 func update_card_foils(foiling):
 	for card in $Cards.get_children():
@@ -169,3 +181,12 @@ func new_turn():
 	for ally in $Interaction/Allies.get_children():
 		ally.shielded = false
 		ally.shielded_amount = 1.0
+func update_active_particles(type):
+	if active_ally==null:return
+	active_ally.get_node("Sprite/CPUParticles2D").process_material.color = Color(int(type==0),int(type==1),int(type==2),1.0)
+	active_ally.get_node("Sprite/CPUParticles2D").emitting = true
+func load_enemies_for_round():
+	enemy_count = 3
+	for enemy in 3:
+		var en = enemy_scene.instance()
+		$Interaction/Enemies.add_child(en)

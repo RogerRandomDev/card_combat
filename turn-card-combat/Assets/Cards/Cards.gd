@@ -69,6 +69,7 @@ func _on_Card_gui_input(event):
 		get_parent().get_parent().active_card = true
 		get_parent().get_parent().active_card_type = card_type
 		get_parent().get_parent().selected_card = self
+		get_parent().get_parent().update_active_particles(card_type)
 		select_card()
 	if Input.is_action_just_pressed("Rm"):
 		show_details()
