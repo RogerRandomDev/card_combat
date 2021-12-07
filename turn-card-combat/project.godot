@@ -14,6 +14,16 @@ config/name="turn-card-combat"
 run/main_scene="res://Assets/Scenes/test.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Card="*res://Assets/Global/Card.gd"
+Simpli="*res://Assets/Global/Simpli.gd"
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [input]
 
 Lm={

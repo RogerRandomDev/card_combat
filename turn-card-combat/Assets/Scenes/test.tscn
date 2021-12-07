@@ -1,21 +1,31 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Scenes/test.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Cards/Cards.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scripts/Resources.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Scripts/Interaction.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Fonts/FFFFORWA.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/Scenes/ALLY.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
 
 [node name="Combat" type="Node2D"]
 script = ExtResource( 1 )
 card_scene = ExtResource( 2 )
 enemy_scene = ExtResource( 5 )
+ally_scene = ExtResource( 7 )
 
 [node name="Cards" type="HBoxContainer" parent="."]
+visible = false
 margin_left = 192.0
-margin_top = 448.0
-margin_right = 832.0
-margin_bottom = 600.0
+margin_top = 512.0
+margin_right = 672.0
+margin_bottom = 578.0
+rect_scale = Vector2( 1.333, 1.333 )
 custom_constants/separation = 32
 alignment = 1
 __meta__ = {
@@ -23,7 +33,6 @@ __meta__ = {
 }
 
 [node name="Resources" type="Control" parent="."]
-visible = false
 margin_right = 192.0
 margin_bottom = 592.0
 script = ExtResource( 3 )
@@ -37,15 +46,26 @@ margin_top = 512.0
 margin_right = 328.0
 margin_bottom = 544.0
 rect_rotation = -90.0
+max_value = 3.0
 step = 1.0
+value = 3.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="cur_turn" type="Label" parent="Resources"]
+margin_left = 256.0
+margin_top = 16.0
+margin_right = 768.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 1 )
+text = "YOUR TURN"
+align = 1
+
 [node name="Interaction" type="Control" parent="."]
-margin_right = 384.0
 margin_bottom = 600.0
+mouse_filter = 1
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -56,7 +76,18 @@ margin_left = 64.0
 margin_top = 64.0
 margin_right = 256.0
 margin_bottom = 536.0
-custom_constants/separation = 64
+custom_constants/separation = 84
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Allies" type="VBoxContainer" parent="Interaction"]
+margin_left = 896.0
+margin_top = 64.0
+margin_right = 960.0
+margin_bottom = 536.0
+custom_constants/separation = 96
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -79,4 +110,11 @@ color = Color( 1, 0, 0, 1 )
 wait_time = 0.25
 autostart = true
 
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 0.666
+one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="timeout" from="check_cards" to="." method="_on_check_cards_timeout"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

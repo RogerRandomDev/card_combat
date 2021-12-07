@@ -1,0 +1,23 @@
+{
+"Attack":
+[
+"ATTACK",
+"Deal _____ damage to enemy",
+"HURT",
+["random",10,20]
+],
+"Heal":
+[
+"HEAL",
+"Heal an ally _____ HP",
+"HEAL",
+["random",20,40]
+],
+"Defend":
+[
+"DEFEND",
+"Defend yourself from _____% of the damage this turn",
+"DEFEND",
+["random",50,100]
+]
+}
