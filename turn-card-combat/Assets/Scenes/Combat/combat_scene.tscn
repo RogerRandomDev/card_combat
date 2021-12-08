@@ -15,9 +15,12 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [node name="Combat" type="Node2D"]
+process_priority = -1000
 script = ExtResource( 5 )
 card_scene = ExtResource( 3 )
+enemy_count = 1
 enemy_scene = ExtResource( 7 )
+ally_count = 5
 ally_scene = ExtResource( 6 )
 
 [node name="Cards" type="HBoxContainer" parent="."]

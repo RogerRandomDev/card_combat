@@ -21,9 +21,11 @@ var action_chosen = false
 var cards_foiled = [false,false,false]
 
 func _ready():
+	process_priority = 100
 	$Health.max_value = max_health
 	$Health.value = max_health
 	show_on_top = false
+	$Sprite/CPUParticles2D.process_material = $Sprite/CPUParticles2D.process_material.duplicate()
 
 func hurt(val):
 	val = round(val*get_shielded_rate())
@@ -71,32 +73,36 @@ func _on_ALLY_mouse_exited():
 
 
 func _input(_event):
-	if Input.is_action_pressed("Lm") && !get_parent().get_parent().get_parent().hovering_ally == self && get_local_mouse_position().length() < 256:
+	if used || get_global_mouse_position().x < 728:return
+
+	if Input.is_action_pressed("Lm") && !get_parent().get_parent().get_parent().hovering_ally == self:
+		reset_size()
 		get_parent().get_parent().get_parent().return_cards_to_hand()
+		
 		if !used:get_node("Sprite/CPUParticles2D").emitting = false
-		reset_size()
-		if get_parent().get_parent().get_parent().hovering_ally == null || get_parent().get_parent().get_parent().hovering_ally.used:
-			get_parent().get_parent().get_parent().active_ally = null
-			get_parent().get_parent().get_parent().return_cards_to_hand()
-			var time = Timer.new()
-			time.wait_time = 0.25*(int(get_parent().get_parent().get_parent().selected_card != null)+int(!get_parent().get_parent().get_parent().get_node("Cards").visible)+0.01)
-			add_child(time)
-			time.name = "a"
-			time.connect("timeout",self,"hide_cards",[time])
-			time.start()
-			get_parent().get_parent().get_parent().active_ally = null
-			get_parent().get_parent().get_parent().selected_card = null
+		if !Card.team_cards.has(get_parent().get_parent().get_parent().active_card_type) || Card.self_cards.has(get_parent().get_parent().get_parent().active_card_type) && get_parent().get_parent().get_parent().active_ally == get_parent().get_parent().get_parent().hovering_ally:
+			if get_parent().get_parent().get_parent().hovering_ally == null || get_parent().get_parent().get_parent().hovering_ally.used:
+				get_parent().get_parent().get_parent().active_ally = null
+				get_parent().get_parent().get_parent().return_cards_to_hand()
+				var time = Timer.new()
+				time.wait_time = 0.25*(int(get_parent().get_parent().get_parent().selected_card != null)+int(!get_parent().get_parent().get_parent().get_node("Cards").visible)+0.01)
+				add_child(time)
+				time.name = "a"
+				time.connect("timeout",self,"hide_cards",[time])
+				time.start()
+				get_parent().get_parent().get_parent().active_ally = null
+				get_parent().get_parent().get_parent().selected_card = null
+			else:
+				swap()
 		else:
-			get_parent().get_parent().get_parent().return_cards_to_hand()
-			get_parent().get_parent().get_parent().hovering_ally.show_on_top = true
-			get_parent().get_parent().get_parent().active_ally = get_parent().get_parent().get_parent().hovering_ally
-			get_parent().get_parent().get_parent().active_ally.select_self()
+			reset_size()
+		
+		if get_parent().get_parent().get_parent().hovering_ally != null && !Card.team_cards.has(get_parent().get_parent().get_parent().active_card_type):
+			if !get_parent().get_parent().get_parent().hovering_ally.used:
+				reset_size()
+				get_parent().get_parent().get_parent().hovering_ally.select_self()
 		get_parent().get_parent().get_parent().get_node("Card_Effect/Particles2D").emitting = false
-		reset_size()
-		
-	
-	if Input.is_action_just_pressed("Lm") && show_on_top && !used:
-		
+	if Input.is_action_just_pressed("Lm") && show_on_top && !used && !Card.team_cards.has(get_parent().get_parent().get_parent().active_card_type):
 		get_parent().get_parent().get_parent().get_node("Cards").show()
 		if get_parent().get_parent().get_parent().active_ally != self:
 			get_parent().get_parent().get_parent().selected_card = null
@@ -108,6 +114,18 @@ func _input(_event):
 		
 	if Input.is_action_just_pressed("Rm") && !used && get_parent().get_parent().get_parent().get_node("Cards").visible:
 		pass
+func swap():
+		reset_size()
+		get_parent().get_parent().get_parent().return_cards_to_hand()
+		
+		get_parent().get_parent().get_parent().hovering_ally.show_on_top = true
+		if Card.team_cards.has(get_parent().get_parent().get_parent().active_card_type):
+			get_parent().get_parent().get_parent().selected_card = null
+			get_parent().get_parent().get_parent().active_ally = get_parent().get_parent().get_parent().hovering_ally
+			get_parent().get_parent().get_parent().active_ally.select_self()
+
+		
+
 
 
 func redo_foil():

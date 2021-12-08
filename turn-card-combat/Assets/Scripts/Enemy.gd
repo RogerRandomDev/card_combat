@@ -38,6 +38,7 @@ func update_health(val):
 		if get_parent().get_parent().get_parent().selected_enemy == self:
 			get_parent().get_parent().get_parent().selected_enemy = null
 			get_parent().get_parent().get_parent().enemy_count -= 1
+			get_parent().get_parent().get_parent().check_enemies()
 		self.queue_free()
 func hurt(damage):
 	if in_attack:return false

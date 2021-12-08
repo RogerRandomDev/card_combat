@@ -18,12 +18,12 @@ var active_card = false
 var active_card_type = 0
 var selected_card = null
 var in_attack = false
-
+var hovering_cards = false
 export var round_count = 0
 var cur_round = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Resources/Round.text = str(cur_round+1)+"/"+str(round_count+1)
+	$Resources/Round.text = str(min(cur_round,round_count)+1)+"/"+str(round_count+1)
 	$Resources/Energy.max_value = ally_count
 	$Resources/Energy.value = ally_count
 	randomize()
@@ -120,7 +120,7 @@ func enemy_turns():
 		$Resources/cur_turn.text = "YOUR TURN"
 		$Resources.set_energy(ally_count)
 		redo_foil()
-		call_deferred('new_turn')
+		new_turn()
 	else:
 		$attack_timer.start()
 	cur_enemy += 1
@@ -131,6 +131,7 @@ func reverse_anim(enemy_id):
 func _on_attack_timer_timeout():
 	enemy_turns()
 func _input(_event):
+	if $attack_timer.time_left != 0.0:return
 	if selected_card == null || !Input.is_action_just_pressed("Lm"):return
 	if selected_card.card_type == 1 && hovering_ally != null:
 		heal_ally()
@@ -140,18 +141,20 @@ func _input(_event):
 		return
 	if selected_card.card_type == 2 && hovering_ally == active_ally && active_ally != null:
 		active_ally.shield(selected_card.material != null)
+		active_ally.used = true
 		ally_used()
 		disable_cards()
 		return_cards_to_hand()
 		return
 
 func ally_used():
-	for ally in $Interaction/Allies.get_children():
-		if ally.show_on_top:
-			ally.action_chosen = true;break
+	active_ally.used = true
+	active_card_type = -1
+	active_card = false
 func heal_ally():
 	var output_val = selected_card.get_output_value()
 	hovering_ally.heal(output_val)
+	active_ally.reset_size()
 func redo_foil():
 	for ally in $Interaction/Allies.get_children():
 		ally.redo_foil()
@@ -161,18 +164,22 @@ func hide_cards(timer):
 	$Cards.hide()
 	if active_ally != null:
 		active_ally.modulate = Color(0.5,0.5,0.5,1.0)
-		active_ally.used = true
 		active_ally.reset_size()
 		active_ally = null
 func new_round():
 	$Resources/cur_turn.text = "YOUR TURN"
 	$Resources.set_energy(ally_count)
 	cur_round+=1
-	$Resources/Round.text = str(cur_round+1)+"/"+str(round_count+1)
+	$Resources/Round.text = str(min(cur_round,round_count)+1)+"/"+str(round_count+1)
 	if cur_round <= round_count:
 		load_enemies_for_round()
 	else:
 		$Resources/cur_turn.text = "VICTORY"
+		var time = Timer.new()
+		time.connect("timeout",self,'end_round',[time])
+		time.wait_time = 3
+		add_child(time)
+		time.start()
 	redo_foil()
 func update_card_foils(foiling):
 	for card in $Cards.get_children():
@@ -180,6 +187,8 @@ func update_card_foils(foiling):
 func new_turn():
 	for ally in $Interaction/Allies.get_children():
 		ally.shielded = false
+		ally.action_chosen = false
+		ally.used = false
 		ally.shielded_amount = 1.0
 func update_active_particles(type):
 	if active_ally==null:return
@@ -190,3 +199,49 @@ func load_enemies_for_round():
 	for enemy in 3:
 		var en = enemy_scene.instance()
 		$Interaction/Enemies.add_child(en)
+func check_enemies():
+	if enemy_count <= 0:
+		new_turn()
+# warning-ignore:standalone_expression
+		$Interaction/Allies.mouse_filter = $Interaction/Allies.MOUSE_FILTER_STOP
+		$Cards.hide()
+		$win_screen.show()
+		$Resources/cur_turn.text = "VICTORY"
+		$attack_timer.start()
+		var time = Timer.new()
+		time.connect("timeout",self,'end_round',[time])
+		time.wait_time = 3
+		add_child(time)
+		time.start()
+func end_round(timer):
+	$Interaction/Allies.hide()
+	$Interaction/Enemies.hide()
+	active_ally = null
+	active_card = null
+	hovering_ally = null
+	if timer != null:timer.queue_free()
+	hide()
+	get_parent().get_parent().load_combat(false)
+
+
+func load_new_round():
+	$Interaction/Allies.show()
+	$Interaction/Enemies.show()
+	$win_screen.hide()
+	$Resources/cur_turn.text = "YOUR TURN"
+# warning-ignore:standalone_expression
+	$Interaction/Allies.mouse_filter = $Interaction/Allies.MOUSE_FILTER_PASS
+	enemy_count = 1
+	ally_count = 3
+	$Resources.set_energy(ally_count)
+	for enemy in $Interaction/Enemies.get_children():
+		enemy.queue_free()
+	for ally in $Interaction/Allies.get_children():
+		ally.queue_free()
+	for enemy in enemy_count:
+		var en = enemy_scene.instance()
+		$Interaction/Enemies.add_child(en)
+	for ally in ally_count:
+		var n_ally = ally_scene.instance()
+		$Interaction/Allies.add_child(n_ally)
+	redo_foil()

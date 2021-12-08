@@ -7,7 +7,8 @@ extends Node
 
 
 const card_type = ["Attack","Heal","Defend"]
-
+const team_cards = [1]
+const self_cards = [2]
 
 
 func get_card_data(card_id):
