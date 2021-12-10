@@ -21,6 +21,7 @@ var in_attack = false
 var hovering_cards = false
 export var round_count = 0
 var cur_round = 0
+var cur_turn = "Player"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Resources/Round.text = str(min(cur_round,round_count)+1)+"/"+str(round_count+1)
@@ -36,10 +37,17 @@ func _ready():
 	for enemy in enemy_count:
 		var en = enemy_scene.instance()
 		$Interaction/Enemies.add_child(en)
-	for ally in ally_count:
+	var char_dat = Simpli.get_character_data()
+	for ally in char_dat.size():
 		var n_ally = ally_scene.instance()
 		$Interaction/Allies.add_child(n_ally)
+		n_ally.set_stats(char_dat[ally])
+	if Util.player_stats == []:
+		for ally in char_dat.size():
+			Util.player_stats.append($Interaction/Allies.get_child(ally).get_stats())
+	get_parent().get_parent().get_node("Menu/Player_Menu").load_players(Util.player_stats)
 	redo_foil()
+	
 # warning-ignore:unused_argument
 func _process(delta):
 	$Card_Effect.position = get_global_mouse_position()
@@ -85,6 +93,7 @@ func disable_cards(energy = true):
 		for ally in $Interaction/Allies.get_children():
 			ally.get_node("Sprite/CPUParticles2D").emitting = false
 		$Resources/cur_turn.text = "ENEMY'S TURN"
+		cur_turn = "ENEMY"
 		$Resources.set_energy(enemy_count)
 		$attack_timer.start()
 		
@@ -122,6 +131,7 @@ func enemy_turns():
 	var continued = $Resources.add_energy(-1)
 	if !continued:
 		$Resources/cur_turn.text = "YOUR TURN"
+		cur_turn = "PLAYER"
 		$Resources.set_energy(ally_count)
 		redo_foil()
 		new_turn()
@@ -180,6 +190,7 @@ func new_round():
 		Util.player_stats =[]
 		for ally in $Interaction/Allies.get_children():
 			Util.player_stats.append(ally.get_stats())
+		get_parent().get_parent().get_node("Menu/Player_Menu").load_players(Util.player_stats)
 		time.wait_time = 3
 		add_child(time)
 		time.start()
@@ -196,17 +207,18 @@ func new_turn():
 		ally.used = false
 		ally.shielded_amount = 1.0
 		if ally.owned_cards.size() > 0:
-			var possible_cards = ally.owned_cards
+			var possible_cards = []
+			var count_cards = ally.owned_cards
 			var ally_cards_this_turn = []
-			var card_vals = possible_cards.keys()
-			var value_out = possible_cards.values()
+			var card_vals = ally.owned_cards.keys()
+			var value_out = ally.owned_cards.values()
+			for card in card_vals.size():
+				for count in value_out[card]:
+					possible_cards.append(card_vals[card])
 			for point in card_count:
-				var val = round(rand_range(0.0,card_vals.size()-1))
-				var card_type = card_vals[val]
-				value_out[val] -= 1
-				if value_out[val] <= 0:
-					card_vals.remove(val)
-					value_out.remove(val)
+				var val = round(rand_range(0.0,possible_cards.size()-1))
+				var card_type = possible_cards[val]
+				possible_cards.remove(val)
 				ally_cards_this_turn.append(card_type)
 			ally.cards_this_turn = ally_cards_this_turn
 	Card.turn_end()
@@ -271,7 +283,7 @@ func load_new_round():
 			if Util.player_stats.size() != 0:
 				n_ally.set_stats(Util.player_stats[ally])
 			$Interaction/Allies.add_child(n_ally)
-		ally_count = Util.player_stats.size()
+		ally_count = size
 	redo_foil()
 	call_deferred('new_turn')
 func select_ally(selected_ally):

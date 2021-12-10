@@ -22,6 +22,7 @@ var action_chosen = false
 
 var cards_foiled = [false,false,false]
 
+var Name = "Dave"
 func _ready():
 	process_priority = 0
 	$Health.max_value = max_health
@@ -41,12 +42,13 @@ func hurt(val):
 	get_parent().get_parent().add_child(floaty)
 	floaty.get_child(0).start(1.75,str(val))
 func hurt_finish(val):
-	if !get_parent().get_parent().get_parent().active_ally == self && !get_parent().get_parent().get_parent().hovering_ally != self:
+	if !get_parent().get_parent().get_parent().active_ally == self || !get_parent().get_parent().get_parent().hovering_ally != self || get_parent().get_parent().get_parent().cur_turn != "Player":
 		$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(0,0),0.25,Tween.TRANS_LINEAR)
 	$Tween.interpolate_property($Sprite,"modulate",$Sprite.modulate,Color(1.0,1.0,1.0,1.0),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
 	$Tween.disconnect("tween_all_completed",self,"hurt_finish")
 	$Health.value = max(min(max_health,val),0)
+	health = max(min(val,max_health),0)
 	if val <= 0:
 		get_parent().get_parent().get_parent().killed_player()
 		Util.player_stats.remove(self.get_position_in_parent()-1)
@@ -166,9 +168,11 @@ func select_self():
 	$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(-16,-16),0.125,Tween.TRANS_LINEAR)
 	$Tween.start()
 	get_parent().get_parent().get_parent().update_card_foils(cards_foiled)
-
+var sprite_tex = ""
 func set_stats(stats):
 	if typeof(stats) == typeof([]):
+		sprite_tex = stats[6]
+		Name = stats[5]
 		max_health = stats[4]
 		health = stats[3]
 		defence = stats[2]
@@ -179,9 +183,12 @@ func set_stats(stats):
 		max_health = stats["Health"]
 		health = stats["Health"]
 		defence = stats["Defense"]
+		Name = stats["Name"]
+		sprite_tex = stats["Icon"]
 	$Health.max_value = max_health
 	$Health.value = health
+	$Sprite.texture = load(sprite_tex)
 func get_cards():
 	return [owned_cards.keys(),owned_cards.values()]
 func get_stats():
-	return [strength,support,defence,health,max_health]
+	return [strength,support,defence,health,max_health,Name,sprite_tex]

@@ -32,6 +32,7 @@ margin_bottom = 64.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 1
+flip_h = true
 
 [node name="CPUParticles2D" type="Particles2D" parent="Sprite"]
 show_behind_parent = true
