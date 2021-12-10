@@ -10,6 +10,8 @@ var strength = 1
 var defence = 1
 var support = 1
 
+var owned_cards = {}
+var cards_this_turn = []
 
 var shielded = false
 var shielded_amount = 0.0
@@ -21,7 +23,7 @@ var action_chosen = false
 var cards_foiled = [false,false,false]
 
 func _ready():
-	process_priority = 100
+	process_priority = 0
 	$Health.max_value = max_health
 	$Health.value = max_health
 	show_on_top = false
@@ -29,7 +31,6 @@ func _ready():
 
 func hurt(val):
 	val = round(val*get_shielded_rate())
-	if cards_foiled[2] && shielded:val = 0.0
 	$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(16,0),0.25,Tween.TRANS_LINEAR)
 	$Tween.interpolate_property($Sprite,"modulate",$Sprite.modulate,Color(1.0,0.5,0.5,1.0),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
@@ -40,19 +41,22 @@ func hurt(val):
 	get_parent().get_parent().add_child(floaty)
 	floaty.get_child(0).start(1.75,str(val))
 func hurt_finish(val):
-	$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(0,0),0.25,Tween.TRANS_LINEAR)
+	if !get_parent().get_parent().get_parent().active_ally == self && !get_parent().get_parent().get_parent().hovering_ally != self:
+		$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(0,0),0.25,Tween.TRANS_LINEAR)
 	$Tween.interpolate_property($Sprite,"modulate",$Sprite.modulate,Color(1.0,1.0,1.0,1.0),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
 	$Tween.disconnect("tween_all_completed",self,"hurt_finish")
 	$Health.value = max(min(max_health,val),0)
 	if val <= 0:
-		get_parent().get_parent().get_parent().ally_count -= 1
+		get_parent().get_parent().get_parent().killed_player()
+		Util.player_stats.remove(self.get_position_in_parent()-1)
 		self.queue_free()
 func heal(val):
 	$Tween.interpolate_property($Sprite,"modulate",$Sprite.modulate,Color(0.5,1.0,0.5,1.0),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
 # warning-ignore:return_value_discarded
-	$Tween.connect("tween_all_completed",self,"hurt_finish",[$Health.value+val])
+	if !$Tween.is_connected("tween_all_completed",self,"hurt_finish"):
+		$Tween.connect("tween_all_completed",self,"hurt_finish",[$Health.value+val])
 	var floaty = floaty_text.instance()
 	floaty.get_child(0).rect_global_position = self.rect_global_position+Vector2(16,16)
 	get_parent().get_parent().add_child(floaty)
@@ -61,24 +65,22 @@ func heal(val):
 
 func _on_ALLY_mouse_entered():
 	get_parent().get_parent().get_parent().hovering_ally = self
-	if action_chosen || get_parent().get_parent().get_parent().get_node("Cards").visible:return
+	if action_chosen:return
 	show_on_top = true
 
 
 func _on_ALLY_mouse_exited():
 	if get_parent().get_parent().get_parent().hovering_ally == self:get_parent().get_parent().get_parent().hovering_ally = null
-	if !show_on_top:return
 	show_on_top = false
 	
 
 
 func _input(_event):
 	if used || get_global_mouse_position().x < 728:return
-
+	var origin_point = get_parent().get_parent().get_parent()
 	if Input.is_action_pressed("Lm") && !get_parent().get_parent().get_parent().hovering_ally == self:
 		reset_size()
 		get_parent().get_parent().get_parent().return_cards_to_hand()
-		
 		if !used:get_node("Sprite/CPUParticles2D").emitting = false
 		if !Card.team_cards.has(get_parent().get_parent().get_parent().active_card_type) || Card.self_cards.has(get_parent().get_parent().get_parent().active_card_type) && get_parent().get_parent().get_parent().active_ally == get_parent().get_parent().get_parent().hovering_ally:
 			if get_parent().get_parent().get_parent().hovering_ally == null || get_parent().get_parent().get_parent().hovering_ally.used:
@@ -90,41 +92,37 @@ func _input(_event):
 				time.name = "a"
 				time.connect("timeout",self,"hide_cards",[time])
 				time.start()
-				get_parent().get_parent().get_parent().active_ally = null
-				get_parent().get_parent().get_parent().selected_card = null
+				origin_point.active_card_type = -1
+				origin_point.selected_card = null
+				origin_point.active_card = false
 			else:
 				swap()
 		else:
-			reset_size()
-		
-		if get_parent().get_parent().get_parent().hovering_ally != null && !Card.team_cards.has(get_parent().get_parent().get_parent().active_card_type):
-			if !get_parent().get_parent().get_parent().hovering_ally.used:
-				reset_size()
-				get_parent().get_parent().get_parent().hovering_ally.select_self()
+			call_deferred('reset_size')
 		get_parent().get_parent().get_parent().get_node("Card_Effect/Particles2D").emitting = false
-	if Input.is_action_just_pressed("Lm") && show_on_top && !used && !Card.team_cards.has(get_parent().get_parent().get_parent().active_card_type):
+	if Input.is_action_just_pressed("Lm") && show_on_top && !used && !Card.team_cards.has(get_parent().get_parent().get_parent().active_card_type) && origin_point.active_ally != self:
 		get_parent().get_parent().get_parent().get_node("Cards").show()
-		if get_parent().get_parent().get_parent().active_ally != self:
-			get_parent().get_parent().get_parent().selected_card = null
 		get_parent().get_parent().get_parent().active_ally = self
+		get_parent().get_parent().get_parent().call_deferred('select_ally',self)
+		origin_point.selected_card = null
+		origin_point.active_card_type = -1
 		$Tween.interpolate_property($Sprite,"rect_scale",$Sprite.rect_scale,Vector2(1.5,1.5),0.125,Tween.TRANS_LINEAR)
 		$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(-16,-16),0.125,Tween.TRANS_LINEAR)
 		$Tween.start()
 		get_parent().get_parent().get_parent().update_card_foils(cards_foiled)
-		
+			
 	if Input.is_action_just_pressed("Rm") && !used && get_parent().get_parent().get_parent().get_node("Cards").visible:
 		pass
 func swap():
 		reset_size()
 		get_parent().get_parent().get_parent().return_cards_to_hand()
-		
-		get_parent().get_parent().get_parent().hovering_ally.show_on_top = true
+		if get_parent().get_parent().get_parent().hovering_ally != null:get_parent().get_parent().get_parent().hovering_ally.show_on_top = true
 		if Card.team_cards.has(get_parent().get_parent().get_parent().active_card_type):
+			
 			get_parent().get_parent().get_parent().selected_card = null
 			get_parent().get_parent().get_parent().active_ally = get_parent().get_parent().get_parent().hovering_ally
-			get_parent().get_parent().get_parent().active_ally.select_self()
-
-		
+			if get_parent().get_parent().get_parent().active_ally != null:
+				get_parent().get_parent().get_parent().active_ally.select_self()
 
 
 
@@ -156,14 +154,34 @@ func shield(immune):
 	shielded_amount = int(!immune)
 func get_shielded_rate():
 	if shielded:
-		return rand_range(0.0,0.5)*(shielded_amount)
+		return rand_range(0.05,0.6)*(shielded_amount)
 	return 1.0
 func select_self():
 	get_parent().get_parent().get_parent().get_node("Cards").show()
 	if get_parent().get_parent().get_parent().active_ally != self:
 		get_parent().get_parent().get_parent().selected_card = null
 	get_parent().get_parent().get_parent().active_ally = self
+	get_parent().get_parent().get_parent().select_ally(self)
 	$Tween.interpolate_property($Sprite,"rect_scale",$Sprite.rect_scale,Vector2(1.5,1.5),0.125,Tween.TRANS_LINEAR)
 	$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(-16,-16),0.125,Tween.TRANS_LINEAR)
 	$Tween.start()
 	get_parent().get_parent().get_parent().update_card_foils(cards_foiled)
+
+func set_stats(stats):
+	if typeof(stats) == typeof([]):
+		max_health = stats[4]
+		health = stats[3]
+		defence = stats[2]
+		support = stats[1]
+		strength = stats[0]
+	else:
+		owned_cards = stats["Cards"]
+		max_health = stats["Health"]
+		health = stats["Health"]
+		defence = stats["Defense"]
+	$Health.max_value = max_health
+	$Health.value = health
+func get_cards():
+	return [owned_cards.keys(),owned_cards.values()]
+func get_stats():
+	return [strength,support,defence,health,max_health]

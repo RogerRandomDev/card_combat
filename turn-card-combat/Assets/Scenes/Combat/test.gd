@@ -87,6 +87,7 @@ func disable_cards(energy = true):
 		$Resources/cur_turn.text = "ENEMY'S TURN"
 		$Resources.set_energy(enemy_count)
 		$attack_timer.start()
+		
 	
 func return_cards_to_hand():
 	for card in $Cards.get_children():
@@ -104,12 +105,15 @@ func enemy_turns():
 		if enemy.get_hp() < enemy.get_max_hp()/rand_range(2.5,5.0):
 			target_enemy = enemy;break
 	$Tween.start()
-	if $Interaction/Enemies.get_child(cur_enemy).get_hp() < $Interaction/Enemies.get_child(cur_enemy).get_max_hp()/rand_range(1.0,2.0) && rand_range(0.0,5.0) > 4.0:
-		target_enemy = $Interaction/Enemies.get_child(cur_enemy)
-	
+	if $Interaction/Enemies.get_child_count() > cur_enemy:
+		if $Interaction/Enemies.get_child(cur_enemy).get_hp() < $Interaction/Enemies.get_child(cur_enemy).get_max_hp()/rand_range(1.0,2.0) && rand_range(0.0,5.0) > 4.0:
+			target_enemy = $Interaction/Enemies.get_child(cur_enemy)
+	if enemy_count == 0:
+		new_round()
+		return
 	if target_enemy != null:
 		target_enemy.heal(round(rand_range(10.0,20.0)))
-	else:
+	elif $Interaction/Allies.get_child_count() > target_ally:
 		$Interaction/Allies.get_child(target_ally).hurt(-round(rand_range(10.0,20.0)))
 		$Tween.interpolate_property($Interaction/Enemies.get_child(cur_enemy).get_child(0),"rect_position",$Interaction/Enemies.get_child(cur_enemy).get_child(0).rect_position,Vector2(16,0),0.25,Tween.TRANS_LINEAR)
 		$Tween.start()
@@ -132,29 +136,24 @@ func _on_attack_timer_timeout():
 	enemy_turns()
 func _input(_event):
 	if $attack_timer.time_left != 0.0:return
-	if selected_card == null || !Input.is_action_just_pressed("Lm"):return
-	if selected_card.card_type == 1 && hovering_ally != null:
-		heal_ally()
-		ally_used()
-		disable_cards()
-		return_cards_to_hand()
-		return
-	if selected_card.card_type == 2 && hovering_ally == active_ally && active_ally != null:
-		active_ally.shield(selected_card.material != null)
-		active_ally.used = true
-		ally_used()
-		disable_cards()
-		return_cards_to_hand()
-		return
-
+	if Input.is_action_just_pressed("Lm") && selected_card != null:
+		var succeeded = Card.add_action(selected_card.card_action,selected_card.card_delay,active_ally,selected_enemy,hovering_ally,active_card_type,selected_card.foiled)
+		if succeeded&&active_ally!=null:
+			active_ally.used = true
+			ally_used()
+			return_cards_to_hand()
+			disable_cards()
+			active_ally.reset_size()
+			active_ally = null
 func ally_used():
+	if active_ally == null:return
 	active_ally.used = true
 	active_card_type = -1
 	active_card = false
-func heal_ally():
-	var output_val = selected_card.get_output_value()
-	hovering_ally.heal(output_val)
-	active_ally.reset_size()
+#func heal_ally():
+#	var output_val = selected_card.get_output_value()
+#	hovering_ally.heal(output_val)
+#	active_ally.reset_size()
 func redo_foil():
 	for ally in $Interaction/Allies.get_children():
 		ally.redo_foil()
@@ -163,9 +162,10 @@ func hide_cards(timer):
 	
 	$Cards.hide()
 	if active_ally != null:
-		active_ally.modulate = Color(0.5,0.5,0.5,1.0)
-		active_ally.reset_size()
-		active_ally = null
+		if active_ally.used:
+			active_ally.modulate = Color(0.5,0.5,0.5,1.0)
+			active_ally.reset_size()
+			active_ally = null
 func new_round():
 	$Resources/cur_turn.text = "YOUR TURN"
 	$Resources.set_energy(ally_count)
@@ -177,19 +177,39 @@ func new_round():
 		$Resources/cur_turn.text = "VICTORY"
 		var time = Timer.new()
 		time.connect("timeout",self,'end_round',[time])
+		Util.player_stats =[]
+		for ally in $Interaction/Allies.get_children():
+			Util.player_stats.append(ally.get_stats())
 		time.wait_time = 3
 		add_child(time)
 		time.start()
 	redo_foil()
 func update_card_foils(foiling):
 	for card in $Cards.get_children():
-		card.redo_foil(foiling[card.get_position_in_parent()])
+		if foiling.size() > card.get_position_in_parent():
+			card.redo_foil(foiling[card.get_position_in_parent()])
+var card_count = 3
 func new_turn():
 	for ally in $Interaction/Allies.get_children():
 		ally.shielded = false
 		ally.action_chosen = false
 		ally.used = false
 		ally.shielded_amount = 1.0
+		if ally.owned_cards.size() > 0:
+			var possible_cards = ally.owned_cards
+			var ally_cards_this_turn = []
+			var card_vals = possible_cards.keys()
+			var value_out = possible_cards.values()
+			for point in card_count:
+				var val = round(rand_range(0.0,card_vals.size()-1))
+				var card_type = card_vals[val]
+				value_out[val] -= 1
+				if value_out[val] <= 0:
+					card_vals.remove(val)
+					value_out.remove(val)
+				ally_cards_this_turn.append(card_type)
+			ally.cards_this_turn = ally_cards_this_turn
+	Card.turn_end()
 func update_active_particles(type):
 	if active_ally==null:return
 	active_ally.get_node("Sprite/CPUParticles2D").process_material.color = Color(int(type==0),int(type==1),int(type==2),1.0)
@@ -225,6 +245,7 @@ func end_round(timer):
 
 
 func load_new_round():
+	var p_stats = Simpli.get_character_data()
 	$Interaction/Allies.show()
 	$Interaction/Enemies.show()
 	$win_screen.hide()
@@ -241,7 +262,31 @@ func load_new_round():
 	for enemy in enemy_count:
 		var en = enemy_scene.instance()
 		$Interaction/Enemies.add_child(en)
-	for ally in ally_count:
-		var n_ally = ally_scene.instance()
-		$Interaction/Allies.add_child(n_ally)
+		var size = 3
+		if Util.player_stats.size() != 0:
+			size = Util.player_stats.size()
+		for ally in size:
+			var n_ally = ally_scene.instance()
+			n_ally.set_stats(p_stats[ally])
+			if Util.player_stats.size() != 0:
+				n_ally.set_stats(Util.player_stats[ally])
+			$Interaction/Allies.add_child(n_ally)
+		ally_count = Util.player_stats.size()
 	redo_foil()
+	call_deferred('new_turn')
+func select_ally(selected_ally):
+	for card in $Cards.get_children():
+		card.queue_free()
+	var possible_cards = selected_ally.owned_cards
+	var ally_cards_this_turn = []
+	for cards in 3:
+		var card = card_scene.instance()
+		card.card_type = selected_ally.cards_this_turn[cards]
+		$Cards.call_deferred('add_child',card)
+func killed_player():
+	ally_count -= 1
+	$Resources.set_energy(ally_count)
+	if ally_count==0:
+		lose_round()
+func lose_round():
+	pass

@@ -15,7 +15,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [node name="Combat" type="Node2D"]
-process_priority = -1000
+process_priority = 10
 script = ExtResource( 5 )
 card_scene = ExtResource( 3 )
 enemy_count = 1
@@ -76,6 +76,7 @@ custom_fonts/font = ExtResource( 8 )
 text = "0/3"
 
 [node name="Interaction" type="Control" parent="."]
+process_priority = -10
 margin_bottom = 600.0
 mouse_filter = 1
 script = ExtResource( 4 )
@@ -128,7 +129,7 @@ one_shot = true
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="win_screen" type="Control" parent="."]
+[node name="win_screen" type="Control" parent="." groups=["combat_win"]]
 visible = false
 margin_right = 1024.0
 margin_bottom = 600.0

@@ -11,6 +11,7 @@ export var card_effect = 0
 export var card_type = 0
 export var card_rarity = 0
 
+
 var foiled = false
 
 var selected = false
@@ -20,15 +21,14 @@ var card_header = "NULL"
 var card_body = "NULL"
 var card_action = "NULL"
 var card_stats = ["NULL"]
-
+var card_delay = 0
 
 func _ready():
 	randomize()
 	foiled = rand_range(0.0,1.0)>0.75
 	toggle_foil(foiled)
 	$Card_Image.modulate = Color(int(card_type==0),int(card_type==1),int(card_type==2),1.0)
-	
-	
+	process_priority = get_position_in_parent()
 	var data = Card.get_card_data(card_type)
 	$Card_Image/Text/Top.text = data[0]
 	card_action = data[2]

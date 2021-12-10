@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 Card="*res://Assets/Global/Card.gd"
 Simpli="*res://Assets/Global/Simpli.gd"
 Util="*res://Assets/Global/Util.gd"
+Inputs="*res://Assets/Global/Inputs.gd"
 
 [display]
 

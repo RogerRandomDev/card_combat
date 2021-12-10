@@ -49,8 +49,9 @@ func move_direction():
 # warning-ignore:unused_argument
 func _unhandled_key_input(event):
 	if Input.is_action_pressed("right") || Input.is_action_pressed("left"):
-		$Tween.interpolate_property($Sprite,"scale",$Sprite.scale,Vector2(int(Input.is_action_pressed("right"))-int(Input.is_action_pressed("left")),1),0.125,Tween.TRANS_LINEAR)
-		$Tween.start()
+		if !Input.is_action_pressed("left") || !Input.is_action_pressed("right"):
+			$Tween.interpolate_property($Sprite,"scale",$Sprite.scale,Vector2(int(Input.is_action_pressed("right"))-int(Input.is_action_pressed("left")),1),0.125,Tween.TRANS_LINEAR)
+			$Tween.start()
 
 var travelled = 0.0
 var need_to_travel = rand_range(512.0,1024.0)

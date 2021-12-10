@@ -42,7 +42,7 @@ func generate():
 func fill_roof():
 	for x in range(0, map_w):
 		for y in range(0, map_h):
-			set_cell(x, y, Tiles.ROOF)
+			set_cell(x, y, -1)
 
 func start_tree():
 	rooms = []
@@ -140,7 +140,7 @@ func create_rooms():
 		var r = rooms[i]
 		for x in range(r.x, r.x + r.w):
 			for y in range(r.y, r.y + r.h):
-				set_cell(x, y, Tiles.GROUND)
+				set_cell(x, y, 0)
 
 
 func join_rooms():
@@ -170,7 +170,7 @@ func connect_leaves(leaf1, leaf2):
 
 	for i in range(x, x+w):
 		for j in range(y, y+h):
-			if(get_cell(i, j) == Tiles.ROOF): set_cell(i, j, Tiles.GROUND)
+			if(get_cell(i, j) == -1): set_cell(i, j, 0)
 
 func clear_deadends():
 	var done = false
@@ -179,18 +179,18 @@ func clear_deadends():
 		done = true
 
 		for cell in get_used_cells():
-			if get_cellv(cell) != Tiles.GROUND: continue
+			if get_cellv(cell) != 0: continue
 
 			var roof_count = check_nearby(cell.x, cell.y)
 			if roof_count == 3:
-				set_cellv(cell, Tiles.ROOF)
+				set_cellv(cell, -1)
 				done = false
 
 # check in 4 dirs to see how many tiles are roofs
 func check_nearby(x, y):
 	var count = 0
-	if get_cell(x, y-1)   == Tiles.ROOF:  count += 1
-	if get_cell(x, y+1)   == Tiles.ROOF:  count += 1
-	if get_cell(x-1, y)   == Tiles.ROOF:  count += 1
-	if get_cell(x+1, y)   == Tiles.ROOF:  count += 1
+	if get_cell(x, y-1)   == -1:  count += 1
+	if get_cell(x, y+1)   == -1:  count += 1
+	if get_cell(x-1, y)   == -1:  count += 1
+	if get_cell(x+1, y)   == -1:  count += 1
 	return count
