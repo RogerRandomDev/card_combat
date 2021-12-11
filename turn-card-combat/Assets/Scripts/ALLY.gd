@@ -22,11 +22,15 @@ var action_chosen = false
 
 var cards_foiled = [false,false,false]
 
+var level = 1
+var experience = 0
+
 var Name = "Dave"
 func _ready():
 	process_priority = 0
 	$Health.max_value = max_health
 	$Health.value = max_health
+	update_health_bar()
 	show_on_top = false
 	$Sprite/CPUParticles2D.process_material = $Sprite/CPUParticles2D.process_material.duplicate()
 
@@ -49,6 +53,7 @@ func hurt_finish(val):
 	$Tween.disconnect("tween_all_completed",self,"hurt_finish")
 	$Health.value = max(min(max_health,val),0)
 	health = max(min(val,max_health),0)
+	update_health_bar()
 	if val <= 0:
 		get_parent().get_parent().get_parent().killed_player()
 		Util.player_stats.remove(self.get_position_in_parent()-1)
@@ -178,6 +183,10 @@ func set_stats(stats):
 		defence = stats[2]
 		support = stats[1]
 		strength = stats[0]
+		$Health.max_value = stats[4]
+		$Health.value = stats[3]
+		level = stats[8]
+		experience = stats[7]
 	else:
 		owned_cards = stats["Cards"]
 		max_health = stats["Health"]
@@ -185,10 +194,13 @@ func set_stats(stats):
 		defence = stats["Defense"]
 		Name = stats["Name"]
 		sprite_tex = stats["Icon"]
-	$Health.max_value = max_health
-	$Health.value = health
+		$Health.max_value = max_health
+	$Health.set_deferred('value',health)
+	update_health_bar()
 	$Sprite.texture = load(sprite_tex)
 func get_cards():
 	return [owned_cards.keys(),owned_cards.values()]
 func get_stats():
-	return [strength,support,defence,health,max_health,Name,sprite_tex]
+	return [strength,support,defence,health,max_health,Name,sprite_tex,experience,level]
+func update_health_bar():
+	$Health/HP_VAL.text = str(health)+"/"+str(max_health)

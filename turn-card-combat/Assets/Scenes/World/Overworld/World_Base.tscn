@@ -20,6 +20,8 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 8, 8 )
 format = 1
 script = ExtResource( 2 )
+map_w = 100
+map_h = 80
 min_room_size = 6
 
 [node name="World" type="Node2D" parent="."]

@@ -51,7 +51,7 @@ func turn_end():
 		else:
 			turns_till_actions[action][1] = new_time
 	get_tree().get_nodes_in_group("combat_win")[0].hide()
-func HURT(ally,enemy,_selected,active_card,foiled,delayed = false):
+func HURT(ally,enemy,_selected,_active_card,foiled,delayed = false):
 	if enemy == null:
 		return false
 	if foiled:
@@ -60,7 +60,7 @@ func HURT(ally,enemy,_selected,active_card,foiled,delayed = false):
 		enemy.hurt(-round(rand_range(10,20)))
 	if !delayed:ally_used(ally)
 	return true
-func HEAL(ally,enemy,selected,active_card,foiled,delayed=false):
+func HEAL(ally,enemy,selected,_active_card,foiled,delayed=false):
 	if enemy!=null || selected == null:return false
 	if foiled:
 		selected.heal(40)
@@ -68,7 +68,7 @@ func HEAL(ally,enemy,selected,active_card,foiled,delayed=false):
 		selected.heal(round(rand_range(20,40)))
 	if !delayed:ally_used(ally)
 	return true
-func DEFEND(ally,_enemy,selected,active_card,foiled,delayed = false):
+func DEFEND(ally,_enemy,selected,_active_card,foiled,delayed = false):
 	if ally != selected:
 		return false
 	ally.shield(foiled)

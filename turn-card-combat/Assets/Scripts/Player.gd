@@ -36,8 +36,8 @@ func _process(delta):
 	Direction = move_direction()
 	bob_amount += delta*int(Direction != Vector2.ZERO)
 	if bob_amount>=4:bob_amount = 0.0
-	$Sprite/Sprite.offset.y = sin(bob_amount*PI*5)*1
-	$Sprite/Sprite.rotation = sin(bob_amount*PI*10)*PI/16
+	$Sprite.position.y = sin(bob_amount*PI*5)*1
+	$Sprite.rotation = sin(bob_amount*PI*2.5)*PI/32
 	if Direction.length() == 0:
 		velocity = lerp(velocity,Direction,delta*decel_rate)
 	else:

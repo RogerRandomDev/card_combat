@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scripts/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Fonts/FFFFORWA.TTF" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+extra_spacing_top = 2
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 3 )
 
 [node name="Enemy" type="Control"]
 show_behind_parent = true
@@ -34,6 +44,25 @@ margin_right = 64.0
 margin_bottom = 80.0
 step = 0.1
 value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP_VAL" type="Label" parent="Sprite/Node2D/Health"]
+margin_right = 64.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 3
+
+[node name="Name" type="Label" parent="Sprite/Node2D"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

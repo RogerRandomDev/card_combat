@@ -5,6 +5,7 @@ extends Control
 var in_attack = false
 const floaty_text = preload("res://Assets/Scenes/Combat/floaty_text.tscn")
 
+var stats = [1,1,1,40]
 
 func get_hp():
 	return $Sprite/Node2D/Health.value
@@ -39,9 +40,10 @@ func update_health(val):
 	if $Sprite/Node2D/Health.value == 0:
 		if get_parent().get_parent().get_parent().selected_enemy == self:
 			get_parent().get_parent().get_parent().selected_enemy = null
-			get_parent().get_parent().get_parent().enemy_count -= 1
-		get_parent().get_parent().get_parent().check_enemies()
+		get_parent().get_parent().get_parent().enemy_count -= 1
 		self.queue_free()
+		get_parent().get_parent().get_parent().call_deferred('check_enemies')
+	update_hp_bar()
 func hurt(damage):
 	if in_attack:return false
 	$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(-16,0),0.25,Tween.TRANS_LINEAR)
@@ -79,3 +81,12 @@ func heal(val):
 	floaty.get_child(0).rect_global_position = self.rect_global_position+Vector2(16,16)
 	get_parent().get_parent().add_child(floaty)
 	floaty.get_child(0).start(1.75,str(val),true)
+func load_data(data):
+	$Sprite.texture = load(data["Icon"])
+	$Sprite/Node2D/Health.max_value = data["Stats"][3]
+	$Sprite/Node2D/Health.value = data["Stats"][3]
+	stats = data['Stats']
+	$Sprite/Node2D/Name.text = data["Name"]
+	update_hp_bar()
+func update_hp_bar():
+	$Sprite/Node2D/Health/HP_VAL.text = str(get_hp())+"/"+str(get_max_hp())
