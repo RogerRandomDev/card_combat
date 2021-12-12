@@ -8,6 +8,7 @@ extends Node
 
 var player_position = Vector2.ZERO
 var player_stats = []
+var unconsious_players = []
 
 # Util.choose(["one", "two"])   returns one or two
 func choose(choices):

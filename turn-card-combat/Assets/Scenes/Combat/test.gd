@@ -149,7 +149,7 @@ func _on_attack_timer_timeout():
 func _input(_event):
 	if $attack_timer.time_left != 0.0:return
 	if Input.is_action_just_pressed("Lm") && selected_card != null:
-		var succeeded = Card.add_action(selected_card.card_action,selected_card.card_delay,active_ally,selected_enemy,hovering_ally,active_card_type,selected_card.foiled)
+		var succeeded = Card.add_action(selected_card.card_action,selected_card.card_delay,active_ally,selected_enemy,hovering_ally,active_card_type,selected_card.foiled,active_ally.get_modifiers(),selected_card)
 		if succeeded&&active_ally!=null:
 			active_ally.used = true
 			ally_used()
@@ -157,6 +157,8 @@ func _input(_event):
 			disable_cards()
 			active_ally.reset_size()
 			active_ally = null
+			selected_card = null
+			active_card_type = -1
 func ally_used():
 	if active_ally == null:return
 	active_ally.used = true
@@ -178,6 +180,9 @@ func hide_cards(timer):
 			active_ally.modulate = Color(0.5,0.5,0.5,1.0)
 			active_ally.reset_size()
 			active_ally = null
+			hovering_ally = null
+			selected_card = null
+			active_card_type = -1
 func new_round():
 	$Resources/cur_turn.text = "YOUR TURN"
 	$Resources.set_energy(ally_count)
@@ -207,6 +212,7 @@ func new_turn():
 		ally.shielded = false
 		ally.action_chosen = false
 		ally.used = false
+		ally.buffed_stats = 1.0
 		ally.shielded_amount = 1.0
 		if ally.owned_cards.size() > 0:
 			var possible_cards = []
@@ -259,6 +265,8 @@ func end_round(timer):
 	active_ally = null
 	active_card = null
 	hovering_ally = null
+	selected_card = null
+	active_card_type = -1
 	if timer != null:timer.queue_free()
 	hide()
 	get_parent().get_parent().load_combat(false)
@@ -302,7 +310,9 @@ func select_ally(selected_ally):
 	for cards in 3:
 		var card = card_scene.instance()
 		card.card_type = selected_ally.cards_this_turn[cards]
+		card.foiled = selected_ally.cards_foiled[cards]
 		$Cards.call_deferred('add_child',card)
+		
 func killed_player():
 	ally_count -= 1
 	$Resources.set_energy(ally_count)

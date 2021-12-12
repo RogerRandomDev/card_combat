@@ -25,7 +25,7 @@ var card_delay = 0
 
 func _ready():
 	randomize()
-	foiled = rand_range(0.0,1.0)>0.75
+#	foiled = rand_range(0.0,1.0)>0.75
 	toggle_foil(foiled)
 	$Card_Image.modulate = Color(int(card_type==0),int(card_type==1),int(card_type==2),1.0)
 	process_priority = get_position_in_parent()
@@ -93,8 +93,6 @@ func toggle_foil(toggled):
 		$Card_Image.material = load("res://Assets/Cards/shiny_foil.tres")
 	else:
 		$Card_Image.material = null
-
-
 func ATTACK_check():
 	var mouse_pos = get_global_mouse_position()
 	for node in get_tree().get_nodes_in_group("ATTACKABLE"):

@@ -15,6 +15,8 @@ var cards_this_turn = []
 
 var shielded = false
 var shielded_amount = 0.0
+var buffed_stats = 1.0
+
 
 var used = false
 
@@ -56,6 +58,7 @@ func hurt_finish(val):
 	update_health_bar()
 	if val <= 0:
 		get_parent().get_parent().get_parent().killed_player()
+		Util.unconsious_players.append(Util.player_stats[self.get_position_in_parent()-1])
 		Util.player_stats.remove(self.get_position_in_parent()-1)
 		self.queue_free()
 func heal(val):
@@ -92,6 +95,9 @@ func _input(_event):
 		if !Card.team_cards.has(get_parent().get_parent().get_parent().active_card_type) || Card.self_cards.has(get_parent().get_parent().get_parent().active_card_type) && get_parent().get_parent().get_parent().active_ally == get_parent().get_parent().get_parent().hovering_ally:
 			if get_parent().get_parent().get_parent().hovering_ally == null || get_parent().get_parent().get_parent().hovering_ally.used:
 				get_parent().get_parent().get_parent().active_ally = null
+				origin_point.selected_card = null
+				origin_point.active_card = false
+				origin_point.active_card_type = -1
 				get_parent().get_parent().get_parent().return_cards_to_hand()
 				var time = Timer.new()
 				time.wait_time = 0.25*(int(get_parent().get_parent().get_parent().selected_card != null)+int(!get_parent().get_parent().get_parent().get_node("Cards").visible)+0.01)
@@ -161,8 +167,8 @@ func shield(immune):
 	shielded_amount = int(!immune)
 func get_shielded_rate():
 	if shielded:
-		return rand_range(0.05,0.6)*(shielded_amount)
-	return 1.0
+		return rand_range(0.05,0.6)*(shielded_amount*buffed_stats)
+	return buffed_stats
 func select_self():
 	get_parent().get_parent().get_parent().get_node("Cards").show()
 	if get_parent().get_parent().get_parent().active_ally != self:
@@ -201,6 +207,8 @@ func set_stats(stats):
 func get_cards():
 	return [owned_cards.keys(),owned_cards.values()]
 func get_stats():
-	return [strength,support,defence,health,max_health,Name,sprite_tex,experience,level]
+	return [strength,support,defence,health,max_health,Name,sprite_tex,experience,level,[buffed_stats]]
 func update_health_bar():
 	$Health/HP_VAL.text = str(health)+"/"+str(max_health)
+func get_modifiers():
+	return {"BUFFS":buffed_stats,"STATS":[strength,defence,support]}

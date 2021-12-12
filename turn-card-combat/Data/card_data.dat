@@ -3,7 +3,7 @@
 "ATTACK",
 "Deal damage to enemy",
 "HURT",
-["random",10,20]
+["random",-10,-20]
 ],
 [
 "HEAL",

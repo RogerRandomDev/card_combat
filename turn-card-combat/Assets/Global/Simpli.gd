@@ -17,6 +17,10 @@ func in_range_Vector2(position,start,end):
 	)
 
 
+
+var level_data = []
+var character_data = []
+var enemy_data = []
 func get_character_data():
 	var file = File.new()
 	var dat = []
