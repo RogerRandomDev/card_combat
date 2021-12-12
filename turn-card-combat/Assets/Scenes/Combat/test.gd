@@ -149,7 +149,14 @@ func _on_attack_timer_timeout():
 func _input(_event):
 	if $attack_timer.time_left != 0.0:return
 	if Input.is_action_just_pressed("Lm") && selected_card != null:
-		var succeeded = Card.add_action(selected_card.card_action,selected_card.card_delay,active_ally,selected_enemy,hovering_ally,active_card_type,selected_card.foiled,active_ally.get_modifiers(),selected_card)
+		var modifiers = {"BUFFS":[],"STATS":[]}
+		if active_ally == null:
+			return_cards_to_hand()
+			hide_cards(null)
+			return
+		else:
+			modifiers = active_ally.get_modifiers()
+		var succeeded = Card.add_action(selected_card.card_action,selected_card.card_delay,active_ally,selected_enemy,hovering_ally,active_card_type,selected_card.foiled,modifiers,selected_card)
 		if succeeded&&active_ally!=null:
 			active_ally.used = true
 			ally_used()

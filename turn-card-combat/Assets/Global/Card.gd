@@ -62,7 +62,7 @@ func HURT(ally,enemy,_selected,_active_card,foiled,delayed = false,modifiers={})
 	if !foiled:output = default_output(modifiers["Card_Stats"])
 	if modifiers.has("BUFFS"):output *= modifiers["BUFFS"]
 	
-	enemy.hurt(output)
+	enemy.hurt(output,ally)
 	if !delayed:ally_used(ally)
 	return true
 # warning-ignore:unused_argument

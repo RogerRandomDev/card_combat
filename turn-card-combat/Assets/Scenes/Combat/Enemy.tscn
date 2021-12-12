@@ -1,8 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scripts/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Fonts/FFFFORWA.TTF" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.607843, 0, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.290196, 0.290196, 0.290196, 0 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.290196, 0.290196, 0.290196, 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 8
@@ -39,22 +55,26 @@ __meta__ = {
 z_index = 4
 
 [node name="Health" type="ProgressBar" parent="Sprite/Node2D"]
-margin_top = 66.0
-margin_right = 64.0
-margin_bottom = 80.0
-step = 0.1
+margin_left = -16.0
+margin_top = 72.0
+margin_right = 80.0
+margin_bottom = 96.0
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+step = 1.0
 value = 100.0
 percent_visible = false
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="HP_VAL" type="Label" parent="Sprite/Node2D/Health"]
-margin_right = 64.0
-margin_bottom = 14.0
+margin_right = 96.0
+margin_bottom = 24.0
 custom_fonts/font = SubResource( 2 )
 align = 1
-valign = 3
+valign = 1
 
 [node name="Name" type="Label" parent="Sprite/Node2D"]
 margin_left = 64.0

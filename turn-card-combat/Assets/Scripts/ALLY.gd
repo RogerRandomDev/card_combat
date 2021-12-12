@@ -202,13 +202,41 @@ func set_stats(stats):
 		sprite_tex = stats["Icon"]
 		$Health.max_value = max_health
 	$Health.set_deferred('value',health)
+	$Sprite/Name.text = Name
 	update_health_bar()
 	$Sprite.texture = load(sprite_tex)
+	if experience < pow(level+2,3):
+		experience = pow(level+2,3)
+	update_experience()
 func get_cards():
 	return [owned_cards.keys(),owned_cards.values()]
 func get_stats():
 	return [strength,support,defence,health,max_health,Name,sprite_tex,experience,level,[buffed_stats]]
 func update_health_bar():
 	$Health/HP_VAL.text = str(health)+"/"+str(max_health)
+func update_experience():
+	$Experience.max_value = pow(level+3,3)
+	$Experience.min_value = pow(level+2,3)
+	$Experience.value = experience
+	$Experience/EXP_VAL.text = "Level:"+str(level)
 func get_modifiers():
 	return {"BUFFS":buffed_stats,"STATS":[strength,defence,support]}
+func add_exp(val):
+	var timer = Timer.new()
+	timer.wait_time = 1/val
+	timer.one_shot = true
+	add_child(timer)
+	for i in val:
+		timer.start()
+		yield(timer,"timeout")
+		experience+=1
+		$Experience.value = experience
+		$Experience/EXP_VAL.text = "Level:"+str(level)
+		if experience >= $Experience.max_value:
+			timer.wait_time = 1.0
+			timer.start()
+			yield(timer,"timeout")
+			timer.wait_time = 1/val
+			level+=1
+			update_experience()
+	timer.queue_free()
