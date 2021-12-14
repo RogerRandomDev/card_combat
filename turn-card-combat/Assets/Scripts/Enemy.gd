@@ -7,7 +7,13 @@ const floaty_text = preload("res://Assets/Scenes/Combat/floaty_text.tscn")
 
 var stats = [1,1,1,40]
 var level = 5
-
+var owned_cards = {}
+var strength = 1
+var defence = 1
+var support = 1
+var used=false
+var action_chosen=false
+func reset_size():return false
 func get_hp():
 	return $Sprite/Node2D/Health.value
 func get_max_hp():
@@ -43,9 +49,9 @@ func update_health(val,ally=null):
 			get_parent().get_parent().get_parent().selected_enemy = null
 		get_parent().get_parent().get_parent().enemy_count -= 1
 		if ally != null:
-			ally.add_exp(round(pow(level,2)))
-		self.queue_free()
-		get_parent().get_parent().get_parent().call_deferred('check_enemies')
+			get_parent().get_parent().get_parent().add_exp_to_allies(round(pow(level,2)))
+		$AnimationPlayer.play("return_to_card")
+		get_parent().get_parent().get_parent().check_enemies()
 	update_hp_bar()
 func hurt(damage,ally = null):
 	if in_attack:return false
@@ -78,7 +84,8 @@ func deselect_cards():
 func heal(val):
 	$Tween.interpolate_property($Sprite,"modulate",$Sprite.modulate,Color(0.25,1.0,0.25,1.0),0.25,Tween.TRANS_CUBIC)
 # warning-ignore:return_value_discarded
-	$Tween.connect("tween_all_completed",self,"finished_modulate",[val,true])
+	if !$Tween.is_connected("tween_all_completed",self,"finish_modulate"):
+		$Tween.connect("tween_all_completed",self,"finished_modulate",[val,true])
 	$Tween.start()
 	var floaty = floaty_text.instance()
 	floaty.get_child(0).rect_global_position = self.rect_global_position+Vector2(16,16)
@@ -88,8 +95,20 @@ func load_data(data):
 	$Sprite.texture = load(data["Icon"])
 	$Sprite/Node2D/Health.max_value = data["Stats"][3]
 	$Sprite/Node2D/Health.value = data["Stats"][3]
+	owned_cards = data["Cards"]
 	stats = data['Stats']
-	$Sprite/Node2D/Name.text = data["Name"]
+	strength = stats[2]
+	defence=stats[0]
+	support = stats[1]
+	var Name = data["Name"]
+	if typeof(Name) == typeof([]):
+		$Sprite/Node2D/Name.text = data["Name"][round(rand_range(0.0,data["Name"].size()-1))]
+	else:$Sprite/Node2D/Name.text = data["Name"]
+	$TextureRect/Label.text = $Sprite/Node2D/Name.text
 	update_hp_bar()
 func update_hp_bar():
 	$Sprite/Node2D/Health/HP_VAL.text = str(get_hp())+"/"+str(get_max_hp())
+func can_heal():
+	return owned_cards.keys().has("heal")
+func can_attack():
+	return owned_cards.keys().has('attack')

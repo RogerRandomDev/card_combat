@@ -21,17 +21,21 @@ func _ready():
 	file.close()
 
 func get_card_data(card_id):return card_data[card_id]
-
-func add_action(action,turn_count,active_ally=null,active_enemy=null,selected_ally=null,active_card=0,foiled = false,modifiers={},selected_card=null):
+# warning-ignore:unused_argument
+func add_action_from_enemy(action,enemy_to_do,target,attribute,input_stats,target_enemy):
+	return call(action,enemy_to_do,target,target_enemy,false,false,false,{"Card_Stats":input_stats},"PHYSICAL")
+func add_action(action,turn_count,active_ally=null,active_enemy=null,selected_ally=null,active_card=0,foiled = false,modifiers={},selected_card=null,card_attribute="Null"):
 	if active_ally == null || selected_card == null:return false
 	if !modifiers.has("Card_Stats"):
 		modifiers["Card_Stats"] = selected_card.card_stats
+	card_attribute = str(card_attribute)
+	
 	if turn_count!=0:
-		if !call(action+"_can_do",active_ally,active_enemy,selected_ally,active_card,foiled,modifiers):return false
-		turns_till_actions.append([action,turn_count,active_ally,active_enemy,selected_ally,active_card,foiled,modifiers])
+		if !call(action+"_can_do",active_ally,active_enemy,selected_ally,active_card,foiled,modifiers,card_attribute):return false
+		turns_till_actions.append([action,turn_count,active_ally,active_enemy,selected_ally,active_card,foiled,modifiers,card_attribute])
 		return true
 	else:
-		return call(action,active_ally,active_enemy,selected_ally,active_card,foiled,false,modifiers)
+		return call(action,active_ally,active_enemy,selected_ally,active_card,foiled,false,modifiers,card_attribute)
 
 func turn_end():
 	get_tree().get_nodes_in_group("combat_win")[0].show()
@@ -56,19 +60,21 @@ func turn_end():
 			turns_till_actions[action][1] = new_time
 	get_tree().get_nodes_in_group("combat_win")[0].hide()
 # warning-ignore:unused_argument
-func HURT(ally,enemy,_selected,_active_card,foiled,delayed = false,modifiers={}):
+func HURT(ally,enemy,_selected,_active_card,foiled,delayed = false,modifiers={},card_attribute="Null"):
 	if enemy == null:return false
-	var output = -20
-	if !foiled:output = default_output(modifiers["Card_Stats"])
+	var output = modifiers["Card_Stats"][2]
+	if !foiled:output = default_output(modifiers["Card_Stats"],false)
 	if modifiers.has("BUFFS"):output *= modifiers["BUFFS"]
-	
-	enemy.hurt(output,ally)
+	enemy.hurt(
+		round(
+			output*Simpli.calculate_damage_modifier(ally.strength,enemy.stats[1],card_attribute,enemy.stats[4],enemy.stats[5])),ally
+			)
 	if !delayed:ally_used(ally)
 	return true
 # warning-ignore:unused_argument
-func HEAL(ally,enemy,selected,_active_card,foiled,delayed=false,modifiers={}):
+func HEAL(ally,enemy,selected,_active_card,foiled,delayed=false,modifiers={},card_attribute="Null"):
 	if enemy!=null || selected == null:return false
-	var output = 40
+	var output = modifiers["Card_Stats"][2]
 	
 	if !foiled:output = default_output(modifiers["Card_Stats"])
 	if modifiers.has("BUFFS"):output *= modifiers["BUFFS"]
@@ -77,7 +83,7 @@ func HEAL(ally,enemy,selected,_active_card,foiled,delayed=false,modifiers={}):
 	if !delayed:ally_used(ally)
 	return true
 # warning-ignore:unused_argument
-func DEFEND(ally,_enemy,selected,_active_card,foiled,delayed = false,modifiers={}):
+func DEFEND(ally,_enemy,selected,_active_card,foiled,delayed = false,modifiers={},card_attribute="Null"):
 	if ally != selected:return false
 	
 	ally.shield(foiled)
@@ -85,10 +91,12 @@ func DEFEND(ally,_enemy,selected,_active_card,foiled,delayed = false,modifiers={
 	if !delayed:ally_used(ally)
 	return true
 # warning-ignore:unused_argument
-func BUFF(ally,_enemy,selected,_active_card,foiled,delayed=false,modifiers={}):
+# warning-ignore:unused_argument
+func BUFF(ally,_enemy,selected,_active_card,foiled,delayed=false,modifiers={},card_attribute="Null"):
 	if selected == null || selected == self:
 		return false
-	selected.buffed_stats = (int(foiled)*0.75)+1
+	var output = modifiers["Card_Stats"][2]
+	selected.buffed_stats = (int(foiled)*0.75)+output+1.0
 	if !delayed:ally.reset_size()
 	if !delayed:ally_used(ally)
 	return true
@@ -109,11 +117,13 @@ func HEAL_can_do(_ally,enemy,selected,_active_card):
 func HURT_can_do(_ally,enemy,_selected,_active_card):
 	return enemy!=null
 # warning-ignore:unused_argument
-func BUFF_can_do(ally,_enemy,selected,_active_card,_foiled,_delayed=false,modifiers={}):
+# warning-ignore:unused_argument
+func BUFF_can_do(ally,_enemy,selected,_active_card,_foiled,_delayed=false,modifiers={},card_attribute="Null"):
 	return selected != null && ally!=selected
 
 
-func default_output(card_stats):
+func default_output(card_stats,round_self=true):
 	var output = card_stats[2]
-	if card_stats[0] == "random":output = round(rand_range(card_stats[1],card_stats[2]))
+	if card_stats[0] == "random":output = rand_range(card_stats[1],card_stats[2])
+	if round_self:output=round(output)
 	return output

@@ -22,7 +22,7 @@ var card_body = "NULL"
 var card_action = "NULL"
 var card_stats = ["NULL"]
 var card_delay = 0
-
+var card_attribute = "Null"
 func _ready():
 	randomize()
 #	foiled = rand_range(0.0,1.0)>0.75
@@ -33,6 +33,7 @@ func _ready():
 	$Card_Image/Text/Top.text = data[0]
 	card_action = data[2]
 	card_stats = data[3]
+	card_attribute = data[4]
 	var char_count = data[0].length()
 	$Card_Image/Text/Top.rect_scale.x = 1-(0.5/max(char_count-4,1))
 	if foiled:

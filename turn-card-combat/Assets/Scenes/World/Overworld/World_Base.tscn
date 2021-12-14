@@ -1,23 +1,70 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Textures/dungeon.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Scenes/World/Overworld/dungeon_generation.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Scenes/World/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/World/Overworld/World_Base.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Scenes/World/Player_Menu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Textures/combat/combat_dungeon_background_0.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Load_Combat"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animations/ColorRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1.93187, 0.225313 ),
+"update": 0,
+"values": [ Vector2( 512, 300 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Animations/ColorRect:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1.93187, 0.225313 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1024, 600 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ false ],
+"method": "combat_visible"
+}, {
+"args": [ true ],
+"method": "combat_visible"
+} ]
+}
 
 [node name="Game_World" type="Node2D"]
-pause_mode = 1
+pause_mode = 2
 script = ExtResource( 4 )
 player_menu = ExtResource( 5 )
 
-[node name="Map" type="TileMap" parent="."]
+[node name="Map" type="Navigation2D" parent="."]
+
+[node name="Map" type="TileMap" parent="Map"]
 scale = Vector2( 2, 2 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 8, 8 )
+collision_layer = 3
+collision_mask = 3
 format = 1
 script = ExtResource( 2 )
 map_w = 100
@@ -25,6 +72,7 @@ map_h = 80
 min_room_size = 6
 
 [node name="World" type="Node2D" parent="."]
+pause_mode = 1
 z_index = 10
 
 [node name="Player" parent="World" instance=ExtResource( 3 )]
@@ -36,8 +84,20 @@ decel_rate = 20.0
 layer = 4
 
 [node name="Combat" type="CanvasLayer" parent="."]
+pause_mode = 2
 process_priority = 4
 layer = 8
 
+[node name="Animations" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="TextureRect" parent="Animations"]
+margin_left = 512.0
+margin_top = 300.0
+margin_right = 512.0
+margin_bottom = 300.0
+texture = ExtResource( 6 )
+expand = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
 anims/Load_Combat = SubResource( 1 )

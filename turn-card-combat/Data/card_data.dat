@@ -3,18 +3,21 @@
 "ATTACK",
 "Deal damage to enemy",
 "HURT",
-["random",-10,-20]
+["random",-5,-10],
+"PHYSICAL",
 ],
 [
 "HEAL",
 "Heal an ally",
 "HEAL",
-["random",20,40]
+["random",10,20],
+"HOLY",
 ],
 [
 "DEFEND",
 "Defend yourself from some of the damage this turn",
 "DEFEND",
-["random",40,95]
+["random",40,95],
+"PHYSICAL",
 ]
 ]

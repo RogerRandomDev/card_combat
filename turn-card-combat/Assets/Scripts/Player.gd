@@ -13,12 +13,15 @@ export var move_speed = 128
 export var max_hp = 100
 export var hp = 100
 
+
+export var follower_scene:PackedScene
 var last_pos = Vector2.ZERO
 func _ready():
 	randomize()
 	if Util.player_position != Vector2.ZERO:position = Util.player_position
 	else:
-		var can_do = get_parent().get_parent().get_node("Map").get_used_cells_by_id(0)
+		var can_do = get_parent().get_parent().get_node("Map/Map").get_used_cells_by_id(0)
+		
 		var no = true
 		while no:
 			var pos = can_do[round(rand_range(0.0,can_do.size()-1))]
@@ -30,7 +33,15 @@ func _ready():
 				position = pos*16;no=false
 	hp = max_hp
 	last_pos = position
-
+	call_deferred('load_followers')
+func load_followers():
+	for follower in get_tree().get_nodes_in_group("follower"):
+		follower.queue_free()
+	for follower in Util.player_stats.size()-1:
+		var followere = follower_scene.instance()
+		get_parent().add_child(followere)
+		followere.position = position
+		followere.load_icon(Util.player_stats[follower+1][6],Util.player_stats[follower+1][5])
 var bob_amount = 0.0
 func _process(delta):
 	Direction = move_direction()
@@ -55,7 +66,9 @@ func _unhandled_key_input(event):
 
 var travelled = 0.0
 var need_to_travel = rand_range(512.0,1024.0)
+var do_combat = true
 func _on_new_check_timeout():
+	if !do_combat:return
 	var travel = last_pos.length_squared()-position.length_squared()
 	last_pos = position
 	travel = sqrt(travel)

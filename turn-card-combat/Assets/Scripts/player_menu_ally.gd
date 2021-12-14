@@ -21,3 +21,5 @@ func set_data(data_in):
 	$Base/EXP.min_value = pow(data_in[8]+2,3)
 	$Base/EXP.value = data_in[7]
 	$Base/EXP/EXP_VAL.text = "Level:"+str(data_in[8])
+	if $Base/Name.text.length() >= 16:
+		$Base/Name.get("custom_fonts/font").set_size(8)

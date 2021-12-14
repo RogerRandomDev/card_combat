@@ -36,7 +36,7 @@ func _ready():
 	show_on_top = false
 	$Sprite/CPUParticles2D.process_material = $Sprite/CPUParticles2D.process_material.duplicate()
 
-func hurt(val):
+func hurt(val,_a=null):
 	val = round(val*get_shielded_rate())
 	$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(16,0),0.25,Tween.TRANS_LINEAR)
 	$Tween.interpolate_property($Sprite,"modulate",$Sprite.modulate,Color(1.0,0.5,0.5,1.0),0.25,Tween.TRANS_LINEAR)
@@ -58,9 +58,9 @@ func hurt_finish(val):
 	update_health_bar()
 	if val <= 0:
 		get_parent().get_parent().get_parent().killed_player()
-		Util.unconsious_players.append(Util.player_stats[self.get_position_in_parent()-1])
-		Util.player_stats.remove(self.get_position_in_parent()-1)
-		self.queue_free()
+		Util.unconsious_players.append(Util.player_stats[self.get_position_in_parent()])
+		Util.player_stats.remove(self.get_position_in_parent())
+		$AnimationPlayer.play("return_to_card")
 func heal(val):
 	$Tween.interpolate_property($Sprite,"modulate",$Sprite.modulate,Color(0.5,1.0,0.5,1.0),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
@@ -74,12 +74,14 @@ func heal(val):
 
 
 func _on_ALLY_mouse_entered():
+	if $AnimationPlayer.is_playing():return
 	get_parent().get_parent().get_parent().hovering_ally = self
 	if action_chosen:return
 	show_on_top = true
 
 
 func _on_ALLY_mouse_exited():
+	if $AnimationPlayer.is_playing():return
 	if get_parent().get_parent().get_parent().hovering_ally == self:get_parent().get_parent().get_parent().hovering_ally = null
 	show_on_top = false
 	
@@ -87,6 +89,7 @@ func _on_ALLY_mouse_exited():
 
 func _input(_event):
 	if used || get_global_mouse_position().x < 728:return
+	if $AnimationPlayer.is_playing():return
 	var origin_point = get_parent().get_parent().get_parent()
 	if Input.is_action_pressed("Lm") && !get_parent().get_parent().get_parent().hovering_ally == self:
 		reset_size()
@@ -110,6 +113,7 @@ func _input(_event):
 				origin_point.active_card = false
 			else:
 				swap()
+			get_parent().get_parent().get_parent().call_deferred('stop_holding_cards')
 		else:
 			call_deferred('reset_size')
 		get_parent().get_parent().get_parent().get_node("Card_Effect/Particles2D").emitting = false
@@ -180,7 +184,11 @@ func select_self():
 	$Tween.start()
 	get_parent().get_parent().get_parent().update_card_foils(cards_foiled)
 var sprite_tex = ""
+var level_rate = []
+var default_stats = []
+# warning-ignore:shadowed_variable
 func set_stats(stats):
+	var strengths = ["null","null"]
 	if typeof(stats) == typeof([]):
 		sprite_tex = stats[6]
 		Name = stats[5]
@@ -193,6 +201,9 @@ func set_stats(stats):
 		$Health.value = stats[3]
 		level = stats[8]
 		experience = stats[7]
+		level_rate = stats[10]
+		default_stats = stats[11]
+		strengths = stats[12]
 	else:
 		owned_cards = stats["Cards"]
 		max_health = stats["Health"]
@@ -200,19 +211,49 @@ func set_stats(stats):
 		defence = stats["Defense"]
 		Name = stats["Name"]
 		sprite_tex = stats["Icon"]
+		level_rate = stats["Level_Rate"]
+		default_stats = stats["Default_Stats"]
+		strengths = stats["STRENGTHS"]
 		$Health.max_value = max_health
 	$Health.set_deferred('value',health)
 	$Sprite/Name.text = Name
+	$TextureRect/Label.text = Name
 	update_health_bar()
 	$Sprite.texture = load(sprite_tex)
 	if experience < pow(level+2,3):
 		experience = pow(level+2,3)
 	update_experience()
+	stats = [
+		strength,
+		support,
+		defence,
+		max_health,
+		strengths[0],
+		strengths[1]
+	]
+	update_stats()
 func get_cards():
 	return [owned_cards.keys(),owned_cards.values()]
 func get_stats():
-	return [strength,support,defence,health,max_health,Name,sprite_tex,experience,level,[buffed_stats]]
+	return [
+		strength,
+		support,
+		defence,
+		health,
+		max_health,
+		Name,
+		sprite_tex,
+		experience,
+		level,
+		[buffed_stats],
+		level_rate,
+		default_stats,
+		stats[4],
+		stats[5]]
+		
 func update_health_bar():
+	$Health.max_value = max_health
+	$Health.value = health
 	$Health/HP_VAL.text = str(health)+"/"+str(max_health)
 func update_experience():
 	$Experience.max_value = pow(level+3,3)
@@ -238,5 +279,14 @@ func add_exp(val):
 			yield(timer,"timeout")
 			timer.wait_time = 1/val
 			level+=1
+			strength += level_rate[2]
+			defence += level_rate[0]
+			support += level_rate[1]
+			max_health+= level_rate[3]
+			health += level_rate[3]
+			update_health_bar()
 			update_experience()
 	timer.queue_free()
+func update_stats():
+	stats = [defence,strength,support,max_health,stats[4],stats[5]]
+var stats =[1,1,1,40,"null","null"]

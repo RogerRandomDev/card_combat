@@ -104,32 +104,55 @@ func return_cards_to_hand():
 	for card in $Cards.get_children():
 		card.selected = false
 		card._on_Card_mouse_exited()
+func stop_holding_cards():
+	selected_card = null
+	active_card_type = -1
 var cur_enemy = 0
 func enemy_turns():
-	
 	var target_ally = round(rand_range(0,ally_count-1))
 	var target_enemy = null
+	var chosen_action = "HEAL"
 	if enemy_count == 0:
 		new_round()
 		return
-	for enemy in $Interaction/Enemies.get_children():
-		if enemy.get_hp() < enemy.get_max_hp()/rand_range(4.0,6.0):
-			target_enemy = enemy;break
-	$Tween.start()
-	if $Interaction/Enemies.get_child_count() > cur_enemy:
-		if $Interaction/Enemies.get_child(cur_enemy).get_hp() < $Interaction/Enemies.get_child(cur_enemy).get_max_hp()/rand_range(2.0,3.0) && rand_range(0.0,5.0) > 4.0:
-			target_enemy = $Interaction/Enemies.get_child(cur_enemy)
-	if enemy_count == 0:
-		new_round()
-		return
-	if target_enemy != null:
-		target_enemy.heal(round(rand_range(10.0,20.0)))
-	elif $Interaction/Allies.get_child_count() > target_ally && $Interaction/Enemies.get_child_count() > cur_enemy:
-		$Interaction/Allies.get_child(target_ally).hurt(-round(rand_range(10.0,20.0)))
-		$Tween.interpolate_property($Interaction/Enemies.get_child(cur_enemy).get_child(0),"rect_position",$Interaction/Enemies.get_child(cur_enemy).get_child(0).rect_position,Vector2(16,0),0.25,Tween.TRANS_LINEAR)
-		$Tween.start()
-# warning-ignore:return_value_discarded
-		$Tween.connect("tween_all_completed",self,"reverse_anim",[cur_enemy])
+	if $Interaction/Enemies.get_child_count() > cur_enemy && !$Interaction/Enemies.get_child(cur_enemy).get_node("AnimationPlayer").is_playing():
+		if $Interaction/Enemies.get_child(cur_enemy).can_heal():
+			for enemy in $Interaction/Enemies.get_children():
+				if enemy.get_hp() < enemy.get_max_hp()*rand_range(0.5,0.25) && rand_range(0.0,1.0) > 0.75:
+					chosen_action = "HEAL"
+					target_enemy = enemy
+			$Tween.start()
+			if $Interaction/Enemies.get_child_count() > cur_enemy:
+				if $Interaction/Enemies.get_child(cur_enemy).get_hp() < $Interaction/Enemies.get_child(cur_enemy).get_max_hp()*rand_range(0.5,0.375) && $Interaction/Enemies.get_child(cur_enemy).get_hp()/$Interaction/Enemies.get_child(cur_enemy).get_max_hp() > 0.125:
+					target_enemy = $Interaction/Enemies.get_child(cur_enemy)
+					chosen_action="HEAL"
+		if enemy_count == 0 || ally_count == 0:
+			new_round()
+			return
+		if target_enemy == null && $Interaction/Enemies.get_child(cur_enemy).can_attack():
+			chosen_action = "HURT"
+			
+		var targeted_ally = null
+		if $Interaction/Allies.get_child_count() > target_ally && $Interaction/Enemies.get_child_count() > cur_enemy:
+			targeted_ally = $Interaction/Allies.get_child(target_ally)
+		match chosen_action:
+			"HEAL":
+				var done = Card.add_action_from_enemy(chosen_action,
+				$Interaction/Enemies.get_child(cur_enemy),
+					null,null,
+					$Interaction/Enemies.get_child(cur_enemy).owned_cards["heal"],
+					target_enemy)
+			"HURT":
+# warning-ignore:unused_variable
+					var done = Card.add_action_from_enemy(chosen_action,$Interaction/Enemies.get_child(cur_enemy),
+					targeted_ally,null,
+					$Interaction/Enemies.get_child(cur_enemy).owned_cards["attack"],
+					null)
+					$Tween.interpolate_property($Interaction/Enemies.get_child(cur_enemy).get_child(0),"rect_position",$Interaction/Enemies.get_child(cur_enemy).get_child(0).rect_position,Vector2(16,0),0.25,Tween.TRANS_LINEAR)
+					$Tween.start()
+	# warning-ignore:return_value_discarded
+					$Tween.connect("tween_all_completed",self,"reverse_anim",[cur_enemy])
+					$Interaction/Enemies.get_child(cur_enemy).modulate = Color(1.0,1.0,1.0,1.0)
 	var continued = $Resources.add_energy(-1)
 	if !continued:
 		$Resources/cur_turn.text = "YOUR TURN"
@@ -137,6 +160,8 @@ func enemy_turns():
 		$Resources.set_energy(ally_count)
 		redo_foil()
 		new_turn()
+		for enemy in $Interaction/Enemies.get_children():
+			enemy.modulate = Color(1,1,1,1)
 	else:
 		$attack_timer.start()
 	cur_enemy += 1
@@ -156,7 +181,7 @@ func _input(_event):
 			return
 		else:
 			modifiers = active_ally.get_modifiers()
-		var succeeded = Card.add_action(selected_card.card_action,selected_card.card_delay,active_ally,selected_enemy,hovering_ally,active_card_type,selected_card.foiled,modifiers,selected_card)
+		var succeeded = Card.add_action(selected_card.card_action,selected_card.card_delay,active_ally,selected_enemy,hovering_ally,active_card_type,selected_card.foiled,modifiers,selected_card,selected_card.card_attribute)
 		if succeeded&&active_ally!=null:
 			active_ally.used = true
 			ally_used()
@@ -253,13 +278,11 @@ func check_enemies():
 	enemy_count = min($Interaction/Enemies.get_child_count()-1,enemy_count)
 	if enemy_count <= 0:
 		new_turn()
-# warning-ignore:standalone_expression
-		$Interaction/Allies.mouse_filter = $Interaction/Allies.MOUSE_FILTER_STOP
 		$Cards.hide()
 		$win_screen.show()
 		$Resources/cur_turn.text = "VICTORY"
 		$attack_timer.start()
-		$win_screen.set_deferred('visible',true)
+		$win_screen.visible = true
 		var time = Timer.new()
 		time.wait_time = 3
 		add_child(time)
@@ -327,3 +350,7 @@ func killed_player():
 		lose_round()
 func lose_round():
 	pass
+func add_exp_to_allies(val):
+	var new_val = round(val/$Interaction/Allies.get_child_count())
+	for ally in $Interaction/Allies.get_children():
+		ally.add_exp(new_val)
