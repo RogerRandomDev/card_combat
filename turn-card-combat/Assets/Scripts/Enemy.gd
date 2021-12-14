@@ -65,6 +65,8 @@ func hurt(damage,ally = null):
 	var floaty = floaty_text.instance()
 	floaty.get_child(0).rect_global_position = self.rect_global_position+Vector2(16,16)
 	get_parent().get_parent().add_child(floaty)
+	if abs(damage) >= $Sprite/Node2D/Health.value:
+		damage = -$Sprite/Node2D/Health.value
 	floaty.get_child(0).start(1.75,str(damage))
 	return true
 func finished_modulate(damage,_healing = false,ally=null):
@@ -90,6 +92,8 @@ func heal(val):
 	var floaty = floaty_text.instance()
 	floaty.get_child(0).rect_global_position = self.rect_global_position+Vector2(16,16)
 	get_parent().get_parent().add_child(floaty)
+	if val >= $Sprite/Node2D/Health.value:
+		val = $Sprite/Node2D/Health.value
 	floaty.get_child(0).start(1.75,str(val),true)
 func load_data(data):
 	$Sprite.texture = load(data["Icon"])
