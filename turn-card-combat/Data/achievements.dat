@@ -1,4 +1,7 @@
 [
-["Murderer","res://Assets/Textures/Entities/Characters/Char0.png",{"Kill":1}],
-["Fighter","res://Assets/Textures/Entities/Characters/green_slime.png",{"Rounds_Won":1}]
+["First Blood","res://Assets/Textures/Entities/Characters/Char0.png",{"Kill":1}],
+["More Blood","res://Assets/Textures/Entities/Characters/Char0.png",{"Kill":10}],
+["Most Blood","res://Assets/Textures/Entities/Characters/Char0.png",{"Kill":100}],
+["Blood","res://Assets/Textures/Entities/Characters/Char0.png",{"Kill":1000}],
+["I Win","res://Assets/Textures/Entities/Characters/green_slime.png",{"Rounds_Won":1}]
 ]

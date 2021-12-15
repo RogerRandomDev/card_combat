@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Fonts/FFFFORWA.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Scenes/Menu/achievement.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Textures/card_base.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -18,15 +19,29 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 64.0
-margin_bottom = 64.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 56.0
+margin_bottom = 56.0
 expand = true
 
 [node name="Label" type="Label" parent="."]
-margin_top = 64.0
+margin_top = 56.0
 margin_right = 64.0
-margin_bottom = 88.0
+margin_bottom = 80.0
 custom_fonts/font = SubResource( 1 )
 align = 1
-valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="TextureRect" parent="."]
+modulate = Color( 0.772549, 0.654902, 0.403922, 1 )
+show_behind_parent = true
+margin_left = -4.0
+margin_top = -8.0
+margin_right = 68.0
+margin_bottom = 88.0
+texture = ExtResource( 3 )
+expand = true

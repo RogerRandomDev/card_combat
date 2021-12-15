@@ -22,7 +22,7 @@ func _process(delta):
 		abs(
 			$title_body/holder/spinner.rect_rotation+
 # warning-ignore:integer_division
-			(child.get_position_in_parent()*(60/$title_body/holder/spinner.get_child_count()))-25)/30)
+			(child.get_position_in_parent()*(60/$title_body/holder/spinner.get_child_count()))-30)/30)
 # warning-ignore:unused_argument
 func _input(event):
 	if $Tween.is_active():return
