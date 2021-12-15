@@ -97,7 +97,13 @@ margin_right = 512.0
 margin_bottom = 300.0
 texture = ExtResource( 6 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
 anims/Load_Combat = SubResource( 1 )
+
+[node name="achievement_shown" type="CanvasLayer" parent="."]
+layer = 10

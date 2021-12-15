@@ -115,10 +115,10 @@ func enemy_turns():
 	if enemy_count == 0:
 		new_round()
 		return
-	if $Interaction/Enemies.get_child_count() > cur_enemy && !$Interaction/Enemies.get_child(cur_enemy).get_node("AnimationPlayer").is_playing():
+	if $Interaction/Enemies.get_child_count() > cur_enemy && $Interaction/Enemies.get_child(cur_enemy).can_interact():
 		if $Interaction/Enemies.get_child(cur_enemy).can_heal():
 			for enemy in $Interaction/Enemies.get_children():
-				if enemy.get_hp() < enemy.get_max_hp()*rand_range(0.5,0.25) && rand_range(0.0,1.0) > 0.75:
+				if enemy.get_hp() < enemy.get_max_hp()*rand_range(0.5,0.25) && rand_range(0.0,1.0) > 0.75 && enemy.can_interact():
 					chosen_action = "HEAL"
 					target_enemy = enemy
 			$Tween.start()
@@ -137,14 +137,13 @@ func enemy_turns():
 			targeted_ally = $Interaction/Allies.get_child(target_ally)
 		match chosen_action:
 			"HEAL":
-				var done = Card.add_action_from_enemy(chosen_action,
+				Card.add_action_from_enemy(chosen_action,
 				$Interaction/Enemies.get_child(cur_enemy),
 					null,null,
 					$Interaction/Enemies.get_child(cur_enemy).owned_cards["heal"],
 					target_enemy)
 			"HURT":
-# warning-ignore:unused_variable
-					var done = Card.add_action_from_enemy(chosen_action,$Interaction/Enemies.get_child(cur_enemy),
+					Card.add_action_from_enemy(chosen_action,$Interaction/Enemies.get_child(cur_enemy),
 					targeted_ally,null,
 					$Interaction/Enemies.get_child(cur_enemy).owned_cards["attack"],
 					null)
@@ -220,11 +219,14 @@ func new_round():
 	$Resources.set_energy(ally_count)
 	cur_round+=1
 	$Resources/Round.text = str(min(cur_round,round_count)+1)+"/"+str(round_count+1)
+	$win_screen.show()
 	if cur_round <= round_count:
 		load_enemies_for_round()
+		$win_screen.hide()
 	else:
 		$Resources/cur_turn.text = "VICTORY"
 		var time = Timer.new()
+		$win_screen.show()
 		time.connect("timeout",self,'end_round',[time])
 		Util.player_stats =[]
 		for ally in $Interaction/Allies.get_children():
@@ -233,6 +235,8 @@ func new_round():
 		time.wait_time = 3
 		add_child(time)
 		time.start()
+		Util.update_achievement_progress("Rounds_Won","count",1)
+		$win_screen.show()
 	redo_foil()
 func update_card_foils(foiling):
 	for card in $Cards.get_children():
@@ -277,12 +281,13 @@ func load_enemies_for_round():
 func check_enemies():
 	enemy_count = min($Interaction/Enemies.get_child_count()-1,enemy_count)
 	if enemy_count <= 0:
+		$win_screen.show()
 		new_turn()
 		$Cards.hide()
 		$win_screen.show()
 		$Resources/cur_turn.text = "VICTORY"
 		$attack_timer.start()
-		$win_screen.visible = true
+		$win_screen.show()
 		var time = Timer.new()
 		time.wait_time = 3
 		add_child(time)
@@ -309,10 +314,8 @@ func load_new_round():
 		ally.queue_free()
 	$Interaction/Allies.show()
 	$Interaction/Enemies.show()
-	$win_screen.hide()
+	
 	$Resources/cur_turn.text = "YOUR TURN"
-# warning-ignore:standalone_expression
-	$Interaction/Allies.mouse_filter = $Interaction/Allies.MOUSE_FILTER_PASS
 	enemy_count = 1
 	var size = 3
 	if Util.player_stats.size() != 0:

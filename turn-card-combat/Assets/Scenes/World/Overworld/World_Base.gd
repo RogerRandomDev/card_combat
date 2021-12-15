@@ -23,6 +23,7 @@ func load_combat(visibility=true):
 	get_tree().paused = visibility
 	$AnimationPlayer.play("Load_Combat",-1,(int(visibility)*2-1.0),!visibility)
 	if !visibility:
+		$Combat.get_child(0).get_node("win_screen").visible = true
 		for ally in Util.player_stats:
 			ally[0] = ally[10][2]*ally[8]+ally[11][2]
 			ally[1] = ally[10][1]*ally[8]+ally[11][1]
@@ -38,3 +39,9 @@ func combat_visible(visibility):
 		combat.active_card = false
 		combat.active_card_type = -1
 		combat.return_cards_to_hand()
+		
+func activate_blocker(do):
+	if do:
+		$Combat.get_child(0).get_node("Cards").visible = !do
+	$Combat.get_child(0).get_node("Interaction").visible = !do
+	$Combat.get_child(0).get_node("win_screen").visible = !do

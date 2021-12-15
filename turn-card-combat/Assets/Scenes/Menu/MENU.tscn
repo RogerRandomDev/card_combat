@@ -1,0 +1,408 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Assets/Scenes/Menu/MENU.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Textures/dungeon.tres" type="TileSet" id=2]
+[ext_resource path="res://Assets/Fonts/FFFFORWA.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Fonts/Font_Basic.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/Scenes/Menu/achievements_list.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Scenes/Menu/achievement.tscn" type="PackedScene" id=6]
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=26]
+bg_color = Color( 0.215686, 0.215686, 0.215686, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="Theme" id=1]
+Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 2 )
+Button/styles/disabled = SubResource( 24 )
+Button/styles/hover = SubResource( 25 )
+Button/styles/normal = SubResource( 25 )
+Button/styles/pressed = SubResource( 26 )
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = SubResource( 2 )
+Label/styles/normal = SubResource( 23 )
+
+[sub_resource type="DynamicFont" id=27]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=28]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=30]
+bg_color = Color( 0.215686, 0.215686, 0.215686, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=29]
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=45]
+bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Image" id=46]
+data = {
+"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 13, 0, 28, 0, 39, 0, 39, 0, 28, 0, 13, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 22, 102, 110, 137, 193, 152, 239, 152, 239, 137, 193, 102, 110, 0, 22, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 102, 110, 146, 232, 142, 255, 135, 255, 135, 255, 142, 255, 146, 232, 102, 110, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 137, 193, 142, 255, 132, 255, 131, 255, 131, 255, 132, 255, 142, 255, 137, 193, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 152, 239, 135, 255, 131, 255, 131, 255, 131, 255, 131, 255, 135, 255, 152, 239, 0, 39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 150, 240, 135, 255, 131, 255, 131, 255, 131, 255, 131, 255, 135, 255, 149, 240, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 143, 219, 138, 255, 131, 255, 131, 255, 131, 255, 131, 255, 136, 255, 142, 222, 0, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 129, 175, 143, 255, 131, 255, 131, 255, 131, 255, 131, 255, 141, 255, 141, 197, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 82, 101, 150, 252, 133, 255, 131, 255, 131, 255, 133, 255, 150, 254, 77, 100, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 33, 49, 143, 224, 137, 255, 131, 255, 131, 255, 137, 255, 145, 224, 4, 40, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 20, 120, 156, 147, 255, 133, 255, 133, 255, 147, 255, 116, 149, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 12, 44, 144, 219, 140, 255, 140, 255, 145, 220, 12, 44, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 56, 79, 156, 244, 156, 247, 64, 85, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 20, 114, 115, 122, 125, 0, 22, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 11, 0, 12, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
+"format": "LumAlpha8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id=32]
+flags = 4
+flags = 4
+image = SubResource( 46 )
+size = Vector2( 16, 16 )
+
+[sub_resource type="Image" id=47]
+data = {
+"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 13, 0, 28, 0, 39, 0, 39, 0, 28, 0, 13, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 22, 51, 110, 69, 193, 76, 239, 76, 239, 69, 193, 51, 110, 0, 22, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 51, 110, 73, 232, 71, 255, 68, 255, 68, 255, 71, 255, 73, 232, 51, 110, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 69, 193, 71, 255, 66, 255, 66, 255, 66, 255, 66, 255, 71, 255, 69, 193, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 76, 239, 68, 255, 66, 255, 66, 255, 66, 255, 66, 255, 68, 255, 76, 239, 0, 39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 75, 240, 68, 255, 66, 255, 66, 255, 66, 255, 66, 255, 68, 255, 75, 240, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 72, 219, 69, 255, 66, 255, 66, 255, 66, 255, 66, 255, 68, 255, 71, 222, 0, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 65, 175, 72, 255, 66, 255, 66, 255, 66, 255, 66, 255, 71, 255, 71, 197, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 41, 101, 75, 252, 67, 255, 66, 255, 66, 255, 67, 255, 75, 254, 39, 100, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 17, 49, 72, 224, 69, 255, 66, 255, 66, 255, 69, 255, 73, 224, 2, 40, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 20, 60, 156, 74, 255, 67, 255, 67, 255, 74, 255, 58, 149, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 44, 72, 219, 70, 255, 70, 255, 73, 220, 6, 44, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 28, 79, 78, 244, 78, 247, 32, 85, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 20, 57, 115, 61, 125, 0, 22, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 11, 0, 12, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
+"format": "LumAlpha8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id=34]
+flags = 4
+flags = 4
+image = SubResource( 47 )
+size = Vector2( 16, 16 )
+
+[sub_resource type="Image" id=48]
+data = {
+"data": PoolByteArray( 0, 0, 0, 0, 152, 152, 152, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 141, 141, 141, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 130, 130, 130, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 78, 78, 78, 49, 78, 78, 78, 28, 0, 0, 0, 0, 0, 0, 0, 0, 56, 85, 95, 0, 56, 85, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 140, 172, 184, 0, 56, 85, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 162, 173, 0, 56, 85, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 152, 152, 152, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 141, 141, 141, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 130, 130, 130, 121, 78, 78, 78, 49, 0, 0, 0, 0 ),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id=38]
+flags = 4
+flags = 4
+image = SubResource( 48 )
+size = Vector2( 4, 16 )
+
+[sub_resource type="Image" id=49]
+data = {
+"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 0, 0, 0, 0, 77, 75, 89, 0, 77, 75, 89, 4, 77, 75, 89, 25, 77, 75, 89, 64, 77, 75, 89, 93, 77, 75, 89, 102, 77, 75, 89, 104, 77, 75, 89, 104, 77, 75, 89, 104, 77, 75, 89, 104, 77, 75, 89, 102, 77, 75, 89, 93, 77, 75, 89, 64, 77, 75, 89, 25, 77, 75, 89, 4, 77, 75, 89, 0, 77, 75, 89, 4, 77, 75, 89, 40, 64, 62, 74, 147, 42, 41, 47, 240, 32, 32, 36, 252, 30, 30, 35, 255, 31, 31, 35, 255, 31, 31, 35, 255, 31, 31, 35, 255, 31, 31, 35, 255, 30, 30, 35, 255, 32, 32, 36, 252, 42, 41, 47, 240, 64, 62, 74, 147, 77, 75, 89, 40, 77, 75, 89, 4, 77, 75, 89, 25, 63, 62, 73, 148, 31, 31, 36, 252, 32, 32, 37, 255, 34, 34, 39, 255, 35, 35, 39, 255, 35, 35, 40, 255, 35, 35, 40, 255, 35, 35, 40, 255, 35, 35, 40, 255, 35, 35, 39, 255, 34, 34, 39, 255, 32, 32, 37, 255, 31, 31, 36, 252, 63, 62, 73, 148, 77, 75, 89, 25, 77, 75, 89, 64, 42, 41, 47, 240, 32, 32, 37, 255, 35, 35, 40, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 35, 35, 40, 255, 32, 32, 37, 255, 42, 41, 47, 240, 77, 75, 89, 64, 77, 75, 89, 93, 32, 32, 36, 253, 34, 34, 39, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 34, 34, 39, 255, 32, 32, 36, 253, 77, 75, 89, 93, 77, 75, 89, 93, 32, 32, 36, 253, 34, 34, 39, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 34, 34, 39, 255, 32, 32, 36, 253, 77, 75, 89, 93, 77, 75, 89, 64, 42, 41, 47, 240, 32, 32, 37, 255, 35, 35, 40, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 35, 35, 40, 255, 32, 32, 37, 255, 42, 41, 47, 240, 77, 75, 89, 64, 77, 75, 89, 26, 63, 62, 73, 150, 31, 31, 36, 252, 32, 32, 37, 255, 34, 34, 39, 255, 35, 35, 39, 255, 35, 35, 40, 255, 35, 35, 40, 255, 35, 35, 40, 255, 35, 35, 40, 255, 35, 35, 39, 255, 34, 34, 39, 255, 32, 32, 37, 255, 31, 31, 36, 252, 63, 62, 73, 150, 77, 75, 89, 26, 77, 75, 89, 4, 77, 75, 89, 40, 63, 62, 73, 149, 42, 41, 47, 240, 32, 32, 36, 253, 30, 30, 35, 255, 31, 31, 35, 255, 31, 31, 35, 255, 31, 31, 35, 255, 31, 31, 35, 255, 30, 30, 35, 255, 32, 32, 36, 253, 42, 41, 47, 240, 63, 62, 73, 149, 77, 75, 89, 40, 77, 75, 89, 4, 77, 75, 89, 0, 77, 75, 89, 4, 77, 75, 89, 25, 77, 75, 89, 64, 77, 75, 89, 93, 77, 75, 89, 102, 77, 75, 89, 104, 77, 75, 89, 104, 77, 75, 89, 104, 77, 75, 89, 104, 77, 75, 89, 102, 77, 75, 89, 93, 77, 75, 89, 64, 77, 75, 89, 25, 77, 75, 89, 4, 77, 75, 89, 0, 0, 0, 0, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id=40]
+flags = 4
+flags = 4
+image = SubResource( 49 )
+size = Vector2( 16, 16 )
+
+[sub_resource type="StyleBoxTexture" id=42]
+texture = SubResource( 40 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 4.0
+margin_bottom = 4.0
+
+[sub_resource type="Theme" id=44]
+HSlider/icons/grabber = SubResource( 32 )
+HSlider/icons/grabber_disabled = SubResource( 34 )
+HSlider/icons/grabber_highlight = SubResource( 32 )
+HSlider/icons/tick = SubResource( 38 )
+HSlider/styles/grabber_area = SubResource( 42 )
+HSlider/styles/grabber_area_highlight = SubResource( 42 )
+HSlider/styles/slider = SubResource( 42 )
+
+[node name="title_screen" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="background" type="TileMap" parent="."]
+scale = Vector2( 3, 3 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 65536, 0, 0, 65537, 0, 3, 65538, 0, 1, 65539, 0, 1, 65540, 0, 1, 65541, 0, 1, 65542, 0, 2, 65543, 0, 2, 65544, 0, 3, 65545, 0, 3, 65546, 0, 0, 131072, 0, 0, 131073, 0, 2, 131074, 0, 2, 131075, 0, 3, 131076, 0, 3, 131077, 0, 2, 131078, 0, 2, 131079, 0, 1, 131080, 0, 2, 131081, 0, 2, 131082, 0, 0, 196608, 0, 0, 196609, 0, 3, 196610, 0, 1, 196611, 0, 3, 196612, 0, 2, 196613, 0, 1, 196614, 0, 1, 196615, 0, 1, 196616, 0, 3, 196617, 0, 2, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 196630, 0, 0, 196631, 0, 0, 196632, 0, 0, 196633, 0, 0, 196634, 0, 0, 196635, 0, 0, 196636, 0, 0, 196637, 0, 0, 196638, 0, 0, 196639, 0, 0, 196640, 0, 0, 196641, 0, 0, 196642, 0, 0, 196643, 0, 0, 196644, 0, 0, 196645, 0, 0, 196646, 0, 0, 196647, 0, 0, 262144, 0, 0, 262145, 0, 1, 262146, 0, 3, 262147, 0, 2, 262148, 0, 3, 262149, 0, 3, 262150, 0, 1, 262151, 0, 2, 262152, 0, 1, 262153, 0, 3, 262154, 0, 1, 262155, 0, 2, 262156, 0, 2, 262157, 0, 1, 262158, 0, 2, 262159, 0, 3, 262160, 0, 1, 262161, 0, 2, 262162, 0, 2, 262163, 0, 2, 262164, 0, 3, 262165, 0, 2, 262166, 0, 1, 262167, 0, 3, 262168, 0, 2, 262169, 0, 2, 262170, 0, 1, 262171, 0, 3, 262172, 0, 1, 262173, 0, 1, 262174, 0, 2, 262175, 0, 3, 262176, 0, 1, 262177, 0, 1, 262178, 0, 1, 262179, 0, 2, 262180, 0, 1, 262181, 0, 3, 262182, 0, 1, 262183, 0, 0, 327680, 0, 0, 327681, 0, 2, 327682, 0, 2, 327683, 0, 2, 327684, 0, 3, 327685, 0, 3, 327686, 0, 1, 327687, 0, 1, 327688, 0, 2, 327689, 0, 2, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 1, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327707, 0, 0, 327708, 0, 0, 327709, 0, 0, 327710, 0, 0, 327711, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 3, 327715, 0, 1, 327716, 0, 1, 327717, 0, 3, 327718, 0, 1, 327719, 0, 0, 393216, 0, 0, 393217, 0, 2, 393218, 0, 1, 393219, 0, 2, 393220, 0, 3, 393221, 0, 2, 393222, 0, 1, 393223, 0, 2, 393224, 0, 2, 393225, 0, 3, 393226, 0, 0, 393238, 0, 0, 393239, 0, 3, 393240, 0, 0, 393249, 0, 0, 393250, 0, 1, 393251, 0, 3, 393252, 0, 2, 393253, 0, 2, 393254, 0, 2, 393255, 0, 0, 458752, 0, 0, 458753, 0, 2, 458754, 0, 2, 458755, 0, 2, 458756, 0, 1, 458757, 0, 2, 458758, 0, 1, 458759, 0, 3, 458760, 0, 3, 458761, 0, 1, 458762, 0, 0, 458774, 0, 0, 458775, 0, 2, 458776, 0, 0, 458785, 0, 0, 458786, 0, 1, 458787, 0, 2, 458788, 0, 1, 458789, 0, 3, 458790, 0, 3, 458791, 0, 0, 524288, 0, 0, 524289, 0, 3, 524290, 0, 1, 524291, 0, 2, 524292, 0, 2, 524293, 0, 3, 524294, 0, 3, 524295, 0, 1, 524296, 0, 2, 524297, 0, 2, 524298, 0, 0, 524310, 0, 0, 524311, 0, 1, 524312, 0, 0, 524321, 0, 0, 524322, 0, 2, 524323, 0, 1, 524324, 0, 1, 524325, 0, 1, 524326, 0, 3, 524327, 0, 0, 589824, 0, 0, 589825, 0, 2, 589826, 0, 3, 589827, 0, 3, 589828, 0, 1, 589829, 0, 2, 589830, 0, 1, 589831, 0, 3, 589832, 0, 1, 589833, 0, 2, 589834, 0, 0, 589846, 0, 0, 589847, 0, 1, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 2, 589859, 0, 2, 589860, 0, 2, 589861, 0, 3, 589862, 0, 1, 589863, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655382, 0, 0, 655383, 0, 2, 655384, 0, 3, 655385, 0, 2, 655386, 0, 1, 655387, 0, 1, 655388, 0, 2, 655389, 0, 2, 655390, 0, 2, 655391, 0, 1, 655392, 0, 2, 655393, 0, 2, 655394, 0, 2, 655395, 0, 1, 655396, 0, 2, 655397, 0, 2, 655398, 0, 1, 655399, 0, 0, 720918, 0, 0, 720919, 0, 3, 720920, 0, 0, 720921, 0, 0, 720922, 0, 0, 720923, 0, 0, 720924, 0, 0, 720925, 0, 2, 720926, 0, 0, 720927, 0, 0, 720928, 0, 0, 720929, 0, 0, 720930, 0, 2, 720931, 0, 2, 720932, 0, 2, 720933, 0, 3, 720934, 0, 3, 720935, 0, 0, 786454, 0, 0, 786455, 0, 2, 786456, 0, 0, 786460, 0, 0, 786461, 0, 2, 786462, 0, 0, 786465, 0, 0, 786466, 0, 0, 786467, 0, 0, 786468, 0, 0, 786469, 0, 0, 786470, 0, 0, 786471, 0, 0, 851990, 0, 0, 851991, 0, 3, 851992, 0, 0, 851996, 0, 0, 851997, 0, 2, 851998, 0, 0, 917526, 0, 0, 917527, 0, 2, 917528, 0, 0, 917532, 0, 0, 917533, 0, 1, 917534, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0, 983062, 0, 0, 983063, 0, 1, 983064, 0, 0, 983068, 0, 0, 983069, 0, 3, 983070, 0, 0, 1048591, 0, 0, 1048592, 0, 1, 1048593, 0, 2, 1048594, 0, 3, 1048595, 0, 1, 1048596, 0, 3, 1048597, 0, 1, 1048598, 0, 3, 1048599, 0, 3, 1048600, 0, 0, 1048604, 0, 0, 1048605, 0, 3, 1048606, 0, 0, 1048608, 0, 0, 1048609, 0, 0, 1048610, 0, 0, 1048611, 0, 0, 1048612, 0, 0, 1048613, 0, 0, 1048614, 0, 0, 1048615, 0, 0, 1048616, 0, 0, 1048617, 0, 0, 1114127, 0, 0, 1114128, 0, 2, 1114129, 0, 3, 1114130, 0, 2, 1114131, 0, 3, 1114132, 0, 1, 1114133, 0, 1, 1114134, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114140, 0, 0, 1114141, 0, 1, 1114142, 0, 0, 1114144, 0, 0, 1114145, 0, 1, 1114146, 0, 3, 1114147, 0, 3, 1114148, 0, 3, 1114149, 0, 2, 1114150, 0, 1, 1114151, 0, 1, 1114152, 0, 1, 1114153, 0, 0, 1179663, 0, 0, 1179664, 0, 3, 1179665, 0, 1, 1179666, 0, 1, 1179667, 0, 1, 1179668, 0, 3, 1179669, 0, 3, 1179670, 0, 0, 1179676, 0, 0, 1179677, 0, 3, 1179678, 0, 0, 1179680, 0, 0, 1179681, 0, 1, 1179682, 0, 1, 1179683, 0, 3, 1179684, 0, 3, 1179685, 0, 2, 1179686, 0, 3, 1179687, 0, 1, 1179688, 0, 2, 1179689, 0, 0, 1245199, 0, 0, 1245200, 0, 3, 1245201, 0, 2, 1245202, 0, 1, 1245203, 0, 1, 1245204, 0, 1, 1245205, 0, 3, 1245206, 0, 0, 1245212, 0, 0, 1245213, 0, 3, 1245214, 0, 0, 1245216, 0, 0, 1245217, 0, 3, 1245218, 0, 1, 1245219, 0, 2, 1245220, 0, 2, 1245221, 0, 2, 1245222, 0, 1, 1245223, 0, 1, 1245224, 0, 3, 1245225, 0, 0, 1310735, 0, 0, 1310736, 0, 1, 1310737, 0, 2, 1310738, 0, 1, 1310739, 0, 1, 1310740, 0, 2, 1310741, 0, 2, 1310742, 0, 0, 1310748, 0, 0, 1310749, 0, 3, 1310750, 0, 0, 1310751, 0, 0, 1310752, 0, 0, 1310753, 0, 3, 1310754, 0, 2, 1310755, 0, 3, 1310756, 0, 2, 1310757, 0, 2, 1310758, 0, 3, 1310759, 0, 3, 1310760, 0, 1, 1310761, 0, 0, 1376271, 0, 0, 1376272, 0, 0, 1376273, 0, 0, 1376274, 0, 0, 1376275, 0, 0, 1376276, 0, 0, 1376277, 0, 0, 1376278, 0, 0, 1376284, 0, 0, 1376285, 0, 1, 1376286, 0, 3, 1376287, 0, 2, 1376288, 0, 3, 1376289, 0, 1, 1376290, 0, 3, 1376291, 0, 3, 1376292, 0, 2, 1376293, 0, 2, 1376294, 0, 1, 1376295, 0, 3, 1376296, 0, 2, 1376297, 0, 0, 1441820, 0, 0, 1441821, 0, 0, 1441822, 0, 0, 1441823, 0, 0, 1441824, 0, 0, 1441825, 0, 0, 1441826, 0, 0, 1441827, 0, 0, 1441828, 0, 0, 1441829, 0, 0, 1441830, 0, 0, 1441831, 0, 0, 1441832, 0, 0, 1441833, 0, 0 )
+
+[node name="title_body" type="Control" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TITLE" type="Label" parent="title_body"]
+margin_left = 256.0
+margin_right = 768.0
+margin_bottom = 150.0
+theme = SubResource( 1 )
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0.607843, 0.607843, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = SubResource( 27 )
+text = "CARD COMBAT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="holder" type="Control" parent="title_body"]
+margin_left = 384.0
+margin_top = 300.0
+margin_right = 640.0
+margin_bottom = 450.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spinner" type="Control" parent="title_body/holder"]
+margin_left = 128.0
+margin_top = -192.0
+margin_right = 128.0
+margin_bottom = -192.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="title_body/holder/spinner"]
+margin_left = -29.5164
+margin_right = 18.4836
+margin_bottom = 24.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+focus_mode = 0
+mouse_filter = 1
+input_pass_on_modal_close_click = false
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 28 )
+custom_styles/hover = SubResource( 30 )
+custom_styles/pressed = SubResource( 29 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/disabled = SubResource( 29 )
+custom_styles/normal = SubResource( 45 )
+keep_pressed_outside = true
+text = "QUIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="title_body/holder/spinner"]
+margin_left = -29.5164
+margin_right = 18.4836
+margin_bottom = 24.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+focus_mode = 0
+mouse_filter = 1
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 28 )
+custom_styles/hover = SubResource( 30 )
+custom_styles/pressed = SubResource( 29 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/disabled = SubResource( 29 )
+custom_styles/normal = SubResource( 45 )
+toggle_mode = true
+keep_pressed_outside = true
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="title_body/holder/spinner"]
+margin_left = -29.5164
+margin_right = 18.4836
+margin_bottom = 24.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+focus_mode = 0
+mouse_filter = 1
+input_pass_on_modal_close_click = false
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 28 )
+custom_styles/hover = SubResource( 29 )
+custom_styles/pressed = SubResource( 29 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/disabled = SubResource( 29 )
+custom_styles/normal = SubResource( 45 )
+keep_pressed_outside = true
+text = "PLAY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="title_body/holder/spinner"]
+margin_left = -29.5164
+margin_right = 42.4836
+margin_bottom = 24.0
+rect_scale = Vector2( 0.667, 1 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+focus_mode = 0
+mouse_filter = 1
+input_pass_on_modal_close_click = false
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 28 )
+custom_styles/hover = SubResource( 30 )
+custom_styles/pressed = SubResource( 29 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/disabled = SubResource( 29 )
+custom_styles/normal = SubResource( 45 )
+toggle_mode = true
+keep_pressed_outside = true
+text = "Achievements"
+
+[node name="Button5" type="Button" parent="title_body/holder/spinner"]
+margin_left = -25.7366
+margin_right = 22.2634
+margin_bottom = 24.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+focus_mode = 0
+mouse_filter = 1
+input_pass_on_modal_close_click = false
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 28 )
+custom_styles/hover = SubResource( 29 )
+custom_styles/pressed = SubResource( 29 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/disabled = SubResource( 29 )
+custom_styles/normal = SubResource( 45 )
+keep_pressed_outside = true
+text = "Credits"
+
+[node name="settings" type="Control" parent="title_body"]
+margin_top = 720.0
+margin_right = 1024.0
+margin_bottom = 1320.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume" type="Label" parent="title_body/settings"]
+margin_top = 128.0
+margin_right = 74.0
+margin_bottom = 150.0
+custom_fonts/font = ExtResource( 4 )
+text = "Volume"
+
+[node name="Volume_Slider" type="HSlider" parent="title_body/settings/Volume"]
+margin_top = 24.0
+margin_right = 128.0
+margin_bottom = 40.0
+theme = SubResource( 44 )
+value = 2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="achievements" type="Control" parent="title_body"]
+margin_top = 720.0
+margin_right = 1024.0
+margin_bottom = 1320.0
+rect_clip_content = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+achievement_scene = ExtResource( 6 )
+
+[node name="achievement_list" type="GridContainer" parent="title_body/achievements"]
+margin_left = 64.0
+margin_top = 128.0
+margin_right = 960.0
+margin_bottom = 536.0
+custom_constants/vseparation = 72
+custom_constants/hseparation = 88
+columns = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="title_body/holder/spinner/Button" to="." method="_on_Button_pressed"]
+[connection signal="toggled" from="title_body/holder/spinner/Button2" to="." method="_on_Button2_toggled"]
+[connection signal="pressed" from="title_body/holder/spinner/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="toggled" from="title_body/holder/spinner/Button4" to="." method="_on_Button4_toggled"]

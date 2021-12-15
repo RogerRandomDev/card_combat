@@ -75,7 +75,7 @@ func _on_new_check_timeout():
 	travel = max(abs(travel),0.01)
 	travelled += travel
 	if travelled >= need_to_travel:
-		need_to_travel = rand_range(1024.0,8192.0)
+		need_to_travel = rand_range(4096.0,8192.0*2.0)
 		enter_combat()
 		travelled = 0.0
 func enter_combat():

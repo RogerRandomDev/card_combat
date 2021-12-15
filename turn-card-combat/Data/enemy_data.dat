@@ -6,8 +6,8 @@
 "Icon":"res://Assets/Textures/Entities/Characters/Char0.png"
 },
 {
-"Name":["Victor"],
-"Stats":[5,5,5,10,"null","PHYSICAL"],
+"Name":["Victor","Vacuum"],
+"Stats":[1,1,1,10,"null","PHYSICAL"],
 "Cards":{"attack":["random",-1,-1],"heal":["random",2,6]},
 "Icon":"res://Assets/Textures/Entities/Characters/green_slime.png"
 },

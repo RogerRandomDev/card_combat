@@ -11,6 +11,7 @@ var owned_cards = {}
 var strength = 1
 var defence = 1
 var support = 1
+var enemy_id = 0
 var used=false
 var action_chosen=false
 func reset_size():return false
@@ -50,6 +51,7 @@ func update_health(val,ally=null):
 		get_parent().get_parent().get_parent().enemy_count -= 1
 		if ally != null:
 			get_parent().get_parent().get_parent().add_exp_to_allies(round(pow(level,2)))
+		Util.update_achievement_progress("Kill","Count",1)
 		$AnimationPlayer.play("return_to_card")
 		get_parent().get_parent().get_parent().check_enemies()
 	update_hp_bar()
@@ -92,8 +94,8 @@ func heal(val):
 	var floaty = floaty_text.instance()
 	floaty.get_child(0).rect_global_position = self.rect_global_position+Vector2(16,16)
 	get_parent().get_parent().add_child(floaty)
-	if val >= $Sprite/Node2D/Health.value:
-		val = $Sprite/Node2D/Health.value
+	if val >= $Sprite/Node2D/Health.max_value-$Sprite/Node2D/Health.value:
+		val = $Sprite/Node2D/Health.max_value-$Sprite/Node2D/Health.value
 	floaty.get_child(0).start(1.75,str(val),true)
 func load_data(data):
 	$Sprite.texture = load(data["Icon"])
@@ -116,3 +118,5 @@ func can_heal():
 	return owned_cards.keys().has("heal")
 func can_attack():
 	return owned_cards.keys().has('attack')
+func can_interact():
+	return !$AnimationPlayer.is_playing()
