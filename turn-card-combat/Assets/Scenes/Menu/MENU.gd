@@ -90,6 +90,10 @@ func _on_Button2_toggled(button_pressed):
 	$Tween.interpolate_property($title_body/settings,"rect_position",$title_body/settings.rect_position,Vector2(0,720)*int(!button_pressed),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
 	on_main = !button_pressed
+	if button_pressed:
+		$title_body/settings/Volume/Volume_Slider.grab_focus()
+	else:
+		$title_body/settings.grab_focus()
 
 
 func _on_Button4_toggled(button_pressed):
