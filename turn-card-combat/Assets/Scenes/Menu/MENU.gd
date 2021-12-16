@@ -38,7 +38,7 @@ func _input(event):
 		$title_body/holder/spinner.get_child(cur_focused).pressed = !$title_body/holder/spinner.get_child(cur_focused).pressed
 		if cur_focused == 1 || cur_focused == 3:
 			$title_body/holder/spinner.get_child(cur_focused).enabled_focus_mode = Control.FOCUS_NONE
-	if Input.is_action_just_pressed("left"):
+	if Input.is_action_pressed("left"):
 		$title_body/holder/spinner.get_child(cur_focused).disabled = false
 		$title_body/holder/spinner.get_child(cur_focused).enabled_focus_mode  =Control.FOCUS_ALL
 		$title_body/holder/spinner.get_child(cur_focused).pressed = false
@@ -51,7 +51,7 @@ func _input(event):
 		$Tween.interpolate_property($title_body/holder/spinner,"rect_rotation",$title_body/holder/spinner.rect_rotation,new_rot,0.125,Tween.TRANS_LINEAR)
 		$Tween.start()
 		new_focus()
-	if Input.is_action_just_pressed("right"):
+	elif Input.is_action_pressed("right"):
 		$title_body/holder/spinner.get_child(cur_focused).disabled = false
 		$title_body/holder/spinner.get_child(cur_focused).enabled_focus_mode  =Control.FOCUS_ALL
 		$title_body/holder/spinner.get_child(cur_focused).pressed = false
