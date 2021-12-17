@@ -19,6 +19,7 @@ func load_game():
 	Util.achievement_actions = stored_data[2]
 	Util.complete_achievments = stored_data[3]
 	Util.stored_items = stored_data[4]
+	Util.dont_speak_again = stored_data[5]
 	file.close()
 func save_game():
 	var save_data = []
@@ -27,6 +28,7 @@ func save_game():
 	save_data.append(Util.achievement_actions)
 	save_data.append(Util.complete_achievments)
 	save_data.append(Util.stored_items)
+	save_data.append(Util.dont_speak_again)
 	var file = File.new()
 	file.open("user://TCB_SAVE.dat",File.WRITE)
 	file.store_line(var2str(save_data))

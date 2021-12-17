@@ -21,7 +21,7 @@ tile_data = PoolIntArray( 3, 2, 0, 4, 2, 10, 5, 2, 10, 6, 2, 1, 11, 2, 0, 12, 2,
 position = Vector2( 160, 152 )
 scale = Vector2( 2, 1 )
 next_zone = "scene_house_0"
-enter_offset = Vector2( 0, 48 )
+enter_offset = Vector2( 0, 24 )
 area_size = Vector2( 20.125, 12 )
 scene_loader = NodePath("../..")
 
@@ -29,8 +29,8 @@ scene_loader = NodePath("../..")
 position = Vector2( 168, 504 )
 scale = Vector2( 3, 1 )
 next_zone = "scene_0"
-enter_offset = Vector2( 0, -48 )
-area_size = Vector2( 44, 27 )
+enter_offset = Vector2( 0, -24 )
+area_size = Vector2( 45, 28 )
 scene_loader = NodePath("../..")
 
 [node name="collision_objects" type="StaticBody2D" parent="." index="3"]

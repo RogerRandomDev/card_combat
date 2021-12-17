@@ -27,7 +27,6 @@ func load_next_scene():
 	new_scene.add_to_group("game_maps")
 	$World_Player.position = enter_point.position+enter_point.enter_offset
 	$World_Player.set_camera_limits(Vector2.ZERO,area_size)
-	$World_Player.can_move = true
 func enable_motion():$World_Player.can_move = true
 
 
