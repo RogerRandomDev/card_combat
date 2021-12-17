@@ -51,7 +51,7 @@ func update_health(val,ally=null):
 		get_parent().get_parent().get_parent().enemy_count -= 1
 		if ally != null:
 			get_parent().get_parent().get_parent().add_exp_to_allies(round(pow(level,2)))
-		Util.update_achievement_progress("Kill","Count",1)
+		Util.update_achievement_progress("Kill","count",1)
 		$AnimationPlayer.play("return_to_card")
 		get_parent().get_parent().get_parent().check_enemies()
 	update_hp_bar()

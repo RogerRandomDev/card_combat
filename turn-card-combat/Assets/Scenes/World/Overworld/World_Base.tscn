@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Textures/dungeon.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Scenes/World/Overworld/dungeon_generation.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Scenes/World/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Scenes/World/Overworld/World_Base.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Scripts/World_Base.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Scenes/World/Player_Menu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Textures/combat/combat_dungeon_background_0.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Global/achivement_object.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Load_Combat"
@@ -105,5 +106,4 @@ __meta__ = {
 pause_mode = 2
 anims/Load_Combat = SubResource( 1 )
 
-[node name="achievement_shown" type="CanvasLayer" parent="."]
-layer = 10
+[node name="achievement_shown" parent="." instance=ExtResource( 7 )]

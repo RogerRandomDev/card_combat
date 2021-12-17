@@ -18,19 +18,17 @@ export var follower_scene:PackedScene
 var last_pos = Vector2.ZERO
 func _ready():
 	randomize()
-	if Util.player_position != Vector2.ZERO:position = Util.player_position
-	else:
-		var can_do = get_parent().get_parent().get_node("Map/Map").get_used_cells_by_id(0)
+	var can_do = get_parent().get_parent().get_node("Map/Map").get_used_cells_by_id(0)
 		
-		var no = true
-		while no:
-			var pos = can_do[round(rand_range(0.0,can_do.size()-1))]
-			var failed = false
-			for x in 3:for y in 3:
-				if !can_do.has(Vector2(pos.x+x-1,pos.y+y-1)):
-					failed = true;break
-			if !failed:
-				position = pos*16;no=false
+	var no = true
+	while no:
+		var pos = can_do[round(rand_range(0.0,can_do.size()-1))]
+		var failed = false
+		for x in 3:for y in 3:
+			if !can_do.has(Vector2(pos.x+x-1,pos.y+y-1)):
+				failed = true;break
+		if !failed:
+			position = pos*16;no=false
 	hp = max_hp
 	last_pos = position
 	call_deferred('load_followers')
@@ -66,7 +64,7 @@ func _unhandled_key_input(event):
 
 var travelled = 0.0
 var need_to_travel = rand_range(512.0,1024.0)
-var do_combat = true
+var do_combat = false
 func _on_new_check_timeout():
 	if !do_combat:return
 	var travel = last_pos.length_squared()-position.length_squared()

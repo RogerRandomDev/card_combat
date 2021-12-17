@@ -4,6 +4,7 @@ var cur_focused = 2
 export var spinner_offset = Vector2(0,256)
 var on_main = true
 func _ready():
+	Save.load_game()
 	for child in $title_body/holder/spinner.get_children():
 		child.rect_position = spinner_offset.rotated(child.get_position_in_parent()*(PI*2/6/($title_body/holder/spinner.get_child_count()))-PI/6)
 # warning-ignore:integer_division
@@ -11,6 +12,7 @@ func _ready():
 	$title_body/holder/spinner.get_child(cur_focused).enabled_focus_mode = Control.FOCUS_ALL
 	$title_body/holder/spinner/Button3.grab_focus()
 	$title_body/holder/spinner.rect_rotation = 6
+	$title_body/achievements.load_achievements()
 # warning-ignore:unused_argument
 func _process(delta):
 	for child in $title_body/holder/spinner.get_children():
@@ -79,10 +81,11 @@ func new_focus(do_noise=true):
 
 func _on_Button3_pressed():
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://Assets/Scenes/World/Overworld/World_Base.tscn")
+	get_tree().change_scene("res://Assets/Scenes/World/Overworld/main_land/World.tscn")
 
 
 func _on_Button_pressed():
+	Save.save_game()
 	get_tree().quit()
 
 func _on_Button2_toggled(button_pressed):

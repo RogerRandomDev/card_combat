@@ -5,6 +5,9 @@ extends Node2D
 const combat = preload("res://Assets/Scenes/Combat/combat_scene.tscn")
 export var player_menu:PackedScene
 func _ready():
+	if Util.last_scene !="Dungeon":
+		Util.cur_layer = 0
+	Util.last_scene = "Dungeon"
 	$Menu.add_child(player_menu.instance())
 	$Combat.add_child(combat.instance())
 	$Combat.get_child(0).hide()
@@ -45,3 +48,6 @@ func activate_blocker(do):
 		$Combat.get_child(0).get_node("Cards").visible = !do
 	$Combat.get_child(0).get_node("Interaction").visible = !do
 	$Combat.get_child(0).get_node("win_screen").visible = !do
+func stairs_entered(body):
+	if body.name != "Player":return
+	Util.cur_layer += 1

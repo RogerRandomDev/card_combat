@@ -14,8 +14,11 @@ var tree = {}
 var leaves = []
 var leaf_id = 0
 var rooms = []
-
+var stair_pos = Vector2.ZERO
+var have_done_stairs = false
 func _ready():
+	have_done_stairs = false
+	randomize()
 	generate()
 	var used = get_used_cells_by_id(0)
 	for cell in used:
@@ -28,7 +31,16 @@ func _ready():
 		set_cell(cell.x,cell.y-1,0)
 		set_cell(cell.x-1,cell.y-1,0)
 	update_bitmask_region(Vector2(-1,-1),Vector2(map_w,map_h)+Vector2(1,1))
-
+	stair_pos = rooms[round(rand_range(0.0,rooms.size()-1))]["center"]
+	set_cellv(stair_pos,1)
+	var out_steps = Area2D.new()
+	var out_col = CollisionShape2D.new()
+	out_col.shape = RectangleShape2D.new()
+	out_col.shape.extents = Vector2(4,4)
+	out_steps.add_child(out_col)
+	out_steps.position = stair_pos*8+Vector2(4,4)
+	add_child(out_steps)
+	out_steps.connect("body_entered",get_parent().get_parent(),"stairs_entered")
 
 func generate():
 	clear()
