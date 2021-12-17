@@ -64,7 +64,7 @@ func _unhandled_key_input(event):
 
 var travelled = 0.0
 var need_to_travel = rand_range(512.0,1024.0)
-var do_combat = false
+var do_combat = true
 func _on_new_check_timeout():
 	if !do_combat:return
 	var travel = last_pos.length_squared()-position.length_squared()

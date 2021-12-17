@@ -16,6 +16,7 @@ var stored_items = []
 var cur_layer = 0
 var last_scene = "Map"
 var conditions_done = {}
+var dont_speak_again = []
 func _ready():
 	pause_mode = PAUSE_MODE_PROCESS
 	var file = File.new()
