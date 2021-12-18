@@ -1,0 +1,124 @@
+{
+	"events": [
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Anything you want to know?"
+		},
+		{
+			"choice": "Can you tell me the town's history?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ah, yes, the town history."
+		},
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The town dates back all the way to several decades ago, well into my early years as a young slime."
+		},
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I say young, but as a slime, i don't really age anyways, ha-ha-ha!"
+		},
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The town was founded as a resting stop for travellers, hence the low population and market in the town center."
+		},
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Originally, we were always busy beyond belief!"
+		},
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Nowadays though, most people just ask for directions, sadly."
+		},
+		{
+			"choice": "What are \"CARDS\"",
+			"condition": "==",
+			"definition": "1639866288-953",
+			"event_id": "dialogic_011",
+			"value": "0"
+		},
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "!!!"
+		},
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "That...       Is something we prefer to avoid talking about."
+		},
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I'd recommend you do the same as well."
+		},
+		{
+			"definition": "1639866288-953",
+			"event_id": "dialogic_014",
+			"operation": "=",
+			"random_upper_limit": 100,
+			"set_random": false,
+			"set_value": "1"
+		},
+		{
+			"choice": "No thanks.",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Well, feel free to stop by anytime, I'm not going anywhere."
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "hide_text",
+				"target_node_path": "/root/Node2D/text_area"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.3
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1639866696.json",
+		"name": "slimmens"
+	}
+}

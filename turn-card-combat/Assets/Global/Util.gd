@@ -89,3 +89,5 @@ func get_condition(condition_name):
 	if conditions_done.has(condition_name):return conditions_done[condition_name]
 	if achievement_actions.has(condition_name):return achievement_actions[condition_name].values()[0]
 	return -1
+func set_condition(cond_name,cond_val):
+	conditions_done[cond_name] = cond_val

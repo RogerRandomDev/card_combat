@@ -7,5 +7,3 @@ const custom_cursors = {
 	"HEAL":preload("res://Assets/Textures/Icons/MouseHeal.png"),
 	"SHIELD":preload("res://Assets/Textures/Icons/MouseShield.png")
 	}
-
-

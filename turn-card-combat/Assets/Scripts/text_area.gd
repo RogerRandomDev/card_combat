@@ -3,23 +3,26 @@ extends CanvasLayer
 
 
 var finished_load = true
-func set_text(text,ent_name):
-	$area_base.show()
-	$area_base/area_text.text = text
+var cur_text_scene = null
+var cur_entity = null
+func set_text(text_name,ent_name,cur_ent):
 	get_parent().get_node("World_Player").can_move = false
-	$area_base/area_name.text = ent_name
 	finished_load = false
-	$area_base/area_text.visible_characters = 0
-	$Timer.start()
+	cur_entity = cur_ent
+	var dialog = Dialogic.start(text_name)
+	add_child(dialog)
+	if ent_name=="":pass
 	
+	
+func only_say_once():
+	var cur_talk = cur_entity.cur_talk
+	if !Util.dont_speak_again.has(cur_talk):
+		Util.dont_speak_again.append(cur_talk)
 func hide_text():
-	$area_base.hide()
 	get_parent().get_node("World_Player").can_move = true
-func can_update():return finished_load
+	finished_load = true
+	if cur_entity != null:cur_entity.is_talking = false
+	cur_entity = null
+func can_update():return finished_load || cur_entity == null
 
-
-func _on_Timer_timeout():
-	$area_base/area_text.visible_characters += 1
-	if $area_base/area_text.visible_characters >= $area_base/area_text.text.length():
-		finished_load = true
-		$Timer.stop()
+func update_condition(condition,updated_val):Util.set_condition(condition,updated_val)

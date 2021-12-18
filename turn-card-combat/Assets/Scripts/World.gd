@@ -5,13 +5,13 @@ extends Node2D
 func _ready():
 	load_new_scene("scene_house_0",0,Vector2(20.125,12))
 
-
 func load_new_scene(scene,enter_point,area):
 	$AnimationPlayer.play("new_scene_loader")
 	area_size = area
 	scene_name = scene
 	scene_enter_point = enter_point
 	$World_Player.can_move = false
+	
 var area_size = Vector2.ZERO
 var scene_name = ""
 var scene_enter_point = 0

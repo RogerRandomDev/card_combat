@@ -1,0 +1,69 @@
+{
+	"events": [
+		{
+			"character": "character-1639866593.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ah!"
+		},
+		{
+			"character": "character-1639866593.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oh, you scared me!"
+		},
+		{
+			"character": "character-1639866593.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I thought this place was abandoned!"
+		},
+		{
+			"character": "character-1639866593.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It's nice to know that someone lives here!"
+		},
+		{
+			"character": "character-1639866593.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Gives me someone to talk to!"
+		},
+		{
+			"character": "character-1639863821.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Anyways, my name is DANN, nice to meet you!"
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "only_say_once",
+				"target_node_path": "/root/Node2D/text_area"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "hide_text",
+				"target_node_path": "/root/Node2D/text_area"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.3
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1639866360.json",
+		"name": "n_g_dann"
+	}
+}

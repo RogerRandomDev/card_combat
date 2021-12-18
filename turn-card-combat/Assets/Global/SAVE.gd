@@ -22,6 +22,7 @@ func load_game():
 	Util.stored_items = stored_data[4]
 	Util.dont_speak_again = stored_data[5]
 	file.close()
+	Dialogic.load('dialogue')
 func save_game():
 	var save_data = []
 	save_data.append(Util.player_stats)
@@ -34,6 +35,7 @@ func save_game():
 	file.open("user://TCB_SAVE.dat",File.WRITE)
 	file.store_line(var2str(save_data))
 	file.close()
+	Dialogic.save('dialogue')
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		save_game()
