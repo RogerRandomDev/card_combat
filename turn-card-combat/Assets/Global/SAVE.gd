@@ -6,7 +6,8 @@ extends Node
 
 
 
-
+func _ready():
+	load_game()
 
 func load_game():
 	var stored_data = []
@@ -33,3 +34,6 @@ func save_game():
 	file.open("user://TCB_SAVE.dat",File.WRITE)
 	file.store_line(var2str(save_data))
 	file.close()
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		save_game()

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/combat_dungeon_background_0.png-d1bac5ef33f9d243b0b7767b075ba360.stex"
+path="res://.import/combat_dungeon_background_0.png-a1cba3ad296e74546cca3f7a532be111.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/combat/combat_dungeon_background_0.png"
-dest_files=[ "res://.import/combat_dungeon_background_0.png-d1bac5ef33f9d243b0b7767b075ba360.stex" ]
+source_file="res://Assets/Textures/world/combat/combat_dungeon_background_0.png"
+dest_files=[ "res://.import/combat_dungeon_background_0.png-a1cba3ad296e74546cca3f7a532be111.stex" ]
 
 [params]
 

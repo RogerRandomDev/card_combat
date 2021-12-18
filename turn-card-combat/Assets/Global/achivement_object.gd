@@ -6,7 +6,7 @@ func load_achievement(Name,Tex):
 	if !get_child_count() == 2 || $Tween.is_active():next_achievements.append([Name,Tex])
 	$achievment_shown/Name.text = Name
 	$achievment_shown/icon.texture = load(Tex)
-	$Tween.interpolate_property($achievment_shown,"rect_position",$achievment_shown.rect_position,Vector2(928,568),0.25,Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($achievment_shown,"rect_position",$achievment_shown.rect_position,Vector2(896,552),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
 	var time = Timer.new()
 	add_child(time)
@@ -16,7 +16,7 @@ func load_achievement(Name,Tex):
 
 func drop_achievement(timer):
 	timer.queue_free()
-	$Tween.interpolate_property($achievment_shown,"rect_position",$achievment_shown.rect_position,Vector2(928,600),0.25,Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($achievment_shown,"rect_position",$achievment_shown.rect_position,Vector2(896,600),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
 # warning-ignore:return_value_discarded
 	$Tween.connect("tween_all_completed",self,"load_next")

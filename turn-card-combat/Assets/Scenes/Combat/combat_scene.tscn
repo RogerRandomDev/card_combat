@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/Scenes/Combat/test.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Scenes/Combat/ALLY.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Scenes/Combat/Enemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Assets/Fonts/Font_Basic.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Assets/Global/Font_Basic.tres" type="DynamicFont" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32

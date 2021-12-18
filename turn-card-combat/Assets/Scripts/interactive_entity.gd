@@ -58,17 +58,17 @@ func _input(_event):
 		file.close()
 		cur_talk = str(talk_id)+"_"+str(cur_file)
 	else:
-		cur_text_pos += 1
-	
-	if cur_text_pos >= self_text.size()-1:
-		is_talking = false
-		cur_text_pos = 0
-		get_tree().get_nodes_in_group("text_area")[0].hide_text()
-		if only_say_once:
-			Util.dont_speak_again.append(cur_talk)
-		if do_action_after_talk:
-			call(after_talk_action)
-	else:
-		get_tree().get_nodes_in_group("text_area")[0].set_text(self_text[cur_text_pos])
+		if get_tree().get_nodes_in_group("text_area")[0].can_update():cur_text_pos += 1
+	if get_tree().get_nodes_in_group("text_area")[0].can_update():
+		if cur_text_pos >= self_text.size()-1:
+			is_talking = false
+			cur_text_pos = 0
+			get_tree().get_nodes_in_group("text_area")[0].hide_text()
+			if only_say_once:
+				Util.dont_speak_again.append(cur_talk)
+			if do_action_after_talk:
+				call(after_talk_action)
+		else:
+			get_tree().get_nodes_in_group("text_area")[0].set_text(self_text[cur_text_pos])
 
 func shop():get_parent().get_parent().get_parent().load_shop()

@@ -17,6 +17,7 @@ var cur_layer = 0
 var last_scene = "Map"
 var conditions_done = {}
 var dont_speak_again = []
+var player_name = "TESTING"
 func _ready():
 	pause_mode = PAUSE_MODE_PROCESS
 	var file = File.new()
@@ -58,8 +59,15 @@ func get_achievment_progress(achievement_name):
 	if !achievement_actions.has(achievement_name):return 0
 	return achievement_actions[achievement_name]["count"]
 
-
-
+func give_achievement(achievement_name):
+	if !complete_achievments.has(achievement_name):
+		complete_achievments.append(achievement_name)
+		var achievement_tex = get_achievement_tex(achievement_name)
+		load_achievement(achievement_name,achievement_tex)
+func get_achievement_tex(achievement_name):
+	for achievement in achievment_list:
+		if achievement[0] == achievement_name:return achievement[1]
+	return "res://Assets/Textures/Entities/Characters/Char0.png"
 func _input(_event):
 	if Input.is_key_pressed(KEY_L):
 		get_tree().paused = false

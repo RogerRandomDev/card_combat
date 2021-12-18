@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Scenes/Menu/MENU.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/dungeon.tres" type="TileSet" id=2]
 [ext_resource path="res://Assets/Fonts/FFFFORWA.TTF" type="DynamicFontData" id=3]
-[ext_resource path="res://Assets/Fonts/Font_Basic.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/Global/Font_Basic.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Assets/Scenes/Menu/achievements_list.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Scenes/Menu/achievement.tscn" type="PackedScene" id=6]
 

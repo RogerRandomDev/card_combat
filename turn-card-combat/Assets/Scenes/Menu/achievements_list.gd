@@ -18,6 +18,8 @@ func load_achievements():
 		held.connect("mouse_entered",self,"update_hovered_achievement",[cur_achievement,achievement[3],achievement[2]])
 		cur_achievement += 1
 func update_hovered_achievement(id,description,achievement_type):
+	$Description/ACHIEVEMENT_DESCRIPTION.show()
 	$Description/ACHIEVEMENT_NAME.text = $achievement_list.get_child(id).Name
 	var max_value = achievement_type.values()[0]
 	$Description/ACHIEVEMENT_DESCRIPTION.text = description+" "+str(min(Util.get_achievment_progress(achievement_type.keys()[0]),max_value))+"/"+str(max_value)
+	if description == "dont_show":$Description/ACHIEVEMENT_DESCRIPTION.hide()
