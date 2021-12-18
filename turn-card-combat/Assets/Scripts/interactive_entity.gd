@@ -14,7 +14,7 @@ export (Array,int)var conditional_talk_value
 export (Array,Array,int)var conditional_talk_id
 export var do_action_after_talk = false
 export var after_talk_action = "none"
-
+export var entity_name = "PLACEHOLDER"
 var player_inside=false
 
 var cur_text_pos = 0
@@ -69,6 +69,6 @@ func _input(_event):
 			if do_action_after_talk:
 				call(after_talk_action)
 		else:
-			get_tree().get_nodes_in_group("text_area")[0].set_text(self_text[cur_text_pos])
+			get_tree().get_nodes_in_group("text_area")[0].set_text(self_text[cur_text_pos],entity_name)
 
 func shop():get_parent().get_parent().get_parent().load_shop()

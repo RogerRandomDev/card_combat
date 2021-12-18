@@ -51,6 +51,7 @@ talk_id_set = [ [ 2, 0 ] ]
 conditional_talk_types = [ "Any" ]
 conditional_talk_value = [ -1 ]
 conditional_talk_id = [ [ 1, 0, 1 ] ]
+entity_name = "Dann"
 
 [node name="sign" parent="." index="5" instance=ExtResource( 5 )]
 position = Vector2( 96, 216 )

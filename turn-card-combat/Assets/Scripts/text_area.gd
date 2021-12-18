@@ -3,10 +3,11 @@ extends CanvasLayer
 
 
 var finished_load = true
-func set_text(text):
+func set_text(text,ent_name):
 	$area_base.show()
 	$area_base/area_text.text = text
 	get_parent().get_node("World_Player").can_move = false
+	$area_base/area_name.text = ent_name
 	finished_load = false
 	$area_base/area_text.visible_characters = 0
 	$Timer.start()

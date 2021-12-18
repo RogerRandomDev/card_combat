@@ -24,7 +24,8 @@ scene_loader = NodePath("../..")
 [node name="entity" parent="." index="3" instance=ExtResource( 3 )]
 position = Vector2( 136, 136 )
 area_size = Vector2( 9, 9 )
-talk_id_set = [ [ 2, 0 ] ]
+talk_id_set = [ [ 4, 0 ] ]
 conditional_talk_types = [ "Any" ]
 conditional_talk_value = [ -1 ]
 conditional_talk_id = [ [ 3, 0, 1 ] ]
+entity_name = "Slimmens"

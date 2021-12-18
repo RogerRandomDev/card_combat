@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Scenes/Menu/MENU.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/dungeon.tres" type="TileSet" id=2]
 [ext_resource path="res://Assets/Fonts/FFFFORWA.TTF" type="DynamicFontData" id=3]
-[ext_resource path="res://Assets/Global/Font_Basic.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/Fonts/Font_Basic.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Assets/Scenes/Menu/achievements_list.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Scenes/Menu/achievement.tscn" type="PackedScene" id=6]
 
@@ -252,6 +252,8 @@ custom_styles/pressed = SubResource( 29 )
 custom_styles/focus = SubResource( 29 )
 custom_styles/disabled = SubResource( 29 )
 custom_styles/normal = SubResource( 45 )
+button_mask = 0
+enabled_focus_mode = 0
 keep_pressed_outside = true
 text = "QUIT"
 __meta__ = {
@@ -278,6 +280,8 @@ custom_styles/focus = SubResource( 29 )
 custom_styles/disabled = SubResource( 29 )
 custom_styles/normal = SubResource( 45 )
 toggle_mode = true
+button_mask = 0
+enabled_focus_mode = 0
 keep_pressed_outside = true
 text = "Settings"
 __meta__ = {
@@ -304,6 +308,8 @@ custom_styles/pressed = SubResource( 29 )
 custom_styles/focus = SubResource( 29 )
 custom_styles/disabled = SubResource( 29 )
 custom_styles/normal = SubResource( 45 )
+button_mask = 0
+enabled_focus_mode = 0
 keep_pressed_outside = true
 text = "PLAY"
 __meta__ = {
@@ -332,6 +338,8 @@ custom_styles/focus = SubResource( 29 )
 custom_styles/disabled = SubResource( 29 )
 custom_styles/normal = SubResource( 45 )
 toggle_mode = true
+button_mask = 0
+enabled_focus_mode = 0
 keep_pressed_outside = true
 text = "Achievements"
 __meta__ = {
@@ -358,6 +366,8 @@ custom_styles/pressed = SubResource( 29 )
 custom_styles/focus = SubResource( 29 )
 custom_styles/disabled = SubResource( 29 )
 custom_styles/normal = SubResource( 45 )
+button_mask = 0
+enabled_focus_mode = 0
 keep_pressed_outside = true
 text = "Credits"
 
@@ -411,6 +421,7 @@ __meta__ = {
 }
 
 [node name="Description" type="Control" parent="title_body/achievements"]
+visible = false
 margin_top = 472.0
 margin_right = 1024.0
 margin_bottom = 600.0
@@ -425,6 +436,9 @@ custom_fonts/font = SubResource( 50 )
 text = "TESTING"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ACHIEVEMENT_DESCRIPTION" type="Label" parent="title_body/achievements/Description"]
 margin_top = 64.0
