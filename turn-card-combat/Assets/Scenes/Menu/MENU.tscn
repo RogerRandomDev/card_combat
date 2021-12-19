@@ -421,7 +421,6 @@ __meta__ = {
 }
 
 [node name="Description" type="Control" parent="title_body/achievements"]
-visible = false
 margin_top = 472.0
 margin_right = 1024.0
 margin_bottom = 600.0

@@ -78,6 +78,12 @@
 			"text": "I'd recommend you do the same as well."
 		},
 		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Not many people understand it in full, and what little I do know, is enough to make me understand the gravity of what they are."
+		},
+		{
 			"definition": "1639866288-953",
 			"event_id": "dialogic_014",
 			"operation": "=",
