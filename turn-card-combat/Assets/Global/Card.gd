@@ -20,7 +20,11 @@ func _ready():
 	card_data = str2var(file.get_as_text())
 	file.close()
 
-func get_card_data(card_id):return card_data[card_id]
+func get_card_data(card_id):
+	if typeof(card_id) == typeof("hi"):
+		return card_data[card_id]
+	else:
+		return card_data.values()[card_id]
 # warning-ignore:unused_argument
 func add_action_from_enemy(action,enemy_to_do,target,attribute,input_stats,target_enemy):
 	return call(action,enemy_to_do,target,target_enemy,false,false,false,{"Card_Stats":input_stats},"PHYSICAL")

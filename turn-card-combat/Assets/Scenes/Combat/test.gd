@@ -33,7 +33,7 @@ func _ready():
 	var card_count = 0
 	for card in max_cards:
 		var n_card = card_scene.instance()
-		n_card.card_type = card_count
+		n_card.card_type = "Punch"
 		$Cards.add_child(n_card)
 		card_count += 1
 	for enemy in enemy_count:
@@ -139,14 +139,14 @@ func enemy_turns():
 			"HEAL":
 				Card.add_action_from_enemy(chosen_action,
 				$Interaction/Enemies.get_child(cur_enemy),
-					null,null,
-					$Interaction/Enemies.get_child(cur_enemy).owned_cards["heal"],
+					targeted_ally,null,
+					$Interaction/Enemies.get_child(cur_enemy).owned_cards["HEAL"],
 					target_enemy)
 			"HURT":
 					Card.add_action_from_enemy(chosen_action,$Interaction/Enemies.get_child(cur_enemy),
 					targeted_ally,null,
-					$Interaction/Enemies.get_child(cur_enemy).owned_cards["attack"],
-					null)
+					$Interaction/Enemies.get_child(cur_enemy).owned_cards["ATTACK"],
+					target_enemy)
 					$Tween.interpolate_property($Interaction/Enemies.get_child(cur_enemy).get_child(0),"rect_position",$Interaction/Enemies.get_child(cur_enemy).get_child(0).rect_position,Vector2(16,0),0.25,Tween.TRANS_LINEAR)
 					$Tween.start()
 	# warning-ignore:return_value_discarded

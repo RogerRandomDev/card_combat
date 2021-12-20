@@ -1,23 +1,7 @@
-[
-[
-"ATTACK",
-"Deal damage to enemy",
-"HURT",
-["random",-5,-10],
-"PHYSICAL",
-],
-[
-"HEAL",
-"Heal an ally",
-"HEAL",
-["random",10,20],
-"HOLY",
-],
-[
-"DEFEND",
-"Defend yourself from some of the damage this turn",
-"DEFEND",
-["random",40,95],
-"PHYSICAL",
-]
-]
+{
+"Heals": [ "HEAL", "Heal an ally", "HEAL", [ "random", 10, 20 ], "HOLY" ],
+"Punch": [ "ATTACK", "Deal damage to enemy", "HURT", [ "random", -5, -10 ], "PHYSICAL" ],
+"Shield": [ "DEFEND", "Defend yourself from some of the damage this turn", "DEFEND", [ "random", 40, 95 ], "PHYSICAL" ],
+"[Dylan, Logan, Justin, Louis, Luca, Ethan]": [  ],
+"[Logan, Justin, Louis, Luca, Ethan, test]": [  ]
+}

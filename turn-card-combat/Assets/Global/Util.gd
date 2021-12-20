@@ -68,12 +68,6 @@ func get_achievement_tex(achievement_name):
 	for achievement in achievment_list:
 		if achievement[0] == achievement_name:return achievement[1]
 	return "res://Assets/Textures/Entities/Characters/Char0.png"
-func _input(_event):
-	if Input.is_key_pressed(KEY_L):
-		get_tree().paused = false
-		Save.save_game()
-# warning-ignore:return_value_discarded
-		get_tree().change_scene("res://Assets/Scenes/Menu/MENU.tscn")
 
 
 func load_achievement(Name,Tex):

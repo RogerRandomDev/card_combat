@@ -48,9 +48,7 @@ texture = ExtResource( 6 )
 area_size = Vector2( 9, 9 )
 entity_size = Vector2( 4, 6 )
 talk_id_name = "dann_base"
-conditional_talk_types = [ "Any" ]
-conditional_talk_value = [ -1 ]
-conditional_talk_id = [ "n_g_dann" ]
+has_first_time_talk = true
 entity_name = "Dann"
 
 [node name="sign" parent="." index="5" instance=ExtResource( 5 )]

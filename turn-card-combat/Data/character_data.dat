@@ -1,19 +1,16 @@
-[
-{
-"Health":40,
-"Defense":10,
-"Strength":10,
-"Support":10,
-"Cards":
-{
-0:3,
-1:1,
-2:1
+[ {
+"Cards": {
+"Heals": 1,
+"Punch": 3,
+"Shield": 1
 },
-"Name":"Dave",
-"Icon":"res://Assets/Textures/Entities/Characters/Char0.png",
-"Level_Rate":[1,1,2,5],
-"Default_Stats":[10,10,10,40],
-"STRENGTHS":["null","null"]
-}
-]
+"Default_Stats": [ 10, 10, 10, 40 ],
+"Defense": 10,
+"Health": 40,
+"Icon": "res://Assets/Textures/Entities/Characters/Char0.png",
+"Level_Rate": [ 1, 1, 2, 5 ],
+"Name": "Dave",
+"STRENGTHS": [ "null", "null" ],
+"Strength": 10,
+"Support": 10
+} ]

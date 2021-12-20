@@ -1,14 +1,6 @@
-[
-{
-"Name":["Dylan","Logan","Justin","Louis","Luca","Ethan"],
-"Stats":[10,10,10,40,"null","PHYSICAL"],
-"Cards":{"attack":["random",-5,-10],"heal":["random",10,20]},
-"Icon":"res://Assets/Textures/Entities/Characters/Char0.png"
-},
-{
-"Name":["Victor","Vacuum"],
-"Stats":[1,1,1,10,"null","PHYSICAL"],
-"Cards":{"attack":["random",-1,-1],"heal":["random",2,6]},
-"Icon":"res://Assets/Textures/Entities/Characters/green_slime.png"
-},
-]
+[ {
+"Cards": [ "Punch", "Heals" ],
+"Icon": "res://Assets/Textures/Entities/Characters/green_slime.png",
+"Name": [ "Vacuum" ],
+"Stats": [ 1, 1, 1, 10, "null", "PHYSICAL" ]
+} ]

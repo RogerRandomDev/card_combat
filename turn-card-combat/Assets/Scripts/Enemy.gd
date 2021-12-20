@@ -101,7 +101,7 @@ func load_data(data):
 	$Sprite.texture = load(data["Icon"])
 	$Sprite/Node2D/Health.max_value = data["Stats"][3]
 	$Sprite/Node2D/Health.value = data["Stats"][3]
-	owned_cards = data["Cards"]
+	owned_cards = convert_to_cards(data["Cards"])
 	stats = data['Stats']
 	strength = stats[2]
 	defence=stats[0]
@@ -115,8 +115,13 @@ func load_data(data):
 func update_hp_bar():
 	$Sprite/Node2D/Health/HP_VAL.text = str(get_hp())+"/"+str(get_max_hp())
 func can_heal():
-	return owned_cards.keys().has("heal")
+	return owned_cards.keys().has("HEAL")
 func can_attack():
-	return owned_cards.keys().has('attack')
+	return owned_cards.keys().has('ATTACK')
 func can_interact():
 	return !$AnimationPlayer.is_playing()
+func convert_to_cards(card_data):
+	var output_data = {}
+	for card in card_data:
+		output_data[Card.card_data[card][0]] = Card.card_data[card][3]
+	return output_data

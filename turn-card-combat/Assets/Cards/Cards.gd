@@ -27,7 +27,7 @@ func _ready():
 	randomize()
 #	foiled = rand_range(0.0,1.0)>0.75
 	toggle_foil(foiled)
-	$Card_Image.modulate = Color(int(card_type==0),int(card_type==1),int(card_type==2),1.0)
+	$Card_Image.modulate = Color(int(card_type=="Punch"),int(card_type=="Heals"),int(card_type=="Shield"),1.0)
 	process_priority = get_position_in_parent()
 	var data = Card.get_card_data(card_type)
 	$Card_Image/Text/Top.text = data[0]

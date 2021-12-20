@@ -7,9 +7,7 @@ export var area_size=Vector2(8,8)
 export var entity_offset = Vector2.ZERO
 export var entity_size=Vector2(8,8)
 export (String)var talk_id_name
-export (Array,String)var conditional_talk_types
-export (Array,int)var conditional_talk_value
-export (Array,String)var conditional_talk_id
+export (bool)var has_first_time_talk=false
 export var do_action_after_talk = false
 export var after_talk_action = "none"
 export var entity_name = "PLACEHOLDER"
@@ -35,13 +33,8 @@ func _input(_event):
 	if !is_talking:
 		is_talking=true
 		var talk_id = talk_id_name
+		if do_action_after_talk && !Util.dont_speak_again.has("n_g_"+talk_id_name):talk_id = "n_g_"+talk_id_name
 		cur_talk = str(talk_id)
-		for cond in conditional_talk_types.size():
-			if Util.get_condition(conditional_talk_types[cond]) >= conditional_talk_value[cond]:
-				if Util.dont_speak_again.has(conditional_talk_id[cond]):continue
-				var place_talk_id = conditional_talk_id[cond]
-				talk_id = place_talk_id
-				cur_talk = conditional_talk_id[cond]
 	if get_tree().get_nodes_in_group("text_area")[0].can_update() && !Util.dont_speak_again.has(cur_talk):
 		get_tree().get_nodes_in_group("text_area")[0].set_text(cur_talk,entity_name,self)
 

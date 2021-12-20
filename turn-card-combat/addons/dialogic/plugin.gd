@@ -5,7 +5,6 @@ var _editor_view
 var _parts_inspector
 var _export_plugin
 
-
 func _init():
 	if Engine.editor_hint:
 		# Make sure the core files exist 

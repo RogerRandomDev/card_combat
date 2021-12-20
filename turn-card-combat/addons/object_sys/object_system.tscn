@@ -1,0 +1,907 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Textures/card_base.png" type="Texture" id=1]
+[ext_resource path="res://addons/object_sys/object_system.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Textures/Entities/Characters/Char0.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Textures/world/sign.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Textures/Entities/Characters/green_slime.png" type="Texture" id=5]
+
+[node name="Control" type="Control"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_right = -512.0
+margin_bottom = -600.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+margin_left = 144.0
+margin_right = 656.0
+margin_bottom = 600.0
+rect_scale = Vector2( 1.45, 1.45 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Achievements" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="list" type="ItemList" parent="TabContainer/Achievements"]
+margin_right = 128.0
+margin_bottom = 560.0
+items = [ "First Blood", ExtResource( 3 ), false, "More Blood", ExtResource( 3 ), false, "Most Blood", ExtResource( 3 ), false, "Blood", ExtResource( 3 ), false, "I Win", ExtResource( 5 ), false, "I Win Again", ExtResource( 5 ), false, "...I Win?", ExtResource( 5 ), false, "I am unbeatable", ExtResource( 5 ), false, "Good luck", ExtResource( 4 ), false, "EEEEEEE", ExtResource( 4 ), false ]
+fixed_icon_size = Vector2( 12, 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="data" type="Panel" parent="TabContainer/Achievements"]
+margin_left = 188.0
+margin_top = 32.0
+margin_right = 444.0
+margin_bottom = 384.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Achievements/data"]
+margin_right = 64.0
+margin_bottom = 64.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="TabContainer/Achievements/data/TextureRect"]
+visible = false
+margin_top = 68.0
+margin_right = 57.0
+margin_bottom = 88.0
+text = "change"
+
+[node name="name_of" type="Label" parent="TabContainer/Achievements/data"]
+margin_left = 64.0
+margin_right = 151.0
+margin_bottom = 32.0
+rect_scale = Vector2( 2, 2 )
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="description" type="Label" parent="TabContainer/Achievements/data"]
+margin_left = 16.0
+margin_top = 92.0
+margin_right = 240.0
+margin_bottom = 148.0
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="requirements" type="ItemList" parent="TabContainer/Achievements/data"]
+margin_left = 16.0
+margin_top = 148.0
+margin_right = 192.0
+margin_bottom = 312.0
+
+[node name="add_requirement" type="Button" parent="TabContainer/Achievements/data"]
+visible = false
+margin_left = 16.0
+margin_top = 320.0
+margin_right = 72.0
+margin_bottom = 340.0
+text = "add"
+
+[node name="remove_requirement" type="Button" parent="TabContainer/Achievements/data"]
+visible = false
+margin_left = 128.0
+margin_top = 320.0
+margin_right = 192.0
+margin_bottom = 340.0
+text = "remove"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="edit_requirement" type="Button" parent="TabContainer/Achievements/data"]
+visible = false
+margin_left = 80.0
+margin_top = 320.0
+margin_right = 120.0
+margin_bottom = 340.0
+text = "edit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupPanel" type="Panel" parent="TabContainer/Achievements/data"]
+visible = false
+self_modulate = Color( 0.34902, 0.34902, 0.34902, 1 )
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 160.0
+margin_bottom = 152.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="data_name" type="LineEdit" parent="TabContainer/Achievements/data/PopupPanel"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 124.0
+margin_bottom = 28.0
+placeholder_text = "name"
+
+[node name="data_value" type="LineEdit" parent="TabContainer/Achievements/data/PopupPanel"]
+margin_left = 4.0
+margin_top = 32.0
+margin_right = 124.0
+margin_bottom = 56.0
+placeholder_text = "value"
+
+[node name="data_confirm" type="Button" parent="TabContainer/Achievements/data/PopupPanel"]
+margin_left = 4.0
+margin_top = 64.0
+margin_right = 66.0
+margin_bottom = 84.0
+text = "Confirm"
+
+[node name="data_cancel" type="Button" parent="TabContainer/Achievements/data/PopupPanel"]
+margin_left = 72.0
+margin_top = 64.0
+margin_right = 126.0
+margin_bottom = 84.0
+text = "Cancel"
+
+[node name="select_texture" type="FileDialog" parent="TabContainer/Achievements"]
+margin_left = 84.0
+margin_top = 88.0
+margin_right = 399.0
+margin_bottom = 344.0
+window_title = "Open a File"
+dialog_text = "Select Achievement Texture"
+dialog_hide_on_ok = true
+mode = 0
+filters = PoolStringArray( "*.png" )
+show_hidden_files = true
+current_dir = "res://Assets"
+current_path = "res://Assets/"
+
+[node name="add_achievement" type="Button" parent="TabContainer/Achievements"]
+margin_left = 128.0
+margin_top = 392.0
+margin_right = 282.0
+margin_bottom = 412.0
+text = "Add new achievement"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="remove_achievement" type="Button" parent="TabContainer/Achievements"]
+margin_left = 340.138
+margin_top = 392.138
+margin_right = 488.138
+margin_bottom = 412.138
+text = "remove achievement"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="add_achievement_panel" type="Panel" parent="TabContainer/Achievements"]
+visible = false
+self_modulate = Color( 0.568627, 0.517647, 0.517647, 1 )
+margin_left = 196.0
+margin_top = 112.0
+margin_right = 372.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="confirm_achievement" type="Button" parent="TabContainer/Achievements/add_achievement_panel"]
+margin_left = 16.0
+margin_top = 116.0
+margin_right = 80.0
+margin_bottom = 136.0
+text = "Confirm"
+
+[node name="cancel_achievment" type="Button" parent="TabContainer/Achievements/add_achievement_panel"]
+margin_left = 96.0
+margin_top = 116.0
+margin_right = 160.0
+margin_bottom = 136.0
+text = "Cancel"
+
+[node name="new_name_a" type="LineEdit" parent="TabContainer/Achievements/add_achievement_panel"]
+margin_left = 16.0
+margin_top = 12.0
+margin_right = 160.0
+margin_bottom = 36.0
+placeholder_text = "achievement name"
+
+[node name="new_desc_a" type="TextEdit" parent="TabContainer/Achievements/add_achievement_panel"]
+margin_left = 16.0
+margin_top = 44.0
+margin_right = 160.0
+margin_bottom = 108.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enemies" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="enemy_list" type="ItemList" parent="TabContainer/Enemies"]
+margin_right = 128.0
+margin_bottom = 560.0
+fixed_icon_size = Vector2( 12, 12 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="data" type="Panel" parent="TabContainer/Enemies"]
+margin_left = 188.0
+margin_top = 32.0
+margin_right = 444.0
+margin_bottom = 384.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Enemies/data"]
+margin_right = 64.0
+margin_bottom = 64.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="change_enemy_tex" type="Button" parent="TabContainer/Enemies/data/TextureRect"]
+visible = false
+margin_top = 68.0
+margin_right = 57.0
+margin_bottom = 88.0
+text = "change"
+
+[node name="name_of" type="ItemList" parent="TabContainer/Enemies/data"]
+margin_left = 64.0
+margin_right = 192.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="owned_cards" type="ItemList" parent="TabContainer/Enemies/data"]
+margin_left = 16.2758
+margin_top = 93.931
+margin_right = 106.276
+margin_bottom = 169.931
+
+[node name="enemy_name" type="LineEdit" parent="TabContainer/Enemies/data"]
+margin_left = 101.793
+margin_top = 173.241
+margin_right = 229.793
+margin_bottom = 197.241
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Enemies/data/enemy_name"]
+margin_left = -89.6552
+margin_top = 5.51723
+margin_right = 0.344818
+margin_bottom = 19.5172
+text = "Name to add: "
+
+[node name="enemy_health" type="LineEdit" parent="TabContainer/Enemies/data"]
+margin_left = 17.6552
+margin_top = 206.345
+margin_right = 75.6552
+margin_bottom = 230.345
+
+[node name="Label" type="Label" parent="TabContainer/Enemies/data/enemy_health"]
+margin_left = -17.931
+margin_top = 5.51726
+margin_right = 24.069
+margin_bottom = 19.5173
+text = "HP"
+
+[node name="enemy_str" type="LineEdit" parent="TabContainer/Enemies/data"]
+margin_left = 112.276
+margin_top = 206.345
+margin_right = 170.276
+margin_bottom = 230.345
+
+[node name="Label2" type="Label" parent="TabContainer/Enemies/data/enemy_str"]
+margin_left = -28.4138
+margin_top = 2.75861
+margin_right = 13.5862
+margin_bottom = 16.7586
+text = "STR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_def" type="LineEdit" parent="TabContainer/Enemies/data"]
+margin_left = 112.138
+margin_top = 246.345
+margin_right = 170.138
+margin_bottom = 270.345
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="TabContainer/Enemies/data/enemy_def"]
+margin_left = -28.2758
+margin_top = 4.13788
+margin_right = 13.7242
+margin_bottom = 18.1379
+text = "DEF"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_sup" type="LineEdit" parent="TabContainer/Enemies/data"]
+margin_left = 112.138
+margin_top = 287.724
+margin_right = 170.138
+margin_bottom = 311.724
+
+[node name="Label4" type="Label" parent="TabContainer/Enemies/data/enemy_sup"]
+margin_left = -28.2758
+margin_top = 6.89655
+margin_right = 13.7242
+margin_bottom = 20.8965
+text = "SUP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_add_card" type="Button" parent="TabContainer/Enemies/data"]
+margin_left = 111.448
+margin_top = 98.069
+margin_right = 177.448
+margin_bottom = 118.069
+text = "add card"
+
+[node name="enemy_remove_card" type="Button" parent="TabContainer/Enemies/data"]
+margin_left = 111.448
+margin_top = 142.207
+margin_right = 203.448
+margin_bottom = 162.207
+text = "remove card"
+
+[node name="Save_enemy" type="Button" parent="TabContainer/Enemies/data"]
+margin_left = 191.0
+margin_top = 320.0
+margin_right = 255.0
+margin_bottom = 344.0
+text = "Save"
+
+[node name="enem_add_name" type="Button" parent="TabContainer/Enemies/data"]
+margin_left = 67.3104
+margin_top = 67.7241
+margin_right = 131.31
+margin_bottom = 87.7241
+text = "Add"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enem_remove_name" type="Button" parent="TabContainer/Enemies/data"]
+margin_left = 139.034
+margin_top = 68.4138
+margin_right = 203.034
+margin_bottom = 88.4138
+text = "Remove"
+
+[node name="add_chard_enemy_panel" type="Panel" parent="TabContainer/Enemies"]
+visible = false
+self_modulate = Color( 0.443137, 0.443137, 0.443137, 1 )
+margin_left = 206.0
+margin_top = 100.0
+margin_right = 427.0
+margin_bottom = 228.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="e_name" type="LineEdit" parent="TabContainer/Enemies/add_chard_enemy_panel"]
+margin_left = 8.0
+margin_top = 10.0
+margin_right = 175.0
+margin_bottom = 34.0
+placeholder_text = "Card Name"
+
+[node name="e_amount" type="LineEdit" parent="TabContainer/Enemies/add_chard_enemy_panel"]
+margin_left = 7.93103
+margin_top = 48.0
+margin_right = 174.931
+margin_bottom = 72.0
+placeholder_text = "Quantity"
+
+[node name="confirm_add_card_enemy" type="Button" parent="TabContainer/Enemies/add_chard_enemy_panel"]
+margin_left = 5.0
+margin_top = 100.0
+margin_right = 66.0
+margin_bottom = 120.0
+text = "Confirm"
+
+[node name="cancel_add_card_enemy" type="Button" parent="TabContainer/Enemies/add_chard_enemy_panel"]
+margin_left = 148.621
+margin_top = 99.7241
+margin_right = 210.621
+margin_bottom = 119.724
+text = "Cancel"
+
+[node name="select_texture_enemy" type="FileDialog" parent="TabContainer/Enemies"]
+margin_left = 84.0
+margin_top = 88.0
+margin_right = 399.0
+margin_bottom = 344.0
+window_title = "Open a File"
+dialog_text = "Select Achievement Texture"
+dialog_hide_on_ok = true
+mode = 0
+filters = PoolStringArray( "*.png" )
+show_hidden_files = true
+current_dir = "res://Assets"
+current_path = "res://Assets/"
+
+[node name="Characters" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="char_list" type="ItemList" parent="TabContainer/Characters"]
+margin_right = 128.0
+margin_bottom = 560.0
+items = [ "Dave", ExtResource( 3 ), false ]
+fixed_icon_size = Vector2( 12, 12 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="data" type="Panel" parent="TabContainer/Characters"]
+margin_left = 188.0
+margin_top = 32.0
+margin_right = 444.0
+margin_bottom = 384.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Characters/data"]
+margin_right = 64.0
+margin_bottom = 64.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="change_char_tex" type="Button" parent="TabContainer/Characters/data/TextureRect"]
+visible = false
+margin_top = 68.0
+margin_right = 57.0
+margin_bottom = 88.0
+text = "change"
+
+[node name="name_of" type="Label" parent="TabContainer/Characters/data"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 32.0
+rect_scale = Vector2( 2, 2 )
+align = 1
+valign = 1
+
+[node name="owned_cards" type="ItemList" parent="TabContainer/Characters/data"]
+margin_left = 16.2758
+margin_top = 93.931
+margin_right = 106.276
+margin_bottom = 169.931
+
+[node name="char_name" type="LineEdit" parent="TabContainer/Characters/data"]
+margin_left = 16.2758
+margin_top = 173.241
+margin_right = 144.276
+margin_bottom = 197.241
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="char_health" type="LineEdit" parent="TabContainer/Characters/data"]
+margin_left = 17.6552
+margin_top = 206.345
+margin_right = 75.6552
+margin_bottom = 230.345
+
+[node name="Label" type="Label" parent="TabContainer/Characters/data/char_health"]
+margin_left = -17.931
+margin_top = 5.51726
+margin_right = 24.069
+margin_bottom = 19.5173
+text = "HP"
+
+[node name="char_str" type="LineEdit" parent="TabContainer/Characters/data"]
+margin_left = 112.276
+margin_top = 206.345
+margin_right = 170.276
+margin_bottom = 230.345
+
+[node name="Label2" type="Label" parent="TabContainer/Characters/data/char_str"]
+margin_left = -28.4138
+margin_top = 2.75861
+margin_right = 13.5862
+margin_bottom = 16.7586
+text = "STR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="char_def" type="LineEdit" parent="TabContainer/Characters/data"]
+margin_left = 112.138
+margin_top = 246.345
+margin_right = 170.138
+margin_bottom = 270.345
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="TabContainer/Characters/data/char_def"]
+margin_left = -28.2758
+margin_top = 4.13788
+margin_right = 13.7242
+margin_bottom = 18.1379
+text = "DEF"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="char_sup" type="LineEdit" parent="TabContainer/Characters/data"]
+margin_left = 112.138
+margin_top = 287.724
+margin_right = 170.138
+margin_bottom = 311.724
+
+[node name="Label4" type="Label" parent="TabContainer/Characters/data/char_sup"]
+margin_left = -28.2758
+margin_top = 6.89655
+margin_right = 13.7242
+margin_bottom = 20.8965
+text = "SUP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="char_add_card" type="Button" parent="TabContainer/Characters/data"]
+margin_left = 111.448
+margin_top = 98.069
+margin_right = 177.448
+margin_bottom = 118.069
+text = "add card"
+
+[node name="char_remove_card" type="Button" parent="TabContainer/Characters/data"]
+margin_left = 111.448
+margin_top = 142.207
+margin_right = 203.448
+margin_bottom = 162.207
+text = "remove card"
+
+[node name="Save_char" type="Button" parent="TabContainer/Characters/data"]
+margin_left = 191.0
+margin_top = 320.0
+margin_right = 255.0
+margin_bottom = 344.0
+text = "Save"
+
+[node name="add_chard_char_panel" type="Panel" parent="TabContainer/Characters"]
+visible = false
+self_modulate = Color( 0.443137, 0.443137, 0.443137, 1 )
+margin_left = 206.0
+margin_top = 100.0
+margin_right = 427.0
+margin_bottom = 228.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="c_name" type="LineEdit" parent="TabContainer/Characters/add_chard_char_panel"]
+margin_left = 8.0
+margin_top = 10.0
+margin_right = 175.0
+margin_bottom = 34.0
+placeholder_text = "Card Name"
+
+[node name="c_amount" type="LineEdit" parent="TabContainer/Characters/add_chard_char_panel"]
+margin_left = 7.93103
+margin_top = 48.0
+margin_right = 174.931
+margin_bottom = 72.0
+placeholder_text = "Quantity"
+
+[node name="confirm_add_card_enemy" type="Button" parent="TabContainer/Characters/add_chard_char_panel"]
+margin_left = 5.0
+margin_top = 100.0
+margin_right = 66.0
+margin_bottom = 120.0
+text = "Confirm"
+
+[node name="cancel_add_card_enemy" type="Button" parent="TabContainer/Characters/add_chard_char_panel"]
+margin_left = 148.621
+margin_top = 99.7241
+margin_right = 210.621
+margin_bottom = 119.724
+text = "Cancel"
+
+[node name="select_texture_char" type="FileDialog" parent="TabContainer/Characters"]
+margin_left = 84.0
+margin_top = 88.0
+margin_right = 399.0
+margin_bottom = 344.0
+window_title = "Open a File"
+dialog_text = "Select Achievement Texture"
+dialog_hide_on_ok = true
+mode = 0
+filters = PoolStringArray( "*.png" )
+show_hidden_files = true
+current_dir = "res://Assets"
+current_path = "res://Assets/"
+
+[node name="Cards" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( -340, 200 )
+
+[node name="card_list" type="ItemList" parent="TabContainer/Cards"]
+margin_right = 128.0
+margin_bottom = 560.0
+items = [ "Dave", ExtResource( 1 ), false, "Heals", ExtResource( 1 ), false, "Punch", ExtResource( 1 ), false, "Shield", ExtResource( 1 ), false ]
+fixed_icon_size = Vector2( 12, 12 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="data" type="Panel" parent="TabContainer/Cards"]
+margin_left = 188.0
+margin_top = 32.0
+margin_right = 444.0
+margin_bottom = 384.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Cards/data"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name_of" type="Label" parent="TabContainer/Cards/data"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 32.0
+rect_scale = Vector2( 2, 2 )
+align = 1
+valign = 1
+
+[node name="description" type="Label" parent="TabContainer/Cards/data"]
+margin_left = 16.0
+margin_top = 92.0
+margin_right = 240.0
+margin_bottom = 148.0
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="attribute" type="LineEdit" parent="TabContainer/Cards/data"]
+margin_left = 16.0
+margin_top = 168.0
+margin_right = 144.0
+margin_bottom = 192.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="show_text" type="TextEdit" parent="TabContainer/Cards/data"]
+margin_left = 16.0
+margin_top = 200.0
+margin_right = 208.0
+margin_bottom = 256.0
+wrap_enabled = true
+
+[node name="min_val" type="LineEdit" parent="TabContainer/Cards/data"]
+margin_left = 16.0
+margin_top = 264.0
+margin_right = 74.0
+margin_bottom = 288.0
+
+[node name="max_val" type="LineEdit" parent="TabContainer/Cards/data"]
+margin_left = 112.0
+margin_top = 264.0
+margin_right = 170.0
+margin_bottom = 288.0
+
+[node name="Save_card" type="Button" parent="TabContainer/Cards/data"]
+margin_left = 191.0
+margin_top = 320.0
+margin_right = 255.0
+margin_bottom = 344.0
+text = "Save"
+
+[node name="card_type" type="OptionButton" parent="TabContainer/Cards/data"]
+margin_left = 152.0
+margin_top = 128.0
+margin_right = 252.0
+margin_bottom = 148.0
+text = "ATTACK"
+align = 1
+items = [ "ATTACK", null, false, 0, null, "HEAL", null, false, 1, null, "DEFEND", null, false, 2, null ]
+selected = 0
+
+[node name="new_card" type="Button" parent="TabContainer/Cards"]
+margin_left = 188.0
+margin_top = 416.0
+margin_right = 257.0
+margin_bottom = 436.0
+text = "new card"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="remove_card" type="Button" parent="TabContainer/Cards"]
+margin_left = 381.0
+margin_top = 416.0
+margin_right = 465.0
+margin_bottom = 436.0
+text = "delete card"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_card_panel" type="Panel" parent="TabContainer/Cards"]
+visible = false
+self_modulate = Color( 0.407843, 0.407843, 0.407843, 1 )
+margin_left = 196.0
+margin_top = 100.0
+margin_right = 436.0
+margin_bottom = 204.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_card_name" type="LineEdit" parent="TabContainer/Cards/new_card_panel"]
+margin_left = 8.0
+margin_top = 10.0
+margin_right = 232.0
+margin_bottom = 34.0
+placeholder_text = "card name"
+
+[node name="new_card_desc" type="LineEdit" parent="TabContainer/Cards/new_card_panel"]
+margin_left = 8.0
+margin_top = 44.0
+margin_right = 232.0
+margin_bottom = 68.0
+placeholder_text = "card description"
+
+[node name="confirm_make_card" type="Button" parent="TabContainer/Cards/new_card_panel"]
+margin_left = 8.0
+margin_top = 76.0
+margin_right = 20.0
+margin_bottom = 96.0
+text = "Confirm"
+
+[node name="cancel_make_card" type="Button" parent="TabContainer/Cards/new_card_panel"]
+margin_left = 177.0
+margin_top = 76.0
+margin_right = 231.0
+margin_bottom = 96.0
+text = "Cancel"
+
+[node name="holder" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save_all_data" type="Button" parent="holder"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 752.0
+margin_top = 808.0
+margin_right = 792.0
+margin_bottom = 788.0
+rect_scale = Vector2( 1.45, 1.45 )
+rect_clip_content = true
+text = "Save data"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="item_selected" from="TabContainer/Achievements/list" to="." method="_on_list_item_selected"]
+[connection signal="pressed" from="TabContainer/Achievements/data/TextureRect/Button" to="." method="_on_Button_pressed"]
+[connection signal="item_selected" from="TabContainer/Achievements/data/requirements" to="." method="_on_requirements_item_selected"]
+[connection signal="pressed" from="TabContainer/Achievements/data/add_requirement" to="." method="_on_add_requirement_pressed"]
+[connection signal="pressed" from="TabContainer/Achievements/data/remove_requirement" to="." method="_on_remove_requirement_pressed"]
+[connection signal="pressed" from="TabContainer/Achievements/data/edit_requirement" to="." method="_on_edit_requirement_pressed"]
+[connection signal="pressed" from="TabContainer/Achievements/data/PopupPanel/data_confirm" to="." method="_on_data_confirm_pressed"]
+[connection signal="pressed" from="TabContainer/Achievements/data/PopupPanel/data_cancel" to="." method="_on_data_cancel_pressed"]
+[connection signal="file_selected" from="TabContainer/Achievements/select_texture" to="." method="_on_select_texture_file_selected"]
+[connection signal="pressed" from="TabContainer/Achievements/add_achievement" to="." method="_on_add_achievement_pressed"]
+[connection signal="pressed" from="TabContainer/Achievements/remove_achievement" to="." method="_on_remove_achievement_pressed"]
+[connection signal="pressed" from="TabContainer/Achievements/add_achievement_panel/confirm_achievement" to="." method="_on_confirm_achievement_pressed"]
+[connection signal="pressed" from="TabContainer/Achievements/add_achievement_panel/cancel_achievment" to="." method="_on_cancel_achievment_pressed"]
+[connection signal="item_selected" from="TabContainer/Enemies/enemy_list" to="." method="_on_enemy_list_item_selected"]
+[connection signal="pressed" from="TabContainer/Enemies/data/TextureRect/change_enemy_tex" to="." method="_on_change_enemy_tex_pressed"]
+[connection signal="text_changed" from="TabContainer/Enemies/data/enemy_health" to="." method="_on_enemy_health_text_changed"]
+[connection signal="text_changed" from="TabContainer/Enemies/data/enemy_str" to="." method="_on_enemy_str_text_changed"]
+[connection signal="text_changed" from="TabContainer/Enemies/data/enemy_def" to="." method="_on_enemy_def_text_changed"]
+[connection signal="text_changed" from="TabContainer/Enemies/data/enemy_sup" to="." method="_on_enemy_sup_text_changed"]
+[connection signal="pressed" from="TabContainer/Enemies/data/enemy_add_card" to="." method="_on_enemy_add_card_pressed"]
+[connection signal="pressed" from="TabContainer/Enemies/data/enemy_remove_card" to="." method="_on_enemy_remove_card_pressed"]
+[connection signal="pressed" from="TabContainer/Enemies/data/Save_enemy" to="." method="_on_Save_enemy_pressed"]
+[connection signal="pressed" from="TabContainer/Enemies/data/enem_add_name" to="." method="_on_enem_add_name_pressed"]
+[connection signal="pressed" from="TabContainer/Enemies/data/enem_remove_name" to="." method="_on_enem_remove_name_pressed"]
+[connection signal="text_changed" from="TabContainer/Enemies/add_chard_enemy_panel/e_amount" to="." method="_on_e_amount_text_changed"]
+[connection signal="pressed" from="TabContainer/Enemies/add_chard_enemy_panel/confirm_add_card_enemy" to="." method="_on_confirm_add_card_enemy_pressed"]
+[connection signal="pressed" from="TabContainer/Enemies/add_chard_enemy_panel/cancel_add_card_enemy" to="." method="_on_cancel_add_card_enemy_pressed"]
+[connection signal="file_selected" from="TabContainer/Enemies/select_texture_enemy" to="." method="_on_select_texture_enemy_file_selected"]
+[connection signal="item_selected" from="TabContainer/Characters/char_list" to="." method="_on_char_list_item_selected"]
+[connection signal="pressed" from="TabContainer/Characters/data/TextureRect/change_char_tex" to="." method="_on_change_char_tex_pressed"]
+[connection signal="text_changed" from="TabContainer/Characters/data/char_name" to="." method="_on_char_name_text_changed"]
+[connection signal="text_changed" from="TabContainer/Characters/data/char_health" to="." method="_on_char_health_text_changed"]
+[connection signal="text_changed" from="TabContainer/Characters/data/char_str" to="." method="_on_char_str_text_changed"]
+[connection signal="text_changed" from="TabContainer/Characters/data/char_def" to="." method="_on_char_def_text_changed"]
+[connection signal="text_changed" from="TabContainer/Characters/data/char_sup" to="." method="_on_char_sup_text_changed"]
+[connection signal="pressed" from="TabContainer/Characters/data/char_add_card" to="." method="_on_char_add_card_pressed"]
+[connection signal="pressed" from="TabContainer/Characters/data/char_remove_card" to="." method="_on_char_remove_card_pressed"]
+[connection signal="pressed" from="TabContainer/Characters/data/Save_char" to="." method="_on_Save_char_pressed"]
+[connection signal="text_changed" from="TabContainer/Characters/add_chard_char_panel/c_amount" to="." method="_on_c_amount_text_changed"]
+[connection signal="pressed" from="TabContainer/Characters/add_chard_char_panel/confirm_add_card_enemy" to="." method="_on_confirm_add_card_enemy_pressed"]
+[connection signal="file_selected" from="TabContainer/Characters/select_texture_char" to="." method="_on_select_texture_char_file_selected"]
+[connection signal="item_selected" from="TabContainer/Cards/card_list" to="." method="_on_card_list_item_selected"]
+[connection signal="text_changed" from="TabContainer/Cards/data/attribute" to="." method="_on_attribute_text_changed"]
+[connection signal="text_changed" from="TabContainer/Cards/data/show_text" to="." method="_on_show_text_text_changed"]
+[connection signal="text_changed" from="TabContainer/Cards/data/min_val" to="." method="_on_min_val_text_changed"]
+[connection signal="text_changed" from="TabContainer/Cards/data/max_val" to="." method="_on_max_val_text_changed"]
+[connection signal="pressed" from="TabContainer/Cards/data/Save_card" to="." method="_on_Save_card_pressed"]
+[connection signal="item_selected" from="TabContainer/Cards/data/card_type" to="." method="_on_card_type_item_selected"]
+[connection signal="pressed" from="TabContainer/Cards/new_card" to="." method="_on_new_card_pressed"]
+[connection signal="pressed" from="TabContainer/Cards/remove_card" to="." method="_on_remove_card_pressed"]
+[connection signal="pressed" from="TabContainer/Cards/new_card_panel/confirm_make_card" to="." method="_on_confirm_make_card_pressed"]
+[connection signal="pressed" from="TabContainer/Cards/new_card_panel/cancel_make_card" to="." method="_on_cancel_make_card_pressed"]
+[connection signal="pressed" from="holder/save_all_data" to="." method="_on_save_all_data_pressed"]
