@@ -4,19 +4,13 @@
 			"character": "character-1639884676.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[wave amp=32 freq=40]THE CARDS HOLD YOUR SOULS.[/wave]"
+			"text": "[wave amp=32 freq=40]GET OUT OF MY HOUSE[/wave]"
 		},
 		{
 			"character": "character-1639884676.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[wave amp=32 freq=40]THE DECK BUILDER MUST NOT REIGN[/wave]"
-		},
-		{
-			"character": "character-1639884676.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "[wave amp=32 freq=40]LEAVE US[/wave]"
+			"text": "[wave amp=32 freq=40]LET ME BE[/wave]"
 		},
 		{
 			"character": "character-1639884676.json",
@@ -25,26 +19,9 @@
 			"text": "[wave amp=32 freq=40]YOU MUST LEAVE[/wave]"
 		},
 		{
-			"character": "character-1639884676.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "[wave amp=32 freq=40]FREE US[/wave]"
-		},
-		{
 			"call_node": {
 				"arguments": [
-					"EEEEEEE",
-					"res://Assets/Textures/world/sign.png"
-				],
-				"method_name": "update_achievement",
-				"target_node_path": "/root/Node2D/text_area"
-			},
-			"event_id": "dialogic_042"
-		},
-		{
-			"call_node": {
-				"arguments": [
-					"EEEEEEE",
+					"EELDE",
 					"res://Assets/Textures/world/sign.png"
 				],
 				"method_name": "update_achievement",

@@ -26,8 +26,8 @@ func get_card_data(card_id):
 	else:
 		return card_data.values()[card_id]
 # warning-ignore:unused_argument
-func add_action_from_enemy(action,enemy_to_do,target,attribute,input_stats,target_enemy):
-	return call(action,enemy_to_do,target,target_enemy,false,false,false,{"Card_Stats":input_stats},"PHYSICAL")
+func add_action_from_enemy(action,enemy_to_do,target,attribute,input_stats,target_enemy,stats_in=[10,10,10,40]):
+	return call(action,enemy_to_do,target,target_enemy,false,false,false,{"Card_Stats":input_stats,"STATS":stats_in},"PHYSICAL")
 func add_action(action,turn_count,active_ally=null,active_enemy=null,selected_ally=null,active_card=0,foiled = false,modifiers={},selected_card=null,card_attribute="Null"):
 	if active_ally == null || selected_card == null:return false
 	if !modifiers.has("Card_Stats"):
@@ -71,7 +71,7 @@ func HURT(ally,enemy,_selected,_active_card,foiled,delayed = false,modifiers={},
 	if modifiers.has("BUFFS"):output *= modifiers["BUFFS"]
 	enemy.hurt(
 		round(
-			output*Simpli.calculate_damage_modifier(ally.strength,enemy.stats[1],card_attribute,enemy.stats[4],enemy.stats[5])),ally
+			output*Simpli.calculate_damage_modifier(ally.strength,enemy.stats[2],card_attribute,enemy.stats[4],enemy.stats[5])),ally
 			)
 	if !delayed:ally_used(ally)
 	return true
@@ -79,11 +79,10 @@ func HURT(ally,enemy,_selected,_active_card,foiled,delayed = false,modifiers={},
 func HEAL(ally,enemy,selected,_active_card,foiled,delayed=false,modifiers={},card_attribute="Null"):
 	if enemy!=null || selected == null:return false
 	var output = modifiers["Card_Stats"][2]
-	
 	if !foiled:output = default_output(modifiers["Card_Stats"])
 	if modifiers.has("BUFFS"):output *= modifiers["BUFFS"]
-	
-	selected.heal(output)
+	if modifiers.has("STATS"):output *= sqrt(modifiers["STATS"][1])
+	selected.heal(round(output))
 	if !delayed:ally_used(ally)
 	return true
 # warning-ignore:unused_argument

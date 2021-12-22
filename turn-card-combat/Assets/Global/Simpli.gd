@@ -61,8 +61,8 @@ func load_enemy_data(enemy_map=0):
 	file.open("res://Data/level_dat.dat",File.READ)
 	var data_map = str2var(file.get_as_text())[enemy_map]
 	cur_map_data = []
-	for enemy in data_map.keys():
-		for enemy_count in data_map[enemy]:
+	for enemy in data_map["enemies"].keys():
+		for enemy_count in data_map["enemies"][enemy]:
 			cur_map_data.append(enemy)
 	file.close()
 	file.open("res://Data/enemy_data.dat",File.READ)

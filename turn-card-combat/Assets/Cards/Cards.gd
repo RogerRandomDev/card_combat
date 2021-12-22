@@ -23,17 +23,21 @@ var card_action = "NULL"
 var card_stats = ["NULL"]
 var card_delay = 0
 var card_attribute = "Null"
+var card_color = Color.white
+var card_name = ""
 func _ready():
 	randomize()
 #	foiled = rand_range(0.0,1.0)>0.75
 	toggle_foil(foiled)
-	$Card_Image.modulate = Color(int(card_type=="Punch"),int(card_type=="Heals"),int(card_type=="Shield"),1.0)
 	process_priority = get_position_in_parent()
 	var data = Card.get_card_data(card_type)
 	$Card_Image/Text/Top.text = data[0]
+	card_name = card_type
 	card_action = data[2]
 	card_stats = data[3]
 	card_attribute = data[4]
+	card_type = data[2]
+	$Card_Image/Text/Top2.text = str(card_name)
 	var char_count = data[0].length()
 	$Card_Image/Text/Top.rect_scale.x = 1-(0.5/max(char_count-4,1))
 	if foiled:
@@ -46,8 +50,10 @@ func _ready():
 		$Card_Image/Text/Top.rect_size.x = 48/$Card_Image/Text/Top.rect_scale.x
 		$Card_Image/Text/Top.rect_position.y = $Card_Image/Text/Top.rect_size.x/2-24
 	$Card_Image/Text/Top.rect_scale.y = $Card_Image/Text/Top.rect_scale.x
-
+	$Card_Image.modulate = data[5]
+	card_color = data[5]
 func _on_Card_mouse_entered():
+	$Card_Image/Text/Top2.show()
 	if selected:return
 	$Tween.interpolate_property($Card_Image,"rect_size",$Card_Image.rect_size,Vector2(72,96),0.25,Tween.TRANS_CUBIC)
 	$Tween.interpolate_property($Card_Image,"rect_position",$Card_Image.rect_position,Vector2(-6,-48),0.25,Tween.TRANS_CUBIC)
@@ -55,6 +61,7 @@ func _on_Card_mouse_entered():
 	$Tween.start()
 	self.show_on_top = true
 func _on_Card_mouse_exited():
+	if !selected:$Card_Image/Text/Top2.hide()
 	if selected:return
 	$Tween.interpolate_property($Card_Image,"rect_size",$Card_Image.rect_size,Vector2(48,64),0.25,Tween.TRANS_CUBIC)
 	$Tween.interpolate_property($Card_Image,"rect_position",$Card_Image.rect_position,Vector2(0,0),0.25,Tween.TRANS_CUBIC)
@@ -78,13 +85,13 @@ func _on_Card_gui_input(event):
 func select_card():
 	for card in get_parent().get_children():
 		card.selected = false
-		get_parent().get_parent().update_cards(false,Color(int(card_type==0),int(card_type==1),int(card_type==2),1.0))
+		get_parent().get_parent().update_cards(false,$Card_Image.modulate)
 		card.call_deferred('_on_Card_mouse_exited')
 	$Tween.interpolate_property($Card_Image,"rect_global_position",$Card_Image.rect_global_position,Vector2(512,300)-Vector2(24,32),0.5,Tween.TRANS_CUBIC)
 	$Tween.interpolate_property($Card_Image,"rect_size",$Card_Image.rect_size,Vector2(96,128),0.5,Tween.TRANS_CUBIC)
 	$Tween.interpolate_property($Card_Image/Text,"rect_scale",$Card_Image/Text.rect_scale,Vector2(2,2),0.5,Tween.TRANS_CUBIC)
 	selected = true
-	get_parent().get_parent().update_cards(true,Color(int(card_type==0),int(card_type==1),int(card_type==2),1.0))
+	get_parent().get_parent().update_cards(true,$Card_Image.modulate)
 	$Tween.start()
 func show_details():
 	pass
@@ -120,7 +127,7 @@ func redo_foil(recieved_foil=null):
 	foiled = rand_range(0.0,1.0)>0.75
 	if recieved_foil != null:foiled = recieved_foil
 	toggle_foil(foiled)
-	var data = Card.get_card_data(card_type)
+	var data = Card.get_card_data(card_name)
 	if foiled:
 		data[1] = data[1].replace("_____",str(data[3][2]))
 	else:

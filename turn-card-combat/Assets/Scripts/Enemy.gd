@@ -27,7 +27,7 @@ func _input(_event):
 		var origin = get_parent().get_parent().get_parent()
 
 func _on_Enemy_mouse_entered():
-	if !get_parent().get_parent().get_parent().active_card || get_parent().get_parent().get_parent().active_card_type != 0:return
+	if !get_parent().get_parent().get_parent().active_card || get_parent().get_parent().get_parent().active_card_type != 'HURT':return
 	$Tween.interpolate_property($Sprite,"modulate",$Sprite.modulate,Color(1,1,1,1),0.125,Tween.TRANS_CUBIC)
 	$Tween.start()
 	get_parent().get_parent().get_parent().selected_enemy = self
@@ -110,6 +110,7 @@ func load_data(data):
 	if typeof(Name) == typeof([]):
 		$Sprite/Node2D/Name.text = data["Name"][round(rand_range(0.0,data["Name"].size()-1))]
 	else:$Sprite/Node2D/Name.text = data["Name"]
+	$Sprite/Node2D/specie.text = data["ID"]
 	$TextureRect/Label.text = $Sprite/Node2D/Name.text
 	update_hp_bar()
 func update_hp_bar():

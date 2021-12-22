@@ -63,7 +63,7 @@
 			"character": "character-1639863563.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "!!!"
+			"text": "..."
 		},
 		{
 			"character": "character-1639863563.json",
@@ -75,13 +75,31 @@
 			"character": "character-1639863563.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I'd recommend you do the same as well."
+			"text": "The cards are a tough concept to understand, even for me."
 		},
 		{
 			"character": "character-1639863563.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Not many people understand it in full, and what little I do know, is enough to make me understand the gravity of what they are."
+		},
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "All i know, is that someone, or something, created them to protect, but backfired horribly, making them roam the ancient caves and dungeons."
+		},
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It has been said defeating them will turn turn them back into cards, and some people can use the cards ESSENCE to fight back, commonly in the form of COLORED cards. similiarly to the ones you have."
+		},
+		{
+			"character": "character-1639863563.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I understand if you want to know more than this, but I won't be saying more than this. I recommend you figure it out from here if you want to know more"
 		},
 		{
 			"definition": "1639866288-953",
@@ -99,7 +117,7 @@
 			"value": ""
 		},
 		{
-			"character": "",
+			"character": "character-1639863563.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Well, feel free to stop by anytime, I'm not going anywhere."

@@ -1,5 +1,7 @@
 [ {
 "Cards": {
+"Fire Ball": 10,
+"Hard Punch": 5,
 "Heals": 1,
 "Punch": 3,
 "Shield": 1
@@ -13,4 +15,22 @@
 "STRENGTHS": [ "null", "null" ],
 "Strength": 10,
 "Support": 10
+}, {
+"Cards": {
+"Fire Ball": 2,
+"Heals": 3,
+"Holy Heal": 1,
+"Ice Shards": 2,
+"Shield": 1,
+"Static Arcs": 2
+},
+"Default_Stats": [ 10, 10, 10, 40 ],
+"Defense": 10,
+"Health": 40,
+"Icon": "res://Assets/Textures/Entities/Characters/Char_1.png",
+"Level_Rate": [ 1, 1, 2, 5 ],
+"Name": "Melinda",
+"STRENGTHS": [ "null", "null" ],
+"Strength": 10,
+"Support": 40
 } ]

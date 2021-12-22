@@ -30,10 +30,13 @@ func _ready():
 	$Resources/Energy.value = ally_count
 	randomize()
 # warning-ignore:shadowed_variable
+# warning-ignore:unused_variable
+# warning-ignore:shadowed_variable
 	var card_count = 0
 	for card in max_cards:
 		var n_card = card_scene.instance()
 		n_card.card_type = "Punch"
+		n_card.card_name = "Punch"
 		$Cards.add_child(n_card)
 		card_count += 1
 	for enemy in enemy_count:
@@ -131,7 +134,6 @@ func enemy_turns():
 			return
 		if target_enemy == null && $Interaction/Enemies.get_child(cur_enemy).can_attack():
 			chosen_action = "HURT"
-			
 		var targeted_ally = null
 		if $Interaction/Allies.get_child_count() > target_ally && $Interaction/Enemies.get_child_count() > cur_enemy:
 			targeted_ally = $Interaction/Allies.get_child(target_ally)
@@ -139,9 +141,9 @@ func enemy_turns():
 			"HEAL":
 				Card.add_action_from_enemy(chosen_action,
 				$Interaction/Enemies.get_child(cur_enemy),
-					targeted_ally,null,
+					null,null,
 					$Interaction/Enemies.get_child(cur_enemy).owned_cards["HEAL"],
-					target_enemy)
+					target_enemy,$Interaction/Enemies.get_child(cur_enemy).stats)
 			"HURT":
 					Card.add_action_from_enemy(chosen_action,$Interaction/Enemies.get_child(cur_enemy),
 					targeted_ally,null,
@@ -269,7 +271,7 @@ func new_turn():
 	Card.turn_end()
 func update_active_particles(type):
 	if active_ally==null:return
-	active_ally.get_node("Sprite/CPUParticles2D").process_material.color = Color(int(type==0),int(type==1),int(type==2),1.0)
+	active_ally.get_node("Sprite/CPUParticles2D").process_material.color = Color(int(type=='HURT'),int(type=="HEAL"),int(type=='DEFEND'),1.0)
 	active_ally.get_node("Sprite/CPUParticles2D").emitting = true
 func load_enemies_for_round():
 	enemy_count = 3
@@ -344,6 +346,7 @@ func select_ally(selected_ally):
 		var card = card_scene.instance()
 		card.card_type = selected_ally.cards_this_turn[cards]
 		card.foiled = selected_ally.cards_foiled[cards]
+		card.card_name = selected_ally.cards_this_turn[cards]
 		$Cards.call_deferred('add_child',card)
 		
 func killed_player():

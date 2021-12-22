@@ -15,7 +15,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [node name="Combat" type="Node2D"]
-process_priority = 10
+process_priority = -100
 script = ExtResource( 5 )
 card_scene = ExtResource( 3 )
 enemy_count = 1
@@ -24,6 +24,7 @@ ally_count = 5
 ally_scene = ExtResource( 6 )
 
 [node name="Cards" type="HBoxContainer" parent="."]
+process_priority = -10
 visible = false
 margin_left = 192.0
 margin_top = 512.0
@@ -85,6 +86,7 @@ __meta__ = {
 }
 
 [node name="Enemies" type="VBoxContainer" parent="Interaction"]
+process_priority = 10
 margin_left = 64.0
 margin_top = 64.0
 margin_right = 256.0
@@ -96,6 +98,7 @@ __meta__ = {
 }
 
 [node name="Allies" type="VBoxContainer" parent="Interaction"]
+process_priority = 10
 margin_left = 896.0
 margin_top = 64.0
 margin_right = 960.0

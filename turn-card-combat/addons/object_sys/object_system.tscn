@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Textures/card_base.png" type="Texture" id=1]
 [ext_resource path="res://addons/object_sys/object_system.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Textures/Entities/Characters/Char0.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Textures/world/sign.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Textures/Entities/Characters/green_slime.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Textures/Entities/Characters/Angy_tree.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Textures/Entities/Characters/Demon.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Textures/Entities/Characters/Stambling_moss.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Textures/Entities/Characters/gelatin_cube.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Textures/Entities/Characters/Char_1.png" type="Texture" id=10]
 
 [node name="Control" type="Control"]
 anchor_right = 0.5
@@ -26,7 +31,6 @@ __meta__ = {
 }
 
 [node name="Achievements" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -37,7 +41,7 @@ margin_bottom = -4.0
 [node name="list" type="ItemList" parent="TabContainer/Achievements"]
 margin_right = 128.0
 margin_bottom = 560.0
-items = [ "First Blood", ExtResource( 3 ), false, "More Blood", ExtResource( 3 ), false, "Most Blood", ExtResource( 3 ), false, "Blood", ExtResource( 3 ), false, "I Win", ExtResource( 5 ), false, "I Win Again", ExtResource( 5 ), false, "...I Win?", ExtResource( 5 ), false, "I am unbeatable", ExtResource( 5 ), false, "Good luck", ExtResource( 4 ), false, "EEEEEEE", ExtResource( 4 ), false ]
+items = [ "First Blood", ExtResource( 3 ), false, "More Blood", ExtResource( 3 ), false, "Most Blood", ExtResource( 3 ), false, "Blood", ExtResource( 3 ), false, "I Win", ExtResource( 5 ), false, "I Win Again", ExtResource( 5 ), false, "...I Win?", ExtResource( 5 ), false, "I am unbeatable", ExtResource( 5 ), false, "EEEEEEE", ExtResource( 4 ), false, "Out of bounds", ExtResource( 4 ), false ]
 fixed_icon_size = Vector2( 12, 12 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -238,6 +242,7 @@ __meta__ = {
 }
 
 [node name="Enemies" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -248,6 +253,7 @@ margin_bottom = -4.0
 [node name="enemy_list" type="ItemList" parent="TabContainer/Enemies"]
 margin_right = 128.0
 margin_bottom = 560.0
+items = [ "Human", ExtResource( 3 ), false, "Slime", ExtResource( 5 ), false, "Demon", ExtResource( 7 ), false, "Bumbling Moss", ExtResource( 8 ), false, "Trider", ExtResource( 6 ), false, "Gelatin", ExtResource( 9 ), false ]
 fixed_icon_size = Vector2( 12, 12 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -288,10 +294,10 @@ __meta__ = {
 }
 
 [node name="owned_cards" type="ItemList" parent="TabContainer/Enemies/data"]
-margin_left = 16.2758
-margin_top = 93.931
-margin_right = 106.276
-margin_bottom = 169.931
+margin_left = 8.0
+margin_top = 94.0
+margin_right = 144.0
+margin_bottom = 170.0
 
 [node name="enemy_name" type="LineEdit" parent="TabContainer/Enemies/data"]
 margin_left = 101.793
@@ -339,10 +345,10 @@ __meta__ = {
 }
 
 [node name="enemy_def" type="LineEdit" parent="TabContainer/Enemies/data"]
-margin_left = 112.138
-margin_top = 246.345
-margin_right = 170.138
-margin_bottom = 270.345
+margin_left = 28.6896
+margin_top = 247.724
+margin_right = 86.6896
+margin_bottom = 271.724
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -358,10 +364,10 @@ __meta__ = {
 }
 
 [node name="enemy_sup" type="LineEdit" parent="TabContainer/Enemies/data"]
-margin_left = 112.138
-margin_top = 287.724
-margin_right = 170.138
-margin_bottom = 311.724
+margin_left = 28.6896
+margin_top = 289.103
+margin_right = 86.6896
+margin_bottom = 313.103
 
 [node name="Label4" type="Label" parent="TabContainer/Enemies/data/enemy_sup"]
 margin_left = -28.2758
@@ -373,17 +379,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="enemy_id" type="LineEdit" parent="TabContainer/Enemies/data"]
+margin_left = 28.0
+margin_top = 320.138
+margin_right = 174.0
+margin_bottom = 344.138
+
+[node name="Label4" type="Label" parent="TabContainer/Enemies/data/enemy_id"]
+margin_left = -28.2758
+margin_top = 6.89655
+margin_right = 13.7242
+margin_bottom = 20.8965
+text = "ID:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="enemy_add_card" type="Button" parent="TabContainer/Enemies/data"]
-margin_left = 111.448
+margin_left = 155.586
 margin_top = 98.069
-margin_right = 177.448
+margin_right = 221.586
 margin_bottom = 118.069
 text = "add card"
 
 [node name="enemy_remove_card" type="Button" parent="TabContainer/Enemies/data"]
-margin_left = 111.448
+margin_left = 155.586
 margin_top = 142.207
-margin_right = 203.448
+margin_right = 247.586
 margin_bottom = 162.207
 text = "remove card"
 
@@ -411,6 +433,50 @@ margin_right = 203.034
 margin_bottom = 88.4138
 text = "Remove"
 
+[node name="enem_add_name2" type="Button" parent="TabContainer/Enemies/data"]
+margin_left = 1.10346
+margin_top = 360.138
+margin_right = 65.1031
+margin_bottom = 380.138
+text = "Add"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enem_remove_name2" type="Button" parent="TabContainer/Enemies/data"]
+margin_left = 72.8271
+margin_top = 360.828
+margin_right = 136.827
+margin_bottom = 380.828
+text = "Remove"
+
+[node name="strength" type="LineEdit" parent="TabContainer/Enemies/data"]
+margin_left = 100.414
+margin_top = 247.724
+margin_right = 196.414
+margin_bottom = 271.724
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Enemies/data/strength"]
+margin_top = -13.7931
+margin_right = 93.0
+margin_bottom = 0.206879
+text = "Strong against:"
+
+[node name="weakness" type="LineEdit" parent="TabContainer/Enemies/data"]
+margin_left = 100.414
+margin_top = 291.862
+margin_right = 196.414
+margin_bottom = 315.862
+
+[node name="Label2" type="Label" parent="TabContainer/Enemies/data/weakness"]
+margin_top = -15.8621
+margin_right = 93.0
+margin_bottom = -1.86212
+text = "Weak against:"
+
 [node name="add_chard_enemy_panel" type="Panel" parent="TabContainer/Enemies"]
 visible = false
 self_modulate = Color( 0.443137, 0.443137, 0.443137, 1 )
@@ -428,13 +494,6 @@ margin_top = 10.0
 margin_right = 175.0
 margin_bottom = 34.0
 placeholder_text = "Card Name"
-
-[node name="e_amount" type="LineEdit" parent="TabContainer/Enemies/add_chard_enemy_panel"]
-margin_left = 7.93103
-margin_top = 48.0
-margin_right = 174.931
-margin_bottom = 72.0
-placeholder_text = "Quantity"
 
 [node name="confirm_add_card_enemy" type="Button" parent="TabContainer/Enemies/add_chard_enemy_panel"]
 margin_left = 5.0
@@ -476,7 +535,7 @@ margin_bottom = -4.0
 [node name="char_list" type="ItemList" parent="TabContainer/Characters"]
 margin_right = 128.0
 margin_bottom = 560.0
-items = [ "Dave", ExtResource( 3 ), false ]
+items = [ "Dave", ExtResource( 3 ), false, "Melinda", ExtResource( 10 ), false ]
 fixed_icon_size = Vector2( 12, 12 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -502,7 +561,6 @@ __meta__ = {
 }
 
 [node name="change_char_tex" type="Button" parent="TabContainer/Characters/data/TextureRect"]
-visible = false
 margin_top = 68.0
 margin_right = 57.0
 margin_bottom = 88.0
@@ -517,10 +575,13 @@ align = 1
 valign = 1
 
 [node name="owned_cards" type="ItemList" parent="TabContainer/Characters/data"]
-margin_left = 16.2758
-margin_top = 93.931
-margin_right = 106.276
-margin_bottom = 169.931
+margin_left = 7.0
+margin_top = 94.0
+margin_right = 145.0
+margin_bottom = 170.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="char_name" type="LineEdit" parent="TabContainer/Characters/data"]
 margin_left = 16.2758
@@ -561,10 +622,10 @@ __meta__ = {
 }
 
 [node name="char_def" type="LineEdit" parent="TabContainer/Characters/data"]
-margin_left = 112.138
-margin_top = 246.345
-margin_right = 170.138
-margin_bottom = 270.345
+margin_left = 27.3103
+margin_top = 247.724
+margin_right = 85.3103
+margin_bottom = 271.724
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -580,10 +641,10 @@ __meta__ = {
 }
 
 [node name="char_sup" type="LineEdit" parent="TabContainer/Characters/data"]
-margin_left = 112.138
-margin_top = 287.724
-margin_right = 170.138
-margin_bottom = 311.724
+margin_left = 27.3103
+margin_top = 289.103
+margin_right = 85.3103
+margin_bottom = 313.103
 
 [node name="Label4" type="Label" parent="TabContainer/Characters/data/char_sup"]
 margin_left = -28.2758
@@ -596,17 +657,17 @@ __meta__ = {
 }
 
 [node name="char_add_card" type="Button" parent="TabContainer/Characters/data"]
-margin_left = 111.448
-margin_top = 98.069
-margin_right = 177.448
-margin_bottom = 118.069
+margin_left = 150.069
+margin_top = 100.138
+margin_right = 216.069
+margin_bottom = 120.138
 text = "add card"
 
 [node name="char_remove_card" type="Button" parent="TabContainer/Characters/data"]
-margin_left = 111.448
-margin_top = 142.207
-margin_right = 203.448
-margin_bottom = 162.207
+margin_left = 150.069
+margin_top = 144.276
+margin_right = 242.069
+margin_bottom = 164.276
 text = "remove card"
 
 [node name="Save_char" type="Button" parent="TabContainer/Characters/data"]
@@ -615,6 +676,34 @@ margin_top = 320.0
 margin_right = 255.0
 margin_bottom = 344.0
 text = "Save"
+
+[node name="strength_c" type="LineEdit" parent="TabContainer/Characters/data"]
+margin_left = 100.414
+margin_top = 247.724
+margin_right = 196.414
+margin_bottom = 271.724
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Characters/data/strength_c"]
+margin_top = -13.7931
+margin_right = 93.0
+margin_bottom = 0.206879
+text = "Strong against:"
+
+[node name="weakness_c" type="LineEdit" parent="TabContainer/Characters/data"]
+margin_left = 100.414
+margin_top = 291.862
+margin_right = 196.414
+margin_bottom = 315.862
+
+[node name="Label2" type="Label" parent="TabContainer/Characters/data/weakness_c"]
+margin_left = 3.44827
+margin_top = -17.9311
+margin_right = 96.4483
+margin_bottom = -3.93109
+text = "Weak against:"
 
 [node name="add_chard_char_panel" type="Panel" parent="TabContainer/Characters"]
 visible = false
@@ -627,12 +716,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="c_name" type="LineEdit" parent="TabContainer/Characters/add_chard_char_panel"]
+[node name="c_name" type="OptionButton" parent="TabContainer/Characters/add_chard_char_panel"]
 margin_left = 8.0
 margin_top = 10.0
 margin_right = 175.0
 margin_bottom = 34.0
-placeholder_text = "Card Name"
+text = "ADD CARD"
+items = [ "Fire Ball", null, false, 0, null, "Hard Punch", null, false, 1, null, "Heals", null, false, 2, null, "Holy Heal", null, false, 3, null, "Punch", null, false, 4, null, "Shield", null, false, 5, null ]
+selected = 0
 
 [node name="c_amount" type="LineEdit" parent="TabContainer/Characters/add_chard_char_panel"]
 margin_left = 7.93103
@@ -641,14 +732,14 @@ margin_right = 174.931
 margin_bottom = 72.0
 placeholder_text = "Quantity"
 
-[node name="confirm_add_card_enemy" type="Button" parent="TabContainer/Characters/add_chard_char_panel"]
+[node name="confirm_add_card_char" type="Button" parent="TabContainer/Characters/add_chard_char_panel"]
 margin_left = 5.0
 margin_top = 100.0
 margin_right = 66.0
 margin_bottom = 120.0
 text = "Confirm"
 
-[node name="cancel_add_card_enemy" type="Button" parent="TabContainer/Characters/add_chard_char_panel"]
+[node name="cancel_add_card_char" type="Button" parent="TabContainer/Characters/add_chard_char_panel"]
 margin_left = 148.621
 margin_top = 99.7241
 margin_right = 210.621
@@ -669,6 +760,23 @@ show_hidden_files = true
 current_dir = "res://Assets"
 current_path = "res://Assets/"
 
+[node name="char_add_name3" type="Button" parent="TabContainer/Characters"]
+margin_left = 189.103
+margin_top = 392.138
+margin_right = 253.103
+margin_bottom = 412.138
+text = "Add"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="char_remove_name3" type="Button" parent="TabContainer/Characters"]
+margin_left = 260.827
+margin_top = 392.828
+margin_right = 324.827
+margin_bottom = 412.828
+text = "Remove"
+
 [node name="Cards" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
@@ -682,7 +790,7 @@ rect_pivot_offset = Vector2( -340, 200 )
 [node name="card_list" type="ItemList" parent="TabContainer/Cards"]
 margin_right = 128.0
 margin_bottom = 560.0
-items = [ "Dave", ExtResource( 1 ), false, "Heals", ExtResource( 1 ), false, "Punch", ExtResource( 1 ), false, "Shield", ExtResource( 1 ), false ]
+items = [ "Fire Ball", ExtResource( 1 ), false, "Hard Punch", ExtResource( 1 ), false, "Heals", ExtResource( 1 ), false, "Holy Heal", ExtResource( 1 ), false, "Punch", ExtResource( 1 ), false, "Shield", ExtResource( 1 ), false ]
 fixed_icon_size = Vector2( 12, 12 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -771,6 +879,12 @@ align = 1
 items = [ "ATTACK", null, false, 0, null, "HEAL", null, false, 1, null, "DEFEND", null, false, 2, null ]
 selected = 0
 
+[node name="ColorPickerButton" type="ColorPickerButton" parent="TabContainer/Cards/data"]
+margin_left = 17.6552
+margin_top = 294.621
+margin_right = 57.6552
+margin_bottom = 334.621
+
 [node name="new_card" type="Button" parent="TabContainer/Cards"]
 margin_left = 188.0
 margin_top = 416.0
@@ -830,6 +944,154 @@ margin_right = 231.0
 margin_bottom = 96.0
 text = "Cancel"
 
+[node name="Levels" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Level_List" type="ItemList" parent="TabContainer/Levels"]
+margin_top = 12.0
+margin_right = 116.0
+margin_bottom = 542.0
+items = [ "Level_0", null, false, "Level_1", null, false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Data" type="Panel" parent="TabContainer/Levels"]
+margin_left = 158.0
+margin_top = 56.0
+margin_right = 428.0
+margin_bottom = 498.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lvl_Range" type="Control" parent="TabContainer/Levels/Data"]
+margin_left = 20.069
+margin_top = 360.276
+margin_right = 60.069
+margin_bottom = 400.276
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="min" type="LineEdit" parent="TabContainer/Levels/Data/Lvl_Range"]
+margin_right = 96.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="max" type="LineEdit" parent="TabContainer/Levels/Data/Lvl_Range"]
+margin_left = 128.0
+margin_right = 224.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Levels/Data/Lvl_Range"]
+margin_top = -16.0
+margin_right = 224.0
+margin_bottom = -2.0
+text = "Level Range"
+align = 1
+
+[node name="enemys_in" type="Control" parent="TabContainer/Levels/Data"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemies" type="ItemList" parent="TabContainer/Levels/Data/enemys_in"]
+margin_left = 46.0
+margin_top = 44.0
+margin_right = 180.0
+margin_bottom = 221.0
+
+[node name="add_enemy_to_list" type="OptionButton" parent="TabContainer/Levels/Data/enemys_in"]
+margin_left = 180.0
+margin_top = 44.0
+margin_right = 270.0
+margin_bottom = 64.0
+toggle_mode = false
+text = "Add"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="remove_enemy_from_list" type="Button" parent="TabContainer/Levels/Data/enemys_in"]
+margin_left = 182.138
+margin_top = 99.5862
+margin_right = 246.138
+margin_bottom = 119.586
+text = "Remove"
+
+[node name="enemy_ratio" type="LineEdit" parent="TabContainer/Levels/Data/enemys_in"]
+margin_left = 180.069
+margin_top = 69.931
+margin_right = 270.069
+margin_bottom = 93.931
+align = 1
+placeholder_text = "Enemy Ratio"
+
+[node name="level_buttons" type="Control" parent="TabContainer/Levels/Data"]
+margin_left = 20.069
+margin_top = 447.172
+margin_right = 60.069
+margin_bottom = 487.172
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Save_level" type="Button" parent="TabContainer/Levels/Data/level_buttons"]
+margin_left = 171.034
+margin_top = -44.1379
+margin_right = 233.034
+margin_bottom = -19.1379
+text = "Save"
+
+[node name="new_level" type="Button" parent="TabContainer/Levels/Data/level_buttons"]
+margin_right = 92.0
+margin_bottom = 20.0
+text = "New Level"
+
+[node name="remove_level" type="Button" parent="TabContainer/Levels/Data/level_buttons"]
+margin_left = 127.931
+margin_top = 0.276
+margin_right = 229.931
+margin_bottom = 20.276
+text = "Remove Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level_name" type="Control" parent="TabContainer/Levels/Data"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="name_label" type="Label" parent="TabContainer/Levels/Data/level_name"]
+margin_left = 30.0
+margin_right = 198.0
+margin_bottom = 44.0
+align = 1
+valign = 1
+
+[node name="name_edit" type="LineEdit" parent="TabContainer/Levels/Data/level_name"]
+margin_left = 48.0
+margin_top = 226.0
+margin_right = 180.0
+margin_bottom = 250.0
+placeholder_text = "level name:"
+
 [node name="holder" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -852,6 +1114,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="tab_selected" from="TabContainer" to="." method="_on_TabContainer_tab_selected"]
 [connection signal="item_selected" from="TabContainer/Achievements/list" to="." method="_on_list_item_selected"]
 [connection signal="pressed" from="TabContainer/Achievements/data/TextureRect/Button" to="." method="_on_Button_pressed"]
 [connection signal="item_selected" from="TabContainer/Achievements/data/requirements" to="." method="_on_requirements_item_selected"]
@@ -867,16 +1130,21 @@ __meta__ = {
 [connection signal="pressed" from="TabContainer/Achievements/add_achievement_panel/cancel_achievment" to="." method="_on_cancel_achievment_pressed"]
 [connection signal="item_selected" from="TabContainer/Enemies/enemy_list" to="." method="_on_enemy_list_item_selected"]
 [connection signal="pressed" from="TabContainer/Enemies/data/TextureRect/change_enemy_tex" to="." method="_on_change_enemy_tex_pressed"]
+[connection signal="text_entered" from="TabContainer/Enemies/data/enemy_name" to="." method="_on_enemy_name_text_entered"]
 [connection signal="text_changed" from="TabContainer/Enemies/data/enemy_health" to="." method="_on_enemy_health_text_changed"]
 [connection signal="text_changed" from="TabContainer/Enemies/data/enemy_str" to="." method="_on_enemy_str_text_changed"]
 [connection signal="text_changed" from="TabContainer/Enemies/data/enemy_def" to="." method="_on_enemy_def_text_changed"]
 [connection signal="text_changed" from="TabContainer/Enemies/data/enemy_sup" to="." method="_on_enemy_sup_text_changed"]
+[connection signal="text_changed" from="TabContainer/Enemies/data/enemy_id" to="." method="_on_enemy_id_text_changed"]
 [connection signal="pressed" from="TabContainer/Enemies/data/enemy_add_card" to="." method="_on_enemy_add_card_pressed"]
 [connection signal="pressed" from="TabContainer/Enemies/data/enemy_remove_card" to="." method="_on_enemy_remove_card_pressed"]
 [connection signal="pressed" from="TabContainer/Enemies/data/Save_enemy" to="." method="_on_Save_enemy_pressed"]
 [connection signal="pressed" from="TabContainer/Enemies/data/enem_add_name" to="." method="_on_enem_add_name_pressed"]
 [connection signal="pressed" from="TabContainer/Enemies/data/enem_remove_name" to="." method="_on_enem_remove_name_pressed"]
-[connection signal="text_changed" from="TabContainer/Enemies/add_chard_enemy_panel/e_amount" to="." method="_on_e_amount_text_changed"]
+[connection signal="pressed" from="TabContainer/Enemies/data/enem_add_name2" to="." method="_on_enem_add_name2_pressed"]
+[connection signal="pressed" from="TabContainer/Enemies/data/enem_remove_name2" to="." method="_on_enem_remove_name2_pressed"]
+[connection signal="text_changed" from="TabContainer/Enemies/data/strength" to="." method="_on_strength_text_changed"]
+[connection signal="text_changed" from="TabContainer/Enemies/data/weakness" to="." method="_on_weakness_text_changed"]
 [connection signal="pressed" from="TabContainer/Enemies/add_chard_enemy_panel/confirm_add_card_enemy" to="." method="_on_confirm_add_card_enemy_pressed"]
 [connection signal="pressed" from="TabContainer/Enemies/add_chard_enemy_panel/cancel_add_card_enemy" to="." method="_on_cancel_add_card_enemy_pressed"]
 [connection signal="file_selected" from="TabContainer/Enemies/select_texture_enemy" to="." method="_on_select_texture_enemy_file_selected"]
@@ -890,9 +1158,14 @@ __meta__ = {
 [connection signal="pressed" from="TabContainer/Characters/data/char_add_card" to="." method="_on_char_add_card_pressed"]
 [connection signal="pressed" from="TabContainer/Characters/data/char_remove_card" to="." method="_on_char_remove_card_pressed"]
 [connection signal="pressed" from="TabContainer/Characters/data/Save_char" to="." method="_on_Save_char_pressed"]
+[connection signal="text_changed" from="TabContainer/Characters/data/strength_c" to="." method="_on_strength_c_text_changed"]
+[connection signal="text_changed" from="TabContainer/Characters/data/weakness_c" to="." method="_on_weakness_c_text_changed"]
 [connection signal="text_changed" from="TabContainer/Characters/add_chard_char_panel/c_amount" to="." method="_on_c_amount_text_changed"]
-[connection signal="pressed" from="TabContainer/Characters/add_chard_char_panel/confirm_add_card_enemy" to="." method="_on_confirm_add_card_enemy_pressed"]
+[connection signal="pressed" from="TabContainer/Characters/add_chard_char_panel/confirm_add_card_char" to="." method="_on_confirm_add_card_char_pressed"]
+[connection signal="pressed" from="TabContainer/Characters/add_chard_char_panel/cancel_add_card_char" to="." method="_on_cancel_add_card_char_pressed"]
 [connection signal="file_selected" from="TabContainer/Characters/select_texture_char" to="." method="_on_select_texture_char_file_selected"]
+[connection signal="pressed" from="TabContainer/Characters/char_add_name3" to="." method="_on_char_add_name3_pressed"]
+[connection signal="pressed" from="TabContainer/Characters/char_remove_name3" to="." method="_on_char_remove_name3_pressed"]
 [connection signal="item_selected" from="TabContainer/Cards/card_list" to="." method="_on_card_list_item_selected"]
 [connection signal="text_changed" from="TabContainer/Cards/data/attribute" to="." method="_on_attribute_text_changed"]
 [connection signal="text_changed" from="TabContainer/Cards/data/show_text" to="." method="_on_show_text_text_changed"]
@@ -900,8 +1173,19 @@ __meta__ = {
 [connection signal="text_changed" from="TabContainer/Cards/data/max_val" to="." method="_on_max_val_text_changed"]
 [connection signal="pressed" from="TabContainer/Cards/data/Save_card" to="." method="_on_Save_card_pressed"]
 [connection signal="item_selected" from="TabContainer/Cards/data/card_type" to="." method="_on_card_type_item_selected"]
+[connection signal="color_changed" from="TabContainer/Cards/data/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]
 [connection signal="pressed" from="TabContainer/Cards/new_card" to="." method="_on_new_card_pressed"]
 [connection signal="pressed" from="TabContainer/Cards/remove_card" to="." method="_on_remove_card_pressed"]
 [connection signal="pressed" from="TabContainer/Cards/new_card_panel/confirm_make_card" to="." method="_on_confirm_make_card_pressed"]
 [connection signal="pressed" from="TabContainer/Cards/new_card_panel/cancel_make_card" to="." method="_on_cancel_make_card_pressed"]
+[connection signal="item_selected" from="TabContainer/Levels/Level_List" to="." method="_on_Level_List_item_selected"]
+[connection signal="text_changed" from="TabContainer/Levels/Data/Lvl_Range/min" to="." method="_on_min_text_changed"]
+[connection signal="text_changed" from="TabContainer/Levels/Data/Lvl_Range/max" to="." method="_on_max_text_changed"]
+[connection signal="item_selected" from="TabContainer/Levels/Data/enemys_in/add_enemy_to_list" to="." method="_on_add_enemy_to_list_item_selected"]
+[connection signal="pressed" from="TabContainer/Levels/Data/enemys_in/remove_enemy_from_list" to="." method="_on_remove_enemy_from_list_pressed"]
+[connection signal="text_changed" from="TabContainer/Levels/Data/enemys_in/enemy_ratio" to="." method="_on_enemy_ratio_text_changed"]
+[connection signal="pressed" from="TabContainer/Levels/Data/level_buttons/Save_level" to="." method="_on_Save_level_pressed"]
+[connection signal="pressed" from="TabContainer/Levels/Data/level_buttons/new_level" to="." method="_on_new_level_pressed"]
+[connection signal="pressed" from="TabContainer/Levels/Data/level_buttons/remove_level" to="." method="_on_remove_level_pressed"]
+[connection signal="text_changed" from="TabContainer/Levels/Data/level_name/name_edit" to="." method="_on_name_edit_text_changed"]
 [connection signal="pressed" from="holder/save_all_data" to="." method="_on_save_all_data_pressed"]

@@ -1,6 +1,37 @@
 [ {
 "Cards": [ "Punch", "Heals" ],
+"ID": "Human",
+"Icon": "res://Assets/Textures/Entities/Characters/Char0.png",
+"Name": [ "Dylan", "Louis", "Ethan" ],
+"Stats": [ 10, 10, 10, 40, "null", "PHYSICAL" ]
+}, {
+"Cards": [ "Punch", "Heals" ],
+"ID": "Slime",
 "Icon": "res://Assets/Textures/Entities/Characters/green_slime.png",
-"Name": [ "Vacuum" ],
+"Name": [ "Victor" ],
 "Stats": [ 1, 1, 1, 10, "null", "PHYSICAL" ]
+}, {
+"Cards": [ "Punch", "Heals" ],
+"ID": "Demon",
+"Icon": "res://Assets/Textures/Entities/Characters/Demon.png",
+"Name": [ "dave" ],
+"Stats": [ 15, 1, 15, 60, "BURN", "PHYSICAL" ]
+}, {
+"Cards": [ "Punch", "Heals" ],
+"ID": "Bumbling Moss",
+"Icon": "res://Assets/Textures/Entities/Characters/Stambling_moss.png",
+"Name": [ "Victor" ],
+"Stats": [ 10, 20, 5, 50, "null", "BURN" ]
+}, {
+"Cards": [ "Punch", "Heals" ],
+"ID": "Trider",
+"Icon": "res://Assets/Textures/Entities/Characters/Angy_tree.png",
+"Name": [ "Victor" ],
+"Stats": [ 30, 1, 20, 60, "PHYSICAL", "BURN" ]
+}, {
+"Cards": [ "Punch", "Heals" ],
+"ID": "Gelatin",
+"Icon": "res://Assets/Textures/Entities/Characters/gelatin_cube.png",
+"Name": [ "Geane" ],
+"Stats": [ 20, 20, 1, 30, "null", "PHYSICAL" ]
 } ]

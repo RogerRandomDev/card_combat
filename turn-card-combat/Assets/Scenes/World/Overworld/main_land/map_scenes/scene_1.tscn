@@ -59,4 +59,4 @@ position = Vector2( 88, 504 )
 sign_id = 2
 text_size = 0.5
 achievement_giver = true
-achievment_name = "Good luck"
+achievment_name = "Out of bounds"
