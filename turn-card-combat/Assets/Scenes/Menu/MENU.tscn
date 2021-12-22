@@ -396,24 +396,120 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Volume" type="Label" parent="title_body/settings"]
-margin_top = 128.0
-margin_right = 74.0
-margin_bottom = 150.0
-custom_fonts/font = ExtResource( 4 )
-text = "Volume"
+[node name="0" type="HBoxContainer" parent="title_body/settings"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 334.0
+margin_bottom = 146.0
+custom_constants/separation = 48
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Volume_Slider" type="HSlider" parent="title_body/settings/Volume"]
+[node name="0" type="VBoxContainer" parent="title_body/settings/0"]
+margin_right = 146.0
+margin_bottom = 114.0
+custom_constants/separation = 24
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Master" type="Label" parent="title_body/settings/0/0"]
+margin_right = 146.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 4 )
+text = "Master"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume_Slider" type="HSlider" parent="title_body/settings/0/0/Master"]
 margin_top = 24.0
 margin_right = 128.0
 margin_bottom = 40.0
 theme = SubResource( 44 )
-value = 2.0
+min_value = -40.0
+max_value = 0.0
+step = 0.25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="Label" parent="title_body/settings/0/0"]
+margin_top = 46.0
+margin_right = 146.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 4 )
+text = "Music"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music_Slider" type="HSlider" parent="title_body/settings/0/0/Music"]
+margin_top = 24.0
+margin_right = 128.0
+margin_bottom = 40.0
+theme = SubResource( 44 )
+min_value = -40.0
+max_value = 0.0
+step = 0.25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFX" type="Label" parent="title_body/settings/0/0"]
+margin_top = 92.0
+margin_right = 146.0
+margin_bottom = 114.0
+custom_fonts/font = ExtResource( 4 )
+text = "Sound Effects"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFX_Slider" type="HSlider" parent="title_body/settings/0/0/SFX"]
+margin_top = 24.0
+margin_right = 128.0
+margin_bottom = 40.0
+theme = SubResource( 44 )
+min_value = -40.0
+max_value = 0.0
+step = 0.25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="VBoxContainer" parent="title_body/settings/0"]
+margin_left = 194.0
+margin_right = 302.0
+margin_bottom = 114.0
+custom_constants/separation = 24
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fullscreen" type="Label" parent="title_body/settings/0/1"]
+margin_right = 108.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 4 )
+text = "FullScreen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fullscreen_Toggle" type="CheckBox" parent="title_body/settings/0/1/Fullscreen"]
+margin_left = -24.0
+margin_top = -4.0
+margin_bottom = 20.0
+focus_mode = 0
+theme = SubResource( 44 )
+enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="achievements" type="Control" parent="title_body"]
+visible = false
 margin_top = 720.0
 margin_right = 1024.0
 margin_bottom = 1320.0
@@ -491,3 +587,7 @@ __meta__ = {
 [connection signal="toggled" from="title_body/holder/spinner/Button2" to="." method="_on_Button2_toggled"]
 [connection signal="pressed" from="title_body/holder/spinner/Button3" to="." method="_on_Button3_pressed"]
 [connection signal="toggled" from="title_body/holder/spinner/Button4" to="." method="_on_Button4_toggled"]
+[connection signal="value_changed" from="title_body/settings/0/0/Master/Volume_Slider" to="." method="_on_Volume_Slider_value_changed"]
+[connection signal="value_changed" from="title_body/settings/0/0/Music/Music_Slider" to="." method="_on_Music_Slider_value_changed"]
+[connection signal="value_changed" from="title_body/settings/0/0/SFX/SFX_Slider" to="." method="_on_SFX_Slider_value_changed"]
+[connection signal="toggled" from="title_body/settings/0/1/Fullscreen/Fullscreen_Toggle" to="." method="_on_Fullscreen_Toggle_toggled"]

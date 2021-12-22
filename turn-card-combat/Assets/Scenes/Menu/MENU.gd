@@ -93,9 +93,7 @@ func _on_Button2_toggled(button_pressed):
 	$Tween.interpolate_property($title_body/settings,"rect_position",$title_body/settings.rect_position,Vector2(0,720)*int(!button_pressed),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
 	on_main = !button_pressed
-	if button_pressed:
-		$title_body/settings/Volume/Volume_Slider.grab_focus()
-	else:
+	if !button_pressed:
 		$title_body/settings.grab_focus()
 
 
@@ -104,3 +102,19 @@ func _on_Button4_toggled(button_pressed):
 	$Tween.interpolate_property($title_body/achievements,"rect_position",$title_body/achievements.rect_position,Vector2(0,720)*int(!button_pressed),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
 	on_main = !button_pressed
+
+
+func _on_Fullscreen_Toggle_toggled(button_pressed):
+	OS.window_fullscreen = button_pressed
+
+
+func _on_Volume_Slider_value_changed(value):
+	GlobalData.set_volume(value,0)
+
+
+func _on_Music_Slider_value_changed(value):
+	GlobalData.set_volume(value,1)
+
+
+func _on_SFX_Slider_value_changed(value):
+	GlobalData.set_volume(value,2)
