@@ -263,10 +263,11 @@ func _on_show_text_text_changed():
 
 func _on_attribute_text_changed(new_text):
 	active_card_data[4] = new_text
-
+const card_converter = {"ATTACK":"HURT","HEAL":"HEAL","DEFEND":"DEFEND"}
 
 func _on_card_type_item_selected(index):
 	active_card_data[0] = $TabContainer/Cards/data/card_type.get_item_text(index)
+	active_card_data[2] = card_converter[$TabContainer/Cards/data/card_type.get_item_text(index)]
 
 
 func _on_remove_card_pressed():
@@ -306,9 +307,9 @@ func _on_char_list_item_selected(index):
 	$TabContainer/Characters/data/name_of.text = str(char_selected["Name"])
 	$TabContainer/Characters/data/char_name.text = str(char_selected["Name"])
 	$TabContainer/Characters/data/char_health.text = str(char_selected["Default_Stats"][3])
-	$TabContainer/Characters/data/char_def.text = str(char_selected["Default_Stats"][2])
+	$TabContainer/Characters/data/char_def.text = str(char_selected["Default_Stats"][0])
 	$TabContainer/Characters/data/char_sup.text = str(char_selected["Default_Stats"][1])
-	$TabContainer/Characters/data/char_str.text = str(char_selected["Default_Stats"][0])
+	$TabContainer/Characters/data/char_str.text = str(char_selected["Default_Stats"][2])
 	$TabContainer/Characters/data/TextureRect.texture = load(char_selected["Icon"])
 	$TabContainer/Characters/data/TextureRect/change_char_tex.show()
 	for item in $TabContainer/Characters/data/owned_cards.get_item_count():
@@ -375,23 +376,26 @@ func _on_char_sup_text_changed(new_text):
 	if str(int(new_text)) != new_text:
 		new_text = str(int(new_text))
 	char_selected["Support"] = int(new_text)
-
+	char_selected["Default_Stats"][1] = int(new_text)
 
 func _on_char_def_text_changed(new_text):
 	if str(int(new_text)) != new_text:
 		new_text = str(int(new_text))
 	char_selected["Defence"] = int(new_text)
+	char_selected["Default_Stats"][0] = int(new_text)
 
 func _on_char_str_text_changed(new_text):
 	if str(int(new_text)) != new_text:
 		new_text = str(int(new_text))
 	char_selected["Strength"] = int(new_text)
+	char_selected["Default_Stats"][2] = int(new_text)
 
 
 func _on_char_health_text_changed(new_text):
 	if str(int(new_text)) != new_text:
 		new_text = str(int(new_text))
 	char_selected["Health"] = int(new_text)
+	char_selected["Default_Stats"][3] = int(new_text)
 
 
 func _on_char_name_text_changed(new_text):
@@ -506,9 +510,9 @@ func _on_enemy_list_item_selected(index):
 	for Name in enem_selected["Name"]:
 		$TabContainer/Enemies/data/name_of.add_item(Name)
 	$TabContainer/Enemies/data/enemy_health.text = str(enem_selected["Stats"][3])
-	$TabContainer/Enemies/data/enemy_def.text = str(enem_selected["Stats"][2])
+	$TabContainer/Enemies/data/enemy_def.text = str(enem_selected["Stats"][0])
 	$TabContainer/Enemies/data/enemy_sup.text = str(enem_selected["Stats"][1])
-	$TabContainer/Enemies/data/enemy_str.text = str(enem_selected["Stats"][0])
+	$TabContainer/Enemies/data/enemy_str.text = str(enem_selected["Stats"][2])
 	$TabContainer/Enemies/data/TextureRect.texture = load(enem_selected["Icon"])
 	$TabContainer/Enemies/data/enemy_id.text = enem_selected["ID"]
 	$TabContainer/Enemies/data/strength.text = enem_selected["Stats"][4]

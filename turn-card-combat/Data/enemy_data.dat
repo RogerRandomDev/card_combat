@@ -3,13 +3,13 @@
 "ID": "Human",
 "Icon": "res://Assets/Textures/Entities/Characters/Char0.png",
 "Name": [ "Dylan", "Louis", "Ethan" ],
-"Stats": [ 10, 10, 10, 40, "null", "PHYSICAL" ]
+"Stats": [ 10, 10, 15, 40, "null", "PHYSICAL" ]
 }, {
-"Cards": [ "Punch", "Heals" ],
+"Cards": [ "Punch", "Minor Heal" ],
 "ID": "Slime",
 "Icon": "res://Assets/Textures/Entities/Characters/green_slime.png",
 "Name": [ "Victor" ],
-"Stats": [ 1, 1, 1, 10, "null", "PHYSICAL" ]
+"Stats": [ 20, 5, 5, 40, "PHYSICAL", "ELECTRIC" ]
 }, {
 "Cards": [ "Punch", "Heals" ],
 "ID": "Demon",
@@ -29,9 +29,9 @@
 "Name": [ "Victor" ],
 "Stats": [ 30, 1, 20, 60, "PHYSICAL", "BURN" ]
 }, {
-"Cards": [ "Punch", "Heals" ],
+"Cards": [ "Punch", "Minor Heal" ],
 "ID": "Gelatin",
 "Icon": "res://Assets/Textures/Entities/Characters/gelatin_cube.png",
 "Name": [ "Geane" ],
-"Stats": [ 20, 20, 1, 30, "null", "PHYSICAL" ]
+"Stats": [ 15, 20, 10, 40, "PHYSICAL", "ELECTRIC" ]
 } ]

@@ -102,7 +102,9 @@ func disable_cards(energy = true):
 		$Resources.set_energy(enemy_count)
 		$attack_timer.start()
 		
-	
+func check_done(a,b):
+	print(a)
+	print(b)
 func return_cards_to_hand():
 	for card in $Cards.get_children():
 		card.selected = false
@@ -112,31 +114,24 @@ func stop_holding_cards():
 	active_card_type = -1
 var cur_enemy = 0
 func enemy_turns():
-	var target_ally = round(rand_range(0,ally_count-1))
 	var target_enemy = null
 	var chosen_action = "HEAL"
 	if enemy_count == 0:
 		new_round()
 		return
 	if $Interaction/Enemies.get_child_count() > cur_enemy && $Interaction/Enemies.get_child(cur_enemy).can_interact():
-		if $Interaction/Enemies.get_child(cur_enemy).can_heal():
-			for enemy in $Interaction/Enemies.get_children():
-				if enemy.get_hp() < enemy.get_max_hp()*rand_range(0.5,0.25) && rand_range(0.0,1.0) > 0.75 && enemy.can_interact():
-					chosen_action = "HEAL"
-					target_enemy = enemy
-			$Tween.start()
-			if $Interaction/Enemies.get_child_count() > cur_enemy:
-				if $Interaction/Enemies.get_child(cur_enemy).get_hp() < $Interaction/Enemies.get_child(cur_enemy).get_max_hp()*rand_range(0.5,0.375) && $Interaction/Enemies.get_child(cur_enemy).get_hp()/$Interaction/Enemies.get_child(cur_enemy).get_max_hp() > 0.125:
-					target_enemy = $Interaction/Enemies.get_child(cur_enemy)
-					chosen_action="HEAL"
+		var out = check_heal(chosen_action,cur_enemy,target_enemy)
+		chosen_action = out[0]
+		target_enemy = out[1]
 		if enemy_count == 0 || ally_count == 0:
 			new_round()
 			return
+		var targeted_ally = null
 		if target_enemy == null && $Interaction/Enemies.get_child(cur_enemy).can_attack():
 			chosen_action = "HURT"
-		var targeted_ally = null
-		if $Interaction/Allies.get_child_count() > target_ally && $Interaction/Enemies.get_child_count() > cur_enemy:
-			targeted_ally = $Interaction/Allies.get_child(target_ally)
+			for ally in $Interaction/Allies.get_children():
+				if targeted_ally==null||ally.health/targeted_ally.max_health*rand_range(1.0,0.75) <= targeted_ally.health/targeted_ally.max_health:
+					targeted_ally = ally
 		match chosen_action:
 			"HEAL":
 				Card.add_action_from_enemy(chosen_action,
@@ -166,6 +161,7 @@ func enemy_turns():
 	else:
 		$attack_timer.start()
 	cur_enemy += 1
+	
 func reverse_anim(enemy_id):
 	$Tween.interpolate_property($Interaction/Enemies.get_child(enemy_id).get_child(0),"rect_position",$Interaction/Enemies.get_child(enemy_id).get_child(0).rect_position,Vector2(0,0),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
@@ -360,3 +356,15 @@ func add_exp_to_allies(val):
 	var new_val = round(val/$Interaction/Allies.get_child_count())
 	for ally in $Interaction/Allies.get_children():
 		ally.add_exp(new_val)
+func check_heal(chosen,cur_enemy,target_enemy):
+	if $Interaction/Enemies.get_child(cur_enemy).can_heal():
+		for enemy in $Interaction/Enemies.get_children():
+			if enemy.get_hp() < enemy.get_max_hp()*rand_range(0.5,0.25) && rand_range(0.0,1.0) > 0.75 && enemy.can_interact():
+				chosen = "HEAL"
+				target_enemy = enemy
+		$Tween.start()
+		if $Interaction/Enemies.get_child_count() > cur_enemy:
+			if $Interaction/Enemies.get_child(cur_enemy).get_hp() < $Interaction/Enemies.get_child(cur_enemy).get_max_hp()*rand_range(0.5,0.375) && $Interaction/Enemies.get_child(cur_enemy).get_hp()/$Interaction/Enemies.get_child(cur_enemy).get_max_hp() > 0.125:
+				target_enemy = $Interaction/Enemies.get_child(cur_enemy)
+				chosen="HEAL"
+	return [chosen,target_enemy]

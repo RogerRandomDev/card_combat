@@ -1,19 +1,19 @@
 [ {
 "Cards": {
-"Fire Ball": 10,
 "Hard Punch": 5,
 "Heals": 1,
 "Punch": 3,
 "Shield": 1
 },
-"Default_Stats": [ 10, 10, 10, 40 ],
+"Default_Stats": [ 15, 10, 20, 40 ],
+"Defence": 15,
 "Defense": 10,
 "Health": 40,
 "Icon": "res://Assets/Textures/Entities/Characters/Char0.png",
 "Level_Rate": [ 1, 1, 2, 5 ],
 "Name": "Dave",
 "STRENGTHS": [ "null", "null" ],
-"Strength": 10,
+"Strength": 20,
 "Support": 10
 }, {
 "Cards": {
@@ -24,7 +24,7 @@
 "Shield": 1,
 "Static Arcs": 2
 },
-"Default_Stats": [ 10, 10, 10, 40 ],
+"Default_Stats": [ 10, 25, 10, 40 ],
 "Defense": 10,
 "Health": 40,
 "Icon": "res://Assets/Textures/Entities/Characters/Char_1.png",
@@ -32,5 +32,5 @@
 "Name": "Melinda",
 "STRENGTHS": [ "null", "null" ],
 "Strength": 10,
-"Support": 40
+"Support": 25
 } ]

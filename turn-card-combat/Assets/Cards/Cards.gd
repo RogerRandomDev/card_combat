@@ -15,7 +15,6 @@ export var card_rarity = 0
 var foiled = false
 
 var selected = false
-
 #data gained from the card_data file
 var card_header = "NULL"
 var card_body = "NULL"

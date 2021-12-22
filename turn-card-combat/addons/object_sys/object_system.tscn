@@ -722,7 +722,7 @@ margin_top = 10.0
 margin_right = 175.0
 margin_bottom = 34.0
 text = "ADD CARD"
-items = [ "Fire Ball", null, false, 0, null, "Hard Punch", null, false, 1, null, "Heals", null, false, 2, null, "Holy Heal", null, false, 3, null, "Punch", null, false, 4, null, "Shield", null, false, 5, null ]
+items = [ "Fire Ball", null, false, 0, null, "Hard Punch", null, false, 1, null, "Heals", null, false, 2, null, "Holy Heal", null, false, 3, null, "Ice Shards", null, false, 4, null, "Punch", null, false, 5, null, "Shield", null, false, 6, null, "Static Arcs", null, false, 7, null ]
 selected = 0
 
 [node name="c_amount" type="LineEdit" parent="TabContainer/Characters/add_chard_char_panel"]
@@ -790,7 +790,7 @@ rect_pivot_offset = Vector2( -340, 200 )
 [node name="card_list" type="ItemList" parent="TabContainer/Cards"]
 margin_right = 128.0
 margin_bottom = 560.0
-items = [ "Fire Ball", ExtResource( 1 ), false, "Hard Punch", ExtResource( 1 ), false, "Heals", ExtResource( 1 ), false, "Holy Heal", ExtResource( 1 ), false, "Punch", ExtResource( 1 ), false, "Shield", ExtResource( 1 ), false ]
+items = [ "Fire Ball", ExtResource( 1 ), false, "Hard Punch", ExtResource( 1 ), false, "Heals", ExtResource( 1 ), false, "Holy Heal", ExtResource( 1 ), false, "Ice Shards", ExtResource( 1 ), false, "Punch", ExtResource( 1 ), false, "Shield", ExtResource( 1 ), false, "Static Arcs", ExtResource( 1 ), false ]
 fixed_icon_size = Vector2( 12, 12 )
 __meta__ = {
 "_edit_use_anchors_": false,

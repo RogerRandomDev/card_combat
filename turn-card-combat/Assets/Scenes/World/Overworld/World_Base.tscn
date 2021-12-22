@@ -78,6 +78,7 @@ z_index = 10
 
 [node name="Player" parent="World" instance=ExtResource( 3 )]
 position = Vector2( 74.9738, 76.4584 )
+z_index = 2
 accel_rate = 10.0
 decel_rate = 20.0
 

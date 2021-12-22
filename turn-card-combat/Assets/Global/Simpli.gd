@@ -4,7 +4,7 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var player_characters = [0,0,0]
+var player_characters = [0,1,0]
 var cur_dungeon = 0
 
 
@@ -70,6 +70,6 @@ func load_enemy_data(enemy_map=0):
 	file.close()
 	
 func calculate_damage_modifier(strength,defence,attribute,resistance,weakness):
-	var modified_damage = (-int(attribute==resistance)*0.75)+(int(attribute==weakness)+1)
+	var modified_damage = (-int(attribute==resistance || resistance=="ALL")*0.75)+(int(attribute==weakness || weakness=="ALL")+1)
 	return float(float(strength)/float(defence))*modified_damage
 	

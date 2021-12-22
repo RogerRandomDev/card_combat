@@ -19,15 +19,17 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 8.0
-margin_right = 56.0
-margin_bottom = 48.0
+margin_left = 40.0
+margin_top = 16.0
+margin_right = 88.0
+margin_bottom = 64.0
 expand = true
 
 [node name="Label" type="Label" parent="."]
-margin_top = 48.0
-margin_right = 64.0
-margin_bottom = 72.0
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 96.0
+margin_bottom = 88.0
 custom_fonts/font = SubResource( 1 )
 align = 1
 autowrap = true
@@ -38,10 +40,10 @@ __meta__ = {
 [node name="ColorRect" type="TextureRect" parent="."]
 modulate = Color( 0.772549, 0.654902, 0.403922, 1 )
 show_behind_parent = true
-margin_left = -4.0
-margin_top = -8.0
-margin_right = 68.0
-margin_bottom = 88.0
+margin_left = 28.0
+margin_top = 8.0
+margin_right = 100.0
+margin_bottom = 104.0
 texture = ExtResource( 3 )
 expand = true
 __meta__ = {

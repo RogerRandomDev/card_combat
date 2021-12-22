@@ -91,10 +91,15 @@ func _input(_event):
 	if used || get_global_mouse_position().x < 728:return
 	if $AnimationPlayer.is_playing():return
 	var origin_point = get_parent().get_parent().get_parent()
+	if get_parent().get_parent().get_parent().hovering_ally == null && get_parent().get_parent().get_parent().selected_enemy == null && get_global_mouse_position().x > 728 && get_parent().get_parent().get_parent().selected_card!=null:
+		if get_parent().get_parent().get_parent().selected_card.card_type !="HEAL":
+			get_parent().get_parent().get_parent().selected_card = null
+			origin_point.active_card_type = "AAAAAAAAA"
 	if Input.is_action_pressed("Lm") && !get_parent().get_parent().get_parent().hovering_ally == self:
 		reset_size()
 		get_parent().get_parent().get_parent().return_cards_to_hand()
 		if !used:get_node("Sprite/CPUParticles2D").emitting = false
+		
 		if !Card.team_cards.has(get_parent().get_parent().get_parent().active_card_type) || Card.self_cards.has(get_parent().get_parent().get_parent().active_card_type) && get_parent().get_parent().get_parent().active_ally == get_parent().get_parent().get_parent().hovering_ally:
 			
 			if get_parent().get_parent().get_parent().hovering_ally == null || get_parent().get_parent().get_parent().hovering_ally.used:
@@ -121,7 +126,7 @@ func _input(_event):
 			get_parent().get_parent().get_parent().get_node("Cards").show()
 			get_parent().get_parent().get_parent().active_ally = self
 			get_parent().get_parent().get_parent().call_deferred('select_ally',self)
-			origin_point.active_card_type = -1
+			origin_point.active_card_type = "AAAAAAA"
 			$Tween.interpolate_property($Sprite,"rect_scale",$Sprite.rect_scale,Vector2(-1.5,1.5),0.125,Tween.TRANS_LINEAR)
 			$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(-16,-16),0.125,Tween.TRANS_LINEAR)
 			$Tween.start()

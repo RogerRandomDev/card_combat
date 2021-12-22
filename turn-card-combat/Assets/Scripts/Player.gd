@@ -19,7 +19,6 @@ var last_pos = Vector2.ZERO
 func _ready():
 	randomize()
 	var can_do = get_parent().get_parent().get_node("Map/Map").get_used_cells_by_id(0)
-		
 	var no = true
 	while no:
 		var pos = can_do[round(rand_range(0.0,can_do.size()-1))]

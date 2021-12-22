@@ -4,6 +4,7 @@ extends Node2D
 
 func _ready():
 	load_new_scene("scene_house_0",0,Vector2(20.125,12))
+	GlobalData.set_music("town_song_0")
 
 func load_new_scene(scene,enter_point,area):
 	$AnimationPlayer.play("new_scene_loader")

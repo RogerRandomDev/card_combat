@@ -44,6 +44,7 @@ script = ExtResource( 2 )
 
 [node name="World_Player" parent="." groups=["Player"] instance=ExtResource( 3 )]
 position = Vector2( 120, 168 )
+z_index = 2
 accel_rate = 5.0
 decel_rate = 10.0
 move_speed = 96
