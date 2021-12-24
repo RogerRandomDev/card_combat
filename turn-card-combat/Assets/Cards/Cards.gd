@@ -25,6 +25,7 @@ var card_attribute = "Null"
 var card_color = Color.white
 var card_name = ""
 func _ready():
+	call_deferred('load_card_set')
 	randomize()
 #	foiled = rand_range(0.0,1.0)>0.75
 	toggle_foil(foiled)
@@ -51,20 +52,26 @@ func _ready():
 	$Card_Image/Text/Top.rect_scale.y = $Card_Image/Text/Top.rect_scale.x
 	$Card_Image.modulate = data[5]
 	card_color = data[5]
+func load_card_set():
+	if get_position_in_parent() != 0:
+		get_parent().get_child(get_position_in_parent()-1).set_focus_next(get_path())
+		set_focus_previous(get_parent().get_child(get_position_in_parent()-1).get_path())
+		get_parent().get_child(0).set_focus_previous(get_path())
+	set_focus_next(get_parent().get_child(0).get_path())
 func _on_Card_mouse_entered():
 	$Card_Image/Text/Top2.show()
 	if selected:return
-	$Tween.interpolate_property($Card_Image,"rect_size",$Card_Image.rect_size,Vector2(72,96),0.25,Tween.TRANS_CUBIC)
-	$Tween.interpolate_property($Card_Image,"rect_position",$Card_Image.rect_position,Vector2(-6,-48),0.25,Tween.TRANS_CUBIC)
-	$Tween.interpolate_property($Card_Image/Text,"rect_scale",$Card_Image/Text.rect_scale,Vector2(1.5,1.5),0.25,Tween.TRANS_CUBIC)
+	$Tween.interpolate_property($Card_Image,"rect_size",$Card_Image.rect_size,Vector2(72,96),0.25,Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($Card_Image,"rect_position",$Card_Image.rect_position,Vector2(-6,-48),0.25,Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($Card_Image/Text,"rect_scale",$Card_Image/Text.rect_scale,Vector2(1.5,1.5),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
 	self.show_on_top = true
 func _on_Card_mouse_exited():
 	if !selected:$Card_Image/Text/Top2.hide()
 	if selected:return
-	$Tween.interpolate_property($Card_Image,"rect_size",$Card_Image.rect_size,Vector2(48,64),0.25,Tween.TRANS_CUBIC)
-	$Tween.interpolate_property($Card_Image,"rect_position",$Card_Image.rect_position,Vector2(0,0),0.25,Tween.TRANS_CUBIC)
-	$Tween.interpolate_property($Card_Image/Text,"rect_scale",$Card_Image/Text.rect_scale,Vector2(1,1),0.25,Tween.TRANS_CUBIC)
+	$Tween.interpolate_property($Card_Image,"rect_size",$Card_Image.rect_size,Vector2(48,64),0.25,Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($Card_Image,"rect_position",$Card_Image.rect_position,Vector2(0,0),0.25,Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($Card_Image/Text,"rect_scale",$Card_Image/Text.rect_scale,Vector2(1,1),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
 	self.show_on_top = false
 

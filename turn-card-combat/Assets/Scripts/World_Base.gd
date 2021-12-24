@@ -45,7 +45,7 @@ func combat_visible(visibility):
 		var combat = $Combat.get_child(0)
 		combat.selected_card = null
 		combat.active_card = false
-		combat.active_card_type = -1
+		combat.active_card_type = "AAAAA"
 		combat.return_cards_to_hand()
 		
 func activate_blocker(do):

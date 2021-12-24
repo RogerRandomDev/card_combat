@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Assets/Scenes/Menu/MENU.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/dungeon.tres" type="TileSet" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Assets/Fonts/Font_Basic.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Assets/Scenes/Menu/achievements_list.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Scenes/Menu/achievement.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Textures/Icons/Letters.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Textures/Icons/Controller Buttons.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Textures/Icons/Other Keys.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=2]
 size = 8
@@ -398,23 +401,142 @@ __meta__ = {
 
 [node name="0" type="HBoxContainer" parent="title_body/settings"]
 margin_left = 32.0
-margin_top = 32.0
-margin_right = 334.0
-margin_bottom = 146.0
+margin_top = 128.0
+margin_right = 498.0
+margin_bottom = 326.0
 custom_constants/separation = 48
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="0" type="VBoxContainer" parent="title_body/settings/0"]
-margin_right = 146.0
-margin_bottom = 114.0
+margin_right = 116.0
+margin_bottom = 198.0
+custom_constants/separation = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="Label" parent="title_body/settings/0/0"]
+margin_right = 116.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 4 )
+text = "Controls:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Movement" type="Label" parent="title_body/settings/0/0"]
+margin_top = 38.0
+margin_right = 116.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 0, 88 )
+custom_fonts/font = ExtResource( 4 )
+text = "Movement:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="0" type="Sprite" parent="title_body/settings/0/0/Movement"]
+position = Vector2( 14, 26 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 2, 28, 11, 12 )
+
+[node name="1" type="Sprite" parent="title_body/settings/0/0/Movement"]
+position = Vector2( -8, 50 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 2, 2, 11, 12 )
+
+[node name="2" type="Sprite" parent="title_body/settings/0/0/Movement"]
+position = Vector2( 14, 50 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 93, 15, 11, 12 )
+
+[node name="3" type="Sprite" parent="title_body/settings/0/0/Movement"]
+position = Vector2( 36, 50 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 41, 2, 11, 12 )
+
+[node name="4" type="Sprite" parent="title_body/settings/0/0/Movement"]
+position = Vector2( 64, 26 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 84, 4, 25, 25 )
+
+[node name="6" type="Sprite" parent="title_body/settings/0/0/Movement"]
+position = Vector2( 96, 74 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 11, 11, 12 )
+
+[node name="5" type="Sprite" parent="title_body/settings/0/0/Movement"]
+position = Vector2( -16, 82 )
+texture = ExtResource( 9 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 1, 55, 76, 12 )
+
+[node name="Interact" type="Label" parent="title_body/settings/0/0"]
+margin_top = 142.0
+margin_right = 116.0
+margin_bottom = 198.0
+rect_min_size = Vector2( 0, 56 )
+custom_fonts/font = ExtResource( 4 )
+text = "Interact:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="0" type="Sprite" parent="title_body/settings/0/0/Interact"]
+position = Vector2( 30, 32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 88, 41, 31, 12 )
+
+[node name="1" type="Sprite" parent="title_body/settings/0/0/Interact"]
+position = Vector2( -4, 32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 54, 2, 11, 12 )
+
+[node name="2" type="Sprite" parent="title_body/settings/0/0/Interact"]
+position = Vector2( -4, 58 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 53, 21, 11, 11 )
+
+[node name="1" type="VBoxContainer" parent="title_body/settings/0"]
+margin_left = 164.0
+margin_right = 310.0
+margin_bottom = 198.0
 custom_constants/separation = 24
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Master" type="Label" parent="title_body/settings/0/0"]
+[node name="Master" type="Label" parent="title_body/settings/0/1"]
 margin_right = 146.0
 margin_bottom = 22.0
 custom_fonts/font = ExtResource( 4 )
@@ -423,7 +545,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Volume_Slider" type="HSlider" parent="title_body/settings/0/0/Master"]
+[node name="Volume_Slider" type="HSlider" parent="title_body/settings/0/1/Master"]
 margin_top = 24.0
 margin_right = 128.0
 margin_bottom = 40.0
@@ -435,7 +557,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Music" type="Label" parent="title_body/settings/0/0"]
+[node name="Music" type="Label" parent="title_body/settings/0/1"]
 margin_top = 46.0
 margin_right = 146.0
 margin_bottom = 68.0
@@ -445,7 +567,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Music_Slider" type="HSlider" parent="title_body/settings/0/0/Music"]
+[node name="Music_Slider" type="HSlider" parent="title_body/settings/0/1/Music"]
 margin_top = 24.0
 margin_right = 128.0
 margin_bottom = 40.0
@@ -457,7 +579,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFX" type="Label" parent="title_body/settings/0/0"]
+[node name="SFX" type="Label" parent="title_body/settings/0/1"]
 margin_top = 92.0
 margin_right = 146.0
 margin_bottom = 114.0
@@ -467,7 +589,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFX_Slider" type="HSlider" parent="title_body/settings/0/0/SFX"]
+[node name="SFX_Slider" type="HSlider" parent="title_body/settings/0/1/SFX"]
 margin_top = 24.0
 margin_right = 128.0
 margin_bottom = 40.0
@@ -479,16 +601,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="1" type="VBoxContainer" parent="title_body/settings/0"]
-margin_left = 194.0
-margin_right = 302.0
-margin_bottom = 114.0
+[node name="2" type="VBoxContainer" parent="title_body/settings/0"]
+margin_left = 358.0
+margin_right = 466.0
+margin_bottom = 198.0
 custom_constants/separation = 24
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Fullscreen" type="Label" parent="title_body/settings/0/1"]
+[node name="Fullscreen" type="Label" parent="title_body/settings/0/2"]
 margin_right = 108.0
 margin_bottom = 22.0
 custom_fonts/font = ExtResource( 4 )
@@ -497,7 +619,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Fullscreen_Toggle" type="CheckBox" parent="title_body/settings/0/1/Fullscreen"]
+[node name="Fullscreen_Toggle" type="CheckBox" parent="title_body/settings/0/2/Fullscreen"]
 margin_left = -24.0
 margin_top = -4.0
 margin_bottom = 20.0
@@ -509,6 +631,7 @@ __meta__ = {
 }
 
 [node name="achievements" type="Control" parent="title_body"]
+visible = false
 margin_top = 720.0
 margin_right = 1024.0
 margin_bottom = 1320.0
@@ -586,7 +709,7 @@ __meta__ = {
 [connection signal="toggled" from="title_body/holder/spinner/Button2" to="." method="_on_Button2_toggled"]
 [connection signal="pressed" from="title_body/holder/spinner/Button3" to="." method="_on_Button3_pressed"]
 [connection signal="toggled" from="title_body/holder/spinner/Button4" to="." method="_on_Button4_toggled"]
-[connection signal="value_changed" from="title_body/settings/0/0/Master/Volume_Slider" to="." method="_on_Volume_Slider_value_changed"]
-[connection signal="value_changed" from="title_body/settings/0/0/Music/Music_Slider" to="." method="_on_Music_Slider_value_changed"]
-[connection signal="value_changed" from="title_body/settings/0/0/SFX/SFX_Slider" to="." method="_on_SFX_Slider_value_changed"]
-[connection signal="toggled" from="title_body/settings/0/1/Fullscreen/Fullscreen_Toggle" to="." method="_on_Fullscreen_Toggle_toggled"]
+[connection signal="value_changed" from="title_body/settings/0/1/Master/Volume_Slider" to="." method="_on_Volume_Slider_value_changed"]
+[connection signal="value_changed" from="title_body/settings/0/1/Music/Music_Slider" to="." method="_on_Music_Slider_value_changed"]
+[connection signal="value_changed" from="title_body/settings/0/1/SFX/SFX_Slider" to="." method="_on_SFX_Slider_value_changed"]
+[connection signal="toggled" from="title_body/settings/0/2/Fullscreen/Fullscreen_Toggle" to="." method="_on_Fullscreen_Toggle_toggled"]

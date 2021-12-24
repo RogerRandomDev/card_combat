@@ -15,7 +15,7 @@ export var ally_count = 3
 export var ally_scene:PackedScene
 var active_ally = null
 var active_card = false
-var active_card_type = 0
+var active_card_type = "AAAAA"
 var selected_card = null
 var in_attack = false
 var hovering_cards = false
@@ -60,7 +60,13 @@ func update_cards(active=false,color=Color(0,0,0,1.0)):
 	$Card_Effect/Particles2D.color = color
 	$Card_Effect/Particles2D.emitting = active
 
-
+func select_ally(selected_ally):
+	for card in $Cards.get_children():
+		$Cards.remove_child(card)
+		card.queue_free()
+	selected_card = null
+	active_card_type = "AAAAAAAAA"
+	call_deferred('load_cards_for_ally',selected_ally)
 # warning-ignore:unused_argument
 func _on_check_cards_timeout(disable_select = false):
 	var al_select = false
@@ -111,7 +117,7 @@ func return_cards_to_hand():
 		card._on_Card_mouse_exited()
 func stop_holding_cards():
 	selected_card = null
-	active_card_type = -1
+	active_card_type = "AAA"
 var cur_enemy = 0
 func enemy_turns():
 	var target_enemy = null
@@ -187,11 +193,11 @@ func _input(_event):
 			active_ally.reset_size()
 			active_ally = null
 			selected_card = null
-			active_card_type = -1
+			active_card_type = "AAA"
 func ally_used():
 	if active_ally == null:return
 	active_ally.used = true
-	active_card_type = -1
+	active_card_type = "AAAA"
 	active_card = false
 #func heal_ally():
 #	var output_val = selected_card.get_output_value()
@@ -211,7 +217,7 @@ func hide_cards(timer):
 			active_ally = null
 			hovering_ally = null
 			selected_card = null
-			active_card_type = -1
+			active_card_type = "AAAA"
 func new_round():
 	$Resources/cur_turn.text = "YOUR TURN"
 	$Resources.set_energy(ally_count)
@@ -299,7 +305,7 @@ func end_round(timer):
 	active_card = null
 	hovering_ally = null
 	selected_card = null
-	active_card_type = -1
+	active_card_type = "AAAAA"
 	if timer != null:timer.queue_free()
 	hide()
 	get_parent().get_parent().load_combat(false)
@@ -309,6 +315,7 @@ func load_new_round():
 	var p_stats = Simpli.get_character_data()
 	ally_count = 3
 	for ally in $Interaction/Allies.get_children():
+		$Interaction/Allies.remove_child(ally)
 		ally.queue_free()
 	$Interaction/Allies.show()
 	$Interaction/Enemies.show()
@@ -316,6 +323,7 @@ func load_new_round():
 	$Resources/cur_turn.text = "YOUR TURN"
 	enemy_count = 1
 	var size = 3
+	var ally_set = []
 	if Util.player_stats.size() != 0:
 		size = Util.player_stats.size()
 	for ally in size:
@@ -323,7 +331,14 @@ func load_new_round():
 		n_ally.set_stats(p_stats[ally])
 		if Util.player_stats.size() != 0:
 			n_ally.set_stats(Util.player_stats[ally])
+		if ally != 0:
+			n_ally.set_focus_neighbour(1,$Interaction/Allies.get_child(ally-1).get_path())
+		ally_set.append(n_ally)
 		$Interaction/Allies.add_child(n_ally)
+	for n_ally in ally_set:
+		n_ally.set_focus_neighbour(3,ally_set[(n_ally.get_position_in_parent()+1)%3].get_path())
+		
+		
 	ally_count = size
 	$Resources.set_energy(ally_count)
 	for enemy in $Interaction/Enemies.get_children():
@@ -331,20 +346,24 @@ func load_new_round():
 	load_enemies_for_round()
 	redo_foil()
 	call_deferred('new_turn')
-func select_ally(selected_ally):
-	for card in $Cards.get_children():
-		card.queue_free()
+
+func load_cards_for_ally(selected_ally):
 # warning-ignore:unused_variable
 	var possible_cards = selected_ally.owned_cards
 # warning-ignore:unused_variable
 	var ally_cards_this_turn = []
+	var al_pos = selected_ally.get_position_in_parent()
 	for cards in 3:
 		var card = card_scene.instance()
 		card.card_type = selected_ally.cards_this_turn[cards]
 		card.foiled = selected_ally.cards_foiled[cards]
 		card.card_name = selected_ally.cards_this_turn[cards]
-		$Cards.call_deferred('add_child',card)
-		
+		$Cards.add_child(card)
+		card.set_focus_neighbour(0,selected_ally.get_path())
+		card.set_focus_neighbour(2,$Interaction/Allies.get_child(abs(al_pos-1%3)).get_path())
+	if GlobalData.using_controller:
+		$Cards.get_child(0).call_deferred('grab_focus')
+		$Cards.get_child(0)._on_Card_mouse_entered()
 func killed_player():
 	ally_count -= 1
 	$Resources.set_energy(ally_count)
@@ -368,3 +387,15 @@ func check_heal(chosen,cur_enemy,target_enemy):
 				target_enemy = $Interaction/Enemies.get_child(cur_enemy)
 				chosen="HEAL"
 	return [chosen,target_enemy]
+func deselect_ally():
+	if active_ally!=null:
+		active_ally.reset_size()
+	active_ally = null
+	stop_holding_cards()
+	return_cards_to_hand()
+	hovering_ally = null
+	selected_card=null
+	active_card_type="AAAA"
+func reset_ally():
+	active_ally = null
+	hovering_ally = null

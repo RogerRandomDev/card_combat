@@ -6,6 +6,10 @@ const menu_sfx = {"OPTION":"Menu/OPTION.wav"}
 var volume_control = [0,0,0]
 var volume_offset = [0,0,0]
 export var cur_dungeon = "Level_0"
+var using_controller = true
+func _ready():
+	using_controller = ProjectSettings.get_setting("global/controller in use")
+
 func do_menu_sfx(sfx_type):
 	$menu_sfx.stream = load("res://Assets/Audio/"+menu_sfx[sfx_type])
 	$menu_sfx.play()

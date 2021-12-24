@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Textures/Icons/Leaf.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scenes/World/abience.gd" type="Script" id=2]
@@ -6,32 +6,26 @@
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.646739, 1 ), 0.0, -5.50606, 0, 0, Vector2( 1, 0 ), -1.71455, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=3]
-curve = SubResource( 2 )
-
-[sub_resource type="ParticlesMaterial" id=1]
-emission_shape = 2
-emission_box_extents = Vector3( 512, 0, 1 )
-flag_disable_z = true
-direction = Vector3( -1, 1, 0 )
-spread = 30.0
-gravity = Vector3( -32, 32, 0 )
-initial_velocity = 64.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = -10.0
-angle = 360.0
-angle_random = 1.0
-scale = 3.0
-scale_curve = SubResource( 3 )
-color = Color( 0.419608, 0.419608, 0.419608, 1 )
-
 [node name="Ambience" type="CanvasLayer"]
 script = ExtResource( 2 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="Particles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 640, 0 )
 amount = 24
 lifetime = 15.0
-process_material = SubResource( 1 )
 texture = ExtResource( 1 )
+emission_shape = 2
+emission_rect_extents = Vector2( 512, 0 )
+direction = Vector2( -1, 1 )
+spread = 30.0
+gravity = Vector2( -32, 32 )
+initial_velocity = 64.0
+linear_accel = -5.0
+damping = 10.0
+angle = 360.0
+angle_random = 1.0
+scale_amount = 3.0
+scale_amount_curve = SubResource( 2 )
+color = Color( 0.419608, 0.419608, 0.419608, 1 )
+hue_variation = 0.25
+hue_variation_random = 1.0

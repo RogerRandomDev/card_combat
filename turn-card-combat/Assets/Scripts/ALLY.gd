@@ -35,6 +35,10 @@ func _ready():
 	update_health_bar()
 	show_on_top = false
 	$Sprite/CPUParticles2D.process_material = $Sprite/CPUParticles2D.process_material.duplicate()
+	if get_position_in_parent() != 0:
+		set_focus_neighbour(0,get_parent().get_child(get_position_in_parent()-1).get_path())
+		get_parent().get_child(get_position_in_parent()-1).set_focus_neighbour(2,get_path())
+	get_parent().get_child(0).set_focus_neighbour(0,get_path())
 
 func hurt(val,_a=null):
 	val = round(val*get_shielded_rate())
@@ -90,9 +94,11 @@ func _on_ALLY_mouse_exited():
 func _input(_event):
 	if used || get_global_mouse_position().x < 728:return
 	if $AnimationPlayer.is_playing():return
+	if !GlobalData.using_controller:check_input()
+func check_input():
 	var origin_point = get_parent().get_parent().get_parent()
 	if get_parent().get_parent().get_parent().hovering_ally == null && get_parent().get_parent().get_parent().selected_enemy == null && get_global_mouse_position().x > 728 && get_parent().get_parent().get_parent().selected_card!=null:
-		if get_parent().get_parent().get_parent().selected_card.card_type !="HEAL":
+		if get_parent().get_parent().get_parent().selected_card.card_type !="HEAL" && get_parent().get_parent().get_parent().hovering_ally == null && Input.is_action_just_pressed("Lm"):
 			get_parent().get_parent().get_parent().selected_card = null
 			origin_point.active_card_type = "AAAAAAAAA"
 	if Input.is_action_pressed("Lm") && !get_parent().get_parent().get_parent().hovering_ally == self:
@@ -106,7 +112,7 @@ func _input(_event):
 				
 				if get_parent().get_parent().get_parent().hovering_ally == null:
 					origin_point.selected_card = null
-					origin_point.active_card_type = -1
+					origin_point.active_card_type = "AAAAA"
 					get_parent().get_parent().get_parent().active_ally = null
 				get_parent().get_parent().get_parent().return_cards_to_hand()
 				var time = Timer.new()
@@ -124,16 +130,19 @@ func _input(_event):
 	if Input.is_action_just_pressed("Lm") && show_on_top && !used && !Card.team_cards.has(get_parent().get_parent().get_parent().active_card_type) && origin_point.active_ally != self:
 		if get_parent().get_parent().get_parent().selected_card == null || get_parent().get_parent().get_parent().selected_card.card_type != "HEAL":
 			get_parent().get_parent().get_parent().get_node("Cards").show()
+			get_parent().get_parent().get_parent().selected_card = null
+			origin_point.active_card_type = "AAAAAAAAA"
 			get_parent().get_parent().get_parent().active_ally = self
 			get_parent().get_parent().get_parent().call_deferred('select_ally',self)
-			origin_point.active_card_type = "AAAAAAA"
-			$Tween.interpolate_property($Sprite,"rect_scale",$Sprite.rect_scale,Vector2(-1.5,1.5),0.125,Tween.TRANS_LINEAR)
-			$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(-16,-16),0.125,Tween.TRANS_LINEAR)
-			$Tween.start()
+			expand()
 			get_parent().get_parent().get_parent().update_card_foils(cards_foiled)
 			
 	if Input.is_action_just_pressed("Rm") && !used && get_parent().get_parent().get_parent().get_node("Cards").visible:
 		pass
+func expand():
+	$Tween.interpolate_property($Sprite,"rect_scale",$Sprite.rect_scale,Vector2(-1.5,1.5),0.125,Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(-16,-16),0.125,Tween.TRANS_LINEAR)
+	$Tween.start()
 func swap():
 		reset_size()
 		get_parent().get_parent().get_parent().return_cards_to_hand()
