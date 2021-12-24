@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Scripts/text_area.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scripts/World.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/Fonts/Font_Basic.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Assets/Scenes/World/Overworld/main_land/shop.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Global/achivement_object.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Scenes/World/abience.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "new_scene_loader"
@@ -105,3 +106,5 @@ __meta__ = {
 anims/new_scene_loader = SubResource( 1 )
 
 [node name="achievement_shown" parent="." instance=ExtResource( 6 )]
+
+[node name="Ambience" parent="." instance=ExtResource( 7 )]

@@ -6,7 +6,7 @@
 			"options": [
 
 			],
-			"portrait": "",
+			"portrait": "Char0",
 			"question": "How are you doing today?"
 		},
 		{
@@ -19,7 +19,7 @@
 		{
 			"character": "character-1639863821.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "(Don't change)",
 			"text": "Thats great!"
 		},
 		{
@@ -32,7 +32,7 @@
 		{
 			"character": "character-1639863821.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "(Don't change)",
 			"text": "Oh... I hope it gets better."
 		},
 		{

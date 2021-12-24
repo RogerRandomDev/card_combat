@@ -1,0 +1,27 @@
+{
+	"events": [
+		{
+			"character": "character-1639866593.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hi there!"
+		},
+		{
+			"character": "character-1640301463.json",
+			"event_id": "dialogic_001",
+			"portrait": "Watery_boi",
+			"text": "I'm MATHEW! I'm a WATER SPIRIT!"
+		},
+		{
+			"character": "character-1640301463.json",
+			"event_id": "dialogic_001",
+			"portrait": "Watery_boi",
+			"text": "That means I'm made of water!"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1640301495.json",
+		"name": "n_g_mathew"
+	}
+}

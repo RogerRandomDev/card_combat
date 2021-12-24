@@ -14,4 +14,5 @@ scale = Vector2( 2, 1 )
 next_zone = "scene_1"
 enter_offset = Vector2( 0, -24 )
 area_size = Vector2( 20, 31 )
+outside = true
 scene_loader = NodePath("../..")

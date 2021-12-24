@@ -6,7 +6,7 @@
 			"options": [
 
 			],
-			"portrait": "",
+			"portrait": "green_slime",
 			"question": "Anything you want to know?"
 		},
 		{
@@ -19,77 +19,38 @@
 		{
 			"character": "character-1639863563.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "(Don't change)",
 			"text": "Ah, yes, the town history."
 		},
 		{
 			"character": "character-1639863563.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "(Don't change)",
 			"text": "The town dates back all the way to several decades ago, well into my early years as a young slime."
 		},
 		{
 			"character": "character-1639863563.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "(Don't change)",
 			"text": "I say young, but as a slime, i don't really age anyways, ha-ha-ha!"
 		},
 		{
 			"character": "character-1639863563.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "(Don't change)",
 			"text": "The town was founded as a resting stop for travellers, hence the low population and market in the town center."
 		},
 		{
 			"character": "character-1639863563.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "(Don't change)",
 			"text": "Originally, we were always busy beyond belief!"
 		},
 		{
 			"character": "character-1639863563.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "(Don't change)",
 			"text": "Nowadays though, most people just ask for directions, sadly."
-		},
-		{
-			"choice": "What are \"CARDS\"",
-			"condition": "==",
-			"definition": "1639866288-953",
-			"event_id": "dialogic_011",
-			"value": "0"
-		},
-		{
-			"character": "character-1639863563.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "That... is a tough question."
-		},
-		{
-			"character": "character-1639863563.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "All i know, is that someone, or something, created them to protect, but backfired horribly, making them roam the ancient caves and dungeons."
-		},
-		{
-			"character": "character-1639863563.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "It has been said defeating them will turn turn them back into cards, and some people can use the cards ESSENCE to fight back, commonly in the form of COLORED cards. similiarly to the ones you have."
-		},
-		{
-			"character": "character-1639863563.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "I understand if you want to know more than this, but I won't be saying more than this. I recommend you figure it out from here if you want to know more"
-		},
-		{
-			"definition": "1639866288-953",
-			"event_id": "dialogic_014",
-			"operation": "=",
-			"random_upper_limit": 100,
-			"set_random": false,
-			"set_value": "1"
 		},
 		{
 			"choice": "No thanks.",
@@ -101,7 +62,7 @@
 		{
 			"character": "character-1639863563.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "(Don't change)",
 			"text": "Well, feel free to stop by anytime, I'm not going anywhere."
 		},
 		{

@@ -1,0 +1,24 @@
+{
+	"color": "#ffffffff",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1640301463.json",
+	"mirror_portraits": false,
+	"name": "Mathew",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		},
+		{
+			"name": "Watery_boi",
+			"path": "res://Assets/Textures/Entities/Characters/Watery_boi.png"
+		}
+	],
+	"scale": 100
+}

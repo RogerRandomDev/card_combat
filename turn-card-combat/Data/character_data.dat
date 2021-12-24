@@ -12,7 +12,7 @@
 "Icon": "res://Assets/Textures/Entities/Characters/Char0.png",
 "Level_Rate": [ 1, 1, 2, 5 ],
 "Name": "Dave",
-"STRENGTHS": [ "null", "null" ],
+"STRENGTHS": [ PoolStringArray( "null" ), PoolStringArray( "null" ) ],
 "Strength": 20,
 "Support": 10
 }, {
@@ -30,7 +30,7 @@
 "Icon": "res://Assets/Textures/Entities/Characters/Char_1.png",
 "Level_Rate": [ 1, 1, 2, 5 ],
 "Name": "Melinda",
-"STRENGTHS": [ "null", "null" ],
+"STRENGTHS": [ PoolStringArray( "null" ), PoolStringArray( "null" ) ],
 "Strength": 10,
 "Support": 25
 } ]

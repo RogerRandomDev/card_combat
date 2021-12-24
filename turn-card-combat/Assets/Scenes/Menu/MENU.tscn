@@ -509,7 +509,6 @@ __meta__ = {
 }
 
 [node name="achievements" type="Control" parent="title_body"]
-visible = false
 margin_top = 720.0
 margin_right = 1024.0
 margin_bottom = 1320.0

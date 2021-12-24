@@ -39,7 +39,7 @@ func _input(_event):
 		get_tree().get_nodes_in_group("Player")[0].can_move = false
 	else:
 		cur_text += 1
-		if cur_text == sign_text.size()-1:
+		if cur_text >= sign_text.size()-1:
 			is_talking = false
 			$sign_text.hide()
 			get_tree().get_nodes_in_group("Player")[0].can_move = true

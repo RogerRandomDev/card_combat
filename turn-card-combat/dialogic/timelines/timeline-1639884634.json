@@ -4,19 +4,13 @@
 			"character": "character-1639884676.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[wave amp=32 freq=40]GET OUT OF MY HOUSE[/wave]"
+			"text": "[wave amp=32 freq=40]HEY![/wave]"
 		},
 		{
 			"character": "character-1639884676.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[wave amp=32 freq=40]LET ME BE[/wave]"
-		},
-		{
-			"character": "character-1639884676.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "[wave amp=32 freq=40]YOU MUST LEAVE[/wave]"
+			"text": "[wave amp=32 freq=40]GET OUT OF MY HOUSE![/wave]"
 		},
 		{
 			"call_node": {

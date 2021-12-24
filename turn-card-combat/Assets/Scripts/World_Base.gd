@@ -4,7 +4,12 @@ extends Node2D
 
 const combat = preload("res://Assets/Scenes/Combat/combat_scene.tscn")
 export var player_menu:PackedScene
+
+var dungeon_data = {}
 func _ready():
+	dungeon_data = GlobalData.get_dungeon_data()
+	GlobalData.offset_volume(int(dungeon_data["level_song"][1]),1)
+	GlobalData.set_music(dungeon_data["level_song"][0])
 	if Util.last_scene !="Dungeon":
 		Util.cur_layer = 0
 	Util.last_scene = "Dungeon"

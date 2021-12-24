@@ -24,6 +24,15 @@ func _process(delta):
 		velocity = lerp(velocity,Direction,delta*decel_rate)
 	else:
 		velocity = lerp(velocity,Direction,delta*accel_rate)
+	if (
+		position.y < $Camera2D.limit_bottom-98&&
+		position.y > 98||
+		position.x < $Camera2D.limit_right-171&&
+		position.x > 171
+		):
+		get_parent().get_node("Ambience").apply_motion(velocity)
+	else:
+		get_parent().get_node("Ambience").apply_motion(Vector2.ZERO)
 # warning-ignore:return_value_discarded
 	move_and_slide(velocity,Vector2.ZERO)
 func move_direction():

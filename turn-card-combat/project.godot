@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "GraphNode",
+"class": "CommonNode",
+"language": "GDScript",
+"path": "res://addons/project_map/pm_common_node.gd"
+}, {
 "base": "Reference",
 "class": "DTS",
 "language": "GDScript",
@@ -40,6 +45,7 @@ _global_script_classes=[ {
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 } ]
 _global_script_class_icons={
+"CommonNode": "",
 "DTS": "",
 "Dialogic": "",
 "DialogicBackgroundMusic": "",
@@ -70,7 +76,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/object_sys/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/object_sys/plugin.cfg", "res://addons/project_map/plugin.cfg" )
 
 [importer_defaults]
 

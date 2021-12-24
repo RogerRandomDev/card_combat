@@ -8,26 +8,27 @@
 				"character-1639863563.json",
 				"character-1639863821.json",
 				"character-1639866593.json",
-				"character-1639884676.json"
+				"character-1639884676.json",
+				"character-1640301463.json"
 			],
 			"folders": {
 
 			},
 			"metadata": {
 				"color": null,
-				"folded": true
+				"folded": false
 			}
 		},
 		"Definitions": {
 			"files": [
-				"1639866288-953"
+
 			],
 			"folders": {
 
 			},
 			"metadata": {
 				"color": null,
-				"folded": true
+				"folded": false
 			}
 		},
 		"Themes": {
@@ -44,17 +45,64 @@
 		},
 		"Timelines": {
 			"files": [
-				"timeline-1639863808.json",
-				"timeline-1639866360.json",
-				"timeline-1639866696.json",
-				"timeline-1639866699.json",
-				"timeline-1639871090.json",
-				"timeline-1639871233.json",
-				"timeline-1639884634.json",
-				"timeline-1639884667.json"
+
 			],
 			"folders": {
+				"Dann": {
+					"files": [
+						"timeline-1639866699.json",
+						"timeline-1639866360.json",
+						"timeline-1639871233.json"
+					],
+					"folders": {
 
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				},
+				"EELDE": {
+					"files": [
+						"timeline-1639884634.json",
+						"timeline-1639884667.json"
+					],
+					"folders": {
+
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				},
+				"Matthew": {
+					"files": [
+						"timeline-1640301722.json",
+						"timeline-1640301705.json",
+						"timeline-1640301495.json"
+					],
+					"folders": {
+
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				},
+				"Slimmens": {
+					"files": [
+						"timeline-1639863808.json",
+						"timeline-1639866696.json",
+						"timeline-1639871090.json"
+					],
+					"folders": {
+
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				}
 			},
 			"metadata": {
 				"color": null,

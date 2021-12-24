@@ -3,35 +3,35 @@
 "ID": "Human",
 "Icon": "res://Assets/Textures/Entities/Characters/Char0.png",
 "Name": [ "Dylan", "Louis", "Ethan" ],
-"Stats": [ 10, 10, 15, 40, "null", "PHYSICAL" ]
+"Stats": [ 10, 10, 15, 40, PoolStringArray( "null" ), PoolStringArray( "PHYSICAL" ) ]
 }, {
 "Cards": [ "Punch", "Minor Heal" ],
 "ID": "Slime",
 "Icon": "res://Assets/Textures/Entities/Characters/green_slime.png",
 "Name": [ "Victor" ],
-"Stats": [ 20, 5, 5, 40, "PHYSICAL", "ELECTRIC" ]
+"Stats": [ 20, 5, 5, 40, PoolStringArray( "PHYSICAL" ), PoolStringArray( "ELECTRIC", "COLD" ) ]
 }, {
 "Cards": [ "Punch", "Heals" ],
 "ID": "Demon",
 "Icon": "res://Assets/Textures/Entities/Characters/Demon.png",
 "Name": [ "dave" ],
-"Stats": [ 15, 1, 15, 60, "BURN", "PHYSICAL" ]
+"Stats": [ 15, 1, 15, 60, PoolStringArray( "BURN" ), PoolStringArray( "PHYSICAL", "COLD" ) ]
 }, {
 "Cards": [ "Punch", "Heals" ],
 "ID": "Bumbling Moss",
 "Icon": "res://Assets/Textures/Entities/Characters/Stambling_moss.png",
 "Name": [ "Victor" ],
-"Stats": [ 10, 20, 5, 50, "null", "BURN" ]
+"Stats": [ 10, 5, 5, 50, "null", "BURN" ]
 }, {
 "Cards": [ "Punch", "Heals" ],
 "ID": "Trider",
 "Icon": "res://Assets/Textures/Entities/Characters/Angy_tree.png",
 "Name": [ "Victor" ],
-"Stats": [ 30, 1, 20, 60, "PHYSICAL", "BURN" ]
+"Stats": [ 30, 1, 20, 60, PoolStringArray( "[PHYSICAL", " COLD", "ELECTRIC]" ), PoolStringArray( "BURN" ) ]
 }, {
 "Cards": [ "Punch", "Minor Heal" ],
 "ID": "Gelatin",
 "Icon": "res://Assets/Textures/Entities/Characters/gelatin_cube.png",
 "Name": [ "Geane" ],
-"Stats": [ 15, 20, 10, 40, "PHYSICAL", "ELECTRIC" ]
+"Stats": [ 15, 5, 10, 40, PoolStringArray( "PHYSICAL" ), PoolStringArray( "ELECTRIC", "COLD" ) ]
 } ]

@@ -3,16 +3,20 @@ extends Node2D
 
 
 func _ready():
-	load_new_scene("scene_house_0",0,Vector2(20.125,12))
+	load_new_scene("scene_house_0",0,Vector2(20.125,12),false)
 	GlobalData.set_music("town_song_0")
+	GlobalData.offset_volume(0,1)
+	GlobalData.offset_volume(0,0)
+	GlobalData.offset_volume(0,2)
 
-func load_new_scene(scene,enter_point,area):
+func load_new_scene(scene,enter_point,area,outdoors):
+	$Ambience.toggle_leaves(outdoors)
 	$AnimationPlayer.play("new_scene_loader")
 	area_size = area
 	scene_name = scene
 	scene_enter_point = enter_point
 	$World_Player.can_move = false
-	
+func can_load():return $World_Player.can_move
 var area_size = Vector2.ZERO
 var scene_name = ""
 var scene_enter_point = 0

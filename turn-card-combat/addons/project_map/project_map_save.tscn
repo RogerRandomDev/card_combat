@@ -1,0 +1,912 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://addons/project_map/pm_group_node.gd" type="Script" id=2]
+[ext_resource path="res://addons/project_map/project_map.gd" type="Script" id=4]
+[ext_resource path="res://addons/project_map/group_selected.stylebox" type="StyleBox" id=5]
+[ext_resource path="res://addons/project_map/pm_group_node.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/project_map/group.stylebox" type="StyleBox" id=7]
+[ext_resource path="res://addons/project_map/node.stylebox" type="StyleBox" id=8]
+[ext_resource path="res://addons/project_map/pm_file_node.gd" type="Script" id=9]
+[ext_resource path="res://addons/project_map/pm_file_node.tscn" type="PackedScene" id=10]
+[ext_resource path="res://addons/project_map/node_selected.stylebox" type="StyleBox" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.2, 0.231373, 0.309804, 1 )
+
+[node name="ProjectMap" type="GraphEdit"]
+margin_right = 1361.0
+margin_bottom = 868.0
+rect_min_size = Vector2( 500, 500 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/bg = SubResource( 1 )
+scroll_offset = Vector2( -256.238, -22 )
+snap_distance = 32
+zoom = 0.8
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="GroupNode5" type="GraphNode" parent="." instance=ExtResource( 6 )]
+margin_left = 563.438
+margin_top = 98.8
+margin_right = 1043.44
+margin_bottom = 482.8
+rect_min_size = Vector2( 480, 384 )
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_styles/commentfocus = ExtResource( 5 )
+custom_styles/comment = ExtResource( 7 )
+offset = Vector2( 384, 96 )
+resizable = true
+comment = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+group_name = "Map"
+
+[node name="GroupNode4" type="GraphNode" parent="." instance=ExtResource( 6 )]
+margin_left = 973.037
+margin_top = 98.8
+margin_right = 1293.04
+margin_bottom = 418.8
+rect_min_size = Vector2( 320, 320 )
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_styles/commentfocus = ExtResource( 5 )
+custom_styles/comment = ExtResource( 7 )
+offset = Vector2( 896, 96 )
+resizable = true
+comment = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+group_name = "Map Objects"
+
+[node name="GroupNode2" type="GraphNode" parent="." instance=ExtResource( 6 )]
+margin_left = 563.438
+margin_top = 431.6
+margin_right = 819.438
+margin_bottom = 847.6
+rect_min_size = Vector2( 256, 416 )
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_styles/commentfocus = ExtResource( 5 )
+custom_styles/comment = ExtResource( 7 )
+offset = Vector2( 384, 512 )
+resizable = true
+comment = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+group_name = "Dungeons"
+
+[node name="GroupNode" type="GraphNode" parent="." instance=ExtResource( 6 )]
+margin_left = 793.838
+margin_top = 431.6
+margin_right = 985.838
+margin_bottom = 847.6
+rect_min_size = Vector2( 192, 416 )
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_styles/commentfocus = ExtResource( 5 )
+custom_styles/comment = ExtResource( 7 )
+offset = Vector2( 672, 512 )
+resizable = true
+comment = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+group_name = "Combat"
+
+[node name="GroupNode6" type="GraphNode" parent="." instance=ExtResource( 6 )]
+margin_left = 358.638
+margin_top = 98.8
+margin_right = 582.638
+margin_bottom = 386.8
+rect_min_size = Vector2( 224, 288 )
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_styles/commentfocus = ExtResource( 5 )
+custom_styles/comment = ExtResource( 7 )
+offset = Vector2( 128, 96 )
+resizable = true
+selected = true
+comment = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+group_name = "Menu"
+
+[node name="FileNode6" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 793.838
+margin_top = 508.4
+margin_right = 898.838
+margin_bottom = 570.4
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 672, 608 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/Combat/ALLY.tscn"
+icon_class = "Control"
+script_path = "res://Assets/Scripts/ALLY.gd"
+script_name = "ALLY.gd"
+
+[node name="FileNode16" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 793.838
+margin_top = 559.6
+margin_right = 912.838
+margin_bottom = 621.6
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 672, 672 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/Combat/Enemy.tscn"
+icon_class = "Control"
+script_path = "res://Assets/Scripts/Enemy.gd"
+script_name = "Enemy.gd"
+
+[node name="FileNode" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 793.838
+margin_top = 610.8
+margin_right = 906.838
+margin_bottom = 672.8
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 672, 736 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Cards/Cards.tscn"
+icon_class = "Control"
+script_path = "res://Assets/Cards/Cards.gd"
+script_name = "Cards.gd"
+
+[node name="FileNode20" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 973.037
+margin_top = 124.4
+margin_right = 1133.04
+margin_bottom = 186.4
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 896, 128 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/change_area.tscn"
+icon_class = "Area2D"
+script_path = "res://Assets/Scripts/change_area.gd"
+script_name = "change_area.gd"
+
+[node name="FileNode23" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 1075.44
+margin_top = 226.8
+margin_right = 1264.44
+margin_bottom = 288.8
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 1024, 256 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/interactive_entity.tscn"
+icon_class = "Sprite"
+script_path = "res://Assets/Scripts/interactive_entity.gd"
+script_name = "interactive_entity.gd"
+
+[node name="FileNode22" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 1075.44
+margin_top = 278.0
+margin_right = 1178.44
+margin_bottom = 340.0
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 1024, 320 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/sign.tscn"
+icon_class = "Node2D"
+script_path = "res://Assets/Scenes/World/Overworld/main_land/sign.gd"
+script_name = "sign.gd"
+
+[node name="FileNode17" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 793.838
+margin_top = 713.2
+margin_right = 935.838
+margin_bottom = 745.2
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 672, 864 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/Combat/floaty_text.tscn"
+icon_class = "Node2D"
+
+[node name="FileNode15" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 793.838
+margin_top = 457.2
+margin_right = 962.838
+margin_bottom = 519.2
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 672, 544 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/Combat/combat_scene.tscn"
+icon_class = "Node2D"
+script_path = "res://Assets/Scenes/Combat/test.gd"
+script_name = "test.gd"
+
+[node name="FileNode7" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 563.438
+margin_top = 278.0
+margin_right = 690.438
+margin_bottom = 310.0
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 384, 320 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_0.tscn"
+icon_class = "Node2D"
+
+[node name="FileNode13" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 563.438
+margin_top = 201.2
+margin_right = 737.438
+margin_bottom = 233.2
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 384, 224 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_house_0.tscn"
+icon_class = "Node2D"
+
+[node name="FileNode14" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 563.438
+margin_top = 303.6
+margin_right = 737.438
+margin_bottom = 335.6
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 384, 352 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_house_1.tscn"
+icon_class = "Node2D"
+
+[node name="FileNode9" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 691.438
+margin_top = 278.0
+margin_right = 818.438
+margin_bottom = 310.0
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 544, 320 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_2.tscn"
+icon_class = "Node2D"
+
+[node name="FileNode10" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 691.438
+margin_top = 226.8
+margin_right = 818.438
+margin_bottom = 258.8
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 544, 256 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_3.tscn"
+icon_class = "Node2D"
+
+[node name="FileNode11" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 691.438
+margin_top = 329.2
+margin_right = 818.438
+margin_bottom = 361.2
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 544, 384 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_4.tscn"
+icon_class = "Node2D"
+
+[node name="FileNode12" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 819.438
+margin_top = 278.0
+margin_right = 946.438
+margin_bottom = 310.0
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 704, 320 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_5.tscn"
+icon_class = "Node2D"
+
+[node name="FileNode5" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 793.838
+margin_top = 98.8
+margin_right = 981.838
+margin_bottom = 130.8
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 672, 96 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/default_template.tscn"
+icon_class = "Node2D"
+
+[node name="FileNode21" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 793.838
+margin_top = 124.4
+margin_right = 908.838
+margin_bottom = 186.4
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 672, 128 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/Player.tscn"
+icon_class = "KinematicBody2D"
+script_path = "res://Assets/Scenes/World/Overworld/main_land/Player.gd"
+script_name = "Player.gd"
+
+[node name="FileNode24" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 665.838
+margin_top = 98.8
+margin_right = 779.838
+margin_bottom = 160.8
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 512, 96 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/World.tscn"
+icon_class = "Node2D"
+script_path = "res://Assets/Scripts/World.gd"
+script_name = "World.gd"
+
+[node name="FileNode30" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 358.638
+margin_top = 124.4
+margin_right = 474.638
+margin_bottom = 186.4
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 128, 128 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/Menu/MENU.tscn"
+icon_class = "Node2D"
+script_path = "res://Assets/Scenes/Menu/MENU.gd"
+script_name = "MENU.gd"
+
+[node name="FileNode28" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 358.638
+margin_top = 252.4
+margin_right = 541.638
+margin_bottom = 284.4
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 128, 288 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/Menu/achievements_list.gd"
+resource_type = 2
+icon_class = "Script"
+
+[node name="FileNode29" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 358.638
+margin_top = 201.2
+margin_right = 518.638
+margin_bottom = 263.2
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 128, 224 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/Menu/achievement.tscn"
+icon_class = "Control"
+script_path = "res://Assets/Scenes/Menu/achievement.gd"
+script_name = "achievement.gd"
+
+[node name="FileNode2" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 563.438
+margin_top = 482.8
+margin_right = 715.438
+margin_bottom = 544.8
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 384, 576 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/World_Base.tscn"
+icon_class = "Node2D"
+script_path = "res://Assets/Scripts/World_Base.gd"
+script_name = "World_Base.gd"
+
+[node name="FileNode3" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 563.438
+margin_top = 534.0
+margin_right = 768.438
+margin_bottom = 566.0
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 384, 640 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/dungeon_generation.gd"
+resource_type = 2
+icon_class = "Script"
+
+[node name="FileNode4" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 563.438
+margin_top = 559.6
+margin_right = 668.438
+margin_bottom = 591.6
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 384, 672 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scripts/Player.gd"
+resource_type = 2
+icon_class = "Script"
+
+[node name="FileNode25" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 563.438
+margin_top = 610.8
+margin_right = 723.438
+margin_bottom = 672.8
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 384, 736 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Player_Menu.tscn"
+icon_class = "Control"
+script_path = "res://Assets/Scripts/Player_Menu.gd"
+script_name = "Player_Menu.gd"
+
+[node name="FileNode26" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 563.438
+margin_top = 662.0
+margin_right = 753.438
+margin_bottom = 724.0
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 384, 800 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/player_menu_ally.tscn"
+icon_class = "Control"
+script_path = "res://Assets/Scripts/player_menu_ally.gd"
+script_name = "player_menu_ally.gd"
+
+[node name="FileNode19" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 973.037
+margin_top = 278.0
+margin_right = 1069.04
+margin_bottom = 340.0
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 896, 320 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/Objects/net.tscn"
+icon_class = "Sprite"
+script_path = "res://Assets/Scenes/Objects/net.gd"
+script_name = "net.gd"
+
+[node name="FileNode18" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 973.037
+margin_top = 252.4
+margin_right = 1072.04
+margin_bottom = 284.4
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 896, 288 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/Objects/Ball.tscn"
+icon_class = "RigidBody2D"
+
+[node name="FileNode8" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 563.438
+margin_top = 226.8
+margin_right = 690.438
+margin_bottom = 258.8
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 384, 256 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_1.tscn"
+icon_class = "Node2D"
+
+[node name="FileNode27" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 358.638
+margin_top = 278.0
+margin_right = 485.638
+margin_bottom = 310.0
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 128, 320 )
+selected = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/World/abience.tscn"
+icon_class = "CanvasLayer"
+
+[connection signal="delete_nodes_request" from="." to="." method="_on_GraphEdit_delete_nodes_request"]

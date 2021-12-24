@@ -302,8 +302,8 @@ func _on_new_card_pressed():
 var char_selected = {}
 func _on_char_list_item_selected(index):
 	char_selected = all_data["characters"][index]
-	$TabContainer/Characters/data/strength_c.text = str(char_selected["STRENGTHS"][0])
-	$TabContainer/Characters/data/weakness_c.text = str(char_selected["STRENGTHS"][1])
+	$TabContainer/Characters/data/strength_c.text = str(char_selected["STRENGTHS"][0]).replace("[",'').replace(']','').replace(' ','')
+	$TabContainer/Characters/data/weakness_c.text = str(char_selected["STRENGTHS"][1]).replace("[",'').replace(']','').replace(' ','')
 	$TabContainer/Characters/data/name_of.text = str(char_selected["Name"])
 	$TabContainer/Characters/data/char_name.text = str(char_selected["Name"])
 	$TabContainer/Characters/data/char_health.text = str(char_selected["Default_Stats"][3])
@@ -515,8 +515,8 @@ func _on_enemy_list_item_selected(index):
 	$TabContainer/Enemies/data/enemy_str.text = str(enem_selected["Stats"][2])
 	$TabContainer/Enemies/data/TextureRect.texture = load(enem_selected["Icon"])
 	$TabContainer/Enemies/data/enemy_id.text = enem_selected["ID"]
-	$TabContainer/Enemies/data/strength.text = enem_selected["Stats"][4]
-	$TabContainer/Enemies/data/weakness.text = enem_selected["Stats"][5]
+	$TabContainer/Enemies/data/strength.text = str(enem_selected["Stats"][4]).replace("[",'').replace(']','').replace(' ','')
+	$TabContainer/Enemies/data/weakness.text = str(enem_selected["Stats"][5]).replace("[",'').replace(']','').replace(' ','')
 	$TabContainer/Enemies/data/TextureRect/change_enemy_tex.show()
 	for item in $TabContainer/Enemies/data/owned_cards.get_item_count():
 		$TabContainer/Enemies/data/owned_cards.remove_item(0)
@@ -670,6 +670,8 @@ func _on_Level_List_item_selected(index):
 	level_selected = all_data["levels"][index]
 	$TabContainer/Levels/Data/Lvl_Range/min.text = str(level_selected["levels"][0])
 	$TabContainer/Levels/Data/Lvl_Range/max.text = str(level_selected["levels"][1])
+	$TabContainer/Levels/Data/level_song.text = level_selected["level_song"][0]
+	$TabContainer/Levels/Data/level_db_offset.text = str(level_selected["level_song"][1])
 	$TabContainer/Levels/Data/level_name/name_label.text = level_selected["Name"]
 	for item in $TabContainer/Levels/Data/enemys_in/enemies.get_item_count():
 		$TabContainer/Levels/Data/enemys_in/enemies.remove_item(0)
@@ -696,7 +698,8 @@ func _on_new_level_pressed():
 0: 3,
 1: 1
 },
-"levels": [ 1, 10 ]
+"levels": [ 1, 10 ],
+"level_song":["song_0",-10]
 })
 	update_level_list()
 func update_level_list():
@@ -719,22 +722,22 @@ func _on_name_edit_text_changed(new_text):
 
 
 func _on_strength_text_changed(new_text):
-	if new_text != "":enem_selected["Stats"][4] = new_text
+	if new_text != "":enem_selected["Stats"][4] = new_text.split(",")
 	else:enem_selected["Stats"][4] = "null"
 
 
 func _on_weakness_text_changed(new_text):
-	if new_text != "":enem_selected["Stats"][5] = new_text
+	if new_text != "":enem_selected["Stats"][5] = new_text.split(",")
 	else:enem_selected["Stats"][5] = "null"
 
 
 func _on_weakness_c_text_changed(new_text):
-	if new_text != "":char_selected["STRENGTHS"][1] = new_text
+	if new_text != "":char_selected["STRENGTHS"][1] = new_text.split(",")
 	else:char_selected["STRENGTHS"][1] = "null"
 
 
 func _on_strength_c_text_changed(new_text):
-	if new_text != "":char_selected["STRENGTHS"][0] = new_text
+	if new_text != "":char_selected["STRENGTHS"][0] = new_text.split(",")
 	else:char_selected["STRENGTHS"][0] = "null"
 
 func load_card_list():
@@ -743,3 +746,14 @@ func load_card_list():
 	for card in all_data["cards"].keys():
 		$TabContainer/Characters/add_chard_char_panel/c_name.add_item(card)
 	$TabContainer/Characters/add_chard_char_panel/c_name.text = "ADD CARD"
+
+
+func _on_level_song_text_changed(new_text):
+	level_selected["level_song"][0] = new_text
+
+
+func _on_level_db_offset_text_changed(new_text):
+	if str(int(new_text)) != new_text:
+		$TabContainer/Levels/Data/level_db_offset.text = str(int(new_text))
+	level_selected["level_song"][1] = int(new_text)
+		

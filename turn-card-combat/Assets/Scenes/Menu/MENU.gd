@@ -4,6 +4,9 @@ var cur_focused = 2
 export var spinner_offset = Vector2(0,256)
 var on_main = true
 func _ready():
+	GlobalData.offset_volume(-10,1)
+	GlobalData.set_volume(-20,2)
+	GlobalData.set_music("song_0")
 	Save.load_game()
 	for child in $title_body/holder/spinner.get_children():
 		child.rect_position = spinner_offset.rotated(child.get_position_in_parent()*(PI*2/6/($title_body/holder/spinner.get_child_count()))-PI/6)

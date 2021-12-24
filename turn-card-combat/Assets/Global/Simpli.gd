@@ -70,6 +70,12 @@ func load_enemy_data(enemy_map=0):
 	file.close()
 	
 func calculate_damage_modifier(strength,defence,attribute,resistance,weakness):
-	var modified_damage = (-int(attribute==resistance || resistance=="ALL")*0.75)+(int(attribute==weakness || weakness=="ALL")+1)
+	if typeof(resistance) != 23:
+		resistance = PoolStringArray(['null'])
+	if typeof(weakness) != 23:
+		weakness = PoolStringArray(['null'])
+	resistance = Array(resistance)
+	weakness = Array(weakness)
+	var modified_damage = (-int(resistance.has(attribute) || resistance==["ALL"])*0.75)+(int(weakness.has(attribute) || weakness==["ALL"])+1)
 	return float(float(strength)/float(defence))*modified_damage
 	
