@@ -52,10 +52,13 @@ func _ready():
 			Util.player_stats.append($Interaction/Allies.get_child(ally).get_stats())
 	get_parent().get_parent().get_node("Menu/Player_Menu").load_players(Util.player_stats)
 	redo_foil()
-	
+	if GlobalData.using_controller:
+		$Interaction/Allies.get_child(0).grab_focus()
+		$Interaction/Allies.get_child(0)._on_ALLY_mouse_entered()
+		get_viewport().warp_mouse($Interaction/Allies.get_child(0).rect_global_position+Vector2(4,4))
 # warning-ignore:unused_argument
 func _process(delta):
-	$Card_Effect.position = get_global_mouse_position()
+	$Card_Effect.position = get_viewport().get_mouse_position()
 func update_cards(active=false,color=Color(0,0,0,1.0)):
 	$Card_Effect/Particles2D.color = color
 	$Card_Effect/Particles2D.emitting = active
@@ -90,6 +93,8 @@ func update_enemy():
 func disable_cards(energy = true):
 	active_card = false
 	selected_card = null
+#trying to hide cards
+	if GlobalData.using_controller:$Cards.hide()
 	var time = Timer.new()
 	time.wait_time = 0.25
 	add_child(time)
@@ -345,6 +350,10 @@ func load_new_round():
 		enemy.queue_free()
 	load_enemies_for_round()
 	redo_foil()
+	if GlobalData.using_controller:
+		$Interaction/Allies.get_child(0).grab_focus()
+		$Interaction/Allies.get_child(0)._on_ALLY_mouse_entered()
+		get_viewport().warp_mouse($Interaction/Allies.get_child(0).rect_global_position+Vector2(4,4))
 	call_deferred('new_turn')
 
 func load_cards_for_ally(selected_ally):

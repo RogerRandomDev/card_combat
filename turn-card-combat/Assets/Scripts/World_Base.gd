@@ -27,6 +27,7 @@ func _ready():
 
 
 func load_combat(visibility=true):
+	GlobalData.do_controller_updates = visibility
 	if visibility:$Combat.get_child(0).load_new_round()
 	get_tree().paused = visibility
 	$AnimationPlayer.play("Load_Combat",-1,(int(visibility)*2-1.0),!visibility)

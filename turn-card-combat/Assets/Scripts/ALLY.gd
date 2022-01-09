@@ -78,17 +78,25 @@ func heal(val):
 
 
 func _on_ALLY_mouse_entered():
+	if GlobalData.using_controller:expand()
 	if $AnimationPlayer.is_playing():return
+	if get_parent().get_parent().get_parent().hovering_ally!=null:get_parent().get_parent().get_parent().hovering_ally.stop_hover()
 	get_parent().get_parent().get_parent().hovering_ally = self
+	for child in get_parent().get_children():
+		if child != self:
+			child.stop_hover()
 	if action_chosen:return
 	show_on_top = true
 
 
 func _on_ALLY_mouse_exited():
 	if $AnimationPlayer.is_playing():return
+	if !get_parent().get_parent().get_parent().active_ally==self:
+		stop_hover()
+		get_parent().get_parent().get_parent().active_ally==null
 	if get_parent().get_parent().get_parent().hovering_ally == self:get_parent().get_parent().get_parent().hovering_ally = null
 	show_on_top = false
-	
+func stop_hover():reset_size(false)
 
 
 func _input(_event):

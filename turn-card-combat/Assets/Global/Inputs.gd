@@ -17,7 +17,7 @@ func _unhandled_input(event):
 	_input(event)
 func _input(_event):
 	if _event is InputEventMouseMotion:return
-#	if GlobalData.using_controller:do_inputs()
+	if !_event is InputEventJoypadMotion && GlobalData.using_controller && GlobalData.do_controller_updates:do_inputs()
 func do_inputs():
 	var focused = control.get_focus_owner()
 	
@@ -37,19 +37,15 @@ func do_inputs():
 			if focused.focus_neighbour_left != '':
 				
 				get_node(focused.focus_neighbour_left).grab_focus()
+				if get_node(focused.focus_neighbour_left).has_method("reset_size"):
+					get_node(focused.focus_neighbour_left)._on_ALLY_mouse_exited()
+					get_node(focused.focus_neighbour_left).stop_hover()
+					get_viewport().warp_mouse(get_node(focused.focus_neighbour_left).rect_global_position+Vector2(4,4))
 			focused.release_focus()
 				
 			
 		return
-	if Input.is_action_pressed("up"):
-		target = focused.focus_neighbour_top
-	if Input.is_action_pressed("down"):
-		target = focused.focus_neighbour_bottom
-	if Input.is_action_just_pressed("left"):
-		target = focused.focus_previous
-	if Input.is_action_just_pressed("right"):
-		target = focused.focus_next
-	
+	get_viewport().warp_mouse(focused.rect_global_position+Vector2(4,4))
 	if target == focused.get_path():return
 	if target == '':return
 	if get_node(target).has_method("expand"):get_node(target).expand()
@@ -63,4 +59,8 @@ func do_inputs():
 	if focused.has_method("_on_Card_mouse_exited"):
 		focused.selected = false
 		focused._on_Card_mouse_exited()
+	if focused.has_method("stop_hover"):
+		print('a')
+		focused.stop_hover()
+	get_viewport().warp_mouse(get_node(target).rect_global_position+Vector2(4,4))
 	get_node(target).grab_focus()
