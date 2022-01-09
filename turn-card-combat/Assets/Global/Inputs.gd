@@ -12,11 +12,12 @@ var control = Control.new()
 func _ready():
 	pause_mode=PAUSE_MODE_PROCESS
 	get_tree().current_scene.add_child(control)
-	get_viewport().warp_mouse(Vector2(1024,0))
+	get_viewport().warp_mouse(Vector2(1020,4))
+func _unhandled_input(event):
+	_input(event)
 func _input(_event):
 	if _event is InputEventMouseMotion:return
-	if GlobalData.using_controller:do_inputs()
-	
+#	if GlobalData.using_controller:do_inputs()
 func do_inputs():
 	var focused = control.get_focus_owner()
 	
@@ -24,7 +25,7 @@ func do_inputs():
 	var target = focused.get_path()
 	if Input.is_action_just_pressed("interact"):
 		Input.action_press("Lm")
-		get_viewport().warp_mouse(Vector2(0,0))
+		get_viewport().warp_mouse(Vector2(4,4))
 		if focused.has_method("check_input"):
 			focused.check_input()
 	if Input.is_action_just_pressed("exit"):

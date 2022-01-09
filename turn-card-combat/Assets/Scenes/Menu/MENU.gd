@@ -3,6 +3,7 @@ extends Node2D
 var cur_focused = 2
 export var spinner_offset = Vector2(0,256)
 var on_main = true
+
 func _ready():
 	GlobalData.offset_volume(-10,1)
 	GlobalData.set_volume(-20,2)
@@ -28,10 +29,13 @@ func _process(delta):
 			$title_body/holder/spinner.rect_rotation+
 # warning-ignore:integer_division
 			(child.get_position_in_parent()*(60/$title_body/holder/spinner.get_child_count()))-30)/30)
+func exit_cur():
+	if $title_body/settings.rect_position != Vector2(0,720):
+		_on_Button2_toggled(true)
 # warning-ignore:unused_argument
 func _input(event):
 	if $Tween.is_active():return
-	if Input.is_key_pressed(KEY_ESCAPE):
+	if Input.is_action_just_pressed("exit"):
 		$title_body/holder/spinner.get_child(cur_focused).pressed = false
 		$title_body/holder/spinner.get_child(cur_focused).enabled_focus_mode = Control.FOCUS_ALL
 		$title_body/holder/spinner.get_child(cur_focused).grab_focus()
@@ -98,6 +102,9 @@ func _on_Button2_toggled(button_pressed):
 	on_main = !button_pressed
 	if !button_pressed:
 		$title_body/settings.grab_focus()
+	if GlobalData.using_controller:
+		$title_body/settings.get_child(0).get_child(1).get_child(0).get_child(0).grab_focus()
+	
 
 
 func _on_Button4_toggled(button_pressed):
@@ -112,12 +119,12 @@ func _on_Fullscreen_Toggle_toggled(button_pressed):
 
 
 func _on_Volume_Slider_value_changed(value):
-	GlobalData.set_volume(value,0)
+	GlobalData.set_volume(value*5,0)
 
 
 func _on_Music_Slider_value_changed(value):
-	GlobalData.set_volume(value,1)
+	GlobalData.set_volume(value*5,1)
 
 
 func _on_SFX_Slider_value_changed(value):
-	GlobalData.set_volume(value,2)
+	GlobalData.set_volume(value*5,2)

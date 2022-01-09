@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Assets/Scenes/Menu/MENU.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/dungeon.tres" type="TileSet" id=2]
@@ -98,20 +98,9 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="Image" id=61]
-data = {
-"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 13, 0, 28, 0, 39, 0, 39, 0, 28, 0, 13, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 22, 102, 110, 137, 193, 152, 239, 152, 239, 137, 193, 102, 110, 0, 22, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 102, 110, 146, 232, 142, 255, 135, 255, 135, 255, 142, 255, 146, 232, 102, 110, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 137, 193, 142, 255, 132, 255, 131, 255, 131, 255, 132, 255, 142, 255, 137, 193, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 152, 239, 135, 255, 131, 255, 131, 255, 131, 255, 131, 255, 135, 255, 152, 239, 0, 39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 150, 240, 135, 255, 131, 255, 131, 255, 131, 255, 131, 255, 135, 255, 149, 240, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 143, 219, 138, 255, 131, 255, 131, 255, 131, 255, 131, 255, 136, 255, 142, 222, 0, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 129, 175, 143, 255, 131, 255, 131, 255, 131, 255, 131, 255, 141, 255, 141, 197, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 82, 101, 150, 252, 133, 255, 131, 255, 131, 255, 133, 255, 150, 254, 77, 100, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 33, 49, 143, 224, 137, 255, 131, 255, 131, 255, 137, 255, 145, 224, 4, 40, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 20, 120, 156, 147, 255, 133, 255, 133, 255, 147, 255, 116, 149, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 12, 44, 144, 219, 140, 255, 140, 255, 145, 220, 12, 44, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 56, 79, 156, 244, 156, 247, 64, 85, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 20, 114, 115, 122, 125, 0, 22, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 11, 0, 12, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
-"format": "LumAlpha8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
-
-[sub_resource type="ImageTexture" id=32]
-flags = 4
-flags = 4
-image = SubResource( 61 )
-size = Vector2( 16, 16 )
+[sub_resource type="DynamicFont" id=61]
+size = 8
+font_data = ExtResource( 3 )
 
 [sub_resource type="Image" id=62]
 data = {
@@ -130,6 +119,21 @@ size = Vector2( 16, 16 )
 
 [sub_resource type="Image" id=63]
 data = {
+"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 13, 0, 28, 0, 39, 0, 39, 0, 28, 0, 13, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 22, 102, 110, 137, 193, 152, 239, 152, 239, 137, 193, 102, 110, 0, 22, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 102, 110, 146, 232, 142, 255, 135, 255, 135, 255, 142, 255, 146, 232, 102, 110, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 137, 193, 142, 255, 132, 255, 131, 255, 131, 255, 132, 255, 142, 255, 137, 193, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 152, 239, 135, 255, 131, 255, 131, 255, 131, 255, 131, 255, 135, 255, 152, 239, 0, 39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 150, 240, 135, 255, 131, 255, 131, 255, 131, 255, 131, 255, 135, 255, 149, 240, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 143, 219, 138, 255, 131, 255, 131, 255, 131, 255, 131, 255, 136, 255, 142, 222, 0, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 129, 175, 143, 255, 131, 255, 131, 255, 131, 255, 131, 255, 141, 255, 141, 197, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 82, 101, 150, 252, 133, 255, 131, 255, 131, 255, 133, 255, 150, 254, 77, 100, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 33, 49, 143, 224, 137, 255, 131, 255, 131, 255, 137, 255, 145, 224, 4, 40, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 20, 120, 156, 147, 255, 133, 255, 133, 255, 147, 255, 116, 149, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 12, 44, 144, 219, 140, 255, 140, 255, 145, 220, 12, 44, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 56, 79, 156, 244, 156, 247, 64, 85, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 20, 114, 115, 122, 125, 0, 22, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 11, 0, 12, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
+"format": "LumAlpha8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id=32]
+flags = 4
+flags = 4
+image = SubResource( 63 )
+size = Vector2( 16, 16 )
+
+[sub_resource type="Image" id=64]
+data = {
 "data": PoolByteArray( 0, 0, 0, 0, 152, 152, 152, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 141, 141, 141, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 130, 130, 130, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 78, 78, 78, 49, 78, 78, 78, 28, 0, 0, 0, 0, 0, 0, 0, 0, 56, 85, 95, 0, 56, 85, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 140, 172, 184, 0, 56, 85, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 162, 173, 0, 56, 85, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 152, 152, 152, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 141, 141, 141, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 130, 130, 130, 121, 78, 78, 78, 49, 0, 0, 0, 0 ),
 "format": "RGBA8",
 "height": 16,
@@ -140,10 +144,10 @@ data = {
 [sub_resource type="ImageTexture" id=38]
 flags = 4
 flags = 4
-image = SubResource( 63 )
+image = SubResource( 64 )
 size = Vector2( 4, 16 )
 
-[sub_resource type="Image" id=64]
+[sub_resource type="Image" id=65]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 0, 0, 0, 0, 77, 75, 89, 0, 77, 75, 89, 4, 77, 75, 89, 25, 77, 75, 89, 64, 77, 75, 89, 93, 77, 75, 89, 102, 77, 75, 89, 104, 77, 75, 89, 104, 77, 75, 89, 104, 77, 75, 89, 104, 77, 75, 89, 102, 77, 75, 89, 93, 77, 75, 89, 64, 77, 75, 89, 25, 77, 75, 89, 4, 77, 75, 89, 0, 77, 75, 89, 4, 77, 75, 89, 40, 64, 62, 74, 147, 42, 41, 47, 240, 32, 32, 36, 252, 30, 30, 35, 255, 31, 31, 35, 255, 31, 31, 35, 255, 31, 31, 35, 255, 31, 31, 35, 255, 30, 30, 35, 255, 32, 32, 36, 252, 42, 41, 47, 240, 64, 62, 74, 147, 77, 75, 89, 40, 77, 75, 89, 4, 77, 75, 89, 25, 63, 62, 73, 148, 31, 31, 36, 252, 32, 32, 37, 255, 34, 34, 39, 255, 35, 35, 39, 255, 35, 35, 40, 255, 35, 35, 40, 255, 35, 35, 40, 255, 35, 35, 40, 255, 35, 35, 39, 255, 34, 34, 39, 255, 32, 32, 37, 255, 31, 31, 36, 252, 63, 62, 73, 148, 77, 75, 89, 25, 77, 75, 89, 64, 42, 41, 47, 240, 32, 32, 37, 255, 35, 35, 40, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 35, 35, 40, 255, 32, 32, 37, 255, 42, 41, 47, 240, 77, 75, 89, 64, 77, 75, 89, 93, 32, 32, 36, 253, 34, 34, 39, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 34, 34, 39, 255, 32, 32, 36, 253, 77, 75, 89, 93, 77, 75, 89, 93, 32, 32, 36, 253, 34, 34, 39, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 34, 34, 39, 255, 32, 32, 36, 253, 77, 75, 89, 93, 77, 75, 89, 64, 42, 41, 47, 240, 32, 32, 37, 255, 35, 35, 40, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 37, 37, 42, 255, 35, 35, 40, 255, 32, 32, 37, 255, 42, 41, 47, 240, 77, 75, 89, 64, 77, 75, 89, 26, 63, 62, 73, 150, 31, 31, 36, 252, 32, 32, 37, 255, 34, 34, 39, 255, 35, 35, 39, 255, 35, 35, 40, 255, 35, 35, 40, 255, 35, 35, 40, 255, 35, 35, 40, 255, 35, 35, 39, 255, 34, 34, 39, 255, 32, 32, 37, 255, 31, 31, 36, 252, 63, 62, 73, 150, 77, 75, 89, 26, 77, 75, 89, 4, 77, 75, 89, 40, 63, 62, 73, 149, 42, 41, 47, 240, 32, 32, 36, 253, 30, 30, 35, 255, 31, 31, 35, 255, 31, 31, 35, 255, 31, 31, 35, 255, 31, 31, 35, 255, 30, 30, 35, 255, 32, 32, 36, 253, 42, 41, 47, 240, 63, 62, 73, 149, 77, 75, 89, 40, 77, 75, 89, 4, 77, 75, 89, 0, 77, 75, 89, 4, 77, 75, 89, 25, 77, 75, 89, 64, 77, 75, 89, 93, 77, 75, 89, 102, 77, 75, 89, 104, 77, 75, 89, 104, 77, 75, 89, 104, 77, 75, 89, 104, 77, 75, 89, 102, 77, 75, 89, 93, 77, 75, 89, 64, 77, 75, 89, 25, 77, 75, 89, 4, 77, 75, 89, 0, 0, 0, 0, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 77, 75, 89, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "RGBA8",
@@ -155,7 +159,7 @@ data = {
 [sub_resource type="ImageTexture" id=40]
 flags = 4
 flags = 4
-image = SubResource( 64 )
+image = SubResource( 65 )
 size = Vector2( 16, 16 )
 
 [sub_resource type="StyleBoxTexture" id=42]
@@ -167,7 +171,7 @@ margin_top = 4.0
 margin_bottom = 4.0
 
 [sub_resource type="Theme" id=44]
-HSlider/icons/grabber = SubResource( 32 )
+HSlider/icons/grabber = SubResource( 34 )
 HSlider/icons/grabber_disabled = SubResource( 34 )
 HSlider/icons/grabber_highlight = SubResource( 32 )
 HSlider/icons/tick = SubResource( 38 )
@@ -411,7 +415,7 @@ __meta__ = {
 
 [node name="0" type="VBoxContainer" parent="title_body/settings/0"]
 margin_right = 116.0
-margin_bottom = 198.0
+margin_bottom = 270.0
 custom_constants/separation = 16
 __meta__ = {
 "_edit_use_anchors_": false
@@ -483,7 +487,7 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 64, 11, 11, 12 )
+region_rect = Rect2( 53, 21, 11, 11 )
 
 [node name="5" type="Sprite" parent="title_body/settings/0/0/Movement"]
 position = Vector2( -16, 82 )
@@ -504,7 +508,7 @@ __meta__ = {
 }
 
 [node name="0" type="Sprite" parent="title_body/settings/0/0/Interact"]
-position = Vector2( 30, 32 )
+position = Vector2( 34, 20 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 centered = false
@@ -512,7 +516,7 @@ region_enabled = true
 region_rect = Rect2( 88, 41, 31, 12 )
 
 [node name="1" type="Sprite" parent="title_body/settings/0/0/Interact"]
-position = Vector2( -4, 32 )
+position = Vector2( 0, 20 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
 centered = false
@@ -520,17 +524,88 @@ region_enabled = true
 region_rect = Rect2( 54, 2, 11, 12 )
 
 [node name="2" type="Sprite" parent="title_body/settings/0/0/Interact"]
-position = Vector2( -4, 58 )
+position = Vector2( 0, 44 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 11, 11, 11 )
+
+[node name="3" type="Sprite" parent="title_body/settings/0/0/Interact"]
+position = Vector2( 28, 44 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 53, 21, 11, 11 )
 
+[node name="Menu" type="Label" parent="title_body/settings/0/0"]
+margin_top = 214.0
+margin_right = 116.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 0, 56 )
+custom_fonts/font = ExtResource( 4 )
+text = "Menu:
+Exit:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="0" type="Sprite" parent="title_body/settings/0/0/Menu"]
+position = Vector2( 48, 26 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 54, 2, 8, 13 )
+
+[node name="1" type="Sprite" parent="title_body/settings/0/0/Menu"]
+position = Vector2( 64, 26 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 15, 5, 12 )
+
+[node name="2" type="Sprite" parent="title_body/settings/0/0/Menu"]
+position = Vector2( 74, 26 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 30, 2, 9, 12 )
+
+[node name="3" type="Sprite" parent="title_body/settings/0/0/Menu"]
+position = Vector2( 96, 26 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 100, 12, 8, 9 )
+
+[node name="4" type="Sprite" parent="title_body/settings/0/0/Menu/3"]
+position = Vector2( 8, 0 )
+texture = ExtResource( 8 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 85, 12, 8, 9 )
+
+[node name="Label" type="Label" parent="title_body/settings/0/0/Menu/3"]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 32.0
+margin_bottom = 17.0
+rect_scale = Vector2( 0.33, 0.33 )
+custom_fonts/font = SubResource( 61 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="1" type="VBoxContainer" parent="title_body/settings/0"]
 margin_left = 164.0
 margin_right = 310.0
-margin_bottom = 198.0
+margin_bottom = 270.0
 custom_constants/separation = 24
 __meta__ = {
 "_edit_use_anchors_": false
@@ -549,8 +624,15 @@ __meta__ = {
 margin_top = 24.0
 margin_right = 128.0
 margin_bottom = 40.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../../SFX/SFX_Slider")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../../Music/Music_Slider")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 1
 theme = SubResource( 44 )
-min_value = -40.0
+min_value = -8.0
 max_value = 0.0
 step = 0.25
 __meta__ = {
@@ -571,8 +653,15 @@ __meta__ = {
 margin_top = 24.0
 margin_right = 128.0
 margin_bottom = 40.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../../Master/Volume_Slider")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../../SFX/SFX_Slider")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 1
 theme = SubResource( 44 )
-min_value = -40.0
+min_value = -8.0
 max_value = 0.0
 step = 0.25
 __meta__ = {
@@ -593,8 +682,15 @@ __meta__ = {
 margin_top = 24.0
 margin_right = 128.0
 margin_bottom = 40.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../../Music/Music_Slider")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../../Master/Volume_Slider")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 1
 theme = SubResource( 44 )
-min_value = -40.0
+min_value = -8.0
 max_value = 0.0
 step = 0.25
 __meta__ = {
@@ -604,7 +700,7 @@ __meta__ = {
 [node name="2" type="VBoxContainer" parent="title_body/settings/0"]
 margin_left = 358.0
 margin_right = 466.0
-margin_bottom = 198.0
+margin_bottom = 270.0
 custom_constants/separation = 24
 __meta__ = {
 "_edit_use_anchors_": false
@@ -631,7 +727,6 @@ __meta__ = {
 }
 
 [node name="achievements" type="Control" parent="title_body"]
-visible = false
 margin_top = 720.0
 margin_right = 1024.0
 margin_bottom = 1320.0
@@ -699,6 +794,15 @@ __meta__ = {
 custom_constants/vseparation = 104
 custom_constants/hseparation = 96
 columns = 9
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="title_body/achievements"]
+margin_left = 64.0
+margin_top = 96.0
+margin_right = 128.0
+margin_bottom = 192.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

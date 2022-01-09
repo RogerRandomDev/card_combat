@@ -8,6 +8,7 @@ var volume_offset = [0,0,0]
 export var cur_dungeon = "Level_0"
 var using_controller = true
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	using_controller = ProjectSettings.get_setting("global/controller in use")
 
 func do_menu_sfx(sfx_type):
