@@ -92,11 +92,13 @@ func _on_ALLY_mouse_entered():
 func _on_ALLY_mouse_exited():
 	if $AnimationPlayer.is_playing():return
 	if !get_parent().get_parent().get_parent().active_ally==self:
-		stop_hover()
-		get_parent().get_parent().get_parent().active_ally==null
+		call_deferred('stop_hover')
+		get_parent().get_parent().get_parent().active_ally=null
 	if get_parent().get_parent().get_parent().hovering_ally == self:get_parent().get_parent().get_parent().hovering_ally = null
 	show_on_top = false
-func stop_hover():reset_size(false)
+func stop_hover():
+	if GlobalData.using_controller:show_on_top=true
+	reset_size(false)
 
 
 func _input(_event):
@@ -171,6 +173,7 @@ func redo_foil():
 
 
 func reset_size(do_timer = false):
+	if !$Tween.is_inside_tree():return
 	$Tween.interpolate_property($Sprite,"rect_scale",$Sprite.rect_scale,Vector2(-1,1),0.125,Tween.TRANS_LINEAR)
 	$Tween.interpolate_property($Sprite,"rect_position",$Sprite.rect_position,Vector2(0,0),0.125,Tween.TRANS_LINEAR)
 	$Tween.start()

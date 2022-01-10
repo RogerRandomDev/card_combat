@@ -94,7 +94,9 @@ func disable_cards(energy = true):
 	active_card = false
 	selected_card = null
 #trying to hide cards
-	if GlobalData.using_controller:$Cards.hide()
+	if GlobalData.using_controller:
+		print('a')
+		$Cards.hide()
 	var time = Timer.new()
 	time.wait_time = 0.25
 	add_child(time)
@@ -369,6 +371,7 @@ func load_cards_for_ally(selected_ally):
 		card.card_name = selected_ally.cards_this_turn[cards]
 		$Cards.add_child(card)
 		card.set_focus_neighbour(0,selected_ally.get_path())
+# warning-ignore:narrowing_conversion
 		card.set_focus_neighbour(2,$Interaction/Allies.get_child(abs(al_pos-1%3)).get_path())
 	if GlobalData.using_controller:
 		$Cards.get_child(0).call_deferred('grab_focus')

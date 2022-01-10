@@ -28,18 +28,24 @@ func update_hovered_achievement(id,description,achievement_type):
 	
 	$Description/ACHIEVEMENT_DESCRIPTION.text = description
 	$Description/ACHIEVEMENT_NAME.show()
+	$Panel2.rect_global_position = $ScrollContainer/achievement_list.get_child(id).rect_global_position+Vector2(24,4)
 	if achievement_type.keys()[0] != "special":
 		$Description/ACHIEVEMENT_DESCRIPTION.text +=" "+str(min(Util.get_achievment_progress(achievement_type.keys()[0]),max_value))+"/"+str(max_value)
 	if description == "dont_show":$Description/ACHIEVEMENT_DESCRIPTION.hide()
 func _input(_event):
 	if !GlobalData.using_controller:return
 	var achievement_count = $ScrollContainer/achievement_list.get_child_count()
-	if Input.is_action_just_pressed("left"):focused-=1
-	if Input.is_action_just_pressed("right"):focused+=1
+	if Input.is_action_just_pressed("left"):
+		focused-=1
+		if focused < 0:focused = achievement_count-1
+	if Input.is_action_just_pressed("right"):
+		focused+=1
+		if focused >= achievement_count:focused = 0
 	if Input.is_action_just_pressed("up"):focused-=9
 	if Input.is_action_just_pressed("down"):focused+=9
-	if focused >= achievement_count:focused -= achievement_count
-	if focused < 0:focused+=achievement_count
+	if focused < 0:focused=achievement_count-(achievement_count%9)+(9-abs(focused))
+	if focused >= achievement_count:
+		focused = focused%9
 	if achievement_count != 0:call_deferred('update_focus')
 
 func update_focus():
