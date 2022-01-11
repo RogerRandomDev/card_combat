@@ -474,6 +474,7 @@ region_enabled = true
 region_rect = Rect2( 41, 2, 11, 12 )
 
 [node name="4" type="Sprite" parent="title_body/settings/0/0/Movement"]
+visible = false
 position = Vector2( 64, 26 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
@@ -482,6 +483,7 @@ region_enabled = true
 region_rect = Rect2( 84, 4, 25, 25 )
 
 [node name="6" type="Sprite" parent="title_body/settings/0/0/Movement"]
+visible = false
 position = Vector2( 96, 74 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
@@ -524,6 +526,7 @@ region_enabled = true
 region_rect = Rect2( 54, 2, 11, 12 )
 
 [node name="2" type="Sprite" parent="title_body/settings/0/0/Interact"]
+visible = false
 position = Vector2( 0, 44 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
@@ -532,6 +535,7 @@ region_enabled = true
 region_rect = Rect2( 64, 11, 11, 11 )
 
 [node name="3" type="Sprite" parent="title_body/settings/0/0/Interact"]
+visible = false
 position = Vector2( 28, 44 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
@@ -576,6 +580,7 @@ region_enabled = true
 region_rect = Rect2( 30, 2, 9, 12 )
 
 [node name="3" type="Sprite" parent="title_body/settings/0/0/Menu"]
+visible = false
 position = Vector2( 96, 26 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
@@ -752,6 +757,7 @@ __meta__ = {
 }
 
 [node name="Panel2" type="Panel" parent="title_body/achievements"]
+visible = false
 margin_left = 64.0
 margin_top = 96.0
 margin_right = 144.0

@@ -145,6 +145,11 @@ func enemy_turns():
 			for ally in $Interaction/Allies.get_children():
 				if targeted_ally==null||ally.health/targeted_ally.max_health*rand_range(1.0,0.75) <= targeted_ally.health/targeted_ally.max_health:
 					targeted_ally = ally
+		if chosen_action == "HURT":
+			if targeted_ally == null:
+				targeted_ally = $Interaction/Allies.get_child(round(rand_range(0.0,$Interaction/Allies.get_child_count()-1)))
+			while targeted_ally.is_dead():
+				targeted_ally = $Interaction/Allies.get_child(round(rand_range(0.0,$Interaction/Allies.get_child_count()-1)))
 		match chosen_action:
 			"HEAL":
 				Card.add_action_from_enemy(chosen_action,

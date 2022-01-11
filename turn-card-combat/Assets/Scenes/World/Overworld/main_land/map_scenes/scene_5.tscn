@@ -42,6 +42,5 @@ achievement_name = "GOAAAAL"
 position = Vector2( 432, 432 )
 texture = ExtResource( 6 )
 area_size = Vector2( 9, 9 )
-talk_id_name = "mathew"
 has_first_time_talk = true
-entity_name = "Mathew"
+entity_name = "mathew"

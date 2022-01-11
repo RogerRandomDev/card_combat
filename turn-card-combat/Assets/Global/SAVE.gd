@@ -31,6 +31,7 @@ func save_game():
 	save_data.append(Util.complete_achievments)
 	save_data.append(Util.stored_items)
 	save_data.append(Util.dont_speak_again)
+	save_data.append(Util.complete_dungeons)
 	var file = File.new()
 	file.open("user://TCB_SAVE.dat",File.WRITE)
 	file.store_line(var2str(save_data))

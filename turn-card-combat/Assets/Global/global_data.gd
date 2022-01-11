@@ -8,9 +8,15 @@ var volume_offset = [0,0,0]
 export var cur_dungeon = "Level_0"
 var using_controller = true
 var do_controller_updates=true
+var dungeon_names = []
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	using_controller = ProjectSettings.get_setting("global/controller in use")
+	if using_controller:Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	var file = File.new()
+	file.open("res://Data/level_dat.dat",File.READ)
+	var base = str2var(file.get_as_text())
+	dungeon_names = base
+	file.close()
 
 func do_menu_sfx(sfx_type):
 	$menu_sfx.stream = load("res://Assets/Audio/"+menu_sfx[sfx_type])
@@ -35,11 +41,11 @@ func set_volume(val,id):
 	var volume_change_rate = abs(((volume_control[0]+volume_offset[0])-40)/40)
 	$music.volume_db = 40-(abs((volume_change_rate*(volume_control[1]+volume_offset[1])))+volume_change_rate*40)
 	$menu_sfx.volume_db = 40-(abs((volume_change_rate*(volume_control[2]+volume_offset[0])))+volume_change_rate*40)
+
+func grab_dungeon_names(dungeon_id:int=0):
+	return dungeon_names[dungeon_id]["Name"]
 func get_dungeon_data():
-	var file = File.new()
-	file.open("res://Data/level_dat.dat",File.READ)
-	var levels = str2var(file.get_as_text())
-	for level in levels:
+	for level in dungeon_names:
 		if level["Name"]==cur_dungeon:
 			return level
 func offset_volume(volume,id):

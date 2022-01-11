@@ -253,7 +253,7 @@ margin_bottom = -4.0
 [node name="enemy_list" type="ItemList" parent="TabContainer/Enemies"]
 margin_right = 128.0
 margin_bottom = 560.0
-items = [ "Human", ExtResource( 3 ), false, "Slime", ExtResource( 5 ), false, "Demon", ExtResource( 7 ), false, "Bumbling Moss", ExtResource( 8 ), false, "Trider", ExtResource( 6 ), false, "Gelatin", ExtResource( 9 ), false ]
+items = [ "Human", ExtResource( 3 ), false, "Slime", ExtResource( 5 ), false, "Imp", ExtResource( 7 ), false, "Bumbling Moss", ExtResource( 8 ), false, "Trider", ExtResource( 6 ), false, "Gelatin", ExtResource( 9 ), false ]
 fixed_icon_size = Vector2( 12, 12 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -538,7 +538,7 @@ margin_bottom = -4.0
 [node name="char_list" type="ItemList" parent="TabContainer/Characters"]
 margin_right = 128.0
 margin_bottom = 560.0
-items = [ "Dave", ExtResource( 3 ), false, "Melinda", ExtResource( 10 ), false ]
+items = [ "Dave", ExtResource( 3 ), false, "Melinda", ExtResource( 10 ), false, "Marc", ExtResource( 3 ), false ]
 fixed_icon_size = Vector2( 12, 12 )
 __meta__ = {
 "_edit_use_anchors_": false,

@@ -6,7 +6,6 @@ export var area_offest=Vector2.ZERO
 export var area_size=Vector2(8,8)
 export var entity_offset = Vector2.ZERO
 export var entity_size=Vector2(8,8)
-export (String)var talk_id_name
 export (bool)var has_first_time_talk=false
 export var do_action_after_talk = false
 export var after_talk_action = "none"
@@ -32,8 +31,8 @@ func _input(_event):
 	if !Input.is_action_just_pressed("interact")||!player_inside:return
 	if !is_talking:
 		is_talking=true
-		var talk_id = talk_id_name
-		if do_action_after_talk && !Util.dont_speak_again.has("n_g_"+talk_id_name):talk_id = "n_g_"+talk_id_name
+		var talk_id = entity_name+"_base"
+		if has_first_time_talk && !Util.dont_speak_again.has("n_g_"+entity_name):talk_id = "n_g_"+entity_name
 		cur_talk = str(talk_id)
 	if get_tree().get_nodes_in_group("text_area")[0].can_update() && !Util.dont_speak_again.has(cur_talk):
 		get_tree().get_nodes_in_group("text_area")[0].set_text(cur_talk,entity_name,self)

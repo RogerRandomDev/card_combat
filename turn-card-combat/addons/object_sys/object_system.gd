@@ -381,7 +381,7 @@ func _on_char_sup_text_changed(new_text):
 func _on_char_def_text_changed(new_text):
 	if str(int(new_text)) != new_text:
 		new_text = str(int(new_text))
-	char_selected["Defence"] = int(new_text)
+	char_selected["Defense"] = int(new_text)
 	char_selected["Default_Stats"][0] = int(new_text)
 
 func _on_char_str_text_changed(new_text):
@@ -467,19 +467,21 @@ func _on_enemy_sup_text_changed(new_text):
 	if str(int(new_text)) != new_text:
 		new_text = str(int(new_text))
 	enem_selected["Stats"][1] = int(new_text)
+	enem_selected["Support"] = int(new_text)
 
 
 func _on_enemy_def_text_changed(new_text):
 	if str(int(new_text)) != new_text:
 		new_text = str(int(new_text))
 	enem_selected["Stats"][0] = int(new_text)
+	enem_selected["Defense"] = int(new_text)
 
 
 func _on_enemy_str_text_changed(new_text):
 	if str(int(new_text)) != new_text:
 		new_text = str(int(new_text))
 	enem_selected["Stats"][2] = int(new_text)
-
+	enem_selected["Strength"] = int(new_text)
 
 func _on_enemy_health_text_changed(new_text):
 	if str(int(new_text)) != new_text:

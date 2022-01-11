@@ -50,7 +50,7 @@ area_size = Vector2( 9, 9 )
 entity_size = Vector2( 4, 6 )
 talk_id_name = "dann_base"
 has_first_time_talk = true
-entity_name = "Dann"
+entity_name = "dann"
 
 [node name="sign" parent="." index="5" instance=ExtResource( 5 )]
 position = Vector2( 96, 216 )

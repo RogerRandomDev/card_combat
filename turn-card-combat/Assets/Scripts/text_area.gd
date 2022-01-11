@@ -19,6 +19,7 @@ func only_say_once():
 		var cur_talk = cur_entity.cur_talk
 		if !Util.dont_speak_again.has(cur_talk):
 			Util.dont_speak_again.append(cur_talk)
+			
 func hide_text():
 	get_parent().get_node("World_Player").can_move = true
 	finished_load = true

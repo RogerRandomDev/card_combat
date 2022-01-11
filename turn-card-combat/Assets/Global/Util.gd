@@ -18,12 +18,17 @@ var last_scene = "Map"
 var conditions_done = {}
 var dont_speak_again = []
 var player_name = "TESTING"
+var complete_dungeons = []
 func _ready():
 	pause_mode = PAUSE_MODE_PROCESS
 	var file = File.new()
 	file.open("res://Data/achievements.dat",File.READ)
 	achievment_list = str2var(file.get_as_text())
 	file.close()
+	if file.file_exists("user://TCB_SAVE.dat"):
+		file.open("user://TCB_SAVE.dat",File.READ)
+		complete_dungeons = str2var(file.get_as_text())[6]
+		file.close()
 # Util.choose(["one", "two"])   returns one or two
 func choose(choices):
 	randomize()

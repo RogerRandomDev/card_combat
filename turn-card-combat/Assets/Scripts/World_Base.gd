@@ -18,10 +18,10 @@ func _ready():
 	$Combat.get_child(0).hide()
 	Simpli.load_enemy_data(0)
 	for ally in Util.player_stats:
-		ally[0] = ally[10][2]*ally[8]+ally[11][2]
-		ally[1] = ally[10][1]*ally[8]+ally[11][1]
-		ally[0] = ally[10][0]*ally[8]+ally[11][0]
-		ally[4] = ally[10][3]*ally[8]+ally[11][3]
+		ally[2] = ally[10][2]*(ally[8]-1)+ally[11][2]
+		ally[1] = ally[10][1]*(ally[8]-1)+ally[11][1]
+		ally[0] = ally[10][0]*(ally[8]-1)+ally[11][0]
+		ally[4] = ally[10][3]*(ally[8]-1)+ally[11][3]
 		ally[3] = ally[4]
 	$World/Player.load_followers()
 
@@ -34,10 +34,10 @@ func load_combat(visibility=true):
 	if !visibility:
 		$Combat.get_child(0).get_node("win_screen").visible = true
 		for ally in Util.player_stats:
-			ally[0] = ally[10][2]*ally[8]+ally[11][2]
-			ally[1] = ally[10][1]*ally[8]+ally[11][1]
-			ally[0] = ally[10][0]*ally[8]+ally[11][0]
-			ally[4] = ally[10][3]*ally[8]+ally[11][3]
+			ally[2] = ally[10][2]*(ally[8]-1)+ally[11][2]
+			ally[1] = ally[10][1]*(ally[8]-1)+ally[11][1]
+			ally[0] = ally[10][0]*(ally[8]-1)+ally[11][0]
+			ally[4] = ally[10][3]*(ally[8]-1)+ally[11][3]
 	$World/Player.load_followers()
 func combat_visible(visibility):
 	$Combat.get_child(0).visible = visibility

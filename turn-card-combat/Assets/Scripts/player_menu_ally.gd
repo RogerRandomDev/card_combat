@@ -13,7 +13,7 @@ func set_data(data_in):
 	self.data = data_in
 	$Base/Health.max_value = data_in[4]
 	$Base/Health.value = data_in[3]
-	$Base/Stats.text = "STATS:\nSTR:"+str(data_in[0])+"\nDEF:"+str(data_in[2])+"\nSUP:"+str(data_in[1])
+	$Base/Stats.text = "STATS:\nSTR:"+str(data_in[2])+"\nDEF:"+str(data_in[0])+"\nSUP:"+str(data_in[1])
 	$Base/Name.text = data_in[5]
 	$Base/Sprite.texture = load(data_in[6])
 	$Base/Health/HP_VAL.text = str(data_in[3])+"/"+str(data_in[4])

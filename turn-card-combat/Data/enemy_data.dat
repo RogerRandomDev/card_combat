@@ -12,21 +12,21 @@
 "Stats": [ 20, 5, 5, 40, PoolStringArray( "PHYSICAL" ), PoolStringArray( "ELECTRIC", "COLD" ) ]
 }, {
 "Cards": [ "Punch", "Heals" ],
-"ID": "Demon",
+"ID": "Imp",
 "Icon": "res://Assets/Textures/Entities/Characters/Demon.png",
-"Name": [ "dave" ],
+"Name": [ "Burny", "Sanders" ],
 "Stats": [ 15, 1, 15, 60, PoolStringArray( "BURN" ), PoolStringArray( "PHYSICAL", "COLD" ) ]
 }, {
 "Cards": [ "Punch", "Heals" ],
 "ID": "Bumbling Moss",
 "Icon": "res://Assets/Textures/Entities/Characters/Stambling_moss.png",
-"Name": [ "Victor" ],
+"Name": [ "Barry" ],
 "Stats": [ 10, 5, 5, 50, "null", "BURN" ]
 }, {
 "Cards": [ "Punch", "Heals" ],
 "ID": "Trider",
 "Icon": "res://Assets/Textures/Entities/Characters/Angy_tree.png",
-"Name": [ "Victor" ],
+"Name": [ "Treemitri" ],
 "Stats": [ 30, 1, 20, 60, PoolStringArray( "[PHYSICAL", " COLD", "ELECTRIC]" ), PoolStringArray( "BURN" ) ]
 }, {
 "Cards": [ "Punch", "Minor Heal" ],

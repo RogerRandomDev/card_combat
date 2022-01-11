@@ -60,7 +60,7 @@ func hurt_finish(val):
 	$Health.value = max(min(max_health,val),0)
 	health = max(min(val,max_health),0)
 	update_health_bar()
-	if val <= 0:
+	if val <= 0 && !$AnimationPlayer.is_playing():
 		get_parent().get_parent().get_parent().killed_player()
 		Util.unconsious_players.append(Util.player_stats[self.get_position_in_parent()])
 		Util.player_stats.remove(self.get_position_in_parent())
@@ -218,9 +218,9 @@ func set_stats(stats):
 		Name = stats[5]
 		max_health = stats[4]
 		health = stats[3]
-		defence = stats[2]
+		defence = stats[0]
 		support = stats[1]
-		strength = stats[0]
+		strength = stats[2]
 		$Health.max_value = stats[4]
 		$Health.value = stats[3]
 		level = stats[8]
@@ -233,6 +233,7 @@ func set_stats(stats):
 		max_health = stats["Health"]
 		health = stats["Health"]
 		defence = stats["Defense"]
+		strength = stats["Strength"]
 		Name = stats["Name"]
 		sprite_tex = stats["Icon"]
 		level_rate = stats["Level_Rate"]
@@ -314,3 +315,4 @@ func add_exp(val):
 func update_stats():
 	stats = [defence,support,strength,max_health,stats[4],stats[5]]
 var stats =[1,1,1,40,"null","null"]
+func is_dead():return $AnimationPlayer.is_playing()

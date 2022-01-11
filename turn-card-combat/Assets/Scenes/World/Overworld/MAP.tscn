@@ -1,6 +1,218 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Scripts/MAP.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Textures/world/Map/map_main.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Scenes/World/Overworld/Dungeon_Select.tscn" type="PackedScene" id=3]
 
-[node name="MAP" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.298039, 1, 1, 1 )
+
+[node name="MAP" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 1016.0
+margin_bottom = 592.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="sky" type="Panel" parent="background"]
+show_behind_parent = true
+margin_right = 1008.0
+margin_bottom = 312.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PATHS" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="0" type="Line2D" parent="PATHS"]
+points = PoolVector2Array( 280, 304, 464, 264, 592, 296, 616, 240, 728, 264, 824, 208, 944, 288, 912, 352, 904, 416, 800, 424, 736, 456, 704, 528, 400, 552 )
+width = 4.0
+default_color = Color( 0.898039, 1, 0, 1 )
+
+[node name="1" type="Line2D" parent="PATHS"]
+points = PoolVector2Array( 264, 480, 208, 512, 136, 480 )
+width = 4.0
+default_color = Color( 0.898039, 1, 0, 1 )
+
+[node name="2" type="Line2D" parent="PATHS"]
+points = PoolVector2Array( 728, 272, 776, 64 )
+width = 4.0
+default_color = Color( 0.898039, 1, 0, 1 )
+
+[node name="Dungeons" type="ReferenceRect" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 1020.0
+margin_bottom = 596.0
+border_color = Color( 0, 0, 0, 1 )
+border_width = 8.0
+editor_only = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="selector" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 268.0
+margin_top = 284.0
+margin_right = 284.0
+margin_bottom = 300.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = -1
+
+[node name="selector2" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 452.0
+margin_top = 244.0
+margin_right = 468.0
+margin_bottom = 260.0
+focus_mode = 0
+enabled_focus_mode = 0
+dungeon_id = 1
+
+[node name="selector3" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 580.0
+margin_top = 276.0
+margin_right = 596.0
+margin_bottom = 292.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 1
+
+[node name="selector4" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 604.0
+margin_top = 220.0
+margin_right = 620.0
+margin_bottom = 236.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 2
+
+[node name="selector5" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 716.0
+margin_top = 243.0
+margin_right = 732.0
+margin_bottom = 259.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 3
+
+[node name="selector17" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 764.0
+margin_top = 44.0
+margin_right = 780.0
+margin_bottom = 60.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 4
+
+[node name="selector6" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 812.0
+margin_top = 188.0
+margin_right = 828.0
+margin_bottom = 204.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 4
+
+[node name="selector7" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 932.0
+margin_top = 264.0
+margin_right = 948.0
+margin_bottom = 280.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 5
+
+[node name="selector8" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 900.0
+margin_top = 332.0
+margin_right = 916.0
+margin_bottom = 348.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 6
+
+[node name="selector9" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 892.0
+margin_top = 396.0
+margin_right = 908.0
+margin_bottom = 412.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 7
+
+[node name="selector10" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 788.0
+margin_top = 404.0
+margin_right = 804.0
+margin_bottom = 420.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 9
+
+[node name="selector11" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 724.0
+margin_top = 436.0
+margin_right = 740.0
+margin_bottom = 452.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 10
+
+[node name="selector12" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 692.0
+margin_top = 508.0
+margin_right = 708.0
+margin_bottom = 524.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 11
+
+[node name="selector13" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 388.0
+margin_top = 532.0
+margin_right = 404.0
+margin_bottom = 548.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 12
+
+[node name="selector14" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 252.0
+margin_top = 460.0
+margin_right = 268.0
+margin_bottom = 476.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 13
+
+[node name="selector15" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 196.0
+margin_top = 492.0
+margin_right = 212.0
+margin_bottom = 508.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 14
+
+[node name="selector16" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 124.0
+margin_top = 460.0
+margin_right = 140.0
+margin_bottom = 476.0
+focus_mode = 0
+enabled_focus_mode = 0
+required_to_open = 15

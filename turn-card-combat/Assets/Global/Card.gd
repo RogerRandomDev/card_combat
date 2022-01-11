@@ -69,11 +69,11 @@ func HURT(ally,enemy,_selected,_active_card,foiled,delayed = false,modifiers={},
 	var output = modifiers["Card_Stats"][2]
 	if !foiled:output = default_output(modifiers["Card_Stats"],false)
 	if modifiers.has("BUFFS"):output *= modifiers["BUFFS"]
-	var modifier_for_ally = modifiers["STATS"][2]
+	var modifier_for_ally = modifiers["STATS"][0]
 	if card_attribute!="PHYSICAL":modifier_for_ally=modifiers["STATS"][1]
 	enemy.hurt(
 		round(
-			output*Simpli.calculate_damage_modifier(modifier_for_ally,enemy.stats[2],card_attribute,enemy.stats[4],enemy.stats[5])),ally
+			output*Simpli.calculate_damage_modifier(modifier_for_ally,enemy.stats[0],card_attribute,enemy.stats[4],enemy.stats[5])),ally
 			)
 	if !delayed:ally_used(ally)
 	return true

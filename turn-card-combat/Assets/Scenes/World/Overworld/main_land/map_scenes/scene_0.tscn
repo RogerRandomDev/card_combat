@@ -24,6 +24,7 @@ next_zone = "scene_1"
 enter_point = 1
 enter_offset = Vector2( 0, 24 )
 area_size = Vector2( 20, 31 )
+outside = true
 scene_loader = NodePath("../..")
 
 [node name="area_changer2" parent="Interactions" index="1" instance=ExtResource( 2 )]

@@ -1,13 +1,13 @@
 [ {
 "Cards": {
+"Fire Ball": 1,
 "Hard Punch": 5,
 "Heals": 1,
 "Punch": 3,
 "Shield": 1
 },
 "Default_Stats": [ 15, 10, 20, 40 ],
-"Defence": 15,
-"Defense": 10,
+"Defense": 15,
 "Health": 40,
 "Icon": "res://Assets/Textures/Entities/Characters/Char0.png",
 "Level_Rate": [ 1, 1, 2, 5 ],
@@ -33,4 +33,18 @@
 "STRENGTHS": [ PoolStringArray( "null" ), PoolStringArray( "null" ) ],
 "Strength": 10,
 "Support": 25
+}, {
+"Cards": {
+"Hard Punch": 1,
+"Punch": 4
+},
+"Default_Stats": [ 1, 1, 50000, 1 ],
+"Defense": 1,
+"Health": 1,
+"Icon": "res://Assets/Textures/Entities/Characters/Char0.png",
+"Level_Rate": [ 1, 1, 2, 5 ],
+"Name": "Marc",
+"STRENGTHS": [ "null", "null" ],
+"Strength": 50000,
+"Support": 1
 } ]

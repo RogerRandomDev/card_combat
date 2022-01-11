@@ -17,12 +17,12 @@ next_zone = "scene_0"
 enter_point = 2
 enter_offset = Vector2( 0, -24 )
 area_size = Vector2( 45, 28 )
+outside = true
 scene_loader = NodePath("../..")
 
 [node name="entity" parent="." index="3" instance=ExtResource( 3 )]
 position = Vector2( 160, 88 )
 texture = ExtResource( 4 )
 area_size = Vector2( 9, 9 )
-talk_id_name = "EELDE"
 has_first_time_talk = true
 entity_name = "EELDE"

@@ -25,6 +25,5 @@ scene_loader = NodePath("../..")
 [node name="entity" parent="." index="3" instance=ExtResource( 3 )]
 position = Vector2( 136, 136 )
 area_size = Vector2( 9, 9 )
-talk_id_name = "slimmens_base"
 has_first_time_talk = true
-entity_name = "Slimmens"
+entity_name = "slimmens"
