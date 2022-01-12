@@ -4,12 +4,12 @@ extends Button
 
 var starting_pos = Vector2.ZERO
 export var dungeon_id:int=0
-export var required_to_open = 0
+export var required_to_open = "none"
 export var invis_if_not_open:bool=false
 func _ready():
 	starting_pos = rect_global_position
 	$dungeon_name.text = GlobalData.grab_dungeon_names(dungeon_id).replace("_"," ")
-	if required_to_open != -1:
+	if required_to_open != "none":
 		if !Util.complete_dungeons.has(required_to_open):
 			disabled = true
 			if invis_if_not_open:hide()
@@ -29,3 +29,5 @@ func _on_selector_mouse_exited():
 
 func _on_selector_pressed():
 	get_parent().get_parent().selected_dungeon(dungeon_id)
+func get_name():return $dungeon_name.text
+

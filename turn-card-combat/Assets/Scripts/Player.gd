@@ -16,12 +16,12 @@ export var hp = 100
 
 export var follower_scene:PackedScene
 var last_pos = Vector2.ZERO
-func _ready():
+func ready():
 	randomize()
 	var can_do = get_parent().get_parent().get_node("Map/Map").get_used_cells_by_id(0)
 	var no = true
 	while no:
-		var pos = can_do[round(rand_range(0.0,can_do.size()-1))]
+		var pos = can_do[abs(round(rand_range(0.0,can_do.size()-1)))]
 		var failed = false
 		for x in 3:for y in 3:
 			if !can_do.has(Vector2(pos.x+x-1,pos.y+y-1)):

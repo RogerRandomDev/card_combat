@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Scenes/World/dungeon_stairs.gd" type="Script" id=1]
+
+[node name="dungeon_stairs" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 384.0
+margin_top = 472.0
+margin_right = 640.0
+margin_bottom = 512.0
+custom_constants/separation = 51
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next" type="Button" parent="HBoxContainer"]
+margin_right = 78.0
+margin_bottom = 40.0
+text = "Next Floor"
+
+[node name="return" type="Button" parent="HBoxContainer"]
+margin_left = 129.0
+margin_right = 256.0
+margin_bottom = 40.0
+text = "Return To Surface "
+
+[node name="Label" type="Label" parent="."]
+margin_left = 384.0
+margin_top = 304.0
+margin_right = 640.0
+margin_bottom = 416.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="HBoxContainer/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="HBoxContainer/return" to="." method="_on_return_pressed"]

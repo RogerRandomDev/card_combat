@@ -44,9 +44,9 @@ func set_volume(val,id):
 
 func grab_dungeon_names(dungeon_id:int=0):
 	return dungeon_names[dungeon_id]["Name"]
-func get_dungeon_data():
+func get_dungeon_data(dungeon_name=cur_dungeon):
 	for level in dungeon_names:
-		if level["Name"]==cur_dungeon:
+		if level["Name"]==dungeon_name:
 			return level
 func offset_volume(volume,id):
 	volume_offset[id] = volume

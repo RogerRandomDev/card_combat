@@ -108,3 +108,6 @@ anims/new_scene_loader = SubResource( 1 )
 [node name="achievement_shown" parent="." instance=ExtResource( 6 )]
 
 [node name="Ambience" parent="." instance=ExtResource( 7 )]
+
+[node name="map_layer" type="CanvasLayer" parent="."]
+layer = 10

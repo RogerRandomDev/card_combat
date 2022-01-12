@@ -31,6 +31,7 @@ __meta__ = {
 }
 
 [node name="Achievements" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -948,7 +949,6 @@ margin_bottom = 96.0
 text = "Cancel"
 
 [node name="Levels" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -960,7 +960,7 @@ margin_bottom = -4.0
 margin_top = 12.0
 margin_right = 116.0
 margin_bottom = 542.0
-items = [ "Level_0", null, false, "Level_1", null, false ]
+items = [ "Slime_Haven", null, false, "Bandit_Camp", null, false ]
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1117,6 +1117,12 @@ margin_top = -14.0
 margin_right = 225.0
 text = "Decibel Offset"
 
+[node name="level_tileset" type="LineEdit" parent="TabContainer/Levels/Data"]
+margin_left = 20.0
+margin_top = 392.0
+margin_right = 169.0
+margin_bottom = 416.0
+
 [node name="holder" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -1215,4 +1221,5 @@ __meta__ = {
 [connection signal="text_changed" from="TabContainer/Levels/Data/level_name/name_edit" to="." method="_on_name_edit_text_changed"]
 [connection signal="text_changed" from="TabContainer/Levels/Data/level_song" to="." method="_on_level_song_text_changed"]
 [connection signal="text_changed" from="TabContainer/Levels/Data/level_db_offset" to="." method="_on_level_db_offset_text_changed"]
+[connection signal="text_changed" from="TabContainer/Levels/Data/level_tileset" to="." method="_on_level_tileset_text_changed"]
 [connection signal="pressed" from="holder/save_all_data" to="." method="_on_save_all_data_pressed"]

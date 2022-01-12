@@ -406,6 +406,8 @@ func _on_char_name_text_changed(new_text):
 func _on_Save_char_pressed():
 	if !$TabContainer/Characters/char_list.is_anything_selected():return
 	var selected_card = $TabContainer/Characters/char_list.get_selected_items()[0]
+	for val in char_selected["Level_Rate"].size():
+		char_selected["Level_Rate"][val] = round(char_selected["Default_Stats"][val]/10+0.5)
 	all_data["characters"][selected_card] = char_selected
 	$TabContainer/Characters/char_list.set_item_text(selected_card,$TabContainer/Characters/data/char_name.text)
 	$TabContainer/Characters/char_list.set_item_icon(selected_card,$TabContainer/Characters/data/TextureRect.texture)
@@ -675,6 +677,8 @@ func _on_Level_List_item_selected(index):
 	$TabContainer/Levels/Data/level_song.text = level_selected["level_song"][0]
 	$TabContainer/Levels/Data/level_db_offset.text = str(level_selected["level_song"][1])
 	$TabContainer/Levels/Data/level_name/name_label.text = level_selected["Name"]
+	if !level_selected.has("level_tileset"):level_selected["level_tileset"] = "dungeon"
+	$TabContainer/Levels/Data/level_tileset.text = level_selected["level_tileset"]
 	for item in $TabContainer/Levels/Data/enemys_in/enemies.get_item_count():
 		$TabContainer/Levels/Data/enemys_in/enemies.remove_item(0)
 	for enemy_count in level_selected["enemies"].keys():
@@ -759,3 +763,7 @@ func _on_level_db_offset_text_changed(new_text):
 		$TabContainer/Levels/Data/level_db_offset.text = str(int(new_text))
 	level_selected["level_song"][1] = int(new_text)
 		
+
+
+func _on_level_tileset_text_changed(new_text):
+	level_selected["level_tileset"] = new_text

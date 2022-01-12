@@ -147,8 +147,10 @@ func enemy_turns():
 					targeted_ally = ally
 		if chosen_action == "HURT":
 			if targeted_ally == null:
+# warning-ignore:narrowing_conversion
 				targeted_ally = $Interaction/Allies.get_child(round(rand_range(0.0,$Interaction/Allies.get_child_count()-1)))
 			while targeted_ally.is_dead():
+# warning-ignore:narrowing_conversion
 				targeted_ally = $Interaction/Allies.get_child(round(rand_range(0.0,$Interaction/Allies.get_child_count()-1)))
 		match chosen_action:
 			"HEAL":
@@ -343,12 +345,13 @@ func load_new_round():
 		n_ally.set_stats(p_stats[ally])
 		if Util.player_stats.size() != 0:
 			n_ally.set_stats(Util.player_stats[ally])
-		if ally != 0:
+		if ally != 0 && GlobalData.using_controller:
 			n_ally.set_focus_neighbour(1,$Interaction/Allies.get_child(ally-1).get_path())
 		ally_set.append(n_ally)
 		$Interaction/Allies.add_child(n_ally)
-	for n_ally in ally_set:
-		n_ally.set_focus_neighbour(3,ally_set[(n_ally.get_position_in_parent()+1)%3].get_path())
+	if GlobalData.using_controller:
+		for n_ally in ally_set:
+			n_ally.set_focus_neighbour(3,ally_set[(n_ally.get_position_in_parent()+1)%3].get_path())
 		
 		
 	ally_count = size

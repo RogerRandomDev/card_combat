@@ -8,6 +8,9 @@ func _ready():
 	GlobalData.offset_volume(0,1)
 	GlobalData.offset_volume(0,0)
 	GlobalData.offset_volume(0,2)
+	var map_scene = load("res://Assets/Scenes/World/Overworld/MAP.tscn").instance()
+	$map_layer.add_child(map_scene)
+	map_scene.hide()
 
 func load_new_scene(scene,enter_point,area,outdoors):
 	$Ambience.toggle_leaves(outdoors)
@@ -37,3 +40,10 @@ func enable_motion():$World_Player.can_move = true
 
 func load_shop():
 	$shop.toggle_shop()
+
+func load_map():
+	$map_layer.get_child(0).show()
+	$World_Player.can_move = false
+func disable_map():
+	$map_layer.get_child(0).hide()
+	$World_Player.can_move = true

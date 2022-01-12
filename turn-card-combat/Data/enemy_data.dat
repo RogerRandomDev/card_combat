@@ -6,10 +6,11 @@
 "Stats": [ 10, 10, 15, 40, PoolStringArray( "null" ), PoolStringArray( "PHYSICAL" ) ]
 }, {
 "Cards": [ "Punch", "Minor Heal" ],
+"Defense": 10,
 "ID": "Slime",
 "Icon": "res://Assets/Textures/Entities/Characters/green_slime.png",
 "Name": [ "Victor" ],
-"Stats": [ 20, 5, 5, 40, PoolStringArray( "PHYSICAL" ), PoolStringArray( "ELECTRIC", "COLD" ) ]
+"Stats": [ 10, 5, 5, 40, PoolStringArray( "PHYSICAL" ), PoolStringArray( "ELECTRIC", "COLD" ) ]
 }, {
 "Cards": [ "Punch", "Heals" ],
 "ID": "Imp",

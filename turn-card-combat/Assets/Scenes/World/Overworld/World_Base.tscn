@@ -55,6 +55,7 @@ tracks/2/keys = {
 
 [node name="Game_World" type="Node2D"]
 pause_mode = 2
+process_priority = 10
 script = ExtResource( 4 )
 player_menu = ExtResource( 5 )
 
@@ -68,9 +69,9 @@ collision_layer = 3
 collision_mask = 3
 format = 1
 script = ExtResource( 2 )
-map_w = 100
-map_h = 80
-min_room_size = 6
+map_w = 50
+map_h = 40
+min_room_factor = 0.2
 
 [node name="World" type="Node2D" parent="."]
 pause_mode = 1
@@ -109,3 +110,6 @@ pause_mode = 2
 anims/Load_Combat = SubResource( 1 )
 
 [node name="achievement_shown" parent="." instance=ExtResource( 7 )]
+
+[node name="stair_options" type="CanvasLayer" parent="."]
+layer = 100

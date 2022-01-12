@@ -23,6 +23,16 @@
 				"arguments": [
 
 				],
+				"method_name": "only_say_once",
+				"target_node_path": "/root/Node2D/text_area"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
 				"method_name": "hide_text",
 				"target_node_path": "/root/Node2D/text_area"
 			},
