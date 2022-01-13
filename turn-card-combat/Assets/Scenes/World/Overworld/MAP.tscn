@@ -107,6 +107,7 @@ margin_right = 780.0
 margin_bottom = 60.0
 focus_mode = 0
 enabled_focus_mode = 0
+dungeon_id = 4
 required_to_open = "Slime_Haven"
 invis_if_not_open = true
 
@@ -182,6 +183,16 @@ focus_mode = 0
 enabled_focus_mode = 0
 required_to_open = "Slime_Haven"
 
+[node name="selector19" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 828.0
+margin_top = 514.667
+margin_right = 844.0
+margin_bottom = 530.667
+focus_mode = 0
+enabled_focus_mode = 0
+dungeon_id = 5
+required_to_open = "Sky_City"
+
 [node name="selector14" parent="Dungeons" instance=ExtResource( 3 )]
 margin_left = 252.0
 margin_top = 460.0
@@ -189,7 +200,18 @@ margin_right = 268.0
 margin_bottom = 476.0
 focus_mode = 0
 enabled_focus_mode = 0
+required_to_open = "Hell's_Gate"
+
+[node name="selector18" parent="Dungeons" instance=ExtResource( 3 )]
+margin_left = 252.0
+margin_top = 56.0
+margin_right = 268.0
+margin_bottom = 72.0
+focus_mode = 0
+enabled_focus_mode = 0
+dungeon_id = 3
 required_to_open = "Slime_Haven"
+invis_if_not_open = true
 
 [node name="selector15" parent="Dungeons" instance=ExtResource( 3 )]
 margin_left = 196.0

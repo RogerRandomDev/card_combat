@@ -29,13 +29,18 @@ func set_music(music_name):
 	new_music.volume_db = -40
 	new_music.stream = load("res://Assets/Audio/music/"+music_name+".mp3")
 	var volume_change_rate = abs(((volume_control[0]+volume_offset[0])-40)/40)
-	$Tween.interpolate_property(new_music,"volume_db",-40,40-(abs((volume_change_rate*(volume_control[1]+volume_offset[1])))+volume_change_rate*40),2.5,Tween.TRANS_LINEAR)
-	$Tween.interpolate_property($music,"volume_db",$music.volume_db,-40,2.5,Tween.TRANS_LINEAR)
+	$Tween.interpolate_property(new_music,"volume_db",-50,40-(abs((volume_change_rate*(volume_control[1]+volume_offset[1])))+volume_change_rate*40),2.5,Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($music,"volume_db",$music.volume_db,-50,2.5,Tween.TRANS_LINEAR)
 	$Tween.start()
 	$music.name = "music0"
 	add_child(new_music)
 	new_music.name = "music"
 	new_music.play()
+	var already_one = false
+	for child in get_children():
+		if child.name.find("@") != -1:
+			if already_one:child.queue_free()
+			else:already_one=true
 func set_volume(val,id):
 	volume_control[id] = val
 	var volume_change_rate = abs(((volume_control[0]+volume_offset[0])-40)/40)

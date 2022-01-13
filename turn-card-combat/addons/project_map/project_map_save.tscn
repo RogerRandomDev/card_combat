@@ -20,7 +20,7 @@ rect_min_size = Vector2( 500, 500 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/bg = SubResource( 1 )
-scroll_offset = Vector2( 35.9208, -104.113 )
+scroll_offset = Vector2( 13, -88.113 )
 snap_distance = 32
 zoom = 0.8
 script = ExtResource( 4 )
@@ -30,10 +30,10 @@ __meta__ = {
 }
 
 [node name="GroupNode3" type="GraphNode" parent="." instance=ExtResource( 6 )]
-margin_left = 40.8792
-margin_top = 462.513
-margin_right = 296.879
-margin_bottom = 750.513
+margin_left = 63.8
+margin_top = 446.513
+margin_right = 319.8
+margin_bottom = 734.513
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_styles/commentfocus = ExtResource( 5 )
@@ -54,10 +54,10 @@ __meta__ = {
 group_name = "Folders"
 
 [node name="GroupNode5" type="GraphNode" parent="." instance=ExtResource( 6 )]
-margin_left = 271.279
-margin_top = 180.913
-margin_right = 751.281
-margin_bottom = 564.913
+margin_left = 294.2
+margin_top = 164.913
+margin_right = 774.202
+margin_bottom = 548.913
 rect_min_size = Vector2( 480, 384 )
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
@@ -78,36 +78,11 @@ __meta__ = {
 }
 group_name = "Map"
 
-[node name="GroupNode4" type="GraphNode" parent="." instance=ExtResource( 6 )]
-margin_left = 680.879
-margin_top = 180.913
-margin_right = 1000.89
-margin_bottom = 500.913
-rect_min_size = Vector2( 320, 320 )
-rect_scale = Vector2( 0.8, 0.8 )
-mouse_filter = 1
-custom_styles/commentfocus = ExtResource( 5 )
-custom_styles/comment = ExtResource( 7 )
-offset = Vector2( 896, 96 )
-resizable = true
-comment = true
-slot/0/left_enabled = false
-slot/0/left_type = 0
-slot/0/left_color = Color( 1, 1, 1, 1 )
-slot/0/right_enabled = false
-slot/0/right_type = 0
-slot/0/right_color = Color( 1, 1, 1, 1 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-group_name = "Map Objects"
-
 [node name="GroupNode2" type="GraphNode" parent="." instance=ExtResource( 6 )]
-margin_left = 271.279
-margin_top = 513.713
-margin_right = 527.279
-margin_bottom = 929.713
+margin_left = 294.2
+margin_top = 497.713
+margin_right = 550.2
+margin_bottom = 913.713
 rect_min_size = Vector2( 256, 416 )
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
@@ -129,10 +104,10 @@ __meta__ = {
 group_name = "Dungeons"
 
 [node name="GroupNode" type="GraphNode" parent="." instance=ExtResource( 6 )]
-margin_left = 501.679
-margin_top = 513.713
-margin_right = 693.679
-margin_bottom = 929.713
+margin_left = 524.6
+margin_top = 497.713
+margin_right = 716.6
+margin_bottom = 913.713
 rect_min_size = Vector2( 192, 416 )
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
@@ -154,10 +129,10 @@ __meta__ = {
 group_name = "Combat"
 
 [node name="GroupNode6" type="GraphNode" parent="." instance=ExtResource( 6 )]
-margin_left = 66.4792
-margin_top = 180.913
-margin_right = 290.479
-margin_bottom = 468.913
+margin_left = 89.4
+margin_top = 164.913
+margin_right = 313.4
+margin_bottom = 452.913
 rect_min_size = Vector2( 224, 288 )
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
@@ -178,11 +153,36 @@ __meta__ = {
 }
 group_name = "Menu"
 
+[node name="GroupNode4" type="GraphNode" parent="." instance=ExtResource( 6 )]
+margin_left = 703.8
+margin_top = 164.913
+margin_right = 1023.81
+margin_bottom = 484.913
+rect_min_size = Vector2( 320, 320 )
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_styles/commentfocus = ExtResource( 5 )
+custom_styles/comment = ExtResource( 7 )
+offset = Vector2( 896, 96 )
+resizable = true
+comment = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+group_name = "Map Objects"
+
 [node name="FileNode6" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 501.679
-margin_top = 590.513
-margin_right = 606.679
-margin_bottom = 652.513
+margin_left = 524.6
+margin_top = 574.513
+margin_right = 629.6
+margin_bottom = 636.513
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -205,10 +205,10 @@ script_path = "res://Assets/Scripts/ALLY.gd"
 script_name = "ALLY.gd"
 
 [node name="FileNode16" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 501.679
-margin_top = 641.713
-margin_right = 620.679
-margin_bottom = 703.713
+margin_left = 524.6
+margin_top = 625.713
+margin_right = 643.6
+margin_bottom = 687.713
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -231,10 +231,10 @@ script_path = "res://Assets/Scripts/Enemy.gd"
 script_name = "Enemy.gd"
 
 [node name="FileNode" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 501.679
-margin_top = 692.913
-margin_right = 614.679
-margin_bottom = 754.913
+margin_left = 524.6
+margin_top = 676.913
+margin_right = 637.6
+margin_bottom = 738.913
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -257,10 +257,10 @@ script_path = "res://Assets/Cards/Cards.gd"
 script_name = "Cards.gd"
 
 [node name="FileNode20" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 680.879
-margin_top = 206.513
-margin_right = 840.889
-margin_bottom = 268.513
+margin_left = 703.8
+margin_top = 190.513
+margin_right = 863.81
+margin_bottom = 252.513
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -283,10 +283,10 @@ script_path = "res://Assets/Scripts/change_area.gd"
 script_name = "change_area.gd"
 
 [node name="FileNode22" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 783.279
-margin_top = 360.113
-margin_right = 886.279
-margin_bottom = 422.113
+margin_left = 806.2
+margin_top = 344.113
+margin_right = 909.2
+margin_bottom = 406.113
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -309,10 +309,10 @@ script_path = "res://Assets/Scenes/World/Overworld/main_land/sign.gd"
 script_name = "sign.gd"
 
 [node name="FileNode17" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 501.679
-margin_top = 795.313
-margin_right = 643.679
-margin_bottom = 827.313
+margin_left = 524.6
+margin_top = 779.313
+margin_right = 666.6
+margin_bottom = 811.313
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -333,10 +333,10 @@ path = "res://Assets/Scenes/Combat/floaty_text.tscn"
 icon_class = "Node2D"
 
 [node name="FileNode15" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 501.679
-margin_top = 539.313
-margin_right = 670.679
-margin_bottom = 601.313
+margin_left = 524.6
+margin_top = 523.313
+margin_right = 693.6
+margin_bottom = 585.313
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -359,10 +359,10 @@ script_path = "res://Assets/Scenes/Combat/test.gd"
 script_name = "test.gd"
 
 [node name="FileNode7" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 271.279
-margin_top = 360.113
-margin_right = 398.279
-margin_bottom = 392.113
+margin_left = 294.2
+margin_top = 344.113
+margin_right = 421.2
+margin_bottom = 376.113
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -383,10 +383,10 @@ path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_0.tscn"
 icon_class = "Node2D"
 
 [node name="FileNode13" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 271.279
-margin_top = 283.313
-margin_right = 445.279
-margin_bottom = 315.313
+margin_left = 294.2
+margin_top = 267.313
+margin_right = 468.2
+margin_bottom = 299.313
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -407,10 +407,10 @@ path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_house_0.t
 icon_class = "Node2D"
 
 [node name="FileNode14" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 271.279
-margin_top = 385.713
-margin_right = 445.279
-margin_bottom = 417.713
+margin_left = 294.2
+margin_top = 369.713
+margin_right = 468.2
+margin_bottom = 401.713
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -431,10 +431,10 @@ path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_house_1.t
 icon_class = "Node2D"
 
 [node name="FileNode9" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 399.279
-margin_top = 360.113
-margin_right = 526.279
-margin_bottom = 392.113
+margin_left = 422.2
+margin_top = 344.113
+margin_right = 549.2
+margin_bottom = 376.113
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -455,10 +455,10 @@ path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_2.tscn"
 icon_class = "Node2D"
 
 [node name="FileNode10" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 399.279
-margin_top = 308.913
-margin_right = 526.279
-margin_bottom = 340.913
+margin_left = 422.2
+margin_top = 292.913
+margin_right = 549.2
+margin_bottom = 324.913
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -479,10 +479,10 @@ path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_3.tscn"
 icon_class = "Node2D"
 
 [node name="FileNode11" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 399.279
-margin_top = 411.313
-margin_right = 526.279
-margin_bottom = 443.313
+margin_left = 422.2
+margin_top = 395.313
+margin_right = 549.2
+margin_bottom = 427.313
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -503,10 +503,10 @@ path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_4.tscn"
 icon_class = "Node2D"
 
 [node name="FileNode12" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 527.279
-margin_top = 360.113
-margin_right = 654.279
-margin_bottom = 392.113
+margin_left = 550.2
+margin_top = 344.113
+margin_right = 677.2
+margin_bottom = 376.113
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -527,10 +527,10 @@ path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_5.tscn"
 icon_class = "Node2D"
 
 [node name="FileNode5" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 501.679
-margin_top = 180.913
-margin_right = 689.679
-margin_bottom = 212.913
+margin_left = 524.6
+margin_top = 164.913
+margin_right = 712.6
+margin_bottom = 196.913
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -551,10 +551,10 @@ path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/default_templat
 icon_class = "Node2D"
 
 [node name="FileNode21" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 501.679
-margin_top = 206.513
-margin_right = 616.679
-margin_bottom = 268.513
+margin_left = 524.6
+margin_top = 190.513
+margin_right = 639.6
+margin_bottom = 252.513
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -577,10 +577,10 @@ script_path = "res://Assets/Scenes/World/Overworld/main_land/Player.gd"
 script_name = "Player.gd"
 
 [node name="FileNode24" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 373.679
-margin_top = 180.913
-margin_right = 487.679
-margin_bottom = 242.913
+margin_left = 396.6
+margin_top = 164.913
+margin_right = 510.6
+margin_bottom = 226.913
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -603,10 +603,10 @@ script_path = "res://Assets/Scripts/World.gd"
 script_name = "World.gd"
 
 [node name="FileNode30" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 66.4792
-margin_top = 206.513
-margin_right = 182.479
-margin_bottom = 268.513
+margin_left = 89.4
+margin_top = 190.513
+margin_right = 205.4
+margin_bottom = 252.513
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -629,10 +629,10 @@ script_path = "res://Assets/Scenes/Menu/MENU.gd"
 script_name = "MENU.gd"
 
 [node name="FileNode28" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 66.4792
-margin_top = 334.513
-margin_right = 249.479
-margin_bottom = 366.513
+margin_left = 89.4
+margin_top = 318.513
+margin_right = 272.4
+margin_bottom = 350.513
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -654,10 +654,10 @@ resource_type = 2
 icon_class = "Script"
 
 [node name="FileNode29" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 66.4792
-margin_top = 283.313
-margin_right = 226.479
-margin_bottom = 345.313
+margin_left = 89.4
+margin_top = 267.313
+margin_right = 249.4
+margin_bottom = 329.313
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -680,10 +680,10 @@ script_path = "res://Assets/Scenes/Menu/achievement.gd"
 script_name = "achievement.gd"
 
 [node name="FileNode2" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 271.279
-margin_top = 564.913
-margin_right = 423.279
-margin_bottom = 626.913
+margin_left = 294.2
+margin_top = 548.913
+margin_right = 446.2
+margin_bottom = 610.913
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -706,10 +706,10 @@ script_path = "res://Assets/Scripts/World_Base.gd"
 script_name = "World_Base.gd"
 
 [node name="FileNode3" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 271.279
-margin_top = 616.113
-margin_right = 476.279
-margin_bottom = 648.113
+margin_left = 294.2
+margin_top = 600.113
+margin_right = 499.2
+margin_bottom = 632.113
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -731,10 +731,10 @@ resource_type = 2
 icon_class = "Script"
 
 [node name="FileNode4" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 271.279
-margin_top = 641.713
-margin_right = 376.279
-margin_bottom = 673.713
+margin_left = 294.2
+margin_top = 625.713
+margin_right = 399.2
+margin_bottom = 657.713
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -756,10 +756,10 @@ resource_type = 2
 icon_class = "Script"
 
 [node name="FileNode25" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 271.279
-margin_top = 692.913
-margin_right = 431.279
-margin_bottom = 754.913
+margin_left = 294.2
+margin_top = 676.913
+margin_right = 454.2
+margin_bottom = 738.913
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -782,10 +782,10 @@ script_path = "res://Assets/Scripts/Player_Menu.gd"
 script_name = "Player_Menu.gd"
 
 [node name="FileNode26" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 271.279
-margin_top = 744.113
-margin_right = 461.279
-margin_bottom = 806.113
+margin_left = 294.2
+margin_top = 728.113
+margin_right = 484.2
+margin_bottom = 790.113
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -808,10 +808,10 @@ script_path = "res://Assets/Scripts/player_menu_ally.gd"
 script_name = "player_menu_ally.gd"
 
 [node name="FileNode19" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 680.879
-margin_top = 360.113
-margin_right = 776.889
-margin_bottom = 422.113
+margin_left = 703.8
+margin_top = 344.113
+margin_right = 799.81
+margin_bottom = 406.113
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -833,35 +833,11 @@ icon_class = "Sprite"
 script_path = "res://Assets/Scenes/Objects/net.gd"
 script_name = "net.gd"
 
-[node name="FileNode18" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 680.879
-margin_top = 334.513
-margin_right = 779.889
-margin_bottom = 366.513
-rect_scale = Vector2( 0.8, 0.8 )
-mouse_filter = 1
-custom_constants/port_offset = 0
-custom_styles/frame = ExtResource( 8 )
-custom_styles/selectedframe = ExtResource( 11 )
-offset = Vector2( 896, 288 )
-slot/0/left_enabled = false
-slot/0/left_type = 0
-slot/0/left_color = Color( 1, 1, 1, 1 )
-slot/0/right_enabled = false
-slot/0/right_type = 0
-slot/0/right_color = Color( 1, 1, 1, 1 )
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-path = "res://Assets/Scenes/Objects/Ball.tscn"
-icon_class = "RigidBody2D"
-
 [node name="FileNode8" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 271.279
-margin_top = 308.913
-margin_right = 398.279
-margin_bottom = 340.913
+margin_left = 294.2
+margin_top = 292.913
+margin_right = 421.2
+margin_bottom = 324.913
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -882,10 +858,10 @@ path = "res://Assets/Scenes/World/Overworld/main_land/map_scenes/scene_1.tscn"
 icon_class = "Node2D"
 
 [node name="FileNode27" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 66.4792
-margin_top = 360.113
-margin_right = 193.479
-margin_bottom = 392.113
+margin_left = 89.4
+margin_top = 344.113
+margin_right = 216.4
+margin_bottom = 376.113
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -906,10 +882,10 @@ path = "res://Assets/Scenes/World/abience.tscn"
 icon_class = "CanvasLayer"
 
 [node name="FileNode31" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 40.8792
-margin_top = 488.113
-margin_right = 133.879
-margin_bottom = 520.113
+margin_left = 63.8
+margin_top = 472.113
+margin_right = 156.8
+margin_bottom = 504.113
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -931,10 +907,10 @@ resource_type = 4
 icon_class = "Folder"
 
 [node name="FileNode32" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 40.8792
-margin_top = 513.713
-margin_right = 121.879
-margin_bottom = 545.713
+margin_left = 63.8
+margin_top = 497.713
+margin_right = 144.8
+margin_bottom = 529.713
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -956,10 +932,10 @@ resource_type = 4
 icon_class = "Folder"
 
 [node name="FileNode33" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 40.8792
-margin_top = 539.313
-margin_right = 134.879
-margin_bottom = 571.313
+margin_left = 63.8
+margin_top = 523.313
+margin_right = 157.8
+margin_bottom = 555.313
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -981,10 +957,10 @@ resource_type = 4
 icon_class = "Folder"
 
 [node name="FileNode34" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 40.8792
-margin_top = 564.913
-margin_right = 122.879
-margin_bottom = 596.913
+margin_left = 63.8
+margin_top = 548.913
+margin_right = 145.8
+margin_bottom = 580.913
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -1006,10 +982,10 @@ resource_type = 4
 icon_class = "Folder"
 
 [node name="FileNode35" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 40.8792
-margin_top = 590.513
-margin_right = 152.879
-margin_bottom = 622.513
+margin_left = 63.8
+margin_top = 574.513
+margin_right = 175.8
+margin_bottom = 606.513
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -1031,10 +1007,10 @@ resource_type = 4
 icon_class = "Folder"
 
 [node name="FileNode36" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 40.8792
-margin_top = 616.113
-margin_right = 152.879
-margin_bottom = 648.113
+margin_left = 63.8
+margin_top = 600.113
+margin_right = 175.8
+margin_bottom = 632.113
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -1056,10 +1032,10 @@ resource_type = 4
 icon_class = "Folder"
 
 [node name="FileNode37" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 40.8792
-margin_top = 641.713
-margin_right = 164.879
-margin_bottom = 673.713
+margin_left = 63.8
+margin_top = 625.713
+margin_right = 187.8
+margin_bottom = 657.713
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -1081,10 +1057,10 @@ resource_type = 4
 icon_class = "Folder"
 
 [node name="FileNode38" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 168.879
-margin_top = 488.113
-margin_right = 268.879
-margin_bottom = 520.113
+margin_left = 191.8
+margin_top = 472.113
+margin_right = 291.8
+margin_bottom = 504.113
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -1106,10 +1082,10 @@ resource_type = 4
 icon_class = "Folder"
 
 [node name="FileNode39" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 168.879
-margin_top = 513.713
-margin_right = 256.879
-margin_bottom = 545.713
+margin_left = 191.8
+margin_top = 497.713
+margin_right = 279.8
+margin_bottom = 529.713
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -1131,10 +1107,10 @@ resource_type = 4
 icon_class = "Folder"
 
 [node name="FileNode40" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 168.879
-margin_top = 539.313
-margin_right = 253.879
-margin_bottom = 571.313
+margin_left = 191.8
+margin_top = 523.313
+margin_right = 276.8
+margin_bottom = 555.313
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -1156,10 +1132,10 @@ resource_type = 4
 icon_class = "Folder"
 
 [node name="FileNode41" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 168.879
-margin_top = 564.913
-margin_right = 249.879
-margin_bottom = 596.913
+margin_left = 191.8
+margin_top = 548.913
+margin_right = 272.8
+margin_bottom = 580.913
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -1181,10 +1157,10 @@ resource_type = 4
 icon_class = "Folder"
 
 [node name="FileNode42" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 271.279
-margin_top = 206.513
-margin_right = 375.279
-margin_bottom = 268.513
+margin_left = 294.2
+margin_top = 190.513
+margin_right = 398.2
+margin_bottom = 252.513
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
@@ -1207,17 +1183,16 @@ script_path = "res://Assets/Scripts/MAP.gd"
 script_name = "MAP.gd"
 
 [node name="FileNode23" type="GraphNode" parent="." instance=ExtResource( 10 )]
-margin_left = 783.279
-margin_top = 308.913
-margin_right = 972.279
-margin_bottom = 370.913
+margin_left = 806.2
+margin_top = 292.913
+margin_right = 995.2
+margin_bottom = 354.913
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_constants/port_offset = 0
 custom_styles/frame = ExtResource( 8 )
 custom_styles/selectedframe = ExtResource( 11 )
 offset = Vector2( 1024, 256 )
-selected = true
 slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color( 1, 1, 1, 1 )
@@ -1232,5 +1207,56 @@ path = "res://Assets/Scenes/World/Overworld/main_land/interactive_entity.tscn"
 icon_class = "Sprite"
 script_path = "res://Assets/Scripts/interactive_entity.gd"
 script_name = "interactive_entity.gd"
+
+[node name="FileNode18" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 703.8
+margin_top = 318.513
+margin_right = 802.81
+margin_bottom = 350.513
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 896, 288 )
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/Objects/Ball.tscn"
+icon_class = "RigidBody2D"
+
+[node name="FileNode43" type="GraphNode" parent="." instance=ExtResource( 10 )]
+margin_left = 703.8
+margin_top = 267.313
+margin_right = 803.8
+margin_bottom = 329.313
+rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 1
+custom_constants/port_offset = 0
+custom_styles/frame = ExtResource( 8 )
+custom_styles/selectedframe = ExtResource( 11 )
+offset = Vector2( 896, 224 )
+selected = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "res://Assets/Scenes/Objects/bed.tscn"
+icon_class = "StaticBody2D"
+script_path = "res://Assets/Scenes/Objects/bed.gd"
+script_name = "bed.gd"
 
 [connection signal="delete_nodes_request" from="." to="." method="_on_GraphEdit_delete_nodes_request"]

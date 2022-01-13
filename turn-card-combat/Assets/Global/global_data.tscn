@@ -1,16 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Assets/Audio/music/song_0.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Assets/Global/global_data.gd" type="Script" id=2]
 
 [node name="Node" type="Node"]
 pause_mode = 2
 script = ExtResource( 2 )
 
-[node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 1 )
-autoplay = true
-
 [node name="menu_sfx" type="AudioStreamPlayer" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="music" type="AudioStreamPlayer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Scripts/text_area.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scripts/World.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Global/achivement_object.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Scenes/World/abience.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Scenes/World/effects.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Scenes/World/Overworld/bed_menu.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "new_scene_loader"
@@ -114,3 +115,6 @@ anims/new_scene_loader = SubResource( 1 )
 layer = 10
 
 [node name="effects" parent="." instance=ExtResource( 8 )]
+
+[node name="bed_menu" parent="." instance=ExtResource( 9 )]
+layer = 100

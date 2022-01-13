@@ -12,7 +12,7 @@
 "Name": [ "Victor" ],
 "Stats": [ 10, 5, 5, 40, PoolStringArray( "PHYSICAL" ), PoolStringArray( "ELECTRIC", "COLD" ) ]
 }, {
-"Cards": [ "Punch", "Heals" ],
+"Cards": [ "Punch" ],
 "ID": "Imp",
 "Icon": "res://Assets/Textures/Entities/Characters/Demon.png",
 "Name": [ "Burny", "Sanders" ],
@@ -35,4 +35,52 @@
 "Icon": "res://Assets/Textures/Entities/Characters/gelatin_cube.png",
 "Name": [ "Geane" ],
 "Stats": [ 15, 5, 10, 40, PoolStringArray( "PHYSICAL" ), PoolStringArray( "ELECTRIC", "COLD" ) ]
+}, {
+"Cards": [ "Punch", "Fire Ball" ],
+"Defense": 20,
+"ID": "Cryer",
+"Icon": "res://Assets/Textures/Entities/Characters/Cryer.png",
+"Name": [ "Cryss" ],
+"Stats": [ 20, 1, 1, 40, "null", PoolStringArray( "null" ) ],
+"Support": 1
+}, {
+"Cards": [ "Heals", "Fire Ball" ],
+"Defense": 10,
+"ID": "Watcher",
+"Icon": "res://Assets/Textures/Entities/Characters/Watcher.png",
+"Name": [ "Wynston" ],
+"Stats": [ 10, 5, 1, 40, "null", PoolStringArray( "null" ) ],
+"Support": 5
+}, {
+"Cards": [ "Punch" ],
+"ID": "Skeleton",
+"Icon": "res://Assets/Textures/Entities/Characters/Skeleton.png",
+"Name": [ "Slimone" ],
+"Stats": [ 1, 10, 20, 10, "null", "PHYSICAL" ],
+"Strength": 20,
+"Support": 10
+}, {
+"Cards": [ "Heals", "Ice Shards" ],
+"Defense": 5,
+"ID": "Lingering Spirit",
+"Icon": "res://Assets/Textures/Entities/Characters/Lingering_Spirit.png",
+"Name": [ "Louis", "Scynthia" ],
+"Stats": [ 5, 10, 10, 39, "null", PoolStringArray( "null" ) ],
+"Strength": 10,
+"Support": 10
+}, {
+"Cards": [ "Heals", "Ice Shards" ],
+"Defense": 20,
+"ID": "Royal Beetle",
+"Icon": "res://Assets/Textures/Entities/Characters/Royal_Beetle.png",
+"Name": [ "Rhinn", "Mrithel" ],
+"Stats": [ 20, 5, 5, 20, "null", "PHYSICAL" ],
+"Strength": 5,
+"Support": 5
+}, {
+"Cards": [ "Holy Heal" ],
+"ID": "Mushroom",
+"Icon": "res://Assets/Textures/Entities/Characters/Mushroom.png",
+"Name": [ "Mushroom", "Lord" ],
+"Stats": [ 1, 1, 1, 10, "null", "PHYSICAL" ]
 } ]

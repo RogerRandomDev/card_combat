@@ -13,4 +13,6 @@ func _on_check_body_exited(body):
 func _input(_event):
 	if !$Label.visible:return
 	if Input.is_action_just_pressed("interact"):
-		get_parent().get_parent().get_node("effects").start_sleep()
+		get_parent().get_parent().get_node("bed_menu").get_child(0).show()
+		GlobalData.set_mouse(true)
+		get_parent().get_parent().get_node("World_Player").can_move = false
