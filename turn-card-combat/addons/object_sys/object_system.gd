@@ -541,7 +541,7 @@ func _on_enem_remove_name_pressed():
 	if !$TabContainer/Enemies/data/name_of.is_anything_selected():return
 	var to_remove = $TabContainer/Enemies/data/name_of.get_item_text(selected_name)
 	$TabContainer/Enemies/data/name_of.remove_item(selected_name)
-	enem_selected["Name"].remove(to_remove)
+	enem_selected["Name"].erase(to_remove)
 
 
 func _on_enem_add_name2_pressed():
@@ -778,4 +778,3 @@ func _on_level_hidden_toggled(button_pressed):
 
 func _on_name_of_item_selected(index):
 	selected_name = index
-	print(index)
