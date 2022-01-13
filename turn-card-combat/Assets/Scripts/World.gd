@@ -3,6 +3,7 @@ extends Node2D
 
 
 func _ready():
+	GlobalData.set_mouse(false)
 	load_new_scene("scene_house_0",0,Vector2(20.125,12),false)
 	GlobalData.set_music("town_song_0")
 	GlobalData.offset_volume(0,1)

@@ -119,7 +119,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 
 [sub_resource type="ConvexPolygonShape2D" id=53]
-points = PoolVector2Array( 8, 12, 0, 12, 0, 0, 8, 0 )
+points = PoolVector2Array( 8, 10, 0, 10, 0, 4, 8, 4 )
 
 [resource]
 0/name = "Grass"
@@ -504,4 +504,4 @@ points = PoolVector2Array( 8, 12, 0, 12, 0, 0, 8, 0 )
 "shape": SubResource( 53 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-8/z_index = 0
+8/z_index = 3

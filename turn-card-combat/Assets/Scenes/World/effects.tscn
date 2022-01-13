@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Scenes/World/effects.gd" type="Script" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+uniform float vig_val = 1.0;
+void fragment(){
+	vec2 uv = SCREEN_UV;
+	uv *=  1.0 - uv.yx;   //vec2(1.0)- uv.yx; -> 1.-u.yx; Thanks FabriceNeyret !
+	
+	float vig = uv.x*uv.y * 15.0; // multiply with sth for intensity
+	
+	vig = pow(vig, vig_val); // change pow for modifying the extend of the  vignette
+	COLOR = texture(SCREEN_TEXTURE,uv);
+	COLOR *= 1.0-vig;
+	if(vig <= 0.0125){COLOR = vec4(0.0,0.0,0.0,1.0);}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/vig_val = 0.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "sleep"
+length = 2.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:vag_val")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 70.0, 70.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:update_self")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "sleep_complete"
+} ]
+}
+
+[node name="effects" type="CanvasLayer"]
+script = ExtResource( 1 )
+update_self = true
+
+[node name="TextureRect" type="ColorRect" parent="."]
+material = SubResource( 2 )
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 600, 784 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.5
+anims/sleep = SubResource( 3 )

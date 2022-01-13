@@ -536,11 +536,11 @@ func _on_enem_add_name_pressed():
 	$TabContainer/Enemies/data/enemy_name.text = ""
 
 
-
+var selected_name = 0
 func _on_enem_remove_name_pressed():
 	if !$TabContainer/Enemies/data/name_of.is_anything_selected():return
-	var to_remove = $TabContainer/Enemies/data/name_of.get_item_text($TabContainer/Enemies/data/name_of.get_selected_items()[0])
-	$TabContainer/Enemies/data/name_of.remove_item($TabContainer/Enemies/data/name_of.get_selected_items()[0])
+	var to_remove = $TabContainer/Enemies/data/name_of.get_item_text(selected_name)
+	$TabContainer/Enemies/data/name_of.remove_item(selected_name)
 	enem_selected["Name"].remove(to_remove)
 
 
@@ -705,7 +705,8 @@ func _on_new_level_pressed():
 1: 1
 },
 "levels": [ 1, 10 ],
-"level_song":["song_0",-10]
+"level_song":["song_0",-10],
+"level_hidden":false
 })
 	update_level_list()
 func update_level_list():
@@ -767,3 +768,14 @@ func _on_level_db_offset_text_changed(new_text):
 
 func _on_level_tileset_text_changed(new_text):
 	level_selected["level_tileset"] = new_text
+
+
+
+
+func _on_level_hidden_toggled(button_pressed):
+	level_selected["level_hidden"] = button_pressed
+
+
+func _on_name_of_item_selected(index):
+	selected_name = index
+	print(index)

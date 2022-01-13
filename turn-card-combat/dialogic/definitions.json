@@ -3,6 +3,29 @@
 
 	],
 	"variables": [
-
+		{
+			"id": "1642024664-787",
+			"name": "fdspoken",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1642025268-366",
+			"name": "cur_d",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1642025277-146",
+			"name": "complete_d",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1642025283-918",
+			"name": "hidden_d",
+			"type": 0,
+			"value": "0"
+		}
 	]
 }

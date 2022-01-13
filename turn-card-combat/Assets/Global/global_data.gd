@@ -51,3 +51,6 @@ func get_dungeon_data(dungeon_name=cur_dungeon):
 func offset_volume(volume,id):
 	volume_offset[id] = volume
 	
+func set_mouse(mode:bool):
+	if !mode:Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

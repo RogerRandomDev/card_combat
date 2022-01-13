@@ -31,7 +31,6 @@ __meta__ = {
 }
 
 [node name="Achievements" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -42,7 +41,7 @@ margin_bottom = -4.0
 [node name="list" type="ItemList" parent="TabContainer/Achievements"]
 margin_right = 128.0
 margin_bottom = 560.0
-items = [ "First Blood", ExtResource( 3 ), false, "More Blood", ExtResource( 3 ), false, "Most Blood", ExtResource( 3 ), false, "Blood", ExtResource( 3 ), false, "I Win", ExtResource( 5 ), false, "I Win Again", ExtResource( 5 ), false, "...I Win?", ExtResource( 5 ), false, "I am unbeatable", ExtResource( 5 ), false, "EEEEEEE", ExtResource( 4 ), false, "Out of bounds", ExtResource( 4 ), false, "Wasted Time", ExtResource( 4 ), false, "GOAAAAL", ExtResource( 10 ), false ]
+items = [ "First Blood", ExtResource( 3 ), false, "More Blood", ExtResource( 3 ), false, "Most Blood", ExtResource( 3 ), false, "Blood", ExtResource( 3 ), false, "I Win", ExtResource( 5 ), false, "I Win Again", ExtResource( 5 ), false, "...I Win?", ExtResource( 5 ), false, "I am unbeatable", ExtResource( 5 ), false, "EEEEEEE", ExtResource( 4 ), false, "Out of bounds", ExtResource( 4 ), false, "GOAAAAL", ExtResource( 10 ), false ]
 fixed_icon_size = Vector2( 12, 12 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -949,6 +948,7 @@ margin_bottom = 96.0
 text = "Cancel"
 
 [node name="Levels" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -960,7 +960,7 @@ margin_bottom = -4.0
 margin_top = 12.0
 margin_right = 116.0
 margin_bottom = 542.0
-items = [ "Slime_Haven", null, false, "Bandit_Camp", null, false ]
+items = [ "Slime_Haven", null, false, "Bandit_Camp", null, false, "Beast_Pit", null, false ]
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1055,13 +1055,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Save_level" type="Button" parent="TabContainer/Levels/Data/level_buttons"]
-margin_left = 171.034
-margin_top = -44.1379
-margin_right = 233.034
-margin_bottom = -19.1379
-text = "Save"
-
 [node name="new_level" type="Button" parent="TabContainer/Levels/Data/level_buttons"]
 margin_right = 92.0
 margin_bottom = 20.0
@@ -1076,6 +1069,13 @@ text = "Remove Level"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Save_level" type="Button" parent="TabContainer/Levels/Data/level_buttons"]
+margin_left = 171.034
+margin_top = -44.1379
+margin_right = 233.034
+margin_bottom = -19.1379
+text = "Save"
 
 [node name="level_name" type="Control" parent="TabContainer/Levels/Data"]
 margin_right = 40.0
@@ -1123,6 +1123,13 @@ margin_top = 392.0
 margin_right = 169.0
 margin_bottom = 416.0
 
+[node name="level_hidden" type="CheckBox" parent="TabContainer/Levels/Data"]
+margin_left = 188.0
+margin_top = 188.0
+margin_right = 262.0
+margin_bottom = 212.0
+text = "Hidden"
+
 [node name="holder" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -1161,6 +1168,7 @@ __meta__ = {
 [connection signal="pressed" from="TabContainer/Achievements/add_achievement_panel/cancel_achievment" to="." method="_on_cancel_achievment_pressed"]
 [connection signal="item_selected" from="TabContainer/Enemies/enemy_list" to="." method="_on_enemy_list_item_selected"]
 [connection signal="pressed" from="TabContainer/Enemies/data/TextureRect/change_enemy_tex" to="." method="_on_change_enemy_tex_pressed"]
+[connection signal="item_selected" from="TabContainer/Enemies/data/name_of" to="." method="_on_name_of_item_selected"]
 [connection signal="text_entered" from="TabContainer/Enemies/data/enemy_name" to="." method="_on_enemy_name_text_entered"]
 [connection signal="text_changed" from="TabContainer/Enemies/data/enemy_health" to="." method="_on_enemy_health_text_changed"]
 [connection signal="text_changed" from="TabContainer/Enemies/data/enemy_str" to="." method="_on_enemy_str_text_changed"]
@@ -1215,11 +1223,12 @@ __meta__ = {
 [connection signal="item_selected" from="TabContainer/Levels/Data/enemys_in/add_enemy_to_list" to="." method="_on_add_enemy_to_list_item_selected"]
 [connection signal="pressed" from="TabContainer/Levels/Data/enemys_in/remove_enemy_from_list" to="." method="_on_remove_enemy_from_list_pressed"]
 [connection signal="text_changed" from="TabContainer/Levels/Data/enemys_in/enemy_ratio" to="." method="_on_enemy_ratio_text_changed"]
-[connection signal="pressed" from="TabContainer/Levels/Data/level_buttons/Save_level" to="." method="_on_Save_level_pressed"]
 [connection signal="pressed" from="TabContainer/Levels/Data/level_buttons/new_level" to="." method="_on_new_level_pressed"]
 [connection signal="pressed" from="TabContainer/Levels/Data/level_buttons/remove_level" to="." method="_on_remove_level_pressed"]
+[connection signal="pressed" from="TabContainer/Levels/Data/level_buttons/Save_level" to="." method="_on_Save_level_pressed"]
 [connection signal="text_changed" from="TabContainer/Levels/Data/level_name/name_edit" to="." method="_on_name_edit_text_changed"]
 [connection signal="text_changed" from="TabContainer/Levels/Data/level_song" to="." method="_on_level_song_text_changed"]
 [connection signal="text_changed" from="TabContainer/Levels/Data/level_db_offset" to="." method="_on_level_db_offset_text_changed"]
 [connection signal="text_changed" from="TabContainer/Levels/Data/level_tileset" to="." method="_on_level_tileset_text_changed"]
+[connection signal="toggled" from="TabContainer/Levels/Data/level_hidden" to="." method="_on_level_hidden_toggled"]
 [connection signal="pressed" from="holder/save_all_data" to="." method="_on_save_all_data_pressed"]

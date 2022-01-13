@@ -2,7 +2,7 @@
 "Cards": [ "Punch", "Heals" ],
 "ID": "Human",
 "Icon": "res://Assets/Textures/Entities/Characters/Char0.png",
-"Name": [ "Dylan", "Louis", "Ethan" ],
+"Name": [ "Ethan", "Jrolgenson", "Johan", "Bertrude", "Dylan" ],
 "Stats": [ 10, 10, 15, 40, PoolStringArray( "null" ), PoolStringArray( "PHYSICAL" ) ]
 }, {
 "Cards": [ "Punch", "Minor Heal" ],
@@ -21,13 +21,13 @@
 "Cards": [ "Punch", "Heals" ],
 "ID": "Bumbling Moss",
 "Icon": "res://Assets/Textures/Entities/Characters/Stambling_moss.png",
-"Name": [ "Barry" ],
+"Name": [ "Philipo", "Barry" ],
 "Stats": [ 10, 5, 5, 50, "null", "BURN" ]
 }, {
 "Cards": [ "Punch", "Heals" ],
 "ID": "Trider",
 "Icon": "res://Assets/Textures/Entities/Characters/Angy_tree.png",
-"Name": [ "Treemitri" ],
+"Name": [ "Treemitri", "Wyatt" ],
 "Stats": [ 30, 1, 20, 60, PoolStringArray( "[PHYSICAL", " COLD", "ELECTRIC]" ), PoolStringArray( "BURN" ) ]
 }, {
 "Cards": [ "Punch", "Minor Heal" ],

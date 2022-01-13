@@ -38,5 +38,4 @@ func save_game():
 	file.close()
 	Dialogic.save('dialogue')
 func _notification(what):
-	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		save_game()
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:pass

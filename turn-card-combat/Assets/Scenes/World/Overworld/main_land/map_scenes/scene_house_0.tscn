@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Scenes/World/Overworld/main_land/map_scenes/default_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Scenes/World/Overworld/main_land/change_area.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scenes/Objects/bed.tscn" type="PackedScene" id=4]
 
 [node name="game_map" instance=ExtResource( 1 )]
 
@@ -16,3 +17,6 @@ enter_offset = Vector2( 0, -24 )
 area_size = Vector2( 20, 31 )
 outside = true
 scene_loader = NodePath("../..")
+
+[node name="bed" parent="." index="3" instance=ExtResource( 4 )]
+position = Vector2( 108, 68 )

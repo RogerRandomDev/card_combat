@@ -16,7 +16,7 @@
 			},
 			"metadata": {
 				"color": null,
-				"folded": false
+				"folded": true
 			}
 		},
 		"Definitions": {
@@ -24,7 +24,32 @@
 
 			],
 			"folders": {
+				"dungeons": {
+					"files": [
+						"1642025268-366",
+						"1642025277-146",
+						"1642025283-918"
+					],
+					"folders": {
 
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				},
+				"spoken": {
+					"files": [
+						"1642024664-787"
+					],
+					"folders": {
+
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				}
 			},
 			"metadata": {
 				"color": null,
@@ -59,7 +84,7 @@
 					},
 					"metadata": {
 						"color": null,
-						"folded": false
+						"folded": true
 					}
 				},
 				"EELDE": {
@@ -72,7 +97,7 @@
 					},
 					"metadata": {
 						"color": null,
-						"folded": false
+						"folded": true
 					}
 				},
 				"Matthew": {
@@ -86,14 +111,15 @@
 					},
 					"metadata": {
 						"color": null,
-						"folded": false
+						"folded": true
 					}
 				},
 				"Slimmens": {
 					"files": [
 						"timeline-1639863808.json",
 						"timeline-1639866696.json",
-						"timeline-1639871090.json"
+						"timeline-1639871090.json",
+						"timeline-1642022221.json"
 					],
 					"folders": {
 

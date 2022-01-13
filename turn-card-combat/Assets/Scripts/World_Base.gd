@@ -7,6 +7,7 @@ export var player_menu:PackedScene
 
 var dungeon_data = {}
 func _ready():
+	GlobalData.set_mouse(true)
 	if GlobalData.cur_dungeon == "Level_0":GlobalData.cur_dungeon = "Slime_Haven"
 	dungeon_data = GlobalData.get_dungeon_data()
 	GlobalData.offset_volume(int(dungeon_data["level_song"][1]),1)

@@ -5,6 +5,7 @@ export var spinner_offset = Vector2(0,256)
 var on_main = true
 
 func _ready():
+	GlobalData.set_mouse(false)
 	GlobalData.offset_volume(-10,1)
 	GlobalData.set_volume(-20,2)
 	GlobalData.set_music("song_0")

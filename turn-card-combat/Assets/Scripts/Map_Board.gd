@@ -24,5 +24,9 @@ func _on_check_body_exited(body):
 
 func _input(_event):
 	if !$Label.visible:return
-	if Input.is_action_just_pressed("interact"):get_parent().get_parent().get_parent().load_map()
+	
+	if Input.is_action_just_pressed("interact"):
+		GlobalData.set_mouse(true)
+		get_viewport().warp_mouse(Vector2(512,300))
+		get_parent().get_parent().get_parent().load_map()
 	

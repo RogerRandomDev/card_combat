@@ -18,8 +18,6 @@
 "special": -1
 }, "dont_show" ], [ "Out of bounds", "res://Assets/Textures/world/sign.png", {
 "special": -1
-}, "dont_show" ], [ "Wasted Time", "res://Assets/Textures/world/sign.png", {
-"special": -1
 }, "dont_show" ], [ "GOAAAAL", "res://Assets/Textures/Entities/Characters/Char_1.png", {
 "special": 1
 }, "Score 1 goal with the ball" ] ]

@@ -15,4 +15,5 @@ func selected_dungeon(id:int=0):
 
 func _input(_event):
 	if Input.is_action_just_pressed("exit") && visible:
+		GlobalData.set_mouse(false)
 		get_parent().get_parent().disable_map()
