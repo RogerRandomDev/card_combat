@@ -10,7 +10,7 @@
 "ID": "Slime",
 "Icon": "res://Assets/Textures/Entities/Characters/green_slime.png",
 "Name": [ "Victor" ],
-"Stats": [ 10, 5, 5, 40, PoolStringArray( "PHYSICAL" ), PoolStringArray( "ELECTRIC", "COLD" ) ]
+"Stats": [ 10, 5, 5, 20, PoolStringArray( "PHYSICAL" ), PoolStringArray( "ELECTRIC", "COLD" ) ]
 }, {
 "Cards": [ "Punch" ],
 "ID": "Imp",
@@ -34,7 +34,7 @@
 "ID": "Gelatin",
 "Icon": "res://Assets/Textures/Entities/Characters/gelatin_cube.png",
 "Name": [ "Geane" ],
-"Stats": [ 15, 5, 10, 40, PoolStringArray( "PHYSICAL" ), PoolStringArray( "ELECTRIC", "COLD" ) ]
+"Stats": [ 15, 5, 10, 20, PoolStringArray( "PHYSICAL" ), PoolStringArray( "ELECTRIC", "COLD" ) ]
 }, {
 "Cards": [ "Punch", "Fire Ball" ],
 "Defense": 20,

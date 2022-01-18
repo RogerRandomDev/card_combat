@@ -101,6 +101,7 @@ func _on_Button2_toggled(button_pressed):
 	$Tween.interpolate_property($title_body/settings,"rect_position",$title_body/settings.rect_position,Vector2(0,720)*int(!button_pressed),0.25,Tween.TRANS_LINEAR)
 	$Tween.start()
 	on_main = !button_pressed
+	GlobalData.set_mouse(button_pressed)
 	if !button_pressed:
 		$title_body/settings.grab_focus()
 	if GlobalData.using_controller:

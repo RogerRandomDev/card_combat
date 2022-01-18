@@ -19,7 +19,7 @@
 "level_tileset": "dungeon",
 "levels": [ 1, 10 ]
 }, {
-"Name": "Beast_Pit",
+"Name": "Molding_Cave",
 "enemies": {
 1: 12,
 2: 1,
@@ -40,7 +40,7 @@
 },
 "level_hidden": true,
 "level_song": [ "song_0", -10 ],
-"level_tileset": "dungeon",
+"level_tileset": "grassy_dungeon",
 "levels": [ 10, 20 ]
 }, {
 "Name": "Sky_City",
@@ -58,6 +58,7 @@
 "Name": "Mage_Isles",
 "enemies": {
 0: 10,
+2: 1,
 5: 1,
 6: 1,
 9: 1,

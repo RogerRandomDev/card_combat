@@ -677,6 +677,7 @@ func _on_Level_List_item_selected(index):
 	$TabContainer/Levels/Data/level_song.text = level_selected["level_song"][0]
 	$TabContainer/Levels/Data/level_db_offset.text = str(level_selected["level_song"][1])
 	$TabContainer/Levels/Data/level_name/name_label.text = level_selected["Name"]
+	$TabContainer/Levels/Data/level_hidden.pressed = level_selected["level_hidden"]
 	if !level_selected.has("level_tileset"):level_selected["level_tileset"] = "dungeon"
 	$TabContainer/Levels/Data/level_tileset.text = level_selected["level_tileset"]
 	for item in $TabContainer/Levels/Data/enemys_in/enemies.get_item_count():

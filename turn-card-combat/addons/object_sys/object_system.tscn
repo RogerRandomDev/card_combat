@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Textures/card_base.png" type="Texture" id=1]
 [ext_resource path="res://addons/object_sys/object_system.gd" type="Script" id=2]
@@ -10,6 +10,12 @@
 [ext_resource path="res://Assets/Textures/Entities/Characters/Stambling_moss.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Textures/Entities/Characters/gelatin_cube.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Textures/Entities/Characters/Char_1.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Textures/Entities/Characters/Mushroom.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Textures/Entities/Characters/Lingering_Spirit.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Textures/Entities/Characters/Royal_Beetle.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Textures/Entities/Characters/Watcher.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Textures/Entities/Characters/Skeleton.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Textures/Entities/Characters/Cryer.png" type="Texture" id=16]
 
 [node name="Control" type="Control"]
 anchor_right = 0.5
@@ -253,7 +259,7 @@ margin_bottom = -4.0
 [node name="enemy_list" type="ItemList" parent="TabContainer/Enemies"]
 margin_right = 128.0
 margin_bottom = 560.0
-items = [ "Human", ExtResource( 3 ), false, "Slime", ExtResource( 5 ), false, "Imp", ExtResource( 7 ), false, "Bumbling Moss", ExtResource( 8 ), false, "Trider", ExtResource( 6 ), false, "Gelatin", ExtResource( 9 ), false ]
+items = [ "Human", ExtResource( 3 ), false, "Slime", ExtResource( 5 ), false, "Imp", ExtResource( 7 ), false, "Bumbling Moss", ExtResource( 8 ), false, "Trider", ExtResource( 6 ), false, "Gelatin", ExtResource( 9 ), false, "Cryer", ExtResource( 16 ), false, "Watcher", ExtResource( 14 ), false, "Skeleton", ExtResource( 15 ), false, "Lingering Spirit", ExtResource( 12 ), false, "Royal Beetle", ExtResource( 13 ), false, "Mushroom", ExtResource( 11 ), false ]
 fixed_icon_size = Vector2( 12, 12 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -960,7 +966,7 @@ margin_bottom = -4.0
 margin_top = 12.0
 margin_right = 116.0
 margin_bottom = 542.0
-items = [ "Slime_Haven", null, false, "Bandit_Camp", null, false, "Beast_Pit", null, false ]
+items = [ "Slime_Haven", null, false, "Bandit_Camp", null, false, "Molding_Cave", null, false, "Hell's_Gate", null, false, "Sky_City", null, false, "Mage_Isles", null, false ]
 __meta__ = {
 "_edit_use_anchors_": false
 }

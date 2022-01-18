@@ -4,7 +4,7 @@
 "Heals": [ "HEAL", "Heal an ally", "HEAL", [ "random", 10, 20 ], "HOLY", Color( 0, 1, 0, 1 ) ],
 "Holy Heal": [ "HEAL", "Extreme Healing Through god's powers", "HEAL", [ "random", 40, 50 ], "HOLY", Color( 0, 1, 0.490196, 1 ) ],
 "Ice Shards": [ "ATTACK", "Fling sharp ice at your enemy", "HURT", [ "random", -6, -9 ], "COLD", Color( 0, 0.392157, 0.803922, 1 ) ],
-"Minor Heal": [ "HEAL", "Heals a small amount of health", "HEAL", [ "random", 5, 10 ], "HOLY", Color( 0, 0.34902, 0, 1 ) ],
+"Minor Heal": [ "HEAL", "Heals a small amount of health", "HEAL", [ "random", 3, 6 ], "HOLY", Color( 0, 0.34902, 0, 1 ) ],
 "Punch": [ "ATTACK", "Deal damage to enemy", "HURT", [ "random", -5, -10 ], "PHYSICAL", Color( 1, 0, 0, 1 ) ],
 "Shield": [ "DEFEND", "Defend yourself from some of the damage this turn", "DEFEND", [ "random", 40, 95 ], "PHYSICAL", Color( 0, 0, 1, 1 ) ],
 "Static Arcs": [ "ATTACK", "Use static electricity to shock your enemies", "HURT", [ "random", -6, -11 ], "ELECTRIC", Color( 0.0784314, 0.823529, 0.854902, 1 ) ]
